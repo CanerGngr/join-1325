@@ -1,0 +1,13 @@
+.cart_content {
+  width: 300px;
+  height: 100%;
+  max-height: calc(100vh - 40px);
+  flex-grow: 1;
+  border: 2px solid rgb(33, 30, 30);
+  margin: 10px 10px 10px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: sticky;
+  top: 0px;
+  border: 1px gray;
+}
