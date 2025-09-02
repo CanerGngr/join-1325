@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <header class="auth-header"></header>
+    <main class="d_flex_c singup-main">
+      <div>
+        <form class="formDiv" onsubmit="handleRegisterUser(event);">
+          <header>
+            <a href="../index.html" title="back" class="back-button-link">
+              <img
+                alt="backImg"
+                src="../assets/img/back.svg"
+                class="back-button singup-back-button"
+              />
+            </a>
+            <div class="d_flex">
+              <div class="text-center">
+                <h1>Sign up</h1>
+                <div class="separator"></div>
+              </div>
+            </div>
+          </header>
+          <main>
+            <div class="text-center login-form w-100">
+              <div class="register-container">
+                <div class="d_flex">
+                  <input
+                    id="inName"
+                    type="text"
+                    placeholder="Name"
+                    onblur="isUserExisitByName(this.value)"
+                    required
+                  />
+                  <img
+                    src="../assets/img/person.svg"
+                    alt="name"
+                    class="overlay-image"
+                  />
+                  <small id="usernameError" class="d-none"></small>
+  </div>
+                </div>
+
+                <div class="d_flex">
+                  <input
+                    id="inEmail"
+                    type="email"
+                    placeholder="E-Mail"
+                    required
+                    onblur="isUserExisitByEmail(this.value)"
+                  />
+                  <img
+                    src="../assets/img/mail.svg"
+                    alt="E-Mail"
+                    class="overlay-image"
+                  />
+                </div>
+
+                <div class="d_flex">
+                  <input
+                    id="inPassword"
+                    oninput="validatePasswordTooltip()"
+                    type="password"
+                    placeholder="Password"
+                    required
+                  />
+                  <img
+                    src="../assets/img/lock.svg"
+                    alt="password"
+                    class="overlay-image"
+                  />
+                </div>
+                <div id="passwordTooltip" class="password-tooltip"></div>
+                <div class="d_flex">
+                  <input
+                    id="inPasswordConfirm"
+                    type="password"
+                    placeholder="Confirm password"
+                    required
+                  />
+                  <img
+                    src="../assets/img/lock.svg"
+                    alt="password"
+                    class="overlay-image"
+                  />
+                </div>
+                <div id="checkboxContainer">
+                  <input
+                    id="checkBox"
+                    title="accept"
+                    type="checkbox"
+                    required
+                  />
+                  <span>I accept the Privacy policy</span>
+                </div>
+
+                <div class="buttonDiv">
+                  <img
+                    class="auth-loading-spinner"
+                    src="../assets/icon/loading.png"
+                    alt="loading icon"
+                  />
+                  <button type="submit" class="primary-button">Sign up</button>
+                </div>
+              </div>
+            </div>
+          </main>
+          <footer></footer>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <div class="d_flex_c sign-in">
+        <!-- <a><span>Privacy Policy</span><a>
+            <a><span>Legal notice</span><a> -->
+      </div>
+    </footer>
+  </body>
+</html>
