@@ -1,0 +1,87 @@
+:root {
+  --color-blue: #2a3647;
+  --color-black-light: #091931;
+  --color-light-blue: #29abe2;
+  --color-orange: #ff7a00;
+  --color-turquoise: #1fd7c1;
+  --color-green: #14452f;
+  --color-violet: #462f8a;
+  --color-pink: #fc71ff;
+  --color-violet-light: #9327ff;
+  --color-violet-light-2: #6e52ff;
+  --color-dark-blue: #0038ff;
+  --color-orange-dark: #ff4646;
+  --color-black: black;
+  --color-white: white;
+  --color-red: red;
+  --color-grey: #d1d1d1;
+  --color-grey-light: rgb(246,247,248);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.bg-grey {
+  background-color: var(--color-grey);
+}
+
+.bg-blue {
+  background-color: var(--color-blue);
+}
+
+.bg-light-blue {
+  background-color: var(--color-light-blue);
+}
+
+.bg-orange {
+  background-color: var(--color-orange);
+}
+
+.bg-turquoise {
+  background-color: var(--color-turquoise);
+}
+
+.bg-violet {
+  background-color: var(--color-violet);
+}
+
+.bg-pink {
+  background-color: var(--color-pink);
+}
+
+.bg-violet-light {
+  background-color: var(--color-violet-light);
+}
+
+.bg-violet-light-2 {
+  background-color: var(--color-violet-light-2);
+}
+
+.bg-dark-blue {
+  background-color: var(--color-dark-blue);
+}
+
+.bg-orange-dark {
+  background-color: var(--color-orange-dark);
+}
+
+.color-black {
+  color: var(--color-black);
+}
+
+.color-white {
+  color: var(--color-white);
+}
+
+.color-blue {
+  color: var(--color-blue);
+}
+
+.color-light-blue {
+  color: var(--color-light-blue);
+}
+
+.color-red {
+  color: var(--color-red);
+}
