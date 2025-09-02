@@ -1,13 +1,10 @@
 window.addEventListener('DOMContentLoaded', function() {
     const logoSlide = document.getElementById('logo-slide');
+    // Start in center
+    logoSlide.style.transform = 'translate(0, 0)';
     setTimeout(() => {
-        logoSlide.style.alignItems = 'flex-start';
-        logoSlide.style.justifyContent = 'flex-start';
-        logoSlide.style.width = '320px';
-        logoSlide.style.height = '120px';
-        logoSlide.style.top = '0';
-        logoSlide.style.left = '0';
+        // Slide to top left
+        logoSlide.style.transform = 'translate(-40vw, -40vh) scale(0.5)';
         logoSlide.style.background = 'transparent';
-        logoSlide.style.padding = '32px';
     }, 500);
 });
