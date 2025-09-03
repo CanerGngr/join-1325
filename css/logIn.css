@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  /* height: 200px; */
   border-radius: 30px;
 
   padding: 48px 115px;
@@ -48,4 +47,10 @@ input {
 
 .input-icon-container svg {
   margin-left: 12px;
+}
+
+.login-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
