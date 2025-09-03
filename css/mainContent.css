@@ -2,3 +2,22 @@
   width: calc(100% - 232px);
   margin: 0 15px;
 }
+
+#logo-slide {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-color: #4589FF;
+    transition: transform 1s cubic-bezier(.77,0,.18,1);
+    will-change: transform;
+}
+
+#logo-slide svg {
+    width: 265px;
+    height: 324px;
+    transition: width 1s cubic-bezier(.77,0,.18,1), height 1s cubic-bezier(.77,0,.18,1);
+}
