@@ -83,3 +83,15 @@
      color: #4589FF;
      background-color: white;
  }
+
+ .btn-menu {
+     padding: 30px 8px;
+ }
+
+ .btn-menu:hover {
+     background-color: #E3EEFF;
+ }
+
+ .btn-menu:active {
+     background-color: #D2E3FF;
+ }
