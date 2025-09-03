@@ -1,0 +1,30 @@
+.logInForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  height: 200px;
+  border-radius: 30px;
+
+  padding: 48px 115px;
+}
+
+.logInMainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  border-style: none;
+  border-bottom: solid;
+  border-width: 1px;
+  gap: 20px;
+  margin: 0 0 10px;
+}
+
+.logInButton {
+  margin: 10px 0 0;
+}

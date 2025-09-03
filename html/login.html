@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/mainContent.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
+    <link rel="stylesheet" href="../css/logIn.css" />
   </head>
   <body onload="animateLogo()">
     <div
@@ -51,12 +52,19 @@
       </svg>
     </div>
 
-    <form action="index.html">
-      <span>Log in</span>
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
+    <main id="logInMainContainer" class="logInMainContainer">
+      <form id="logInForm" class="logInForm" action="index.html">
+        <h1>Log in</h1>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <div class="logInButtons">
+          <button class="btn-no-icon logInButton" type="submit">Login</button>
+          <button class="btn-secondary logInButton" type="submit">
+            Guest log in
+          </button>
+        </div>
+      </form>
+    </main>
     <script src="../js/script.js"></script>
   </body>
 </html>
