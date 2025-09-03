@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/login.css">
     <title>Sign Up</title>
   </head>
   <body>
     <header class="auth-header"></header>
-    <main class="d_flex_c singup-main">
+    <main class="register-main-container">
       <div>
-        <form class="formDiv" onsubmit="handleRegisterUser(event);">
+        <form class="register-form" onsubmit="handleRegisterUser(event);">
           <header>
             <a href="../index.html" title="back" class="back-button-link">
               <img
@@ -28,7 +30,7 @@
           <main>
             <div class="text-center login-form w-100">
               <div class="register-container">
-                <div class="d_flex">
+                <div class="input-icon-container">
                   <input
                     id="inName"
                     type="text"
@@ -37,15 +39,14 @@
                     required
                   />
                   <img
-                    src="..\assets\img\person.svg"
+                    src="../assets/img/person.svg"
                     alt="name"
                     class="overlay-image"
                   />
                   <small id="usernameError" class="d-none"></small>
-  </div>
                 </div>
 
-                <div class="d_flex">
+                <div class="input-icon-container">
                   <input
                     id="inEmail"
                     type="email"
@@ -60,7 +61,7 @@
                   />
                 </div>
 
-                <div class="d_flex">
+                <div class="input-icon-container">
                   <input
                     id="inPassword"
                     oninput="validatePasswordTooltip()"
@@ -75,7 +76,7 @@
                   />
                 </div>
                 <div id="passwordTooltip" class="password-tooltip"></div>
-                <div class="d_flex">
+                <div class="input-icon-container">
                   <input
                     id="inPasswordConfirm"
                     type="password"

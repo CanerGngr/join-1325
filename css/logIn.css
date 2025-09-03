@@ -1,4 +1,4 @@
-.logInForm {
+.logInForm, .register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,7 @@
   padding: 48px 115px;
 }
 
-.logInMainContainer {
+.logInMainContainer, .register-main-container {
   display: flex;
   justify-content: center;
   align-items: center;
