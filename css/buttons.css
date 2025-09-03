@@ -1,0 +1,48 @@
+.btn-no-icon {
+    padding: 18px 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #4589FF;
+}
+
+.btn-no-icon:hover {
+    background-color: #005DFF;
+}
+
+.btn-no-icon:active {
+    color: #4589FF;
+    background-color: white;
+}
+
+.btn-secondary {
+    border-radius: 8px;
+    padding: 18px 10px;
+    border: 1px solid #647188;
+    color: #647188;
+}
+
+.btn-secondary:hover {
+    border: 2px solid #4589FF;
+    color: #4589FF;
+}
+
+.btn-secondary:active {
+    border: 1px solid #005DFF;
+    color: #005DFF;
+}
+
+.btn-check {
+    border: none;
+    border-radius: 10px;
+    padding: 16px 10px;
+    background-color: #4589FF;
+}
+
+.btn-check:hover {
+    background-color: #005DFF;
+}
+
+.btn-check:active {
+    color: #4589FF;
+    background-color: white;
+}
