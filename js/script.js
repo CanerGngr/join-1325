@@ -1,14 +1,17 @@
 // Der Farbwechsel wird jetzt in der Loadingscreen() Funktion nach der Generierung durchgeführt
 function Loadingscreen() {
-  if (window.innerWidth <= 600) {
-    loader.innerHTML = getLoadingscreenMobile();
-  } else {
-    loader.innerHTML = getLoadingscreenDesktop();
-  }
+    if (document.referrer === '') {
+
+        if (window.innerWidth <= 600) {
+            loader.innerHTML = getLoadingscreenMobile();
+        } else {
+            loader.innerHTML = getLoadingscreenDesktop();
+        }
+    }
 }
 
 function getLoadingscreenMobile() {
-  return `
+    return `
     <svg width="101" height="122" viewBox="0 0 101 122" fill="none" xmlns="http://www.w3.org/2000/svg" id="loader-image-white" class="loader-image login-logo">
 <path d="M71.6721 0H49.5143V25.4923H71.6721V0Z" fill="#FFFFFF"/>
 <path d="M49.5142 46.2251H71.6721V82.1779C71.7733 90.8292 69.3112 99.3153 64.5986 106.557C59.9455 113.594 50.963 121.966 34.3446 121.966C16.2434 121.966 5.69286 113.406 0 108.715L13.9765 91.4743C19.533 96.0112 24.885 99.7435 34.4299 99.7435C41.6567 99.7435 44.5372 96.7988 46.2247 94.2307C48.5186 90.6637 49.7052 86.4923 49.6335 82.2464L49.5142 46.2251Z" fill="#FFFFFF"/>
@@ -21,7 +24,7 @@ function getLoadingscreenMobile() {
 }
 
 function getLoadingscreenDesktop() {
-  return `
+    return `
     <svg width="101" height="122" viewBox="0 0 101 122" fill="none" xmlns="http://www.w3.org/2000/svg" id="loader-image-white" class="loader-image login-logo">
 <path d="M71.6721 0H49.5143V25.4923H71.6721V0Z" fill="#FFFFFF"/>
 <path d="M49.5142 46.2251H71.6721V82.1779C71.7733 90.8292 69.3112 99.3153 64.5986 106.557C59.9455 113.594 50.963 121.966 34.3446 121.966C16.2434 121.966 5.69286 113.406 0 108.715L13.9765 91.4743C19.533 96.0112 24.885 99.7435 34.4299 99.7435C41.6567 99.7435 44.5372 96.7988 46.2247 94.2307C48.5186 90.6637 49.7052 86.4923 49.6335 82.2464L49.5142 46.2251Z" fill="#FFFFFF"/>
