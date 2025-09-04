@@ -6,6 +6,14 @@
   background-color: white;
   min-width: 598px;
   min-height: 607px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+
+  border-radius: 30px;
+  padding: 48px 115px;
 }
 
 #checkboxContainer {
