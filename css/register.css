@@ -1,0 +1,32 @@
+#register-body {
+  background-color: #4589ff;
+}
+
+.register-form {
+  background-color: white;
+  min-width: 598px;
+  min-height: 607px;
+}
+
+#checkboxContainer {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  align-items: center;
+}
+
+#checkBox {
+  margin: 0 10px 0 0;
+  width: auto;
+}
+
+.register-form .back-button-link {
+  position: absolute;
+  left: 55.83px;
+  top: 62px;
+  margin: 0 0 0px;
+}
+
+.register-main-container .register-form {
+  position: relative;
+}
