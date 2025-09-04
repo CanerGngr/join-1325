@@ -10,8 +10,7 @@
   padding: 48px 115px;
 }
 
-.logInMainContainer,
-.register-main-container {
+.logInMainContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,4 +54,18 @@ input {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: absolute;
+  top: 67px;
+  right: 86px;
+  gap: 20px;
+}
+
+.legal-footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer a {
+  color: rgba(66, 82, 110, 1);
 }

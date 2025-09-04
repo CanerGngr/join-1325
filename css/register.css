@@ -11,9 +11,13 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-
   border-radius: 30px;
-  padding: 48px 115px;
+}
+
+.register-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #checkboxContainer {
@@ -37,4 +41,12 @@
 
 .register-main-container .register-form {
   position: relative;
+}
+
+#signup-legal-footer {
+  background-color: #4589ff;
+}
+
+#signup-legal-footer a {
+  color: white;
 }
