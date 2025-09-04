@@ -9,8 +9,44 @@
     <link rel="stylesheet" href="../css/buttons.css" />
     <link rel="stylesheet" href="../css/logIn.css" />
   </head>
-  <body onload="animateLogo()">
-    <!-- <div
+  <body onload="Loadingscreen()">
+    <div id="loader" class="loader"></div>
+    <div class="text-center login-header">
+      <p class="login-header-text">Not a Join user?</p>
+      <a href="register.html" class="btn-no-icon">Sign up</a>
+    </div>
+    <main id="logInMainContainer" class="logInMainContainer">
+      <form id="logInForm" class="logInForm" action="../index.html">
+        <h1>Log in</h1>
+        <div class="input-icon-container">
+          <input type="text" placeholder="Email" />
+          <img src="../assets/img/mail.svg" alt="Email Icon" />
+        </div>
+        <div class="input-icon-container">
+          <input type="password" placeholder="Password" />
+          <img src="../assets/img/lock.svg" alt="Password Icon" />
+        </div>
+        <div class="logInButtons">
+          <button class="btn-no-icon logInButton" type="submit">Login</button>
+          <button class="btn-secondary logInButton" type="submit">
+            Guest log in
+          </button>
+        </div>
+      </form>
+    </main>
+    <footer id="login-legal-footer" class="legal-footer">
+      <p class="footer-links">
+        <a href="/html/datenschutz.html">Privacy Policy</a>
+      </p>
+      <p class="footer-links">
+        <a href="/html/impressum.html">Legal notice</a>
+      </p>
+    </footer>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
+
+<!-- <div
       id="logo-slide"
       style="
         position: fixed;
@@ -51,37 +87,3 @@
         />
       </svg>
     </div> -->
-    <div class="text-center login-header">
-      <p class="login-header-text">Not a Join user?</p>
-      <a href="register.html" class="btn-no-icon">Sign up</a>
-    </div>
-    <main id="logInMainContainer" class="logInMainContainer">
-      <form id="logInForm" class="logInForm" action="../index.html">
-        <h1>Log in</h1>
-        <div class="input-icon-container">
-          <input type="text" placeholder="Email" />
-          <img src="../assets/img/mail.svg" alt="Email Icon" />
-        </div>
-        <div class="input-icon-container">
-          <input type="password" placeholder="Password" />
-          <img src="../assets/img/lock.svg" alt="Password Icon" />
-        </div>
-        <div class="logInButtons">
-          <button class="btn-no-icon logInButton" type="submit">Login</button>
-          <button class="btn-secondary logInButton" type="submit">
-            Guest log in
-          </button>
-        </div>
-      </form>
-    </main>
-    <footer id="login-legal-footer" class="legal-footer">
-      <p class="footer-links">
-        <a href="/html/datenschutz.html">Privacy Policy</a>
-      </p>
-      <p class="footer-links">
-        <a href="/html/impressum.html">Legal notice</a>
-      </p>
-    </footer>
-    <script src="../js/script.js"></script>
-  </body>
-</html>
