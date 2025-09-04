@@ -50,3 +50,11 @@
 #signup-legal-footer a {
   color: white;
 }
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
