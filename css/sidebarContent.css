@@ -7,11 +7,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding: 43px 23px 66px 23px;
 }
 
 .sidenav {
   flex-direction: column;
   width: 100%;
-  padding: 20px;
   gap: 10px;
 }
