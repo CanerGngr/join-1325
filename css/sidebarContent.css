@@ -1,5 +1,5 @@
 .sidebar_content {
-  width: 300px;
+  width: 232px;
   min-height: calc(100vh - 96px);
   overflow: hidden;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
@@ -14,4 +14,12 @@
   flex-direction: column;
   width: 100%;
   gap: 10px;
+}
+
+.sidebar-footer {
+  font-size: 16px;
+  color: #a8a8a8;
+  text-align: center;
+  flex-direction: column;
+  gap: 15px;
 }
