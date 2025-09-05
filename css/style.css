@@ -55,6 +55,7 @@ header {
   height: 96px;
   padding: 0 40px;
   align-items: center;
+  justify-content: space-between;
 
 }
 
@@ -63,11 +64,33 @@ main {
   min-height: calc(100vh - 120px);
   padding: 20px 0;
 }
+ .user-avatar {
+   color: #4589ff;
+   border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   border: solid 3px #ffffff;
+ }
 
-/* Footer */
-/* footer {
-  background: #f8f9fa;
-  padding: 20px 0;
-  text-align: center;
-  border-top: 1px solid #dee2e6;
-} */
+ .user-avatar div {
+    background: #ffffff;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
+   font-size: 1rem;
+   padding: 8px;
+ }
+
+ .inner-header {
+   gap: 20px;
+   align-items: center;
+   color: #ffffff;
+   font-size: 1.2rem;
+ }
