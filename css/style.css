@@ -62,7 +62,6 @@ header {
 /* Main Content */
 main {
   min-height: calc(100vh - 120px);
-  padding: 20px 0;
 }
  .user-avatar {
    color: #4589ff;

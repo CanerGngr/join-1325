@@ -86,6 +86,9 @@
 
 .btn-menu {
   padding: 30px 8px;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
 }
 
 .btn-menu:hover {
