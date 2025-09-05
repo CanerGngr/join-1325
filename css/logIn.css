@@ -72,113 +72,111 @@ footer a {
 
 /* test loader */
 .loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: none;
 }
 
-
 .loader::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #4589FF;
-    z-index: -1;
-    animation: backgroundTransition 2s ease forwards;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4589ff;
+  z-index: -1;
+  animation: backgroundTransition 2s ease forwards;
 }
 
 @keyframes backgroundTransition {
-    0% {
-        background-color: #4589FF;
-    }
+  0% {
+    background-color: #4589ff;
+  }
 
-    100% {
-        background-color: rgba(69, 137, 255, 0);
-    }
+  100% {
+    background-color: rgba(69, 137, 255, 0);
+  }
 }
 
 .loader-image {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: logoTransition 2s ease forwards;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: logoTransition 2s ease forwards;
 }
 
 #loader-image-white {
-    animation: logoTransition 2s ease forwards;
+  animation: logoTransition 2s ease forwards;
 }
 
 #loader-image-white path {
-    animation: svgFillTransition 2s ease forwards;
+  animation: svgFillTransition 2s ease forwards;
 }
 
 @keyframes svgFillTransition {
-    0% {
-        fill: #FFFFFF;
-    }
-    
-    100% {
-        fill: #4589FF;
-    }
+  0% {
+    fill: #ffffff;
+  }
+
+  100% {
+    fill: #4589ff;
+  }
 }
 
-
 @keyframes logoTransition {
-    0% {
-        top: 50%;
-        left: 50%;
-        width: 274px;
-        height: 334px;
-        transform: translate(-50%, -50%);
-    }
+  0% {
+    top: 50%;
+    left: 50%;
+    width: 274px;
+    height: 334px;
+    transform: translate(-50%, -50%);
+  }
 
-    100% {
-        top: 24px;
-        left: 88px;
-        width: 100px;
-        height: 122px;
-        transform: none;
-    }
+  100% {
+    top: 78px;
+    left: 78px;
+    width: 100px;
+    height: 122px;
+    transform: none;
+  }
 }
 
 #loader.start-animation #loader-image-white {
-    animation: fadeOutWhite 1s ease forwards;
+  animation: fadeOutWhite 1s ease forwards;
 }
 
 @keyframes fadeOutWhite {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 #loader.start-animation #loader-image-black {
-    animation: fadeInBlack 1s ease forwards;
-    display: none;
+  animation: fadeInBlack 1s ease forwards;
+  display: none;
 }
 
 @keyframes fadeInBlack {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
