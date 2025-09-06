@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/register.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
     <title>Sign Up</title>
   </head>
@@ -13,21 +13,20 @@
     <main class="register-main-container">
       <form
         class="register-form"
-        action="../index.html"
+        action="/index.html"
         onsubmit="handleRegisterUser(event);"
       >
-        <a class="back-button-link" href="../index.html" title="back">
+        <a class="back-button-link" href="../html/login.html" title="back">
           <img
             class="back-button singup-back-button"
             alt="backImg"
-            src="../assets/img/back.svg"
+            src="/assets/img/back.svg"
           />
         </a>
         <div class="d-flex"></div>
 
         <h1 class="text-center">Sign up</h1>
         <div class="separator"></div>
-        <!-- </div> -->
         <div class="text-center login-form w-100">
           <div class="register-container">
             <div class="input-icon-container">
@@ -39,7 +38,7 @@
                 required
               />
               <img
-                src="../assets/img/person.svg"
+                src="/assets/img/person.svg"
                 alt="name"
                 class="overlay-image"
               />
@@ -55,7 +54,7 @@
                 onblur="isUserExisitByEmail(this.value)"
               />
               <img
-                src="../assets/img/mail.svg"
+                src="/assets/img/mail.svg"
                 alt="E-Mail"
                 class="overlay-image"
               />
@@ -70,7 +69,7 @@
                 required
               />
               <img
-                src="../assets/img/lock.svg"
+                src="/assets/img/lock.svg"
                 alt="password"
                 class="overlay-image"
               />
@@ -84,7 +83,7 @@
                 required
               />
               <img
-                src="../assets/img/lock.svg"
+                src="/assets/img/lock.svg"
                 alt="password"
                 class="overlay-image"
               />
@@ -97,7 +96,7 @@
             <div class="buttonDiv">
               <img
                 class="auth-loading-spinner"
-                src="../assets/icon/loading.png"
+                src="/assets/icon/loading.png"
                 alt="loading icon"
               />
               <button class="btn-no-icon" type="submit">Sign up</button>
