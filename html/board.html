@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/mainContent.css">
   <link rel="stylesheet" href="/css/sidebarContent.css">
   <link rel="stylesheet" href="/css/buttons.css">
+  <link rel="stylesheet" href="/css/board.css">
 </head>
 
 <body>
@@ -45,21 +46,46 @@
       </div>
       <div class="kanban d-flex">
         <div id="todo">
-          <h2>To Do</h2>
-          <div class="task-card">Task 1</div>
-          <div class="task-card">Task 2</div>
+          <div class="kanban-header d-flex">
+            <h2>To Do</h2>
+            <button class="add-task">
+              <img src="/assets/img/plus.svg" alt="Task hinzufügen">
+            </button>
+          </div>
+          <div class="task-card">
+            <div class="ticket-label"></div>
+            <div class="task-title">Task 1</div>
+          </div>
+          <div class="task-card">
+            <div class="task-title">Task 2</div>
+          </div>
         </div>
         <div id="in-progress">
-          <h2>In Progress</h2>
+          <div class="kanban-header d-flex">
+            <h2>In Progress</h2>
+            <button class="add-task">
+              <img src="/assets/img/plus.svg" alt="Task hinzufügen">
+            </button>
+          </div>
           <div class="task-card">Task 3</div>
           <div class="task-card">Task 4</div>
         </div>
         <div id="await-feedback">
-          <h2>Awaiting Feedback</h2>
+          <div class="kanban-header d-flex">
+            <h2>Awaiting Feedback</h2>
+            <button class="add-task">
+              <img src="/assets/img/plus.svg" alt="Task hinzufügen">
+            </button>
+          </div>
           <div class="task-card">Task 5</div>
         </div>
         <div id="done">
-          <h2>Done</h2>
+          <div class="kanban-header d-flex">
+            <h2>Done</h2>
+            <button class="add-task">
+              <img src="/assets/img/plus.svg" alt="Task hinzufügen">
+            </button>
+          </div>
           <div class="task-card">Task 6</div>
           <div class="task-card">Task 7</div>
         </div>
