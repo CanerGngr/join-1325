@@ -1,18 +1,18 @@
 // Der Farbwechsel wird jetzt in der Loadingscreen() Funktion nach der Generierung durchgeführt
 function Loadingscreen() {
   // Check if user is returning from registration page
-  const skipAnimation = sessionStorage.getItem("skipAnimation");
 
-  if (skipAnimation === "true") {
+  const skipAnimation = sessionStorage.getItem('skipAnimation');
+  
+  if (skipAnimation === 'true') {
     // Clear the flag and skip animation
-    sessionStorage.removeItem("skipAnimation");
-
+    sessionStorage.removeItem('skipAnimation');
+    
     // Show logo in final position instead of hiding completely
-    const loader = document.getElementById("loader");
+    const loader = document.getElementById('loader');
     if (loader) {
       // Set transparent background (skip background animation)
-      loader.style.background = "transparent";
-
+      loader.style.background = 'transparent';
       // Generate logo HTML based on screen size
       if (window.innerWidth <= 600) {
         loader.innerHTML = getLoadingscreenMobile();
@@ -20,31 +20,32 @@ function Loadingscreen() {
         loader.innerHTML = getLoadingscreenDesktop();
       }
 
+      
       // Position logo in final state immediately
-      const logoElement = document.getElementById("loader-image-white");
+      const logoElement = document.getElementById('loader-image-white');
       if (logoElement) {
         // Disable CSS animations first
-        logoElement.style.animation = "none";
-
+        logoElement.style.animation = 'none';
+        
         // Position and style in final state
-        logoElement.style.position = "absolute";
-        logoElement.style.top = "24px";
-        logoElement.style.left = "88px";
-        logoElement.style.width = "100px";
-        logoElement.style.height = "122px";
-        logoElement.style.transform = "none";
-
+        logoElement.style.position = 'absolute';
+        logoElement.style.top = '24px';
+        logoElement.style.left = '88px';
+        logoElement.style.width = '100px';
+        logoElement.style.height = '122px';
+        logoElement.style.transform = 'none';
+        
         // Set final color (blue) for the paths and disable their animations
-        const paths = logoElement.querySelectorAll("path");
-        paths.forEach((path) => {
-          path.style.fill = "#4589FF";
-          path.style.animation = "none";
+        const paths = logoElement.querySelectorAll('path');
+        paths.forEach(path => {
+          path.style.fill = '#4589FF';
+          path.style.animation = 'none';
+
         });
       }
     }
     return;
   }
-
   if (window.innerWidth <= 600) {
     loader.innerHTML = getLoadingscreenMobile();
   } else {

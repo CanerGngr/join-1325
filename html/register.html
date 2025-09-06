@@ -16,7 +16,12 @@
         action="/index.html"
         onsubmit="handleRegisterUser(event);"
       >
-        <a class="back-button-link" href="../html/login.html" title="back">
+        <a
+          class="back-button-link"
+          href="/html/login.html"
+          title="back"
+          onclick="if(sessionStorage.getItem('fromLogin') === 'true') { sessionStorage.setItem('skipAnimation', 'true'); sessionStorage.removeItem('fromLogin'); }"
+        >
           <img
             class="back-button singup-back-button"
             alt="backImg"
