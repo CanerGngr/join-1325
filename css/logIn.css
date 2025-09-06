@@ -1,4 +1,4 @@
-.logInForm {
+.log-in-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,7 @@
   padding: 48px 115px;
 }
 
-.logInMainContainer {
+.log-in-main-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,8 +25,14 @@ input {
   margin: 0 0 10px;
 }
 
-.logInButton {
+.log-in-button {
   margin: 10px 0 0;
+}
+
+.log-in-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .input-icon-container {
