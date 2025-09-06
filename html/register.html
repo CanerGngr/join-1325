@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/register.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
     <title>Sign Up</title>
   </head>
@@ -13,7 +13,7 @@
     <main class="register-main-container">
       <form
         class="register-form"
-        action="../index.html"
+        action="/index.html"
         onsubmit="handleRegisterUser(event);"
       >
         <a
@@ -25,42 +25,41 @@
           <img
             class="back-button singup-back-button"
             alt="backImg"
-            src="../assets/img/back.svg"
+            src="/assets/img/back.svg"
           />
         </a>
         <div class="d-flex"></div>
 
         <h1 class="text-center">Sign up</h1>
         <div class="separator"></div>
-        <!-- </div> -->
         <div class="text-center login-form w-100">
           <div class="register-container">
             <div class="input-icon-container">
               <input
-                id="inName"
+                id="in-name"
                 type="text"
                 placeholder="Name"
                 onblur="isUserExisitByName(this.value)"
                 required
               />
               <img
-                src="../assets/img/person.svg"
+                src="/assets/img/person.svg"
                 alt="name"
                 class="overlay-image"
               />
-              <small id="usernameError" class="d-none"></small>
+              <small id="username-error" class="d-none"></small>
             </div>
 
             <div class="input-icon-container">
               <input
-                id="inEmail"
+                id="in-email"
                 type="email"
                 placeholder="E-Mail"
                 required
                 onblur="isUserExisitByEmail(this.value)"
               />
               <img
-                src="../assets/img/mail.svg"
+                src="/assets/img/mail.svg"
                 alt="E-Mail"
                 class="overlay-image"
               />
@@ -68,41 +67,41 @@
 
             <div class="input-icon-container">
               <input
-                id="inPassword"
+                id="in-password"
                 oninput="validatePasswordTooltip()"
                 type="password"
                 placeholder="Password"
                 required
               />
               <img
-                src="../assets/img/lock.svg"
+                src="/assets/img/lock.svg"
                 alt="password"
                 class="overlay-image"
               />
             </div>
-            <div id="passwordTooltip" class="password-tooltip"></div>
+            <div id="password-tooltip" class="password-tooltip"></div>
             <div class="input-icon-container">
               <input
-                id="inPasswordConfirm"
+                id="in-password-confirm"
                 type="password"
                 placeholder="Confirm password"
                 required
               />
               <img
-                src="../assets/img/lock.svg"
+                src="/assets/img/lock.svg"
                 alt="password"
                 class="overlay-image"
               />
             </div>
-            <div id="checkboxContainer">
-              <input id="checkBox" title="accept" type="checkbox" required />
+            <div id="checkbox-container">
+              <input id="check-box" title="accept" type="checkbox" required />
               <span>I accept the Privacy policy</span>
             </div>
 
-            <div class="buttonDiv">
+            <div class="button-div">
               <img
                 class="auth-loading-spinner"
-                src="../assets/icon/loading.png"
+                src="/assets/icon/loading.png"
                 alt="loading icon"
               />
               <button class="btn-no-icon" type="submit">Sign up</button>

@@ -1,13 +1,24 @@
-.cart_content {
-  width: 300px;
-  height: 100%;
-  max-height: calc(100vh - 40px);
-  flex-grow: 1;
-  border: 2px solid rgb(33, 30, 30);
-  margin: 10px 10px 10px 0;
-  border-radius: 10px;
+.sidebar-content {
+  width: 232px;
   overflow: hidden;
-  position: sticky;
-  top: 0px;
-  border: 1px gray;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  display: flex;  
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 43px 23px 66px 23px;
+}
+
+.sidenav {
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.sidebar-footer {
+  font-size: 16px;
+  color: #a8a8a8;
+  text-align: center;
+  flex-direction: column;
+  gap: 15px;
 }

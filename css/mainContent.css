@@ -1,6 +1,9 @@
-.main_content {
-  width: calc(100% - 232px);
-  margin: 0 15px;
+.main-wrapper {
+  min-height: calc(100vh - 96px);
+}
+
+.main-content {
+  flex: 1;
 }
 
 #logo-slide {

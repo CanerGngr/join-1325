@@ -1,6 +1,7 @@
 // Der Farbwechsel wird jetzt in der Loadingscreen() Funktion nach der Generierung durchgeführt
 function Loadingscreen() {
   // Check if user is returning from registration page
+
   const skipAnimation = sessionStorage.getItem('skipAnimation');
   
   if (skipAnimation === 'true') {
@@ -12,13 +13,13 @@ function Loadingscreen() {
     if (loader) {
       // Set transparent background (skip background animation)
       loader.style.background = 'transparent';
-      
       // Generate logo HTML based on screen size
       if (window.innerWidth <= 600) {
         loader.innerHTML = getLoadingscreenMobile();
       } else {
         loader.innerHTML = getLoadingscreenDesktop();
       }
+
       
       // Position logo in final state immediately
       const logoElement = document.getElementById('loader-image-white');
@@ -39,12 +40,12 @@ function Loadingscreen() {
         paths.forEach(path => {
           path.style.fill = '#4589FF';
           path.style.animation = 'none';
+
         });
       }
     }
     return;
   }
-  
   if (window.innerWidth <= 600) {
     loader.innerHTML = getLoadingscreenMobile();
   } else {
