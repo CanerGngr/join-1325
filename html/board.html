@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/mainContent.css">
-    <link rel="stylesheet" href="/css/sidebarContent.css">
-    <link rel="stylesheet" href="/css/buttons.css">
-  </head>
-  <body>
-    <header class="header d-flex">
-      <img src="/assets/img/logo-white.svg" alt="Logo" height="56px">
-      <div class="inner-header d-flex">
-        <p>Kanban Project Management Tool</p>
-        <img src="/assets/img/questionmark.svg" alt="">
-        <div class="user-avatar"><div>JD</div></div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/mainContent.css">
+  <link rel="stylesheet" href="/css/sidebarContent.css">
+  <link rel="stylesheet" href="/css/buttons.css">
+</head>
+
+<body>
+  <header class="header d-flex">
+    <img src="/assets/img/logo-white.svg" alt="Logo" height="56px">
+    <div class="inner-header d-flex">
+      <p>Kanban Project Management Tool</p>
+      <img src="/assets/img/questionmark.svg" alt="">
+      <div class="user-avatar">
+        <div>JD</div>
       </div>
-    </header>
-    <main class="main_wrapper">
-      <section id="sidebar_section" class="sidebar_content">
-        <nav class="sidenav d-flex">
-          <button class="btn-menu">Summary</button>
-          <button class="btn-menu">Add Task</button>
-          <button class="btn-menu">Board</button>
-          <button class="btn-menu">Contacts</button>
-        </nav>
-        <div class="sidebar-footer d-flex">
-          <a href="/html/datenschutz.html">Privacy Policy</a>
-          <a href="/html/impressum.html">Legal Notice</a>
+    </div>
+  </header>
+  <main class="main-wrapper d-flex">
+    <section id="sidebar-section" class="sidebar-content">
+      <nav class="sidenav d-flex">
+        <button class="btn-menu">Summary</button>
+        <button class="btn-menu">Add Task</button>
+        <button class="btn-menu">Board</button>
+        <button class="btn-menu">Contacts</button>
+      </nav>
+      <div class="sidebar-footer d-flex">
+        <a href="/html/datenschutz.html">Privacy Policy</a>
+        <a href="/html/impressum.html">Legal Notice</a>
+      </div>
+    </section>
+    <section id="main-content" class="main-content">
+      <div>
+        <div class="search-container">
+          <input type="text" name="find-task" id="task-search" placeholder="Find Task">
+          <button type="button" id="search-button">Search</button>
         </div>
-      </section>
-      <section id="main_content" class="main_content">
-      </section>
-    </main>
-  </body>
+        <button class="btn-add">Add Task</button>
+      </div>
+      <div class="kanban">
+        <div id="todo">
+          <h2>To Do</h2>
+          <div class="task-card">Task 1</div>
+          <div class="task-card">Task 2</div>
+        </div>
+        <div id="in-progress">
+          <h2>In Progress</h2>
+          <div class="task-card">Task 3</div>
+          <div class="task-card">Task 4</div>
+        </div>
+        <div id="await-feedback">
+          <h2>Awaiting Feedback</h2>
+          <div class="task-card">Task 5</div>
+        </div>
+        <div id="done">
+          <h2>Done</h2>
+          <div class="task-card">Task 6</div>
+          <div class="task-card">Task 7</div>
+        </div>
+    </section>
+  </main>
+</body>
+
 </html>
