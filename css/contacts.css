@@ -268,8 +268,13 @@
   }
 
   .contact-side-menu form {
-    padding: 32px 16px;
+    padding: 0px 16px;
+    position: relative;
+    top: -60px;
   }
+
+  .contact-form-header {
+    margin-bottom: 0;
 }
 
 @media (max-width: 1206px) {
