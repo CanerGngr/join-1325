@@ -68,8 +68,8 @@ async function loginUser() {
       sessionStorage.setItem("isLoggedIn", "true");
       sessionStorage.setItem("isGuest", "false");
 
-      // Redirect to summary page
-      window.location.href = "./summary.html";
+      // Redirect to index page
+      window.location.href = "./index.html";
       return true;
     } else {
       showError("Email or password is incorrect.");
@@ -128,7 +128,7 @@ function setGuestSession() {
 
 function loginAsGuest() {
   setGuestSession();
-  window.location.href = "./summary.html";
+  window.location.href = "/index.html";
 }
 
 
