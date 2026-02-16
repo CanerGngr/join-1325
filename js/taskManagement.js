@@ -2,7 +2,7 @@
  * @fileoverview Task lifecycle and data management.
  * Initializes, loads, persists and renders tasks for the Kanban board.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 /**
  * Initializes tasks array

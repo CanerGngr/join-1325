@@ -2,7 +2,7 @@
  * @fileoverview User registration flow and validation.
  * Manages form state, validation, and user creation logic.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 const CONFIG = {
   routes: {

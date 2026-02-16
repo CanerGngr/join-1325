@@ -2,7 +2,7 @@
  * @fileoverview Summary module for Join Kanban Project Management Tool
  * Manages the summary page with personalized greeting
  * Session management is handled by script.js
- * @author Join Development Team
+ * @author Join-1325 Development Team
  * @version 1.0.0
  */
 

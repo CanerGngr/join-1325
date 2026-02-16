@@ -2,7 +2,7 @@
  * @fileoverview Static pages renderer for unauthenticated users.
  * Initializes sidebar and header content when no session is active.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 /**
  * Initialize static pages based on user authentication status

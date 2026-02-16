@@ -2,7 +2,7 @@
  * @fileoverview Edit-task overlay and update helpers.
  * Manages assigned users, priority selection, subtasks, and form templates.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 // Edit Task Functionality
 

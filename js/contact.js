@@ -2,7 +2,7 @@
  * @fileoverview Contact dataset and utilities for the app.
  * Provides demo contacts used across modules and UIs.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 let contacts = [
   { name: "John Doe", email: "john.doe@example.com", phone: "123-456-7890" },

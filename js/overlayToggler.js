@@ -2,7 +2,7 @@
  * @fileoverview Overlay and menu toggling utilities.
  * Controls blur overlay and open/close state of menus and dialogs.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 function toggleOverlay(menuId) {
     let overlay = document.getElementById('blur-overlay');

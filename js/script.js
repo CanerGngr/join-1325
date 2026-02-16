@@ -2,7 +2,7 @@
  * @fileoverview Core session management and common UI helpers.
  * Handles login enforcement, logout, and user dropdown toggling.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 // Color change is now performed in the Loadingscreen() function after generation
 

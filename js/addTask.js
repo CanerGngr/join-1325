@@ -2,7 +2,7 @@
  * @fileoverview Add-task form and assigned user management.
  * Handles dropdown population, user selection, subtasks, and form toggles.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 // Add Task Form Functionality
 

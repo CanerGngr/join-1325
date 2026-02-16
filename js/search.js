@@ -2,7 +2,7 @@
  * @fileoverview Task search and filtering utilities.
  * Filters task list and triggers re-rendering of results.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 function filterTasks(searchTerm) {
   let filteredTasks = getFilteredTasks(searchTerm);

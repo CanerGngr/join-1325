@@ -1,7 +1,7 @@
 /**
  * @fileoverview Login module for Join Kanban Project Management Tool
  * Manages user authentication via Firebase Realtime Database
- * @author Join Development Team
+ * @author Join-1325 Development Team
  * @version 1.0.0
  */
 

@@ -2,7 +2,7 @@
  * @fileoverview Subtask management helpers.
  * Add, edit, remove, and render subtasks attached to tasks.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 // Subtask Management Functionality
 

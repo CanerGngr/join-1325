@@ -2,7 +2,7 @@
  * @fileoverview Custom scrollbar for mobile (mouse-only) pages.
  * Implements draggable thumb synced with window scroll.
  * @version 1.0.0
- * @author Join Development Team
+ * @author Join-1325 Development Team
  */
 // Custom Scrollbar for Mobile (Mouse only - no touch support)
 let scrollbar, thumb, isDragging, startY, startScrollTop;
