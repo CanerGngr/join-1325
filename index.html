@@ -1,19 +1,220 @@
-<!DOCTYPE html>
-<html lang="de">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/mainContent.css" />
-    <link rel="stylesheet" href="./css/sidebarContent.css" />
-    <title>Join</title>
+    <title>Summary</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/summary-main-content.css" />
+    <link rel="stylesheet" href="/css/sidebar-content.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/summary.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link
+      rel="shortcut icon"
+      href="/assets/icon/join-favicon.svg"
+      type="image/x-icon"
+    />
   </head>
   <body>
-    <header></header>
-    <main class="main-wrapper">
-      <section id="main-content" class="main-content"></section>
-      <section id="sidebar-section" class="sidebar-content"></section>
+    <header class="header d-flex">
+      <a href="./summary.html"
+        ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
+      /></a>
+      <div class="inner-header d-flex">
+        <p>Kanban Project Management Tool</p>
+        <a href="./help.html" title="Help" class="help-icon">
+          <span class="help-icon-svg"></span
+        ></a>
+        <div class="user-avatar" onclick="toggleUserDropdown(event)">
+          <div class="user-avatar-name">SM</div>
+          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
+            <a href="./help.html" class="hide-mobile">Help</a>
+            <a href="./legalnotice.html">Legal Notice</a>
+            <a href="./datenschutz.html">Privacy Policy</a>
+            <a
+              href="#"
+              onclick="
+                logout();
+                return false;
+              "
+              >Log out</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="sidebar-section" class="sidebar-content">
+      <nav class="sidenav d-flex">
+        <a class="btn-menu d-flex" href="./summary.html"
+          ><img
+            src="/assets/icon/menuIcons/summary.svg"
+            alt="Summary Icon"
+          />Summary</a
+        >
+        <a class="btn-menu" href="./add-task.html"
+          ><img
+            src="/assets/icon/menuIcons/add-task.svg"
+            alt="Add Task Icon"
+          />Add Task</a
+        >
+        <a class="btn-menu" href="./board.html"
+          ><img
+            src="/assets/icon/menuIcons/board.svg"
+            alt="Board Icon"
+          />Board</a
+        >
+        <a class="btn-menu" href="./contacts.html"
+          ><img
+            src="/assets/icon/menuIcons/contacts.svg"
+            alt="Contacts Icon"
+          />Contacts</a
+        >
+      </nav>
+      <div class="sidebar-footer d-flex">
+        <a href="/html/datenschutz.html">Privacy Policy</a>
+        <a href="/html/legalnotice.html">Legal Notice</a>
+      </div>
+    </section>
+    <main class="main-wrapper d-flex">
+      <section id="main-content" class="main-content">
+        <div class="summary-main-content">
+          <h1 id="summary-greeting" class="summary-greeting">Good morning</h1>
+          <div class="summary-square-box">
+            <div class="top-row">
+              <div class="summary-square-zoom-wrapper">
+                <div class="summary-square square-urgency">
+                  <div class="summary-left-side">
+                    <div class="urgent-icon">
+                      <img
+                        src="/assets/icon/summary/urgent.svg"
+                        alt="Urgent Icon"
+                      />
+                      <span id="urgent-tasks-count" class="urgent-tasks"
+                        >1</span
+                      >
+                    </div>
+                    <p>Task Urgent</p>
+                  </div>
+                  <div class="vertical-divider"></div>
+                  <div class="urgent-sec-half">
+                    <p id="urgent-deadline">October 16, 2022</p>
+                    <span>Upcoming Deadline</span>
+                  </div>
+                </div>
+              </div>
+              <div class="summary-square-zoom-wrapper">
+                <a href="/html/board.html">
+                  <div class="summary-square square-board">
+                    <div class="card-content">
+                      <div class="card-content-img-box">
+                        <img
+                          src="/assets/icon/summary/default.svg"
+                          alt="Board Icon"
+                          class="card-icon"
+                        />
+                        <span id="board-tasks-count" class="card-number">5</span>
+                      </div>
+                      <div class="card-label-paragraph-box">
+                        <p class="card-label">Task in Board</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="bottom-row">
+              <div class="summary-square-zoom-wrapper">
+                <a href="/html/board.html">
+                  <div class="summary-square square-to-do">
+                    <div class="card-content">
+                      <div class="card-content-img-box">
+                        <img
+                          src="/assets/icon/summary/todo.svg"
+                          alt="To-do Icon"
+                          class="card-icon"
+                        />
+                        <span id="todo-tasks-count" class="card-number">1</span>
+                      </div>
+                      <div class="card-label-paragraph-box">
+                        <p class="card-label">Tasks To-do</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="summary-square-zoom-wrapper">
+                <a href="/html/board.html">
+                  <div class="summary-square square-progress">
+                    <div class="card-content">
+                      <div class="card-content-img-box">
+                        <img
+                          src="/assets/icon/summary/in-progress.svg"
+                          alt="In Progress Icon"
+                          class="card-icon"
+                        />
+                        <span id="progress-tasks-count" class="card-number"
+                          >2</span
+                        >
+                      </div>
+                      <div class="card-label-paragraph-box">
+                        <p class="card-label">Task in Progress</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="summary-square-zoom-wrapper">
+                <a href="/html/board.html">
+                  <div class="summary-square square-feedback">
+                    <div class="card-content">
+                      <div class="card-content-img-box">
+                        <img
+                          src="/assets/icon/summary/await-feedback.svg"
+                          alt="Awaiting Feedback Icon"
+                          class="card-icon"
+                        />
+                        <span id="feedback-tasks-count" class="card-number"
+                          >2</span
+                        >
+                      </div>
+                      <div class="card-label-paragraph-box">
+                        <p class="card-label">Awaiting Feedback</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="summary-square-zoom-wrapper">
+                <a href="/html/board.html">
+                  <div class="summary-square square-done">
+                    <div class="card-content">
+                      <div class="card-content-img-box">
+                        <img
+                          src="/assets/icon/summary/done.svg"
+                          alt="Done Icon"
+                          class="card-icon"
+                        />
+                        <span id="done-tasks-count" class="card-number">1</span>
+                      </div>
+                      <div class="card-label-paragraph-box">
+                        <p class="card-label">Tasks Done</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer></footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="/scrDB/dbConfig.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/taskManagement.js"></script>
+    <script src="/scrDB/taskDB.js"></script>
+    <script src="/js/summary.js"></script>
   </body>
 </html>
