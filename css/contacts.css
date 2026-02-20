@@ -87,7 +87,7 @@
 }
 
 .details-avatar {
-  margin-right: 54px;   
+  margin-right: 54px;
 }
 .avatar-content {
     width: 24px;
@@ -291,6 +291,7 @@
     display: none;
     padding: 64px 16px;
   }
+
   .back-btn-mobile {
     position: absolute;
     top: 64px;
@@ -299,6 +300,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .back-btn-mobile:active {
     background-image: url("/assets/icon/contacts/back-active.svg");
   }
@@ -324,7 +326,7 @@
     .contact-side-menu.open {
         width: calc(100% - 32px);
     }
-    
+
 }
 
 @media (min-width: 1207px) {
