@@ -329,7 +329,7 @@
 
 @media (min-width: 1207px) {
   .mobile-contact-actions {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -343,7 +343,7 @@
 }
 
 .dropdown-menu-mobile {
-  display: none !important;
+  display: none;
 }
 
 .dropdown-menu-mobile.open {
