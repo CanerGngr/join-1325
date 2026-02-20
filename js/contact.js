@@ -262,13 +262,14 @@ function showContactDetails(index) {
 
 function getContactDetailsTemplate(contact, index, avatarColor, initials) {
   return `
+        <h3 id="contact-header-title-mobile">Contact Information</h3>
         <div class="contact-header d-flex">
-            
                 <div class="user-avatar-lg details-avatar" style="background-color: ${avatarColor};">
                     <div class="avatar-content">${initials}</div>
                 </div>
+                <div class="contact-header-title-desktop">
+                    <h1>${contact.name}</h1>
                 <div class="contact-header-details">
-                  <h1>${contact.name}</h1>
                   <div class="mobile-contact-actions" onclick="openDropdownMenuMobile()">
                     <img src="/assets/icon/contacts/contact-details-menu.svg" alt="Menu Icon" />
                     <div id="dropdown-menu-mobile" class="dropdown-menu-mobile">
@@ -301,10 +302,10 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
                       </button>
                   </div>
                 </div>
-            
+                </div>
         </div>
         <div class="contact-details">
-            <h2>Contact Information</h2>
+        <h2 id="contact-header-title-desktop">Contact Information</h2>
             <h3>Email</h3>
             <a href="mailto:${contact.email}">${contact.email}</a>
             <h3>Phone</h3>
@@ -321,7 +322,6 @@ function backToContactList() {
   renderContactList();
 }
 
-
 function editContact(index) {
 const avatarColor = getAvatarColor(contacts[index].name);
   const contact = contacts[index];
@@ -331,7 +331,6 @@ const avatarColor = getAvatarColor(contacts[index].name);
   form.innerHTML = getEditContactFormTemplate(contact, avatarColor, initials);
   toggleOverlay("#edit-contact-menu");
 }
-
 
 function getEditContactFormTemplate(contact, avatarColor, initials) {
   return `
@@ -369,7 +368,6 @@ function getEditContactFormTemplate(contact, avatarColor, initials) {
     `;
 }
 
-
 function updateContact(event, editContactIndex) {
   event.preventDefault();
   const nameInput = document.getElementById("edit-contact-name");
@@ -389,7 +387,6 @@ function updateContact(event, editContactIndex) {
   closeAllMenus();
 }
 
-
 function deleteContact(index) {
   contacts.splice(index, 1);
   renderContactList();
@@ -397,7 +394,6 @@ function deleteContact(index) {
   const contactDetails = document.getElementById("contact-details-content");
   contactDetails.innerHTML = "<p>Select a contact to view details</p>";
 }
-
 
 function addContact(event) {
   event.preventDefault();
