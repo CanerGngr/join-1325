@@ -131,10 +131,30 @@ function loginAsGuest() {
   window.location.href = "/index.html";
 }
 
+function updateRememberMeCheckboxState() {
+  const emailInput = document.getElementById("email-input");
+  const passwordInput = document.getElementById("password-input");
+  const rememberMeCheckbox = document.getElementById("remember-me-checkbox");
+
+  if (!emailInput || !passwordInput || !rememberMeCheckbox) {
+    return;
+  }
+
+  const isEmailValid = emailInput.checkValidity() && emailInput.value.trim() !== "";
+  const isPasswordValid = passwordInput.value.trim() !== "";
+  const shouldEnableCheckbox = isEmailValid && isPasswordValid;
+
+  rememberMeCheckbox.disabled = !shouldEnableCheckbox;
+
+  if (!shouldEnableCheckbox) {
+    rememberMeCheckbox.checked = false;
+  }
+}
+
 
 /**
- * Initializes the login form with event listeners
- * Binds the submit event to the loginUser function
+ * Initializes the login form handlers
+ * Binds submit and input handlers to login form elements
  * Prevents default form submit behavior
  *
  * @function initLoginForm
@@ -146,18 +166,27 @@ function loginAsGuest() {
  */
 function initLoginForm() {
   const loginForm = document.getElementById("log-in-form");
+  const emailInput = document.getElementById("email-input");
+  const passwordInput = document.getElementById("password-input");
 
   if (loginForm) {
-    loginForm.addEventListener("submit", async function (event) {
+    loginForm.onsubmit = async function (event) {
       event.preventDefault();
       await loginUser();
-    });
+    };
   }
+
+  if (emailInput) {
+    emailInput.oninput = updateRememberMeCheckboxState;
+    emailInput.onblur = updateRememberMeCheckboxState;
+  }
+
+  if (passwordInput) {
+    passwordInput.oninput = updateRememberMeCheckboxState;
+    passwordInput.onblur = updateRememberMeCheckboxState;
+  }
+
+  updateRememberMeCheckboxState();
 }
 
-// Initialize on page load
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initLoginForm);
-} else {
-  initLoginForm();
-}
+initLoginForm();
