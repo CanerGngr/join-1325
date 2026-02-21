@@ -242,7 +242,7 @@
   .btn-add-contact {
     position: fixed;
     right: 23px;
-    bottom: 23px;
+    bottom: 88px;
     width: auto !important;
     padding: 16px;
   }
@@ -368,6 +368,8 @@
 }
 
 .dropdown-menu-mobile.open {
+    background-color: gray;
+    /*z-index: 9;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -379,10 +381,7 @@
   min-width: 100%;
   height: 116px;
   padding: 6px;
-  border-radius: 20px 20px 0px 20px;
-  transform: translateX(-100%);
-  opacity: 0;
-  transition: transform 0.5s ease;
+  border-radius: 20px 20px 0px 20px;*/
 }
 
 .dropdown-menu-mobile.open,button,span {
