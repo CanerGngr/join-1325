@@ -69,7 +69,7 @@ async function loginUser() {
       sessionStorage.setItem("isGuest", "false");
 
       // Redirect to index page
-      window.location.href = "./index.html";
+      window.location.href = "/index.html";
       return true;
     } else {
       showError("Email or password is incorrect.");
