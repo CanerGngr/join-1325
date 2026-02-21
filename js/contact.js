@@ -270,7 +270,7 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
                 <div class="contact-header-title-desktop">
                     <h1>${contact.name}</h1>
                 <div class="contact-header-details">
-                  <div class="mobile-contact-actions" onclick="openDropdownMenuMobile()">
+                  <div class="mobile-contact-actions" onclick="openDropdownMenuMobile(event)">
                     <img src="/assets/icon/contacts/contact-details-menu.svg" alt="Menu Icon" />
                     <div id="dropdown-menu-mobile" class="dropdown-menu-mobile">
                       <button onclick="editContact(${index})" class="text-btn-with-icon popup-btn">
@@ -414,7 +414,21 @@ function addContact(event) {
   closeAllMenus();
 }
 
-function openDropdownMenuMobile() {
+function openDropdownMenuMobile(event) {
+  if (event) {
+    event.stopPropagation();
+  }
   const dropdownMenu = document.getElementById("dropdown-menu-mobile");
   dropdownMenu.classList.toggle("open");
 }
+
+document.addEventListener("click", (event) => {
+  const dropdownMenu = document.getElementById("dropdown-menu-mobile");
+  if (!dropdownMenu || !dropdownMenu.classList.contains("open")) {
+    return;
+  }
+
+  if (!event.target.closest(".mobile-contact-actions")) {
+    dropdownMenu.classList.remove("open");
+  }
+});
