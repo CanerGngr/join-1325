@@ -41,14 +41,14 @@
         margin-left: 0;
         width: 100vw;
     }
+
+    .main-content {
+        margin: 0;
+    }
 }
 
 /*Mobile*/
 @media (max-width: 830px) {
-    .main-content {
-        margin: 12px 12px 39px;
-    }
-
     .main-content-header {
         margin: 0 0 12px;
     }

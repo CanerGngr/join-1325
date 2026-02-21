@@ -327,7 +327,6 @@
 
   .contact-menu {
     left: 0;
-    top: 176px;
     width: 100%;
     box-shadow: none;
     padding: 16px;
@@ -371,15 +370,23 @@
 .dropdown-menu-mobile.open {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  font-weight: 400;
   position: absolute;
-  bottom: 100%;
-  right: 100%;
   background-color: white;
   border: 1px solid #D1D1D1;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  width: 116px;
-  height: 100px;
+  min-width: 100%;
+  height: 116px;
+  padding: 6px;
   border-radius: 20px 20px 0px 20px;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.5s ease;
+}
+
+.dropdown-menu-mobile.open,button,span {
+    font-size: 16px;
 }
 
 .mobile-contact-actions {

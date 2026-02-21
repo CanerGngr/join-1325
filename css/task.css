@@ -110,9 +110,9 @@
   justify-content: flex-end;
   gap: 16px;
   position: absolute;
-  bottom: 70px;
   top: auto;
-  right: 30px;
+  bottom: 55px;
+  right: 42px;
 }
 
 /* Error Message Styling */

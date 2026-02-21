@@ -93,6 +93,7 @@
 }
 
 .priority-icon {
+    margin: 4px;
     width: 20px;
     height: 20px;
 }
@@ -434,6 +435,3 @@
         width: calc(100% - 32px);
     }
 }
-
-
-
