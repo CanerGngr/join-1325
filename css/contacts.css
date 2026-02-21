@@ -368,8 +368,7 @@
 }
 
 .dropdown-menu-mobile.open {
-    background-color: gray;
-    z-index: 9;
+  z-index: 9;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -378,8 +377,8 @@
   background-color: white;
   border: 1px solid #D1D1D1;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  min-width: 100%;
-  height: 116px;
+  width: 116px;
+  height: 100px;
   padding: 6px;
   border-radius: 20px 20px 0px 20px;
 }
@@ -403,4 +402,15 @@
 .mobile-contact-actions img {
   width: 36px;
   height: 36px;
+}
+
+.popup-btn {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.popup-btn:hover {
+  background-color: #E3EEFF;
+  cursor: pointer;
+  
 }
