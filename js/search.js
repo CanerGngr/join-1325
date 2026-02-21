@@ -10,6 +10,10 @@ function filterTasks(searchTerm) {
 }
 
 
+/**
+ * Handles the getFilteredTasks workflow.
+ * @function getFilteredTasks
+ */
 function getFilteredTasks(searchTerm) {
   let filteredTasks = [];
   let lowerSearchTerm = searchTerm.toLowerCase();
@@ -24,6 +28,10 @@ function getFilteredTasks(searchTerm) {
 }
 
 
+/**
+ * Handles the taskMatchesSearchTerm workflow.
+ * @function taskMatchesSearchTerm
+ */
 function taskMatchesSearchTerm(task, searchTerm) {
   return (
     task.title.toLowerCase().includes(searchTerm) ||
@@ -33,6 +41,10 @@ function taskMatchesSearchTerm(task, searchTerm) {
 }
 
 
+/**
+ * Handles the renderFilteredTasks workflow.
+ * @function renderFilteredTasks
+ */
 function renderFilteredTasks(filteredTasks) {
   let currentTasks = tasks;
   tasks = filteredTasks;
@@ -42,6 +54,10 @@ function renderFilteredTasks(filteredTasks) {
 
 
 // Global event handler functions for inline events
+/**
+ * Handles the handleSearchClick workflow.
+ * @function handleSearchClick
+ */
 function handleSearchClick() {
   const searchInput = document.getElementById("task-search");
   if (searchInput) {
@@ -55,6 +71,10 @@ function handleSearchClick() {
 }
 
 
+/**
+ * Handles the handleSearchKeypress workflow.
+ * @function handleSearchKeypress
+ */
 function handleSearchKeypress(event) {
   if (event.key === "Enter") {
     const searchTerm = event.target.value.trim();
@@ -67,6 +87,10 @@ function handleSearchKeypress(event) {
 }
 
 
+/**
+ * Handles the handleSearchInput workflow.
+ * @function handleSearchInput
+ */
 function handleSearchInput(event) {
   if (event.target.value.trim() === "") {
     renderAllTasks();
@@ -74,6 +98,10 @@ function handleSearchInput(event) {
 }
 
 
+/**
+ * Handles the searchContact workflow.
+ * @function searchContact
+ */
 function searchContact(mode) {
   const searchInput = mode === 'task-edit'
     ? document.getElementById('edit-assigned-to-input-field')

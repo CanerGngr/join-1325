@@ -126,11 +126,19 @@ function setGuestSession() {
 }
 
 
+/**
+ * Handles the loginAsGuest workflow.
+ * @function loginAsGuest
+ */
 function loginAsGuest() {
   setGuestSession();
   window.location.href = "/index.html";
 }
 
+/**
+ * Handles the updateRememberMeCheckboxState workflow.
+ * @function updateRememberMeCheckboxState
+ */
 function updateRememberMeCheckboxState() {
   const emailInput = document.getElementById("email-input");
   const passwordInput = document.getElementById("password-input");

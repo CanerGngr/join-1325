@@ -10,6 +10,10 @@ let passwordVisible = false;
 let realConfirmPassword = "";
 let confirmVisible = false;
 
+/**
+ * Handles the toggleVisibilityIcon workflow.
+ * @function toggleVisibilityIcon
+ */
 function toggleVisibilityIcon() {
   const icon = document.getElementById("password-icon");
   if (realPassword.length === 0) {
@@ -23,6 +27,10 @@ function toggleVisibilityIcon() {
 }
 
 
+/**
+ * Handles the onPasswordIconClick workflow.
+ * @function onPasswordIconClick
+ */
 function onPasswordIconClick() {
   const input = document.getElementById("input-password");
   if (realPassword.length === 0) return;
@@ -33,6 +41,10 @@ function onPasswordIconClick() {
 }
 
 
+/**
+ * Handles the updateConfirmIconByState workflow.
+ * @function updateConfirmIconByState
+ */
 function updateConfirmIconByState() {
   const icon = document.getElementById("confirm-password-icon");
   if (realConfirmPassword.length === 0) {
@@ -46,6 +58,10 @@ function updateConfirmIconByState() {
 }
 
 
+/**
+ * Handles the onInputConfirmPassword workflow.
+ * @function onInputConfirmPassword
+ */
 function onInputConfirmPassword(input) {
   const inputConfirmWord = input.value;
   realConfirmPassword = updateVariable(inputConfirmWord, realConfirmPassword);
@@ -54,6 +70,10 @@ function onInputConfirmPassword(input) {
 }
 
 
+/**
+ * Handles the onClickConfirmPasswordIcon workflow.
+ * @function onClickConfirmPasswordIcon
+ */
 function onClickConfirmPasswordIcon() {
   const input = document.getElementById("input-password-confirm");
   confirmVisible = !confirmVisible;
@@ -62,6 +82,10 @@ function onClickConfirmPasswordIcon() {
 }
 
 
+/**
+ * Handles the isPasswordMatching workflow.
+ * @function isPasswordMatching
+ */
 function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
@@ -89,6 +113,10 @@ function isPasswordMatching() {
 }
 
 
+/**
+ * Handles the updateVariable workflow.
+ * @function updateVariable
+ */
 function updateVariable(inputWord, realVar) {
   if (inputWord.length > realVar.length) {
     const added = inputWord.slice(realVar.length);
@@ -100,6 +128,10 @@ function updateVariable(inputWord, realVar) {
 }
 
 
+/**
+ * Handles the hideWord workflow.
+ * @function hideWord
+ */
 function hideWord(inputWord, isVisible, realWord) {
   if (realWord.length === 0) return isVisible;
   inputWord.value = isVisible ? realWord : "*".repeat(realWord.length);
@@ -107,6 +139,10 @@ function hideWord(inputWord, isVisible, realWord) {
 }
 
 
+/**
+ * Handles the onPasswordInput workflow.
+ * @function onPasswordInput
+ */
 function onPasswordInput(input) {
   const inputPassword = input.value;
   realPassword = updateVariable(inputPassword, realPassword);
@@ -117,6 +153,10 @@ function onPasswordInput(input) {
 }
 
 
+/**
+ * Handles the onPasswordBlur workflow.
+ * @function onPasswordBlur
+ */
 function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
     // Save the real password to newUser object
@@ -136,6 +176,10 @@ function onPasswordBlur(inPassword) {
 }
 
 
+/**
+ * Handles the validatePasswordTooltip workflow.
+ * @function validatePasswordTooltip
+ */
 function validatePasswordTooltip(inputPassword) {
   const rules = checkPasswordRules(inputPassword);
   const msg = buildPasswordMessage(rules);
@@ -164,11 +208,19 @@ function validatePasswordTooltip(inputPassword) {
 }
 
 
+/**
+ * Handles the isPasswordValid workflow.
+ * @function isPasswordValid
+ */
 function isPasswordValid(rules) {
   return rules.minLength && rules.hasLower && rules.hasNumber;
 }
 
 
+/**
+ * Handles the buildPasswordMessage workflow.
+ * @function buildPasswordMessage
+ */
 function buildPasswordMessage(rules) {
   return`<span class="${rules.minLength ? "valid" : "invalid"}">
                 At least 8 characters
@@ -181,6 +233,10 @@ function buildPasswordMessage(rules) {
 }
 
 
+/**
+ * Handles the checkPasswordRules workflow.
+ * @function checkPasswordRules
+ */
 function checkPasswordRules(password) {
   return {
     minLength: password.length > 7,

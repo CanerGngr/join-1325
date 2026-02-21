@@ -23,11 +23,19 @@ function populateAssignedToDropdown(mode) {
 }
 
 
+/**
+ * Handles the clearDropdownList workflow.
+ * @function clearDropdownList
+ */
 function clearDropdownList(dropdownList) {
   dropdownList.innerHTML = "";
 }
 
 
+/**
+ * Handles the addContactsToDropdown workflow.
+ * @function addContactsToDropdown
+ */
 function addContactsToDropdown(dropdownList, mode) {
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
@@ -38,6 +46,10 @@ function addContactsToDropdown(dropdownList, mode) {
 }
 
 
+/**
+ * Handles the createDropdownItemHTML workflow.
+ * @function createDropdownItemHTML
+ */
 function createDropdownItemHTML(contact, index, isSelected, mode) {
   let initials = getInitials(contact.name);
   let avatarColor = getAvatarColor(contact.name);
@@ -70,6 +82,10 @@ function toggleAssignedDropdown(mode, dropdownElement) {
 }
 
 
+/**
+ * Handles the getAssignedDropdownList workflow.
+ * @function getAssignedDropdownList
+ */
 function getAssignedDropdownList(mode) {
   if (mode == "task-edit") {
     return document.getElementById("edit-assigned-to-list");
@@ -217,6 +233,10 @@ function setTargetColumn(status) {
 }
 
 
+/**
+ * Handles the clearForm workflow.
+ * @function clearForm
+ */
 function clearForm() {
   let form = document.getElementById("task-form");
   form.reset();
@@ -228,6 +248,10 @@ function clearForm() {
 }
 
 
+/**
+ * Handles the clearFormErrors workflow.
+ * @function clearFormErrors
+ */
 function clearFormErrors() {
   let titleError = document.getElementById("title-error-message");
   let dateError = document.getElementById("date-error-message");
@@ -241,6 +265,10 @@ function clearFormErrors() {
 }
 
 
+/**
+ * Handles the clearSelectedUsers workflow.
+ * @function clearSelectedUsers
+ */
 function clearSelectedUsers() {
   selectedUsers = [];
   // Checkboxes will be updated when dropdown is re-populated
@@ -248,6 +276,10 @@ function clearSelectedUsers() {
 }
 
 
+/**
+ * Handles the clearCategory workflow.
+ * @function clearCategory
+ */
 function clearCategory() {
   let categoryInput = document.getElementById("category-input");
   let categoryHidden = document.getElementById("category-hidden");
@@ -257,6 +289,10 @@ function clearCategory() {
 }
 
 
+/**
+ * Handles the validateForm workflow.
+ * @function validateForm
+ */
 function validateForm() {
   let isValid = validateTitleField();
   isValid = validateDateField() && isValid;
@@ -264,6 +300,10 @@ function validateForm() {
 }
 
 
+/**
+ * Handles the validateTitleField workflow.
+ * @function validateTitleField
+ */
 function validateTitleField() {
   let title = document.getElementById("task-title");
   let titleGroup = document.getElementById("title-form-group");
@@ -281,6 +321,10 @@ function validateTitleField() {
 }
 
 
+/**
+ * Handles the validateDateField workflow.
+ * @function validateDateField
+ */
 function validateDateField() {
   let date = document.getElementById("task-date");
   let dateGroup = document.getElementById("date-form-group");
@@ -298,6 +342,10 @@ function validateDateField() {
 }
 
 
+/**
+ * Handles the saveTask workflow.
+ * @function saveTask
+ */
 async function saveTask(event) {
   event.preventDefault();
 
@@ -309,6 +357,10 @@ async function saveTask(event) {
 }
 
 
+/**
+ * Handles the createTaskFromForm workflow.
+ * @function createTaskFromForm
+ */
 function createTaskFromForm() {
   let taskId = generateTaskId();
   let title = document.getElementById("task-title").value.trim();
@@ -333,12 +385,20 @@ function createTaskFromForm() {
 }
 
 
+/**
+ * Handles the getDescriptionValue workflow.
+ * @function getDescriptionValue
+ */
 function getDescriptionValue() {
   let descriptionField = document.getElementById("description");
   return descriptionField.value.trim();
 }
 
 
+/**
+ * Handles the getSelectedPriority workflow.
+ * @function getSelectedPriority
+ */
 function getSelectedPriority() {
   let priorityRadios = document.getElementsByName("priority");
   for (let i = 0; i < priorityRadios.length; i++) {
@@ -349,6 +409,10 @@ function getSelectedPriority() {
 }
 
 
+/**
+ * Handles the mapPriorityValue workflow.
+ * @function mapPriorityValue
+ */
 function mapPriorityValue(value) {
   let lowerValue = value.toLowerCase();
   if (lowerValue === "high") return "urgent";
@@ -357,6 +421,10 @@ function mapPriorityValue(value) {
 }
 
 
+/**
+ * Handles the getSelectedCategory workflow.
+ * @function getSelectedCategory
+ */
 function getSelectedCategory() {
   let categoryHidden = document.getElementById("category-hidden");
   return categoryHidden && categoryHidden.value
@@ -365,6 +433,10 @@ function getSelectedCategory() {
 }
 
 
+/**
+ * Handles the getAssignedUserNames workflow.
+ * @function getAssignedUserNames
+ */
 function getAssignedUserNames() {
   let assignedTo = [];
   for (let i = 0; i < selectedUsers.length; i++) {
@@ -374,6 +446,10 @@ function getAssignedUserNames() {
 }
 
 
+/**
+ * Handles the handleTaskSaveSuccess workflow.
+ * @function handleTaskSaveSuccess
+ */
 function handleTaskSaveSuccess() {
   let isOnAddTaskPage = window.location.pathname.includes("add-task.html");
 
@@ -394,12 +470,20 @@ function handleTaskSaveSuccess() {
 }
 
 
+/**
+ * Handles the showSuccessOverlay workflow.
+ * @function showSuccessOverlay
+ */
 function showSuccessOverlay() {
   let overlay = document.getElementById("success-overlay");
   overlay.classList.remove("d-none");
 }
 
 
+/**
+ * Handles the handleTitleBlur workflow.
+ * @function handleTitleBlur
+ */
 function handleTitleBlur() {
   let titleInput = document.getElementById("task-title");
   let titleGroup = document.getElementById("title-form-group");
@@ -415,6 +499,10 @@ function handleTitleBlur() {
 }
 
 
+/**
+ * Handles the handleDateBlur workflow.
+ * @function handleDateBlur
+ */
 function handleDateBlur() {
   let dateInput = document.getElementById("task-date");
   let dateGroup = document.getElementById("date-form-group");

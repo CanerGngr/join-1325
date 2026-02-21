@@ -158,6 +158,10 @@ const categoryToId = {
   "Technical Task": "technical-task",
 };
 
+/**
+ * Handles the generateTaskCardHTML workflow.
+ * @function generateTaskCardHTML
+ */
 function generateTaskCardHTML(task) {
   let assignedUsersHTML = generateAssignedUsersHTML(task.assignedTo || []);
   let categoryId = categoryToId[task.category] || "user-story";
@@ -176,6 +180,10 @@ function generateTaskCardHTML(task) {
 }
 
 
+/**
+ * Handles the generateAssignedUsersHTML workflow.
+ * @function generateAssignedUsersHTML
+ */
 function generateAssignedUsersHTML(assignedToArray) {
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -187,6 +195,10 @@ function generateAssignedUsersHTML(assignedToArray) {
 }
 
 
+/**
+ * Handles the getTaskCardTemplate workflow.
+ * @function getTaskCardTemplate
+ */
 function getTaskCardTemplate(
   task,
   assignedUsersHTML,
@@ -248,6 +260,10 @@ async function renderAllTasks() {
 }
 
 
+/**
+ * Handles the getKanbanColumns workflow.
+ * @function getKanbanColumns
+ */
 function getKanbanColumns() {
   return {
     todo: document.getElementById("todo"),
@@ -258,6 +274,10 @@ function getKanbanColumns() {
 }
 
 
+/**
+ * Handles the clearAllColumns workflow.
+ * @function clearAllColumns
+ */
 function clearAllColumns(columns) {
   clearColumnTaskCards(columns.todo);
   clearColumnTaskCards(columns.inProgress);
@@ -266,6 +286,10 @@ function clearAllColumns(columns) {
 }
 
 
+/**
+ * Handles the renderTasksInColumns workflow.
+ * @function renderTasksInColumns
+ */
 function renderTasksInColumns() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
@@ -276,12 +300,20 @@ function renderTasksInColumns() {
 }
 
 
+/**
+ * Handles the clearColumnTaskCards workflow.
+ * @function clearColumnTaskCards
+ */
 function clearColumnTaskCards(column) {
   const container = document.getElementById(column.id + "-cards");
   container.innerHTML = "";
 }
 
 
+/**
+ * Handles the findTaskById workflow.
+ * @function findTaskById
+ */
 function findTaskById(taskId) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === taskId) {
@@ -367,6 +399,10 @@ async function deleteTask(taskId) {
 }
 
 
+/**
+ * Handles the showTaskDetails workflow.
+ * @function showTaskDetails
+ */
 function showTaskDetails(taskId) {
   const task = findTaskById(taskId);
   const detailsOverlay = document.getElementById("details-overlay");
@@ -375,6 +411,10 @@ function showTaskDetails(taskId) {
 }
 
 
+/**
+ * Handles the getTaskDetailsTemplate workflow.
+ * @function getTaskDetailsTemplate
+ */
 function getTaskDetailsTemplate(task) {
   if (!task) {
     return "<p>Task not found</p>";
@@ -398,6 +438,10 @@ function getTaskDetailsTemplate(task) {
 
 
 
+/**
+ * Handles the generateAssignedUsersDetailsHTML workflow.
+ * @function generateAssignedUsersDetailsHTML
+ */
 function generateAssignedUsersDetailsHTML(assignedToArray) {
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -406,6 +450,10 @@ function generateAssignedUsersDetailsHTML(assignedToArray) {
   return html;
 }
 
+/**
+ * Handles the createUserItemHTML workflow.
+ * @function createUserItemHTML
+ */
 function createUserItemHTML(fullName) {
   let initials = getInitials(fullName);
   let avatarColor = getAvatarColor(fullName);
@@ -419,6 +467,10 @@ function createUserItemHTML(fullName) {
 }
 
 
+/**
+ * Handles the createDetailsTemplate workflow.
+ * @function createDetailsTemplate
+ */
 function createDetailsTemplate(
   task,
   categoryId,

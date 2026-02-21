@@ -66,6 +66,10 @@ function removeSubtask(index, element) {
   element.remove();
 }
 
+/**
+ * Handles the getSubtaskEditTemplate workflow.
+ * @function getSubtaskEditTemplate
+ */
 function getSubtaskEditTemplate(index, text) {
   return `
     <div class="subtask-edit-container" id="subtask-edit-${index}">

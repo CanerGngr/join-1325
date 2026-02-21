@@ -119,6 +119,10 @@ const avatarColors = [
   "#00BEE8",
 ];
 
+/**
+ * Handles the getAvatarColor workflow.
+ * @function getAvatarColor
+ */
 function getAvatarColor(name) {
   const firstLetter = name.charAt(0).toUpperCase();
   const charCode = firstLetter.charCodeAt(0);
@@ -127,6 +131,10 @@ function getAvatarColor(name) {
 }
 
 
+/**
+ * Handles the getInitials workflow.
+ * @function getInitials
+ */
 function getInitials(name) {
   const nameParts = name.trim().split(" ");
   if (nameParts.length >= 2) {
@@ -142,6 +150,10 @@ function getInitials(name) {
   }
 }
 
+/**
+ * Handles the groupContactsByAlphabet workflow.
+ * @function groupContactsByAlphabet
+ */
 function groupContactsByAlphabet() {
   let sortedContacts = [];
   for (let i = 0; i < contacts.length; i++) {
@@ -184,6 +196,10 @@ function groupContactsByAlphabet() {
 }
 
 
+/**
+ * Handles the renderContactList workflow.
+ * @function renderContactList
+ */
 function renderContactList() {
   let contactList = document.getElementById("contact-list");
   contactList.innerHTML = "";
@@ -214,6 +230,10 @@ function renderContactList() {
   }
 }
 
+/**
+ * Handles the getAlphabetHeaderTemplate workflow.
+ * @function getAlphabetHeaderTemplate
+ */
 function getAlphabetHeaderTemplate(letter) {
   return `
         <div class="alphabet-header">
@@ -224,6 +244,10 @@ function getAlphabetHeaderTemplate(letter) {
 }
 
 
+/**
+ * Handles the getContactCardTemplate workflow.
+ * @function getContactCardTemplate
+ */
 function getContactCardTemplate(contact, index) {
   const activeClass = activeContactIndex === index ? "active" : "";
   const avatarColor = getAvatarColor(contact.name);
@@ -244,6 +268,10 @@ function getContactCardTemplate(contact, index) {
 }
 
 
+/**
+ * Handles the showContactDetails workflow.
+ * @function showContactDetails
+ */
 function showContactDetails(index) {
   activeContactIndex = index;
   renderContactList();
@@ -260,6 +288,10 @@ function showContactDetails(index) {
   );
 }
 
+/**
+ * Handles the getContactDetailsTemplate workflow.
+ * @function getContactDetailsTemplate
+ */
 function getContactDetailsTemplate(contact, index, avatarColor, initials) {
   return `
         <h3 id="contact-header-title-mobile">Contact Information</h3>
@@ -315,6 +347,10 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
             `;
 }
 
+/**
+ * Handles the backToContactList workflow.
+ * @function backToContactList
+ */
 function backToContactList() {
   const contactDetails = document.getElementById("contact-details-content");
   contactDetails.style.display = "none";
@@ -322,6 +358,10 @@ function backToContactList() {
   renderContactList();
 }
 
+/**
+ * Handles the editContact workflow.
+ * @function editContact
+ */
 function editContact(index) {
 const avatarColor = getAvatarColor(contacts[index].name);
   const contact = contacts[index];
@@ -332,6 +372,10 @@ const avatarColor = getAvatarColor(contacts[index].name);
   toggleOverlay("#edit-contact-menu");
 }
 
+/**
+ * Handles the getEditContactFormTemplate workflow.
+ * @function getEditContactFormTemplate
+ */
 function getEditContactFormTemplate(contact, avatarColor, initials) {
   return `
         <div class="contact-form-avatar user-avatar-lg " style="background-color: ${avatarColor};">
@@ -368,6 +412,10 @@ function getEditContactFormTemplate(contact, avatarColor, initials) {
     `;
 }
 
+/**
+ * Handles the updateContact workflow.
+ * @function updateContact
+ */
 function updateContact(event, editContactIndex) {
   event.preventDefault();
   const nameInput = document.getElementById("edit-contact-name");
@@ -387,6 +435,10 @@ function updateContact(event, editContactIndex) {
   closeAllMenus();
 }
 
+/**
+ * Handles the deleteContact workflow.
+ * @function deleteContact
+ */
 function deleteContact(index) {
   contacts.splice(index, 1);
   renderContactList();
@@ -395,6 +447,10 @@ function deleteContact(index) {
   contactDetails.innerHTML = "<p>Select a contact to view details</p>";
 }
 
+/**
+ * Handles the addContact workflow.
+ * @function addContact
+ */
 function addContact(event) {
   event.preventDefault();
   const nameInput = document.getElementById("add-contact-name");
@@ -414,6 +470,10 @@ function addContact(event) {
   closeAllMenus();
 }
 
+/**
+ * Handles the openDropdownMenuMobile workflow.
+ * @function openDropdownMenuMobile
+ */
 function openDropdownMenuMobile(event) {
   if (event) {
     event.stopPropagation();

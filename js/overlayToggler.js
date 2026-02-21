@@ -17,6 +17,10 @@ function toggleOverlay(menuId) {
 }
 
 
+/**
+ * Handles the closeAllMenus workflow.
+ * @function closeAllMenus
+ */
 function closeAllMenus() {
     let addTaskMenu = document.getElementById('add-task-menu');
     let editContactMenu = document.getElementById('edit-contact-menu');

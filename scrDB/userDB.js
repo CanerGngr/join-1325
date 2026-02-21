@@ -1,3 +1,11 @@
+/**
+ * Creates a new user entry in Firebase Realtime Database.
+ *
+ * @async
+ * @function addNewUser
+ * @param {{name: string, email: string, password: string}} newUser - User data to persist.
+ * @returns {Promise<void>} Resolves when the user has been stored.
+ */
 async function addNewUser(newUser) {
   try {
     const usersRef = firebase.database().ref("users");
@@ -14,6 +22,14 @@ async function addNewUser(newUser) {
 }
 
 
+/**
+ * Checks whether a username already exists in Firebase Realtime Database.
+ *
+ * @async
+ * @function isUserNameTaken
+ * @param {string} userName - Username to validate.
+ * @returns {Promise<boolean>} True if the username exists, otherwise false.
+ */
 async function isUserNameTaken(userName) {
   try {
     const usersRef = firebase.database().ref("users");
@@ -37,6 +53,14 @@ async function isUserNameTaken(userName) {
 }
 
 
+/**
+ * Checks whether an email address already exists in Firebase Realtime Database.
+ *
+ * @async
+ * @function isUserEmailTaken
+ * @param {string} inputEmail - Email address to validate.
+ * @returns {Promise<boolean>} True if the email exists, otherwise false.
+ */
 async function isUserEmailTaken(inputEmail) {
   try {
     const usersRef = firebase.database().ref("users");

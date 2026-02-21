@@ -20,6 +20,10 @@ const validationState = {
   confirmPassword: false
 };
 
+/**
+ * Handles the handleRegisterUser workflow.
+ * @function handleRegisterUser
+ */
 async function handleRegisterUser(event) {
   event.preventDefault();
   try {
@@ -36,6 +40,10 @@ async function handleRegisterUser(event) {
 }
 
 
+/**
+ * Handles the isUserExistByName workflow.
+ * @function isUserExistByName
+ */
 async function isUserExistByName(inputName) {
   if (!inputName || !inputName.trim()) {
     handleErrorSet(
@@ -69,6 +77,10 @@ async function isUserExistByName(inputName) {
 }
 
 
+/**
+ * Handles the isUserExistByEmail workflow.
+ * @function isUserExistByEmail
+ */
 async function isUserExistByEmail(inputEmail) {
   if (!inputEmail || !inputEmail.trim()) {
     validationState.email = false;
@@ -113,6 +125,10 @@ async function isUserExistByEmail(inputEmail) {
 }
 
 
+/**
+ * Handles the validateEmailFormat workflow.
+ * @function validateEmailFormat
+ */
 function validateEmailFormat(inputEmail) {
   // RFC 5322 compliant email regex that handles most valid email formats
   const emailRegex =
@@ -130,6 +146,10 @@ function validateEmailFormat(inputEmail) {
 }
 
 
+/**
+ * Handles the toggleCheckBox workflow.
+ * @function toggleCheckBox
+ */
 function toggleCheckBox(event) {
   let checkbox = document.getElementById("privacy-checkbox");
   if (checkbox.disabled) {
@@ -147,6 +167,10 @@ function toggleCheckBox(event) {
 }
 
 
+/**
+ * Handles the handleErrorSet workflow.
+ * @function handleErrorSet
+ */
 function handleErrorSet(
   fieldId,
   errorId,
@@ -162,6 +186,10 @@ function handleErrorSet(
 }
 
 
+/**
+ * Handles the toggleErrorMessage workflow.
+ * @function toggleErrorMessage
+ */
 function toggleErrorMessage(elementId, isValid, message = "") {
   const el = document.getElementById(elementId);
   if (!el) return;
@@ -181,6 +209,10 @@ function toggleErrorMessage(elementId, isValid, message = "") {
 }
 
 
+/**
+ * Handles the showSuccessAndRedirect workflow.
+ * @function showSuccessAndRedirect
+ */
 function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
   const overlay = document.getElementById("success-overlay");
   if (!overlay) {
@@ -196,6 +228,10 @@ function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
 }
 
 
+/**
+ * Handles the removeBorderColor workflow.
+ * @function removeBorderColor
+ */
 function removeBorderColor(inputField) {
   const fieldInput = document.getElementById(inputField);
   if (!fieldInput) {
@@ -206,6 +242,10 @@ function removeBorderColor(inputField) {
 }
 
 
+/**
+ * Handles the setBorderColor workflow.
+ * @function setBorderColor
+ */
 function setBorderColor(inputField, status) {
   const fieldInput = document.getElementById(inputField);
   if (!fieldInput) {

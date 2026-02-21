@@ -50,6 +50,10 @@ function setPriorityForEdit(priority) {
 }
 
 
+/**
+ * Handles the generateAssignedUsersEditHTML workflow.
+ * @function generateAssignedUsersEditHTML
+ */
 function generateAssignedUsersEditHTML(assignedToArray) {
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -58,6 +62,10 @@ function generateAssignedUsersEditHTML(assignedToArray) {
   return html;
 }
 
+/**
+ * Handles the createUserItemHTML workflow.
+ * @function createUserItemHTML
+ */
 function createUserItemHTML(fullName) {
   let initials = getInitials(fullName);
   let avatarColor = getAvatarColor(fullName);

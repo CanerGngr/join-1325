@@ -88,6 +88,10 @@ if (document.readyState === 'loading') {
   initProtectedPage();
 }
 
+/**
+ * Handles the Loadingscreen workflow.
+ * @function Loadingscreen
+ */
 function Loadingscreen() {
   // Check if user is returning from registration page
 
@@ -135,6 +139,10 @@ function Loadingscreen() {
 }
 
 
+/**
+ * Handles the getLoadingscreen workflow.
+ * @function getLoadingscreen
+ */
 function getLoadingscreen() {
   return `
     <svg width="101" height="122" viewBox="0 0 101 122" fill="none" xmlns="http://www.w3.org/2000/svg" id="loader-image-white" class="loader-image login-logo">

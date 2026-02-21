@@ -6,6 +6,10 @@
  */
 let draggedElement = null;
 
+/**
+ * Handles the handleDragStart workflow.
+ * @function handleDragStart
+ */
 function handleDragStart(event, element) {
     draggedElement = element;
     element.classList.add('dragging');
@@ -14,6 +18,10 @@ function handleDragStart(event, element) {
 }
 
 
+/**
+ * Handles the handleDragEnd workflow.
+ * @function handleDragEnd
+ */
 function handleDragEnd(element) {
     element.classList.remove('dragging');
     draggedElement = null;
@@ -30,6 +38,10 @@ function handleDragEnd(element) {
 }
 
 
+/**
+ * Handles the handleDragOver workflow.
+ * @function handleDragOver
+ */
 function handleDragOver(event) {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
@@ -37,11 +49,19 @@ function handleDragOver(event) {
 }
 
 
+/**
+ * Handles the handleDragEnter workflow.
+ * @function handleDragEnter
+ */
 function handleDragEnter(element) {
     element.classList.add('drag-over');
 }
 
 
+/**
+ * Handles the handleDragLeave workflow.
+ * @function handleDragLeave
+ */
 function handleDragLeave(event, element) {
     if (!element.contains(event.relatedTarget)) {
         element.classList.remove('drag-over');
@@ -49,6 +69,10 @@ function handleDragLeave(event, element) {
 }
 
 
+/**
+ * Handles the handleDrop workflow.
+ * @function handleDrop
+ */
 async function handleDrop(event, element) {
     event.stopPropagation();
     const targetContainer = document.getElementById(element.id + '-cards');
@@ -64,6 +88,10 @@ async function handleDrop(event, element) {
 }
 
 
+/**
+ * Handles the getDragAfterElement workflow.
+ * @function getDragAfterElement
+ */
 function getDragAfterElement(container, y) {
     let draggableElements = [];
     let children = container.children;
@@ -93,6 +121,10 @@ function getDragAfterElement(container, y) {
 }
 
 
+/**
+ * Handles the updateTaskStatusInDrag workflow.
+ * @function updateTaskStatusInDrag
+ */
 async function updateTaskStatusInDrag(taskElement, columnId) {
     const taskId = taskElement.getAttribute('data-task-id');
     const statusMapping = {
