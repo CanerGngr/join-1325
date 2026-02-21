@@ -283,6 +283,9 @@
     #contact-header-title-mobile {
         display: none;
     }
+    .mobile-contact-actions {
+        display: none !important;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -290,9 +293,6 @@
         display: none;
     }
 
-    .mobile-contact-actions {
-        display: none; !important;
-    }
 
     .contact-header {
         margin-top: 34px;
