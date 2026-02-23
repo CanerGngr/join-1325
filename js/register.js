@@ -151,6 +151,9 @@ function validateEmailFormat(inputEmail) {
  * @function toggleCheckBox
  */
 function toggleCheckBox(event) {
+  if (event.target.tagName === "A") {
+    return;
+  }
   let checkbox = document.getElementById("privacy-checkbox");
   if (checkbox.disabled) {
     event.preventDefault();
