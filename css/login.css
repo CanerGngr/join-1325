@@ -5,16 +5,60 @@
 	font-family: "Inter", Arial, sans-serif;
 }
 
-/* Login-spezifische Anpassungen für die register-main-container Struktur */
-.register-main-container {
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+align-items: center;
+	min-height: 100dvh;
+	background-color: #ffffff;
+}
+
+/* Header */
+.login-page-header {
+  align-items: flex-end;
+  box-sizing: border-box;
+  display: flex;
+  font-family: Inter, Arial, sans-serif;
+  justify-content: space-between;
+  width: 100%;
+  height: 202px;
+  margin: 0 0px 0 0;
+  padding-right: 86px;
+}
+
+.header-right-side {
+  height: 100%;
+}
+
+.login-logo {
+	width: 101px;
+	height: 122px;
+}
+
+.login-header {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 67px 0 0;
+}
+
+.login-header-text {
+	margin: 0;
+	color: #42526e;
+	font-size: 23px;
+}
+
+/* Main */
+.login-main {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
-	background-color: #ffffff;
-	height: 100dvh;
+	justify-content: center;
+	max-width: 1920px;
+	width: 100%;
 	margin: 0 auto;
-	/* gap: clamp(1.5rem, 3vh, 2.5rem); */
 }
 
 .register-form {
@@ -96,6 +140,12 @@
 	width: 100%;
 }
 
+/* Sign-up section (mobile only) */
+.login-signup-section {
+	display: none;
+}
+
+/* Footer */
 .foot-container {
 	display: flex;
 	flex-direction: row;
@@ -108,25 +158,7 @@
 	font-size: 16px;
 }
 
-/* Login-Header in der neuen Struktur */
-.login-header {
-	position: absolute;
-	top: 67px;
-	right: 86px;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	gap: 20px;
-}
-
-.login-header-text {
-	margin: 0;
-	color: #42526e;
-	font-size: 23px;
-}
-
-/* Footer-Styling wird bereits durch .footContainer abgedeckt */
-
+/* Loader */
 .loader {
 	position: fixed;
 	top: 0;
@@ -250,9 +282,10 @@ a {
 	text-decoration: none;
 }
 
+/* Responsive */
 @media (max-width: 1028px) {
-	.register-main-container {
-		justify-content: space-between;
+	.login-page-header {
+		padding: 32px 32px 0;
 	}
 
 	.main-reg {
@@ -269,9 +302,9 @@ a {
 
 	.foot-container {
 		margin-bottom: 16px;
-		top: 865px;
 	}
 }
+
 @media (max-width: 768px) {
 	@keyframes logoTransition {
 		0% {
@@ -290,24 +323,28 @@ a {
 			transform: none;
 		}
 	}
-	.register-main-container {
-		position: relative;
+
+	.login-page-header {
+		padding: 20px 24px 0;
+	}
+
+	.login-logo {
+		width: 64px;
+		height: 78px;
 	}
 
 	.login-header {
-		position: absolute;
-		top: 782px;
-		gap: 35px;
-		left: 50%;
-		transform: translateX(-50%);
-		right: 0px;
-		justify-content: center;
+		display: none;
 	}
 
-	.login-header-text {
-		color: #42526e;
-		font-size: 19px;
+	.login-signup-section {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		padding: 24px 0;
 	}
+
 	.register-form {
 		max-height: 469px;
 	}
@@ -316,18 +353,18 @@ a {
 		margin-bottom: 0;
 	}
 
-	.btn-no-icon:last-child {
+	.login-signup-section .btn-no-icon {
 		width: 98px !important;
 		padding: 10px 16px !important;
 		font-size: 19px !important;
 	}
+
+	.login-signup-section .login-header-text {
+		font-size: 19px;
+	}
 }
 
 @media (max-width: 568px) {
-	.login-header {
-		right: -50%;
-	}
-
 	.register-form {
 		padding: 32px 32px;
 		border-radius: 16px;
@@ -340,12 +377,6 @@ a {
 }
 
 @media (max-width: 428px) {
-	.login-header1 {
-		position: absolute;
-		top: 782px;
-		gap: 35px;
-	}
-
 	.head-reg {
 		font-size: 47px;
 	}

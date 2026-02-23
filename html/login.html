@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,16 +14,22 @@
     />
   </head>
   <body onload="Loadingscreen()">
-    <div id="loader" class="loader"></div>
-
-    <div class="register-main-container">
-      <header>
-        <div class="text-center login-header">
+    <header class="login-page-header">
+      <img
+        src="../assets/icon/logowhiteheader.svg"
+        alt="Join Logo"
+        class="login-logo"
+      />
+      <div class="header-right-side">
+        <div class="login-header">
           <p class="login-header-text">Not a Join user?</p>
           <a href="register.html" class="btn-no-icon">Sign up</a>
         </div>
-      </header>
-      <main>
+      </div>
+    </header>
+    <div id="loader" class="loader"></div>
+    <main class="login-main">
+      <section class="login-form-section">
         <form id="log-in-form" class="register-form" action="index">
           <div>
             <div class="head-reg">
@@ -80,19 +86,22 @@
             </div>
           </div>
         </form>
-      </main>
-
-      <footer>
-        <div class="foot-container">
-          <p>
-            <a href="./datenschutz.html">Privacy Policy</a>
-          </p>
-          <p>
-            <a href="./legalnotice.html">Legal Notice</a>
-          </p>
-        </div>
-      </footer>
-    </div>
+      </section>
+      <section class="login-signup-section">
+        <p class="login-header-text">Not a Join user?</p>
+        <a href="register.html" class="btn-no-icon">Sign up</a>
+      </section>
+    </main>
+    <footer>
+      <div class="foot-container">
+        <p>
+          <a href="./datenschutz.html">Privacy Policy</a>
+        </p>
+        <p>
+          <a href="./legalnotice.html">Legal Notice</a>
+        </p>
+      </div>
+    </footer>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../scrDB/dbConfig.js"></script>
