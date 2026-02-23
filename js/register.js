@@ -280,3 +280,29 @@ function checkAllFieldsValid() {
     checkbox.disabled = !allValid;
   }
 }
+
+
+/**
+ * Runs validation on page load if any input fields are pre-filled
+ * (e.g. browser auto-fill or back-navigation restore).
+ * Does nothing when all fields are empty (fresh page load).
+ */
+function initRegisterValidation() {
+  const nameVal    = document.getElementById("input-name")?.value || "";
+  const emailVal   = document.getElementById("input-email")?.value || "";
+  const passVal    = document.getElementById("input-password")?.value || "";
+  const confirmVal = document.getElementById("input-password-confirm")?.value || "";
+
+  if (!nameVal && !emailVal && !passVal && !confirmVal) return;
+
+  if (nameVal)    isUserExistByName(nameVal);
+  if (emailVal)   isUserExistByEmail(emailVal);
+  if (passVal) {
+    realPassword = passVal;
+    onPasswordBlur(passVal);
+  }
+  if (confirmVal) {
+    realConfirmPassword = confirmVal;
+    isPasswordMatching();
+  }
+}
