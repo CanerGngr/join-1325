@@ -35,7 +35,7 @@
 .contact-card-content {
     display: flex;
     gap: 35px;
-    padding-left: 24px;
+    padding-left: 12px;
 }
 
 
@@ -158,8 +158,8 @@
 }
 
 .user-avatar-sm {
-  width: 42px;
-  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
   font-size: 16px;
   font-weight: 500;
   border: white 2px solid;
