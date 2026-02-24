@@ -434,3 +434,9 @@
         width: calc(100% - 32px);
     }
 }
+
+@media (max-height: 792px) {
+    .details-overlay {
+        height: calc(100% - 192px);
+    }
+}
