@@ -57,16 +57,16 @@ function setPriorityForEdit(priority) {
 function generateAssignedUsersEditHTML(assignedToArray) {
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
-    html += createUserItemHTML(assignedToArray[i]);
+    html += createEditUserAvatarHTML(assignedToArray[i]);
   }
   return html;
 }
 
 /**
- * Handles the createUserItemHTML workflow.
- * @function createUserItemHTML
+ * Handles the createEditUserAvatarHTML workflow.
+ * @function createEditUserAvatarHTML
  */
-function createUserItemHTML(fullName) {
+function createEditUserAvatarHTML(fullName) {
   let initials = getInitials(fullName);
   let avatarColor = getAvatarColor(fullName);
 

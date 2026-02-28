@@ -194,7 +194,6 @@ function generateAssignedUsersHTML(assignedToArray) {
   return html;
 }
 
-
 /**
  * Handles the getTaskCardTemplate workflow.
  * @function getTaskCardTemplate
@@ -507,7 +506,7 @@ function createDetailsTemplate(
         <div class="details-assigned">
           <h3>Assigned To:</h3>
           <div class="task-users details">
-            ${assignedUsersHTML || '<p>No assignees</p>'}
+            ${assignedUsersHTML || '<p>No assigned users</p>'}
           </div>
         </div>
         <div class="details-subtasks">
