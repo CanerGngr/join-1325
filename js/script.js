@@ -28,7 +28,6 @@ function checkSession() {
  */
 function initProtectedPage() {
   const currentPage = window.location.pathname;
-  console.log("Current page:", currentPage);
   const protectedPages = ['/index.html', '/html/add-task.html', '/html/board.html', '/html/contacts.html'];
   
   const isProtectedPage = protectedPages.some(page => currentPage.includes(page)) || currentPage=='/';
