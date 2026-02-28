@@ -261,7 +261,7 @@
   }
 
   .overlay-menu.open {
-    height: 760px;
+    max-height: 760px;
   }
 
   .contact-form-avatar {
