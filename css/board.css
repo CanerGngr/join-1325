@@ -1,3 +1,10 @@
+.task-users .user-avatar-sm {
+  width: 32px;
+  height: 32px;
+  aspect-ratio: 1 / 1;
+  font-size: 16px;
+}
+
 .task-card {
   background-color: white;
   border: 1px solid #eee;
