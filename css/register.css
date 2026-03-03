@@ -5,6 +5,10 @@
 	font-family: "Inter", Arial, sans-serif;
 }
 
+body {
+	background-color: var(--color-light-blue);
+}
+
 a {
 	text-decoration: none;
 }
@@ -22,8 +26,10 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	background-color: var(--color-light-blue);
+	position: relative;
 	height: 100dvh;
+	max-width: 1920px;
+	width: 100%;
 	margin: 0 auto;
 	gap: 35px;
 }
@@ -373,4 +379,34 @@ input:-webkit-autofill {
 }
 .form-field .field-container:nth-child(4) {
 	margin-bottom: 0;
+}
+
+@media (max-height: 965px) {
+	.logo-header {
+		top: 20px;
+		left: 20px;
+	}
+
+	.register-form {
+		padding: 32px 24px;
+	}
+	.field-container {
+		margin-bottom: 32px;
+	}
+	
+}
+
+@media (max-height: 820px) {
+	.logo-header {
+		height: 39px;
+		width: 32px;
+	}
+
+	.field-container {
+		margin-bottom: 16px;
+	}
+
+	.main-reg {
+		min-height: auto;
+	}
 }

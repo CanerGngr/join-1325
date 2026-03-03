@@ -112,8 +112,31 @@ function Loadingscreen() {
       if (logoElement) {
         const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
         const isShortViewport = window.matchMedia("(max-height: 765px)").matches;
-        const finalTop = isMobileViewport ? "37px" : "80px";
-        const finalLeftOffset = isMobileViewport ? "38px" : "77px";
+        const isTabletViewport = window.matchMedia("(max-width: 1028px)").matches;
+        const isSmallViewport = window.matchMedia("(max-width: 396px)").matches;
+        const isVerySmallViewport = window.matchMedia("(max-width: 340px)").matches;
+        const isLowHeightViewport = window.matchMedia("(max-height: 965px)").matches;
+        let finalTop = "80px";
+        let finalLeftOffset = "77px";
+
+        if (isTabletViewport) {
+          finalTop = "37px";
+          finalLeftOffset = "38px";
+        }
+
+        if (isSmallViewport) {
+          finalLeftOffset = "32px";
+        }
+
+        if (isVerySmallViewport) {
+          finalLeftOffset = "22px";
+        }
+
+        if (isLowHeightViewport) {
+          finalTop = "20px";
+          finalLeftOffset = "20px";
+        }
+
         const finalWidth = isMobileViewport ? (isShortViewport ? "32px" : "64px") : "101px";
         const finalHeight = isMobileViewport ? (isShortViewport ? "39px" : "78px") : "122px";
 
