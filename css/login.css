@@ -168,15 +168,15 @@ footer {
 	flex-direction: row;
 	gap: 16px;
 	width: 100%;
-display: flex;
-justify-content: center;
-margin: 0 0 42px;
+	display: flex;
+	justify-content: center;
+	padding: 0 0 42px;
 }
 
 .foot-container a {
 	color: #42526e;
 	font-size: 16px;
-	margin: 0 0 42px;
+	padding: 0 0 42px;
 }
 
 /* Loader */
@@ -337,6 +337,57 @@ a {
 			transform: none;
 		}
 	}
+
+@media (max-height: 765px) {
+	:root {
+		--login-content-inline-padding: 38px;
+		--login-header-safe-space: 115px;
+	}
+
+	@keyframes logoTransition {
+		0% {
+			top: 50%;
+			left: 50%;
+			width: 274px;
+			height: 334px;
+			transform: translate(-50%, -50%);
+		}
+
+		100% {
+			top: 37px;
+			left: calc((100vw - min(100vw, var(--login-content-max-width))) / 2 + var(--login-logo-left-mobile));
+			width: 32px;
+			height: 39px;
+			transform: none;
+		}
+	}
+
+	.login-page-header {
+		padding-bottom: 80px;
+	}
+}
+
+@media (max-height: 735px) {
+	
+	.foot-container {
+		padding: 0 0 21px;
+	}
+
+	.foot-container a {
+		padding: 0 0 21px;
+	}
+}
+
+@media (max-height: 700px) {
+	
+	.foot-container {
+		padding: 0 0 0px;
+	}
+
+	.foot-container a {
+		padding: 0 0 10px;
+	}
+}
 
 	.login-logo {
 		width: 64px;
