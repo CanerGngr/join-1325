@@ -111,9 +111,11 @@ function Loadingscreen() {
       const logoElement = document.getElementById("loader-image-white");
       if (logoElement) {
         const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+        const isShortViewport = window.matchMedia("(max-height: 765px)").matches;
         const finalTop = isMobileViewport ? "37px" : "80px";
         const finalLeftOffset = isMobileViewport ? "38px" : "77px";
-        const computedLogoStyles = window.getComputedStyle(logoElement);
+        const finalWidth = isMobileViewport ? (isShortViewport ? "32px" : "64px") : "101px";
+        const finalHeight = isMobileViewport ? (isShortViewport ? "39px" : "78px") : "122px";
 
         // Disable CSS animations first
         logoElement.style.animation = "none";
@@ -122,8 +124,8 @@ function Loadingscreen() {
         logoElement.style.position = "absolute";
         logoElement.style.top = finalTop;
         logoElement.style.left = `calc((100vw - min(100vw, 1920px)) / 2 + ${finalLeftOffset})`;
-        logoElement.style.width = computedLogoStyles.width;
-        logoElement.style.height = computedLogoStyles.height;
+        logoElement.style.width = finalWidth;
+        logoElement.style.height = finalHeight;
         logoElement.style.transform = "none";
 
         // Set final color (blue) for the paths and disable their animations
