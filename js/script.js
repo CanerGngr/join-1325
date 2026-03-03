@@ -110,46 +110,60 @@ function Loadingscreen() {
       // Position logo in final state immediately
       const logoElement = document.getElementById("loader-image-white");
       if (logoElement) {
-        const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-        const isShortViewport = window.matchMedia("(max-height: 765px)").matches;
-        const isTabletViewport = window.matchMedia("(max-width: 1028px)").matches;
-        const isSmallViewport = window.matchMedia("(max-width: 396px)").matches;
-        const isVerySmallViewport = window.matchMedia("(max-width: 340px)").matches;
-        const isLowHeightViewport = window.matchMedia("(max-height: 965px)").matches;
-        let finalTop = "80px";
-        let finalLeftOffset = "77px";
-
-        if (isTabletViewport) {
-          finalTop = "37px";
-          finalLeftOffset = "38px";
-        }
-
-        if (isSmallViewport) {
-          finalLeftOffset = "32px";
-        }
-
-        if (isVerySmallViewport) {
-          finalLeftOffset = "22px";
-        }
-
-        if (isLowHeightViewport) {
-          finalTop = "20px";
-          finalLeftOffset = "20px";
-        }
-
-        const finalWidth = isMobileViewport ? (isShortViewport ? "32px" : "64px") : "101px";
-        const finalHeight = isMobileViewport ? (isShortViewport ? "39px" : "78px") : "122px";
-
         // Disable CSS animations first
         logoElement.style.animation = "none";
 
-        // Position and style in final state
-        logoElement.style.position = "absolute";
-        logoElement.style.top = finalTop;
-        logoElement.style.left = `calc((100vw - min(100vw, 1920px)) / 2 + ${finalLeftOffset})`;
-        logoElement.style.width = finalWidth;
-        logoElement.style.height = finalHeight;
-        logoElement.style.transform = "none";
+        const applyFinalLogoState = () => {
+          const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+          const isShortViewport = window.matchMedia("(max-height: 765px)").matches;
+          const isTabletViewport = window.matchMedia("(max-width: 1028px)").matches;
+          const isSmallViewport = window.matchMedia("(max-width: 396px)").matches;
+          const isVerySmallViewport = window.matchMedia("(max-width: 340px)").matches;
+          const isLowHeightViewport = window.matchMedia("(max-height: 965px)").matches;
+          let finalTop = "80px";
+          let finalLeftOffset = "77px";
+
+          if (isTabletViewport) {
+            finalTop = "37px";
+            finalLeftOffset = "38px";
+          }
+
+          if (isSmallViewport) {
+            finalLeftOffset = "32px";
+          }
+
+          if (isVerySmallViewport) {
+            finalLeftOffset = "22px";
+          }
+
+          if (isLowHeightViewport) {
+            finalTop = "20px";
+            finalLeftOffset = "20px";
+          }
+
+          const finalWidth = isMobileViewport ? (isShortViewport ? "32px" : "64px") : "101px";
+          const finalHeight = isMobileViewport ? (isShortViewport ? "39px" : "78px") : "122px";
+
+          // Position and style in final state
+          logoElement.style.position = "absolute";
+          logoElement.style.top = finalTop;
+          logoElement.style.left = `calc((100vw - min(100vw, 1920px)) / 2 + ${finalLeftOffset})`;
+          logoElement.style.width = finalWidth;
+          logoElement.style.height = finalHeight;
+          logoElement.style.transform = "none";
+        };
+
+        applyFinalLogoState();
+
+        if (window.__joinLoginLogoResizeHandler) {
+          window.removeEventListener("resize", window.__joinLoginLogoResizeHandler);
+        }
+
+        window.__joinLoginLogoResizeHandler = () => {
+          window.requestAnimationFrame(applyFinalLogoState);
+        };
+
+        window.addEventListener("resize", window.__joinLoginLogoResizeHandler);
 
         // Set final color (blue) for the paths and disable their animations
         let paths = logoElement.children;
