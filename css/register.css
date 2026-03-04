@@ -140,6 +140,11 @@ a {
 #confirm-password-icon,
 #password-icon {
 	cursor: pointer;
+	width: 24px;
+	height: 24px;
+	min-width: 24px;
+	object-fit: contain;
+	display: block;
 }
 .btn-container {
 	display: flex;
@@ -167,6 +172,19 @@ a {
 	color: red;
 	text-align: left;
 	font-size: 12px;
+	display: block;
+	min-height: 18px;
+	line-height: 18px;
+	visibility: hidden;
+}
+
+.msg-error:not(:empty) {
+	visibility: visible;
+}
+
+.msg-error.d-none {
+	display: block !important;
+	visibility: hidden;
 }
 
 footer {

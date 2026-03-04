@@ -67,6 +67,145 @@ function updateGreeting() {
     }
 }
 
+/**
+ * Returns the summary greeting heading element.
+ *
+ * @function getSummaryGreetingElement
+ * @returns {HTMLElement|null} Greeting heading element or null if not found
+ */
+function getSummaryGreetingElement() {
+    return document.getElementById('summary-greeting');
+}
+
+/**
+ * Checks if current viewport is mobile width.
+ *
+ * @function isSummaryMobileViewport
+ * @returns {boolean} True when viewport width is 850px or less
+ */
+function isSummaryMobileViewport() {
+    return window.matchMedia('(max-width: 850px)').matches;
+}
+
+/**
+ * Removes all intro animation classes from greeting element.
+ *
+ * @function resetSummaryGreetingClasses
+ * @param {HTMLElement} greetingElement - Greeting element to clean up
+ * @returns {void}
+ */
+function resetSummaryGreetingClasses(greetingElement) {
+    greetingElement.classList.remove(
+        'summary-greeting-intro',
+        'summary-greeting-slide-up',
+        'summary-greeting-hidden'
+    );
+}
+
+/**
+ * Clears all active greeting intro timers.
+ *
+ * @function clearSummaryGreetingTimers
+ * @returns {void}
+ */
+function clearSummaryGreetingTimers() {
+    if (window.__joinSummaryGreetingIntroTimeout) {
+        window.clearTimeout(window.__joinSummaryGreetingIntroTimeout);
+    }
+    if (window.__joinSummaryGreetingHideTimeout) {
+        window.clearTimeout(window.__joinSummaryGreetingHideTimeout);
+    }
+}
+
+/**
+ * Applies initial intro classes before animation starts.
+ *
+ * @function prepareSummaryGreetingIntro
+ * @param {HTMLElement} greetingElement - Greeting element to prepare
+ * @returns {void}
+ */
+function prepareSummaryGreetingIntro(greetingElement) {
+    greetingElement.classList.remove('summary-greeting-hidden');
+    greetingElement.classList.add('summary-greeting-intro');
+}
+
+/**
+ * Schedules the slide-up step of the intro animation.
+ *
+ * @function scheduleSummaryGreetingSlideUp
+ * @param {HTMLElement} greetingElement - Greeting element to animate
+ * @returns {void}
+ */
+function scheduleSummaryGreetingSlideUp(greetingElement) {
+    window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+            window.__joinSummaryGreetingIntroTimeout = window.setTimeout(() => {
+                greetingElement.classList.add('summary-greeting-slide-up');
+            }, 500);
+        });
+    });
+}
+
+/**
+ * Schedules hiding of the greeting after slide-up animation.
+ *
+ * @function scheduleSummaryGreetingHide
+ * @param {HTMLElement} greetingElement - Greeting element to hide
+ * @returns {void}
+ */
+function scheduleSummaryGreetingHide(greetingElement) {
+    window.__joinSummaryGreetingHideTimeout = window.setTimeout(() => {
+        greetingElement.classList.add('summary-greeting-hidden');
+        greetingElement.classList.remove('summary-greeting-intro', 'summary-greeting-slide-up');
+    }, 1200);
+}
+
+/**
+ * Shows greeting as full-size intro and slides it up out of summary content.
+ *
+ * @function startGreetingIntroAnimation
+ * @returns {void}
+ */
+function startGreetingIntroAnimation() {
+    let greetingElement = getSummaryGreetingElement();
+
+    if (!greetingElement) return;
+
+    if (!isSummaryMobileViewport()) {
+        resetSummaryGreetingClasses(greetingElement);
+        return;
+    }
+
+    clearSummaryGreetingTimers();
+    prepareSummaryGreetingIntro(greetingElement);
+    scheduleSummaryGreetingSlideUp(greetingElement);
+    scheduleSummaryGreetingHide(greetingElement);
+}
+
+/**
+ * Ensures greeting visibility state matches current viewport size
+ *
+ * @function syncGreetingVisibilityForViewport
+ * @returns {void}
+ */
+function syncGreetingVisibilityForViewport() {
+    let greetingElement = getSummaryGreetingElement();
+
+    if (!greetingElement || isSummaryMobileViewport()) return;
+
+    resetSummaryGreetingClasses(greetingElement);
+}
+
+/**
+ * Handles summary resize via inline HTML event
+ *
+ * @function handleSummaryResize
+ * @returns {void}
+ */
+function handleSummaryResize() {
+    syncGreetingVisibilityForViewport();
+}
+
 
 /**
  * Loads all tasks from Firebase or SessionStorage
@@ -329,12 +468,7 @@ function updateUrgentDeadline(deadline) {
  */
 async function initSummary() {
     updateGreeting();
-    await updateTaskCounts();
-}
+    startGreetingIntroAnimation();
 
-// Execute on page load
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSummary);
-} else {
-    initSummary();
+    await updateTaskCounts();
 }

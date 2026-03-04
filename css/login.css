@@ -290,8 +290,15 @@ footer {
 /* Error message styling */
 #error-message {
 	color: #ff3d00;
-	display: none;
+	display: block;
 	font-size: 14px;
+	min-height: 20px;
+	line-height: 20px;
+	visibility: hidden;
+}
+
+#error-message:not(:empty) {
+	visibility: visible;
 }
 
 a {

@@ -158,7 +158,10 @@ function onPasswordInput(input) {
  * @function onPasswordBlur
  */
 function onPasswordBlur(inPassword) {
-  if (checkPasswordRules(inPassword)) {
+  const rules = checkPasswordRules(realPassword);
+  const isValid = isPasswordValid(rules);
+
+  if (isValid) {
     // Save the real password to newUser object
     newUser.password = realPassword;
     handleErrorSet("field-password", "password-tooltip", true);
@@ -167,7 +170,12 @@ function onPasswordBlur(inPassword) {
       checkAllFieldsValid();
     }
   } else {
-    handleErrorSet("field-password", "password-tooltip", false);
+    const msg = buildPasswordMessage(rules);
+    handleErrorSet("field-password", "password-tooltip", false, msg);
+    const tooltipElement = document.getElementById("password-tooltip");
+    if (tooltipElement) {
+      tooltipElement.innerHTML = msg;
+    }
     if (typeof validationState !== 'undefined') {
       validationState.password = false;
       checkAllFieldsValid();
@@ -222,14 +230,7 @@ function isPasswordValid(rules) {
  * @function buildPasswordMessage
  */
 function buildPasswordMessage(rules) {
-  return`<span class="${rules.minLength ? "valid" : "invalid"}">
-                At least 8 characters
-              </span><br>
-<span class="${rules.hasLower ? "valid" : "invalid"}">
-                At least one lowercase letter
-              </span><br><span class="${rules.hasNumber ? "valid" : "invalid"}">
-                At least one number
-              </span><br>`;
+  return `<span class="${rules.minLength ? "valid" : "invalid"}">At least 8 characters</span>, <span class="${rules.hasLower ? "valid" : "invalid"}">one lowercase letter</span>, <span class="${rules.hasNumber ? "valid" : "invalid"}">one number</span>`;
 }
 
 

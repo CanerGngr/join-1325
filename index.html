@@ -15,8 +15,11 @@
       href="/assets/icon/join-favicon.svg"
       type="image/x-icon"
     />
+    <script>
+      function handleSummaryResize() {}
+    </script>
   </head>
-  <body>
+  <body onload="initSummary()" onresize="handleSummaryResize()">
     <header class="header d-flex">
       <a href="/index.html"
         ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"

@@ -26,7 +26,6 @@ async function loginUser() {
   const errorMessage = document.getElementById("error-message");
 
   // Reset error message
-  errorMessage.style.display = "none";
   errorMessage.textContent = "";
 
   // Validation
@@ -101,7 +100,6 @@ function showError(message) {
     return;
   }
   errorMessage.textContent = message;
-  errorMessage.style.display = "block";
 }
 
 
