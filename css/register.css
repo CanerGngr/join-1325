@@ -276,7 +276,7 @@ input:-webkit-autofill {
 	}
 }
 
-@media (max-width: 428px) {
+@media (max-width: 428px) or (max-height: 1120px) {
 	/**
 	 * Mobile layout adjustments for register page
 	 * Makes form full-width and adjusts spacing for small screens
@@ -414,7 +414,7 @@ input:-webkit-autofill {
 	
 }
 
-@media (max-height: 820px) {
+@media (max-height: 900px) {
 	.logo-header {
 		height: 39px;
 		width: 32px;
@@ -424,7 +424,16 @@ input:-webkit-autofill {
 		margin-bottom: 16px;
 	}
 
+	.field-container {
+		margin-bottom: 4px;
+	}
+
+	.checkbox-container {
+		padding-bottom: 4px !important;
+	}
+
 	.main-reg {
 		min-height: auto;
+		gap: 0;
 	}
 }
