@@ -1,7 +1,6 @@
 .main-wrapper {
     flex-grow: 1;
     max-width: calc(1920px - 232px);
-    height: 100vh;
     margin-left: 232px;
     display: flex;
     flex-direction: column;

@@ -1,8 +1,6 @@
 .main-wrapper {
     flex-grow: 1;
     max-width: 1920px;
-    width: calc(100vw - 232px);
-    height: 100vh;
     margin-left: 232px;
 }
 

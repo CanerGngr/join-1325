@@ -7,6 +7,7 @@
     align-items: center;
     margin-left: 232px;
     width: calc(100vw - 232px);
+    height: calc(100vh - 96px);
 }
 
 /* Tablet: Sidebar ausgeblendet - kein Margin nötig */
