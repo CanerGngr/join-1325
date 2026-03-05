@@ -172,6 +172,7 @@
 }
 
 .search-container button {
+    border-radius: 12px;
     background-color: #ffffff;
     color: white;
     border: none;
@@ -183,6 +184,18 @@
 
 .search-container button:hover {
     background-color: #f0f0f0;
+}
+
+.search-container button:active {
+    background-color: transparent;
+}
+
+.search-container button:hover path {
+    fill: #4589ff;
+}
+
+.search-container button:active path {
+    fill: #0038FF;
 }
 
 .form-group {
