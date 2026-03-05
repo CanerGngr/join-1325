@@ -26,6 +26,11 @@ const validationState = {
  */
 async function handleRegisterUser(event) {
   event.preventDefault();
+  const isFormValid = await validateRegisterFormOnSubmit();
+  if (!isFormValid) {
+    return;
+  }
+
   try {
     await addNewUser(newUser);
     showSuccessAndRedirect();
@@ -37,6 +42,42 @@ async function handleRegisterUser(event) {
       errorOverlay.classList.remove("d-none");
     }
   }
+}
+
+
+/**
+ * Validates all register fields on submit to ensure
+ * errors are shown even when the user did not type before submitting.
+ * @returns {Promise<boolean>} True when all required fields are valid
+ */
+async function validateRegisterFormOnSubmit() {
+  const nameInput = document.getElementById("input-name");
+  const emailInput = document.getElementById("input-email");
+  const passwordInput = document.getElementById("input-password");
+  const confirmPasswordInput = document.getElementById("input-password-confirm");
+
+  const nameValue = nameInput ? nameInput.value.trim() : "";
+  const emailValue = emailInput ? emailInput.value.trim() : "";
+  const passwordValue = passwordInput ? passwordInput.value : "";
+  const confirmPasswordValue = confirmPasswordInput ? confirmPasswordInput.value : "";
+
+  const isNameValid = await isUserExistByName(nameValue);
+  const isEmailValid = await isUserExistByEmail(emailValue);
+
+  if (!realPassword && passwordValue && !/^\*+$/.test(passwordValue)) {
+    realPassword = passwordValue;
+  }
+  onPasswordBlur(realPassword);
+
+  if (!realConfirmPassword && confirmPasswordValue && !/^\*+$/.test(confirmPasswordValue)) {
+    realConfirmPassword = confirmPasswordValue;
+  }
+  isPasswordMatching();
+
+  const isPasswordValidNow = validationState.password;
+  const isConfirmPasswordValidNow = validationState.confirmPassword;
+
+  return isNameValid && isEmailValid && isPasswordValidNow && isConfirmPasswordValidNow;
 }
 
 
