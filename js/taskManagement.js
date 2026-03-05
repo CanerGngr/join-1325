@@ -186,11 +186,20 @@ function generateTaskCardHTML(task) {
  */
 function generateAssignedUsersHTML(assignedToArray) {
   let html = "";
-  for (let i = 0; i < assignedToArray.length; i++) {
-    let initials = getInitials(assignedToArray[i]);
-    let userColor = getAvatarColor(assignedToArray[i]);
+  const maxVisibleAssignees = 4;
+  const visibleAssignees = assignedToArray.slice(0, maxVisibleAssignees);
+
+  for (let i = 0; i < visibleAssignees.length; i++) {
+    let initials = getInitials(visibleAssignees[i]);
+    let userColor = getAvatarColor(visibleAssignees[i]);
     html += `<div class="user-avatar-sm" style="background-color: ${userColor};">${initials}</div>`;
   }
+
+  const hiddenAssigneesCount = assignedToArray.length - visibleAssignees.length;
+  if (hiddenAssigneesCount > 0) {
+    html += `<div class="user-avatar-sm more-assignees">+${hiddenAssigneesCount}</div>`;
+  }
+
   return html;
 }
 
