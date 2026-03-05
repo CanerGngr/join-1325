@@ -87,7 +87,19 @@ function onClickConfirmPasswordIcon() {
  * @function isPasswordMatching
  */
 function isPasswordMatching() {
-  if (!realConfirmPassword) return;
+  if (!realConfirmPassword || !realConfirmPassword.trim()) {
+    handleErrorSet(
+      "field-password-confirm",
+      "confirm-password",
+      false,
+      "Please confirm your password"
+    );
+    if (typeof validationState !== 'undefined') {
+      validationState.confirmPassword = false;
+      checkAllFieldsValid();
+    }
+    return;
+  }
   if (realPassword === realConfirmPassword) {
     handleErrorSet(
       "field-password-confirm",

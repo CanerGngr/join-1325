@@ -83,6 +83,12 @@ async function isUserExistByName(inputName) {
  */
 async function isUserExistByEmail(inputEmail) {
   if (!inputEmail || !inputEmail.trim()) {
+    handleErrorSet(
+      "field-email",
+      "email-error",
+      false,
+      "E-Mail cannot be empty"
+    );
     validationState.email = false;
     checkAllFieldsValid();
     return false;
