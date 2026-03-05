@@ -13,6 +13,31 @@ let targetColumnStatus = "todo";
 let selectedUsers = [];
 
 /**
+ * Returns today's date in YYYY-MM-DD format for date input min attributes.
+ * @returns {string}
+ */
+function getTodayISODate() {
+  return new Date().toISOString().split("T")[0];
+}
+
+/**
+ * Sets min date constraints for due date inputs so past dates cannot be selected.
+ */
+function setDueDateMinConstraints() {
+  const today = getTodayISODate();
+  const dueDateInput = document.getElementById("task-date");
+  const editDueDateInput = document.getElementById("edit-task-date");
+
+  if (dueDateInput) {
+    dueDateInput.min = today;
+  }
+
+  if (editDueDateInput) {
+    editDueDateInput.min = today;
+  }
+}
+
+/**
  * Populates the assignedTo dropdown with checkboxes from contacts array
  */
 function populateAssignedToDropdown(mode) {
@@ -527,5 +552,8 @@ function handleDateBlur() {
  */
 function openAddTaskOverlay(columnStatus) {
   setTargetColumn(columnStatus);
+  setDueDateMinConstraints();
   toggleOverlay(".add-task-menu");
 }
+
+setDueDateMinConstraints();

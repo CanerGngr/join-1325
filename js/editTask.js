@@ -14,6 +14,7 @@ function editTask(taskId) {
   const task = findTaskById(taskId);
   const editOverlay = document.getElementById("details-overlay");
   editOverlay.innerHTML = getEditTaskTemplate(task);
+  setDueDateMinConstraints();
   
   // Populate selected users for edit mode
   if (task.assignedTo && Array.isArray(task.assignedTo)) {
