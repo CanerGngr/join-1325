@@ -15,7 +15,21 @@ let currentSubtasks = [];
 function addSubtask() {
   let subtaskList = document.getElementById("subtask-list");
   let subtaskInput = document.getElementById("add-subtask");
+  let mode = arguments[0];
+
+  if (mode === "task-edit") {
+    subtaskList = document.getElementById("edit-subtask-list");
+    subtaskInput = document.getElementById("edit-add-subtask");
+  }
+
+  if (!subtaskList || !subtaskInput) {
+    return;
+  }
+
   let subtaskText = subtaskInput.value.trim();
+  if (!subtaskText) {
+    return;
+  }
   let subtaskIndex = currentSubtasks.length;
   currentSubtasks.push({
     text: subtaskText,

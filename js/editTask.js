@@ -257,7 +257,7 @@ function getEditTaskTemplate(task) {
                   type="text"
                   class="form-input"
                   name="subtasks"
-                  id="add-subtask"
+                  id="edit-add-subtask"
                   class="container-with-form-btn-group"
                   placeholder="Add new subtask"
                 />
@@ -280,7 +280,7 @@ function getEditTaskTemplate(task) {
                   <button
                     type="button"
                     class="form-btn-round"
-                    onclick="addSubtask()"
+                    onclick="addSubtask('task-edit')"
                   >
                     <svg
                       width="24"
@@ -297,7 +297,7 @@ function getEditTaskTemplate(task) {
                   </button>
                 </div>
               </div>
-              <ul id="subtask-list" class="subtask-list">
+              <ul id="edit-subtask-list" class="subtask-list">
                 ${task.subtasks && task.subtasks.length > 0
                   ? task.subtasks
                       .map((subtask, index) =>
