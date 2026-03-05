@@ -55,6 +55,7 @@ async function validateRegisterFormOnSubmit() {
   const emailInput = document.getElementById("input-email");
   const passwordInput = document.getElementById("input-password");
   const confirmPasswordInput = document.getElementById("input-password-confirm");
+  const privacyCheckbox = document.getElementById("privacy-checkbox");
 
   const nameValue = nameInput ? nameInput.value.trim() : "";
   const emailValue = emailInput ? emailInput.value.trim() : "";
@@ -76,8 +77,19 @@ async function validateRegisterFormOnSubmit() {
 
   const isPasswordValidNow = validationState.password;
   const isConfirmPasswordValidNow = validationState.confirmPassword;
+  const isPrivacyAccepted = !!privacyCheckbox?.checked;
 
-  return isNameValid && isEmailValid && isPasswordValidNow && isConfirmPasswordValidNow;
+  if (!isPrivacyAccepted) {
+    toggleErrorMessage(
+      "checkbox-error",
+      false,
+      "Please accept the Privacy policy."
+    );
+  } else {
+    toggleErrorMessage("checkbox-error", true);
+  }
+
+  return isNameValid && isEmailValid && isPasswordValidNow && isConfirmPasswordValidNow && isPrivacyAccepted;
 }
 
 
@@ -210,6 +222,7 @@ function toggleCheckBox(event) {
     let signUpButton = document.getElementById("btn-signup");
     if (checkbox.checked) {
       signUpButton.disabled = false;
+      toggleErrorMessage("checkbox-error", true);
     } else {
       signUpButton.disabled = true;
     }
