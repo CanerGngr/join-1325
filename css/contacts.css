@@ -320,24 +320,28 @@
     align-items: center;
     justify-content: center;
   }
-
+  
   .back-btn-mobile:active {
     background-image: url("/assets/icon/contacts/back-active.svg");
   }
-
+  
   .contact-menu {
     left: 0;
     width: 100%;
     box-shadow: none;
     padding: 16px;
   }
-
+  
   .contact-list {
     margin-bottom: 80px;
   }
-
+  
   .desktop-contact-actions {
     display: none;
+  }
+  
+  .dropdown-menu-mobile.open,button,span {
+      font-size: 16px;
   }
 }
 
@@ -392,9 +396,6 @@
   transform: translateX(0);
 }
 
-.dropdown-menu-mobile.open,button,span {
-    font-size: 16px;
-}
 
 .mobile-contact-actions {
   display: flex;
