@@ -153,10 +153,11 @@ function handleDocumentClick(event) {
   }
 
   // Handle edit assigned-to dropdown
+  let editDropdown = document.querySelector("#edit-assigned-to-list")?.closest(".custom-dropdown");
   let editDropdownList = document.getElementById("edit-assigned-to-list");
-  if (dropdown && !dropdown.contains(event.target) && editDropdownList) {
+  if (editDropdown && !editDropdown.contains(event.target) && editDropdownList) {
     editDropdownList.classList.add("d-none");
-    dropdown.classList.remove("open");
+    editDropdown.classList.remove("open");
   }
 
   let categoryDropdown = document.getElementById("category");
@@ -171,6 +172,8 @@ function handleDocumentClick(event) {
     categoryDropdown.classList.remove("open");
   }
 }
+
+document.addEventListener("click", handleDocumentClick);
 
 /**
  * Toggles the category dropdown
