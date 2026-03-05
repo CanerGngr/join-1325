@@ -174,12 +174,13 @@ function initLoginForm() {
   const loginForm = document.getElementById("log-in-form");
   const emailInput = document.getElementById("email-input");
   const passwordInput = document.getElementById("password-input");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await loginUser();
+  };
 
   if (loginForm) {
-    loginForm.onsubmit = async function (event) {
-      event.preventDefault();
-      await loginUser();
-    };
+    loginForm.addEventListener("submit", handleSubmit);
   }
 
   if (emailInput) {
