@@ -439,6 +439,7 @@
     .main-wrapper {
         margin-top: 64px;
         margin-left: 0;
+        max-height: calc(100vh - 176px);
     }
 
     .kanban {
