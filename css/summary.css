@@ -363,7 +363,7 @@
 /* Tablet: Sidebar wird Bottom-Nav */
 @media (max-width: 1024px) {
     main {
-        min-height: calc(100vh - 160px);
+        max-height: calc(100vh - 160px);
     }
 
     .summary-main-content {
