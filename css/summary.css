@@ -255,7 +255,7 @@
 
 .card-label {
     font-size: 23px;
-    font-weight: 400px;
+    font-weight: 400;
     margin: 0;
     color: white;
 }
@@ -368,15 +368,12 @@
 
     .summary-main-content {
         padding: 0 32px;
+        min-height: auto;
     }
 }
 
 /* Mobile: Bottom Navigation */
 @media (max-width: 850px) {
-    .main-wrapper {
-        overflow-y: auto;
-    }
-
     .main-content {
         align-items: flex-start;
         min-width: 100%;
