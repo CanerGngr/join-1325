@@ -14,7 +14,6 @@
 @media (max-height: 820px) {
     .main-wrapper {
         align-items: flex-start;
-        overflow-y: auto;
     }
 }
 
