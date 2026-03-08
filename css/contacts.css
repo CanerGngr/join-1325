@@ -100,7 +100,6 @@
 .contact-info {
   display: flex;
   flex-direction: column;
-  width: 200px;
   font-size: 19px;
 }
 
@@ -111,6 +110,7 @@
 .contact-email {
   color: #4589FF;
   font-size: 16px;
+  overflow-wrap: anywhere;
 }
 
 .contact-form-header {
