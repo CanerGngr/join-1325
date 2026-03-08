@@ -57,8 +57,16 @@ function setPriorityForEdit(priority) {
  */
 function generateAssignedUsersEditHTML(assignedToArray) {
   let html = "";
-  for (let i = 0; i < assignedToArray.length; i++) {
-    html += createEditUserAvatarHTML(assignedToArray[i]);
+  const maxVisibleAssignees = 4;
+  const visibleAssignees = assignedToArray.slice(0, maxVisibleAssignees);
+
+  for (let i = 0; i < visibleAssignees.length; i++) {
+    html += createEditUserAvatarHTML(visibleAssignees[i]);
+  }
+
+  const hiddenAssigneesCount = assignedToArray.length - visibleAssignees.length;
+  if (hiddenAssigneesCount > 0) {
+    html += `<div class="user-avatar-sm more-assignees">+${hiddenAssigneesCount}</div>`;
   }
   return html;
 }

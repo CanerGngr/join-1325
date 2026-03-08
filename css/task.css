@@ -310,6 +310,13 @@
   border: 2px solid #ffffff;
 }
 
+.assignees .user-avatar-sm.more-assignees {
+  background-color: var(--color-grey);
+  color: var(--color-black-light);
+  font-size: 12px;
+  font-weight: 600;
+}
+
 /*Tablet*/
 
 @media (max-width: 1024px) {

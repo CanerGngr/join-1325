@@ -151,15 +151,22 @@ function updateSelectedUsersArray(userName, isChecked) {
 function updateDropdownPlaceholder(mode) {
   let containerId = (mode === "task-edit") ? "edit-assignees-container" : "assignees-container";
   let container = document.getElementById(containerId);
+  const maxVisibleAssignees = 4;
   
   container.innerHTML = "";
-  
-  for (let i = 0; i < selectedUsers.length; i++) {
-    let initials = getInitials(selectedUsers[i]);
-    let avatarColor = getAvatarColor(selectedUsers[i]);
+  const visibleAssignees = selectedUsers.slice(0, maxVisibleAssignees);
+
+  for (let i = 0; i < visibleAssignees.length; i++) {
+    let initials = getInitials(visibleAssignees[i]);
+    let avatarColor = getAvatarColor(visibleAssignees[i]);
     
     let avatarHTML = `<div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>`;
     container.innerHTML += avatarHTML;
+  }
+
+  const hiddenAssigneesCount = selectedUsers.length - visibleAssignees.length;
+  if (hiddenAssigneesCount > 0) {
+    container.innerHTML += `<div class="user-avatar-sm more-assignees">+${hiddenAssigneesCount}</div>`;
   }
 }
 
