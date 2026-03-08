@@ -1,48 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/mainContent.css" />
-    <link rel="stylesheet" href="/css/buttons.css" />
-    <link rel="stylesheet" href="/css/logIn.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link
+      rel="shortcut icon"
+      href="/assets/icon/join-favicon.svg"
+      type="image/x-icon"
+    />
   </head>
   <body onload="Loadingscreen()">
+    <header class="login-page-header">
+      <div class="header-right-side">
+        <div class="login-header">
+          <p class="login-header-text">Not a Join user?</p>
+          <a href="register.html" class="btn-no-icon">Sign up</a>
+        </div>
+      </div>
+    </header>
     <div id="loader" class="loader"></div>
-    <div class="text-center login-header">
-      <p class="login-header-text">Not a Join user?</p>
-      <a href="register.html" class="btn-no-icon">Sign up</a>
-    </div>
-    <main id="logInMainContainer" class="logInMainContainer">
-      <form id="logInForm" class="logInForm" action="/index.html">
-        <h1>Log in</h1>
-        <div class="input-icon-container">
-          <input type="text" placeholder="Email" />
-          <img src="/assets/img/mail.svg" alt="Email Icon" />
-        </div>
-        <div class="input-icon-container">
-          <input type="password" placeholder="Password" />
-          <img src="/assets/img/lock.svg" alt="Password Icon" />
-        </div>
-        <div class="logInButtons">
-          <button class="btn-no-icon logInButton" type="submit">Login</button>
-          <button class="btn-secondary logInButton" type="submit">
-            Guest log in
-          </button>
-        </div>
-      </form>
+    <main class="login-main">
+      <section class="login-form-section">
+        <form id="log-in-form" class="register-form" action="" novalidate>
+          <div>
+            <div class="head-reg">
+              <span>Log in</span>
+              <div class="separator"></div>
+            </div>
+            <div class="main-reg">
+              <div class="form-field">
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      id="email-input"
+                      type="email"
+                      placeholder="Email"
+                      required
+                    />
+                    <img src="../assets/icon/login/mail.svg" alt="Email Icon" />
+                  </div>
+                </div>
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      id="password-input"
+                      type="password"
+                      placeholder="Password"
+                      required
+                    />
+                    <img
+                      src="../assets/icon/login/lock.svg"
+                      alt="Password Icon"
+                    />
+                  </div>
+                </div>
+                <div id="error-message"></div>
+              </div>
+            </div>
+            <div class="checkbox-container">
+              <label class="custom-checkbox">
+                <input
+                  id="remember-me-checkbox"
+                  class="checkbox-masked"
+                  type="checkbox"
+                  disabled
+                />
+                <span> Remember me </span>
+              </label>
+              <small id="checkbox-error" class="d-none msg-error"></small>
+            </div>
+            <div class="btn-container">
+              <button class="btn-no-icon" type="submit">Log in</button>
+              <button type="button" class="btn-secondary" onclick="loginAsGuest()">
+                Guest Log in
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+      <section class="login-signup-section">
+        <p class="login-header-text">Not a Join user?</p>
+        <a href="register.html" class="btn-no-icon">Sign up</a>
+      </section>
     </main>
-    <footer id="login-legal-footer" class="legal-footer">
-      <p class="footer-links">
-        <a href="/html/datenschutz.html">Privacy Policy</a>
-      </p>
-      <p class="footer-links">
-        <a href="/html/impressum.html">Legal notice</a>
-      </p>
+    <footer>
+      <div class="foot-container">
+          <a href="./datenschutz.html">Privacy Policy</a>
+          <a href="./legalnotice.html">Legal Notice</a>
+      </div>
     </footer>
-    <script src="/js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../scrDB/dbConfig.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/script.js"></script>
   </body>
 </html>
-

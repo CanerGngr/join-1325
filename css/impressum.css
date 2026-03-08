@@ -1,0 +1,418 @@
+/**
+ * ============================================================================
+ * IMPRESSUM.CSS - Static Pages Styling
+ * ============================================================================
+ * Styles for static pages: Help, Legal Notice (Impressum), and Privacy Policy
+ * Includes responsive layouts and custom scrollbar for mobile devices
+ *
+ * Breakpoints:
+ * - Desktop: 1026px and above
+ * - Tablet/Mobile: 1025px and below
+ * - Small Mobile: 850px and below
+ * - Custom Scrollbar: 428px and below
+ * ============================================================================
+ */
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+body {
+	overflow-y: auto;
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+}
+
+/**
+ * Fixed header container
+ * Stays at top of page during scroll
+ */
+.header-fix {
+	display: flex;
+	position: fixed;
+	width: 100%;
+}
+
+/* ============================================================================
+   LAYOUT COMPONENTS
+   ============================================================================ */
+
+/**
+ * Main content wrapper for static pages
+ * Desktop: Right-aligned with left margin for sidebar (232px)
+ * Mobile: Full width with adjusted padding
+ */
+.main-wrapper-ds {
+	display: flex;
+	justify-content: flex-end;
+	max-width: 1920px;
+	padding: 79px;
+	margin: 0 0 0 232px; /* Left margin = sidebar width */
+}
+
+/* ============================================================================
+   NAVIGATION & LINKS
+   ============================================================================ */
+
+/**
+ * Sidebar footer and general link styling
+ * Used in both desktop sidebar and mobile bottom navigation
+ */
+.sidebar-footer,
+a {
+	font-size: 16px;
+	color: rgba(66, 82, 110, 1);
+	text-align: left;
+	flex-direction: column;
+	gap: 15px;
+}
+
+/**
+ * Selected/active link styling
+ * Highlights the current page in navigation
+ * Used for Privacy Policy and Legal Notice links
+ */
+.selected-link {
+	background-color: var(--color-light-blue);
+	padding: 8px;
+	border-radius: 10px;
+	width: 126px;
+	color: var(--color-font-white);
+	font-weight: bold;
+	font-size: 16px;
+}
+
+
+
+/**
+ * Back button and help icon container
+ * Displays page title with back button on right (desktop only)
+ */
+.back-help {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 90px;
+}
+
+.back-icon {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+
+  background-image: url("../assets/icon/sign/back.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: 0.2s ease-in-out;
+}
+
+.back-icon:hover {
+  background-image: url("../assets/icon/sign/hoverback.svg");
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+.light-words {
+	color: var(--color-light-blue);
+}
+
+.pad-8 {
+	padding: 8px;
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
+
+h1 {
+	margin: 0px 0px 36px 0px;
+	font-size: 61px;
+}
+
+h2 {
+	font-weight: 700;
+	color: var(--color-blue);
+	margin: 35px 0px 10px 0px;
+	font-size: 33px;
+}
+
+h3 {
+	color: var(--color-light-blue);
+	font-size: 19px;
+}
+
+ul {
+	margin-left: 32px;
+}
+
+/* ============================================================================
+   HELP PAGE SPECIFIC STYLES
+   ============================================================================ */
+
+/**
+ * Main content container for help page
+ * Provides consistent spacing between sections
+ */
+.help-content {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+/**
+ * Clarification section layout
+ * Used for step-by-step instructions with numbers
+ */
+.clarification {
+	display: flex;
+	gap: 35px;
+}
+
+/**
+ * Caption/heading for help sections
+ * Large, prominent heading in light blue
+ */
+.caption-help {
+	font-size: 33px;
+	font-weight: 700;
+	color: var(--color-light-blue);
+	margin-bottom: 24px;
+}
+
+/**
+ * Number indicator for help steps
+ * Large numbered circles for step-by-step guides
+ */
+.number-help {
+	color: var(--color-blue);
+	font-size: 33px;
+	font-weight: 700;
+}
+
+/**
+ * Step title/label
+ * Smaller heading for individual steps
+ */
+.step {
+	font-size: 19px;
+	color: var(--color-blue);
+	font-weight: 700;
+}
+
+/**
+ * Generic vertical spacing container
+ * Adds 16px gap between child elements
+ */
+.gap-16 {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+/**
+ * Additional left margin for nested content
+ * Used for sub-steps or indented content
+ */
+.more {
+	margin-left: 62px;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN - DESKTOP
+   Breakpoint: 1026px and above
+   ============================================================================ */
+
+@media (min-width: 1026px) {
+	/**
+	 * Hide mobile sidebar links on desktop
+	 * Desktop uses full sidebar with footer links
+	 */
+	.sidebar-links {
+		display: none;
+	}
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN - TABLET/MOBILE
+   Breakpoint: max-width 1025px
+   ============================================================================ */
+
+/* mobile */
+@media (max-width: 1025px) {
+	/**
+	 * Mobile layout adjustments
+	 * Full width content with bottom navigation
+	 */
+	.main-wrapper-ds {
+		padding: 20px;
+		margin: 0px;
+		margin-bottom: 80px; /* Space for fixed bottom navigation */
+	}
+
+	h1 {
+		margin: 0px 0px 20px 0px;
+	}
+
+	.back-help {
+		margin-top: 144px; /* Account for fixed header height */
+	}
+
+	/**
+	 * Empty navigation bar for non-authenticated users
+	 * Fixed at bottom with Login on left, Privacy/Legal links on right
+	 * Created dynamically by renderLoginSidbar() in staticpages.js
+	 */
+	.empty-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: fixed;
+		left: 0;
+		bottom: 0px;
+		width: 100%;
+	}
+
+	/**
+	 * Mobile menu button styling
+	 * Stacks icon and text vertically
+	 */
+	.btn-menu {
+		flex-direction: column;
+	}
+
+	/**
+	 * Groups Privacy Policy and Legal Notice links
+	 * Creates visual separation from Login button
+	 * Displays in horizontal row with 16px gap
+	 */
+	.sidebar-links {
+		display: flex;
+		gap: 16px;
+	}
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN - SMALL MOBILE
+   Breakpoint: max-width 850px
+   ============================================================================ */
+
+@media (max-width: 850px) {
+	.back-help {
+		margin-top: 144px;
+	}
+
+	/**
+	 * Reduce heading sizes for smaller screens
+	 * Prevents text overflow on narrow devices
+	 */
+	h1 {
+		font-size: 47px;
+	}
+
+	h2 {
+		font-size: 19px;
+	}
+
+	.sidebar-links {
+		padding-right: 8px;
+	}
+}
+
+/* ============================================================================
+   CUSTOM SCROLLBAR - VERY SMALL MOBILE SCREENS
+   Breakpoint: max-width 428px
+   Features: Custom scrollbar with mouse-only support (no touch)
+   JavaScript: customScrollbar.js handles positioning and drag functionality
+   ============================================================================ */
+
+@media (max-width: 428px) {
+	/**
+	 * Hide native browser scrollbar
+	 * Replaced with custom scrollbar for consistent mobile experience
+	 */
+	/* Hide native scrollbar for custom scrollbar */
+	html {
+		overflow-y: scroll;
+		scrollbar-width: none; /* Firefox */
+	}
+
+	html::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, Edge */
+	}
+
+	/**
+	 * Custom scrollbar track container
+	 * Fixed positioning on right edge, starts 211px from top (below header)
+	 * Invisible track with 4px width, full viewport height
+	 * Controlled by customScrollbar.js
+	 */
+	/* Custom scrollbar track */
+	.custom-scrollbar {
+		position: fixed;
+		right: 0;
+		top: 211px; /* Position below header */
+		width: 4px;
+		height: 100vh;
+		background: transparent;
+		z-index: 9999; /* Above all content */
+		pointer-events: none; /* Allow clicks to pass through track */
+	}
+
+	/**
+	 * Custom scrollbar thumb (draggable element)
+	 * Large width (40px) for easy grabbing with mouse
+	 * Height: 48px (fixed size)
+	 * Position dynamically calculated by JavaScript based on scroll percentage
+	 * Mouse-only interaction - no touch support
+	 */
+	.custom-scrollbar-thumb {
+		position: absolute;
+		width: 40px;
+		height: 48px;
+		background: var(--color-Scroll);
+		border-radius: 3px;
+		cursor: pointer;
+		transition: background 0.2s;
+		pointer-events: auto; /* Enable mouse interaction on thumb only */
+	}
+
+	/**
+	 * Privacy Policy content container
+	 * Prevent text overflow on very narrow screens
+	 */
+	.pp-content {
+		max-width: 100%;
+		overflow-wrap: break-word;
+	}
+
+	/**
+	 * Reduce padding on very small screens
+	 * Maximize content area
+	 */
+	.main-wrapper-ds {
+		padding: 16px;
+	}
+
+	/**
+	 * Responsive typography adjustments
+	 * Scale down text for readability on small screens
+	 */
+	.caption-help {
+		font-size: 23px;
+	}
+
+	.step {
+		font-size: 19px;
+	}
+
+	.clarification {
+		gap: 16px;
+	}
+
+	.btn-menu {
+		padding: 8px 8px;
+	}
+}

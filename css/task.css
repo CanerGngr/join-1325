@@ -1,0 +1,353 @@
+.title-input {
+  font-size: 32px !important;
+  font-weight: 600;
+}
+
+.task-form-container {
+  width: 100%;
+  max-width: 488px;
+}
+
+.task-form-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2a3647;
+  margin-bottom: 32px;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 64px 24px 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label:not(.priority) {
+  color: #42526E;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.form-group label.priority {
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.required {
+  color: #E60026;
+}
+
+.optional {
+  color: rgba(66, 82, 110, 1);
+  font-weight: 400;
+}
+
+/* Input Field Styles */
+.form-group .form-input {
+  padding: 12px 16px;
+  border: 2px solid #d1d1d1;
+  border-width: 0 0 2px 0;
+  font-size: 1rem;
+  color: #2a3647;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.form-group textarea {
+  border-radius: 0 10px 10px 10px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  color: #2a3647;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.form-group .form-input:focus,
+.form-group textarea:focus{
+  outline: none;
+  border-color: #4589ff;
+}
+
+.form-group .form-input::placeholder,
+.form-group textarea::placeholder {
+  color: #d1d1d1;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 96px;
+  font-family: inherit;
+}
+
+/* Subtask Input Container */
+.subtask-input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.subtask-input-container input {
+  flex: 1;
+  padding-right: 48px;
+}
+
+/* Form Actions (Buttons) */
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  position: absolute;
+  top: auto;
+  bottom: 55px;
+  right: 42px;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #E60026;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.form-group.error input,
+.form-group.error textarea {
+  border-color: #E60026;
+}
+
+/* Custom Dropdown with Checkboxes */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-input {
+  flex: 1;
+  padding: 12px 40px 12px 16px;
+  border: 2px solid #d1d1d1;
+  border-width: 0 0 2px 0;
+  font-size: 1rem;
+  color: #2a3647;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown-input:hover,
+.dropdown-input:focus {
+  outline: none;
+  border-color: #4589ff;
+}
+
+.dropdown-input::placeholder {
+  color: #d1d1d1;
+}
+
+.custom-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d1d1;
+  border-radius: 0 0 10px 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-list.d-none {
+  display: none;
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+.dropdown-item label {
+  align-items: center;
+  cursor: pointer;
+  flex: 1;
+  margin: 0;
+  font-size: 1rem;
+  color: #2a3647;
+}
+
+.dropdown-item-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.dropdown-item .user-avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.selected-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.selected-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.selected-user-badge .remove-user {
+  cursor: pointer;
+  color: #666;
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.selected-user-badge .remove-user:hover {
+  color: #ff3d00;
+}
+
+/* Subtask List Styling */
+.subtask-list {
+  padding: 0;
+  margin: 8px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: min(240px, 35vh);
+  overflow-y: auto;
+}
+
+.subtask-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 81px 8px 12px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.subtask-item span {
+  flex: 1;
+  color: #2a3647;
+}
+
+.subtask {
+  font-size: 1rem;
+  margin-left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.subtask-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: #ffffff;
+  background-image: url(..//assets/icon/task/calendar.svg);
+  height: 24px;
+  width: 24px;
+}
+
+.container-with-form-btn-group {
+  padding-right: 81px !important;
+}
+
+.assignees {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.assignees .user-avatar-sm {
+  font-size: 16px;
+  border: 2px solid #ffffff;
+}
+
+/*Tablet*/
+
+@media (max-width: 1024px) {
+    .add-task-main-container {
+      height: calc(100vh - 245px);
+      overflow-y: auto;
+      padding: 0 12px 0 12px;
+    }
+
+    .form-actions {
+      position: absolute;
+      background-color: #FFFFFF;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 16px;
+      justify-content: center;
+    }
+}
+
+/* Mobile: Bottom Navigation */
+@media (max-width: 850px) {
+  .task-form-container {
+    max-width: 100%;
+  }
+
+  .task-form {
+    margin: 16px 0 0;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .radio-to-btn-text {
+      font-size: 12px;
+  }
+
+  .sidenav-text {
+      text-align: center;
+  }
+}

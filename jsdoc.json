@@ -1,0 +1,8 @@
+{
+    "source": {
+        "include": ["./js", "README.md", "./scrDB"],
+        "exclude": ["src/**/*.test.js"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    }
+}

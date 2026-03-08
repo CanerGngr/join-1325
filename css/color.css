@@ -1,7 +1,8 @@
 :root {
-  --color-blue: #2a3647;
   --color-black-light: #091931;
-  --color-light-blue: #29abe2;
+  --color-hover-blue: rgba(227, 238, 255, 1);
+  --color-light-blue: rgba(69, 137, 255, 1);
+  --color-blue: rgba(0, 93, 255, 1);
   --color-orange: #ff7a00;
   --color-turquoise: #1fd7c1;
   --color-green: #14452f;
@@ -14,8 +15,11 @@
   --color-black: black;
   --color-white: white;
   --color-red: red;
+  --color-Scroll: rgba(168, 168, 168, 1);
+  
   --color-grey: #d1d1d1;
-  --color-grey-light: rgb(246,247,248);
+  --color-grey-light: rgba(209, 209, 209, 1);
+  --color-font-white: rgba(255, 255, 255, 1);
 }
 
 .bg-white {
@@ -76,6 +80,10 @@
 
 .color-blue {
   color: var(--color-blue);
+}
+
+.color-dark-blue {
+  color: var(--color-dark-blue);
 }
 
 .color-light-blue {

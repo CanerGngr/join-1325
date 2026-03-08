@@ -3,116 +3,144 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/login.css" />
-    <link rel="stylesheet" href="/css/register.css" />
-    <link rel="stylesheet" href="/css/buttons.css" />
+    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="../css/components.css" />
     <title>Sign Up</title>
   </head>
-  <body id="register-body">
-    <main class="register-main-container">
-      <form
-        class="register-form"
-        action="/index.html"
-        onsubmit="handleRegisterUser(event);"
-      >
-        <a class="back-button-link" href="../html/login.html" title="back">
-          <img
-            class="back-button singup-back-button"
-            alt="backImg"
-            src="/assets/img/back.svg"
-          />
-        </a>
-        <div class="d-flex"></div>
 
-        <h1 class="text-center">Sign up</h1>
-        <div class="separator"></div>
-        <div class="text-center login-form w-100">
-          <div class="register-container">
-            <div class="input-icon-container">
-              <input
-                id="inName"
-                type="text"
-                placeholder="Name"
-                onblur="isUserExisitByName(this.value)"
-                required
-              />
-              <img
-                src="/assets/img/person.svg"
-                alt="name"
-                class="overlay-image"
-              />
-              <small id="usernameError" class="d-none"></small>
-            </div>
+  <body onload="initRegisterValidation()">
+    <div class="register-main-container">
+      <header>
+        <div class="logo-header">
+          <img src="../assets/icon/logowhiteheader.svg" alt="" />
+        </div>
+      </header>
+      <main>
+        <form class="register-form" onsubmit="handleRegisterUser(event)" novalidate>
+          <a class="back-button-link" href="./login.html" title="back">
+            <span
+              class="back-icon"
+              onclick="sessionStorage.setItem('skipAnimation', 'true');"
+            ></span>
+          </a>
 
-            <div class="input-icon-container">
-              <input
-                id="inEmail"
-                type="email"
-                placeholder="E-Mail"
-                required
-                onblur="isUserExisitByEmail(this.value)"
-              />
-              <img
-                src="/assets/img/mail.svg"
-                alt="E-Mail"
-                class="overlay-image"
-              />
+          <div>
+            <div class="head-reg">
+              <span>Sign up</span>
+              <div class="separator"></div>
             </div>
-
-            <div class="input-icon-container">
-              <input
-                id="inPassword"
-                oninput="validatePasswordTooltip()"
-                type="password"
-                placeholder="Password"
-                required
-              />
-              <img
-                src="/assets/img/lock.svg"
-                alt="password"
-                class="overlay-image"
-              />
+            <div class="main-reg">
+              <div>
+                <div class="field-container">
+                  <div id="field-name" class="input-icon-container">
+                    <input
+                      id="input-name"
+                      type="text"
+                      placeholder="Name"
+                      oninput="setBorderColor('field-name',true)"
+                      onblur="isUserExistByName(this.value)"
+                      required
+                    />
+                    <img src="../assets/icon/sign/person.svg" alt="name" />
+                  </div>
+                  <small id="username-error" class="d-none msg-error"></small>
+                </div>
+                <div class="field-container">
+                  <div id="field-email" class="input-icon-container">
+                    <input
+                      id="input-email"
+                      type="email"
+                      placeholder="E-Mail"
+                      required
+                      onblur="isUserExistByEmail(this.value)"
+                    />
+                    <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
+                  </div>
+                  <small id="email-error" class="d-none msg-error"></small>
+                </div>
+                <div class="field-container">
+                  <div id="field-password" class="input-icon-container">
+                    <input
+                      id="input-password"
+                      type="text"
+                      placeholder="Password"
+                      oninput="onPasswordInput(this, event)"
+                      onblur="onPasswordBlur(this.value)"
+                    />
+                    <img
+                      id="password-icon"
+                      src="../assets/icon/sign/lock.svg"
+                      alt="password icon"
+                      onclick="onPasswordIconClick()"
+                    />
+                  </div>
+                  <small id="password-tooltip" class="d-none msg-error"></small>
+                </div>
+                <div class="field-container">
+                  <div id="field-password-confirm" class="input-icon-container">
+                    <input
+                      id="input-password-confirm"
+                      type="text"
+                      placeholder="Confirm password"
+                      oninput="onInputConfirmPassword(this, event)"
+                      onblur="isPasswordMatching()"
+                    />
+                    <img
+                      id="confirm-password-icon"
+                      src="../assets/icon/sign/lock.svg"
+                      alt="confirm password icon"
+                      onclick="onClickConfirmPasswordIcon()"
+                    />
+                  </div>
+                  <small id="confirm-password" class="d-none msg-error"></small>
+                </div>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox" onclick="toggleCheckBox(event)">
+                  <input
+                    id="privacy-checkbox"
+                    class="checkbox-masked"
+                    type="checkbox"
+                    disabled
+                  />
+                  <span>
+                    I accept the
+                    <span class="color-dark-blue"
+                      ><a href="./datenschutz.html">Privacy policy</a></span
+                    >
+                  </span>
+                </label>
+                <small id="checkbox-error" class="d-none msg-error"></small>
+              </div>
             </div>
-            <div id="passwordTooltip" class="password-tooltip"></div>
-            <div class="input-icon-container">
-              <input
-                id="inPasswordConfirm"
-                type="password"
-                placeholder="Confirm password"
-                required
-              />
-              <img
-                src="/assets/img/lock.svg"
-                alt="password"
-                class="overlay-image"
-              />
-            </div>
-            <div id="checkboxContainer">
-              <input id="checkBox" title="accept" type="checkbox" required />
-              <span>I accept the Privacy policy</span>
-            </div>
-
-            <div class="buttonDiv">
-              <img
-                class="auth-loading-spinner"
-                src="/assets/icon/loading.png"
-                alt="loading icon"
-              />
-              <button class="btn-no-icon" type="submit">Sign up</button>
+            <div class="btn-container">
+              <button
+                id="btn-signup"
+                class="btn-no-icon"
+                type="submit"
+              >
+                Sign up
+              </button>
             </div>
           </div>
-        </div>
-        <footer></footer>
-      </form>
-    </main>
-    <footer id="signup-legal-footer" class="legal-footer">
-      <p class="footer-links">
-        <a href="/html/datenschutz.html">Privacy Policy</a>
-      </p>
-      <p class="footer-links">
-        <a href="/html/impressum.html">Legal notice</a>
-      </p>
-    </footer>
+        </form>
+      </main>
+      <footer>
+            <a href="./datenschutz.html">Privacy Policy</a>
+            <a href="./legalnotice.html">Legal Notice</a>
+      </footer>
+    </div>
+    <div id="success-overlay" class="ol-end d-none">
+      <div class="ol-end-content">
+        <p>You Signed Up successfully</p>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../scrDB/dbConfig.js"></script>
+    <script src="../scrDB/userDB.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/password.js"></script>
   </body>
 </html>

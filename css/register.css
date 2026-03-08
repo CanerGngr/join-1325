@@ -1,60 +1,439 @@
-#register-body {
-  background-color: #4589ff;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Inter", Arial, sans-serif;
 }
 
-.register-form {
-  background-color: white;
-  min-width: 598px;
-  min-height: 607px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-  border-radius: 30px;
+body {
+	background-color: var(--color-light-blue);
+}
+
+a {
+	text-decoration: none;
+}
+
+.d-none {
+	display: none !important;
+}
+
+.d-block {
+	display: block !important;
 }
 
 .register-main-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	position: relative;
+	height: 100dvh;
+	max-width: 1920px;
+	width: 100%;
+	margin: 0 auto;
+	gap: 35px;
 }
 
-#checkboxContainer {
-  display: flex;
-  justify-content: center;
-  font-size: 16px;
-  align-items: center;
+.back-button-link {
+	position: absolute;
+	left: 48px;
+	top: 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
-#checkBox {
-  margin: 0 10px 0 0;
-  width: auto;
+.back-icon {
+	width: 33px;
+	height: 33px;
+
+	background-image: url("../assets/icon/sign/back.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	transition: 0.2s ease-in-out;
 }
 
-.register-form .back-button-link {
-  position: absolute;
-  left: 55.83px;
-  top: 62px;
-  margin: 0 0 0px;
+.back-icon:hover {
+	background-image: url("../assets/icon/sign/hoverback.svg");
 }
 
-.register-main-container .register-form {
-  position: relative;
+.register-form {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-font-white);
+	width: 598px;
+	border-radius: 30px;
+	box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+	padding: 48px 88px;
 }
 
-#signup-legal-footer {
-  background-color: #4589ff;
+.head-reg {
+	text-align: center;
+	font-weight: bold;
+	font-size: 48px;
 }
 
-#signup-legal-footer a {
-  color: white;
+.separator {
+	width: 150px;
+	margin: 16px auto;
+	border: 2px solid var(--color-light-blue);
 }
 
-.buttonDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+.main-reg {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 22px;
+	width: 422px;
+	min-height: 324px;
+	margin: 0 auto;
+}
+.field-container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+.main-reg > div {
+	width: 100%;
+}
+
+.field-container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.input-icon-container {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--color-grey-light);
+	justify-content: space-around;
+	padding: 12px 21px;
+}
+
+.input-icon-container input {
+	flex: 1;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: 19px;
+}
+
+.input-icon-container img {
+	margin-left: 12px;
+}
+.valid-input {
+	border-bottom: 1px solid var(--color-light-blue);
+}
+
+.invalid-input {
+	border-bottom: 1px solid var(--color-red);
+}
+
+#confirm-password-icon,
+#password-icon {
+	cursor: pointer;
+	width: 24px;
+	height: 24px;
+	min-width: 24px;
+	object-fit: contain;
+	display: block;
+}
+.btn-container {
+	display: flex;
+	gap: 35px;
+	padding-top: 32px;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.logo-header {
+	position: absolute;
+	width: 101px;
+	height: 122px;
+	top: 80px;
+	left: 77px;
+}
+
+.logo-header img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.msg-error {
+	color: #E60026;
+	text-align: left;
+	font-size: 16px;
+	display: block;
+	min-height: 18px;
+	line-height: 18px;
+	visibility: hidden;
+}
+
+.msg-error:not(:empty) {
+	visibility: visible;
+}
+
+.msg-error.d-none {
+	display: block !important;
+	visibility: hidden;
+}
+
+footer {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+	justify-content: space-between;
+}
+
+footer a {
+	color: var(--color-font-white);
+	font-size: 16px;
+}
+
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+	-webkit-text-fill-color: #000 !important;
+	transition: background-color 9999s ease-in-out 0s;
+}
+
+.ol-end {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.ol-end-content {
+	background: var(--color-light-blue);
+	color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	height: 74px;
+	width: 326px;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 23px;
+	animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(+100px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN - MOBILE
+   Breakpoint: max-width 1028px 628px 528px 428px 396px 340px
+   ============================================================================ */
+
+@media (max-width: 1028px) {
+
+	.logo-header {
+		top: 37px;
+		left: 38px;
+	}
+}
+
+@media (max-width: 628px) {
+	.register-form {
+		width: 100%;
+		padding: 40px 40px;
+	}
+
+	.back-button-link {
+		top: 44px;
+	}
+}
+
+@media (max-width: 528px) {
+	.main-reg {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 428px) or (max-height: 1120px) {
+	/**
+	 * Mobile layout adjustments for register page
+	 * Makes form full-width and adjusts spacing for small screens
+	 */
+	.logo-header {
+		width: 64px;
+		height: 78px;
+	}
+
+	.register-form {
+		width: 396px;
+		padding: 32px 24px;
+	}
+
+	.main-reg {
+		margin-top: 24px;
+		width: 364px;
+	}
+
+	/**
+	 * Reduce heading size for mobile
+	 */
+	.head-reg {
+		font-size: 47px;
+	}
+
+	/**
+	 * Adjust separator width for mobile
+	 */
+	.separator {
+		width: 88px;
+	}
+	/**
+	 * Adjust back button position for mobile
+	 */
+	.back-button-link {
+		top: 32px;
+	}
+
+	/**
+	 * Make success overlay responsive
+	 */
+	.field-container {
+		margin-bottom: 32px;
+	}
+
+	.ol-end-content {
+		width: 90%;
+		max-width: 326px;
+		font-size: 20px;
+	}
+
+	.custom-checkbox {
+		gap: 10px;
+	}
+	/**
+	 * Adjust button container for mobile
+	 */
+	.btn-container {
+		padding-top: 16px;
+	}
+
+	.btn-no-icon {
+		width: 180px !important;
+		height: 48px !important;
+		font-size: 19px !important;
+	}
+	/**
+	 * Adjust footer for mobile
+	 */
+	footer {
+		flex-direction: row;
+		gap: 16px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 396px) {
+	.back-button-link {
+		left: 32px;
+	}
+
+	.input-icon-container img {
+		margin-left: 0;
+		margin-right: 21px;
+	}
+
+	.head-reg {
+		font-size: 37px;
+	}
+
+	.register-form {
+		max-width: 320px;
+	}
+
+	.main-reg {
+		width: 290px;
+	}
+}
+@media (max-width: 340px) {
+	.back-button-link {
+		left: 22px;
+	}
+
+	.input-icon-container img {
+		margin-left: 0;
+		margin-right: 31px;
+	}
+
+	.register-form {
+		max-width: 300px;
+	}
+
+	.input-icon-container {
+		padding: 12px 12px;
+	}
+}
+.form-field .field-container:nth-child(4) {
+	margin-bottom: 0;
+}
+
+@media (max-height: 965px) {
+	.logo-header {
+		top: 20px;
+		left: 20px;
+	}
+
+	.register-form {
+		padding: 32px 24px;
+	}
+	.field-container {
+		margin-bottom: 32px;
+	}
+	
+}
+
+@media (max-height: 900px) {
+	.logo-header {
+		height: 39px;
+		width: 32px;
+	}
+
+	.field-container {
+		margin-bottom: 16px;
+	}
+
+	.field-container {
+		margin-bottom: 4px;
+	}
+
+	.checkbox-container {
+		padding-bottom: 4px !important;
+	}
+
+	.main-reg {
+		min-height: auto;
+		gap: 0;
+	}
 }

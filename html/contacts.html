@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/contacts-main-content.css" />
+    <link rel="stylesheet" href="/css/sidebar-content.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="/css/contacts.css" />
+    <link rel="stylesheet" href="/css/overlays.css" />
+    <link
+      rel="shortcut icon"
+      href="/assets/icon/join-favicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body class="body-no-scroll" onload="renderContactList()">
+    <header class="header d-flex">
+      <a href="/index.html"
+        ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
+      /></a>
+      <div class="inner-header d-flex">
+        <p>Kanban Project Management Tool</p>
+        <a href="./help.html" title="Help" class="help-icon">
+          <span class="help-icon-svg"></span
+        ></a>
+        <div class="user-avatar" onclick="toggleUserDropdown(event)">
+          <div class="user-avatar-name">SM</div>
+          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
+            <a href="./help.html" class="hide-mobile">Help</a>
+            <a href="./legalnotice.html">Legal Notice</a>
+            <a href="./datenschutz.html">Privacy Policy</a>
+            <a
+              href="#"
+              onclick="
+                logout();
+                return false;
+              "
+              >Log out</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main-wrapper">
+      <section id="sidebar-section" class="sidebar-content">
+        <nav class="sidenav d-flex">
+          <a class="btn-menu d-flex" href="/index.html"
+            ><img
+              src="/assets/icon/menuIcons/summary.svg"
+              alt="Summary Icon"
+            />Summary</a
+          >
+          <a class="btn-menu" href="./add-task.html"
+            ><img
+              src="/assets/icon/menuIcons/add-task.svg"
+              alt="Add Task Icon"
+            />Add Task</a
+          >
+          <a class="btn-menu" href="./board.html"
+            ><img
+              src="/assets/icon/menuIcons/board.svg"
+              alt="Board Icon"
+            />Board</a
+          >
+          <a class="btn-menu" href="./contacts.html"
+            ><img
+              src="/assets/icon/menuIcons/contacts.svg"
+              alt="Contacts Icon"
+            />Contacts</a
+          >
+        </nav>
+        <div class="sidebar-footer d-flex">
+          <a href="/html/datenschutz.html">Privacy Policy</a>
+          <a href="/html/legalnotice.html">Legal Notice</a>
+        </div>
+      </section>
+      <section id="main-content" class="main-content">
+        <div class="contact-menu-content">
+          <div class="contact-menu">
+            <button
+              class="btn-with-icon btn-add-contact"
+              onclick="toggleOverlay('#add-contact-menu')"
+            >
+              <span class="full-text">Add new Contact</span>
+              <svg
+                width="33"
+                height="33"
+                viewBox="0 0 33 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M25.8294 19.1667C25.5134 19.1667 25.2499 19.0602 25.0388 18.8473C24.8277 18.6343 24.7222 18.3704 24.7222 18.0556V14.9445H21.611C21.2962 14.9445 21.0323 14.8376 20.8194 14.6239C20.6064 14.4102 20.4999 14.1454 20.4999 13.8295C20.4999 13.5136 20.6064 13.2501 20.8194 13.0389C21.0323 12.8278 21.2962 12.7223 21.611 12.7223H24.7222V9.61115C24.7222 9.29635 24.829 9.03246 25.0427 8.81948C25.2564 8.60653 25.5212 8.50005 25.8372 8.50005C26.1531 8.50005 26.4166 8.60653 26.6277 8.81948C26.8388 9.03246 26.9444 9.29635 26.9444 9.61115V12.7223H30.0555C30.3703 12.7223 30.6342 12.8291 30.8472 13.0428C31.0601 13.2566 31.1666 13.5214 31.1666 13.8373C31.1666 14.1532 31.0601 14.4167 30.8472 14.6278C30.6342 14.8389 30.3703 14.9445 30.0555 14.9445H26.9444V18.0556C26.9444 18.3704 26.8375 18.6343 26.6238 18.8473C26.4101 19.0602 26.1453 19.1667 25.8294 19.1667ZM12.4999 16.4778C11.0333 16.4778 9.81473 15.9926 8.84435 15.0223C7.874 14.0519 7.38882 12.8334 7.38882 11.3667C7.38882 9.90005 7.874 8.68154 8.84435 7.71118C9.81473 6.7408 11.0333 6.25562 12.4999 6.25562C13.9666 6.25562 15.1851 6.7408 16.1555 7.71118C17.1258 8.68154 17.611 9.90005 17.611 11.3667C17.611 12.8334 17.1258 14.0519 16.1555 15.0223C15.1851 15.9926 13.9666 16.4778 12.4999 16.4778ZM2.94435 27.1667C2.62955 27.1667 2.36566 27.0602 2.15269 26.8473C1.93973 26.6343 1.83325 26.3704 1.83325 26.0556V23.8334C1.83325 23.063 2.0314 22.3612 2.42769 21.7279C2.824 21.0945 3.3666 20.6186 4.05549 20.3C5.62586 19.5815 7.08022 19.0649 8.41855 18.75C9.75691 18.4352 11.1162 18.2779 12.4963 18.2779C13.8765 18.2779 15.237 18.4352 16.5777 18.75C17.9184 19.0649 19.3666 19.5815 20.9222 20.3C21.611 20.6334 22.1573 21.113 22.561 21.7389C22.9647 22.3649 23.1666 23.063 23.1666 23.8334V26.0556C23.1666 26.3704 23.0601 26.6343 22.8472 26.8473C22.6342 27.0602 22.3703 27.1667 22.0555 27.1667H2.94435ZM4.05545 24.9445H20.9444V23.8334C20.9444 23.5149 20.8648 23.2149 20.7055 22.9334C20.5462 22.6519 20.3073 22.4408 19.9888 22.3C18.5518 21.5963 17.2629 21.1204 16.1222 20.8723C14.9814 20.6241 13.774 20.5 12.4999 20.5C11.2259 20.5 10.0184 20.6278 8.87769 20.8834C7.73695 21.1389 6.44066 21.6112 4.98882 22.3C4.69991 22.4408 4.47212 22.6519 4.30545 22.9334C4.13879 23.2149 4.05545 23.5149 4.05545 23.8334V24.9445ZM12.4999 14.2556C13.3221 14.2556 14.0092 13.9797 14.561 13.4278C15.1129 12.876 15.3888 12.1889 15.3888 11.3667C15.3888 10.5445 15.1129 9.85746 14.561 9.30562C14.0092 8.75375 13.3221 8.47782 12.4999 8.47782C11.6777 8.47782 10.9907 8.75375 10.4388 9.30562C9.88695 9.85746 9.61102 10.5445 9.61102 11.3667C9.61102 12.1889 9.88695 12.876 10.4388 13.4278C10.9907 13.9797 11.6777 14.2556 12.4999 14.2556Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+            <div class="contact-list" id="contact-list"></div>
+          </div>
+        </div>
+        <div class="contact-details-content" id="contact-details-content"></div>
+      </section>
+    </main>
+    <div class="blur-overlay" id="blur-overlay" onclick="closeAllMenus()"></div>
+    <div class="contact-side-menu overlay-menu right" id="add-contact-menu">
+      <div class="contact-form-header d-flex">
+        <img src="/assets/icon/logo-white.svg" alt="" />
+        <h2>Add Contact</h2>
+        <h3>Tasks are better with a team!</h3>
+        <svg
+          class="btn-close "
+          onclick="toggleOverlay('#add-contact-menu')"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.0001 17.8642L9.46673 24.389C9.22229 24.6331 8.91118 24.7552 8.5334 24.7552C8.15562 24.7552 7.84451 24.6331 7.60007 24.389C7.35562 24.1449 7.2334 23.8342 7.2334 23.4569C7.2334 23.0796 7.35562 22.7689 7.60007 22.5248L14.1334 16L7.60007 9.47527C7.35562 9.23115 7.2334 8.92045 7.2334 8.54316C7.2334 8.16588 7.35562 7.85518 7.60007 7.61106C7.84451 7.36693 8.15562 7.24487 8.5334 7.24487C8.91118 7.24487 9.22229 7.36693 9.46673 7.61106L16.0001 14.1358L22.5334 7.61106C22.7778 7.36693 23.089 7.24487 23.4667 7.24487C23.8445 7.24487 24.1556 7.36693 24.4001 7.61106C24.6445 7.85518 24.7667 8.16588 24.7667 8.54316C24.7667 8.92045 24.6445 9.23115 24.4001 9.47527L17.8667 16L24.4001 22.5248C24.6445 22.7689 24.7667 23.0796 24.7667 23.4569C24.7667 23.8342 24.6445 24.1449 24.4001 24.389C24.1556 24.6331 23.8445 24.7552 23.4667 24.7552C23.089 24.7552 22.7778 24.6331 22.5334 24.389L16.0001 17.8642Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+      <form id="add-contact-form" class="d-flex" onsubmit="addContact(event)">
+        <div class="contact-form-avatar user-avatar-lg">
+          <img src="/assets/icon/contacts/avatar-placeholder.svg" alt="Avatar" />
+        </div>
+        <div class="input-icon-container">
+          <input
+            type="text"
+            id="add-contact-name"
+            placeholder="Name"
+            required
+          />
+          <img
+            src="/assets/icon/sign/person.svg"
+            alt="name"
+            class="overlay-image"
+          />
+        </div>
+        <div class="input-icon-container">
+          <input
+            type="email"
+            id="add-contact-email"
+            placeholder="E-Mail"
+            required
+          />
+          <img
+            src="/assets/icon/sign/mail.svg"
+            alt="email"
+            class="overlay-image"
+          />
+        </div>
+        <div class="input-icon-container">
+          <input
+            type="text"
+            id="add-contact-phone"
+            placeholder="Phone"
+            required
+          />
+          <img
+            src="/assets/icon/sign/phone.svg"
+            alt="phone"
+            class="overlay-image"
+          />
+        </div>
+        <div class="form-buttons">
+          <button
+            type="button"
+            class="btn-secondary-with-icon"
+            onclick="closeAllMenus()"
+          >
+            Cancel
+            <svg
+              width="14"
+              height="13"
+              viewBox="0 0 14 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.00081 6.50008L12.2438 11.7431M1.75781 11.7431L7.00081 6.50008L1.75781 11.7431ZM12.2438 1.25708L6.99981 6.50008L12.2438 1.25708ZM6.99981 6.50008L1.75781 1.25708L6.99981 6.50008Z"
+                stroke="#647188"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button type="submit" class="btn-with-icon">
+            Create contact
+            <svg
+              width="16"
+              height="12"
+              viewBox="0 0 16 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.55021 9.15L14.0252 0.675C14.2252 0.475 14.4627 0.375 14.7377 0.375C15.0127 0.375 15.2502 0.475 15.4502 0.675C15.6502 0.875 15.7502 1.1125 15.7502 1.3875C15.7502 1.6625 15.6502 1.9 15.4502 2.1L6.25021 11.3C6.05021 11.5 5.81687 11.6 5.55021 11.6C5.28354 11.6 5.05021 11.5 4.85021 11.3L0.550207 7C0.350207 6.8 0.254374 6.5625 0.262707 6.2875C0.27104 6.0125 0.375207 5.775 0.575207 5.575C0.775207 5.375 1.01271 5.275 1.28771 5.275C1.56271 5.275 1.80021 5.375 2.00021 5.575L5.55021 9.15Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="contact-side-menu overlay-menu left" id="edit-contact-menu">
+      <div class="contact-form-header d-flex">
+        <img src="/assets/icon/logo-white.svg" alt="" />
+        <h2>Edit Contact</h2>
+        <svg
+          class="btn-close"
+          onclick="toggleOverlay('#edit-contact-menu')"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.0001 17.8642L9.46673 24.389C9.22229 24.6331 8.91118 24.7552 8.5334 24.7552C8.15562 24.7552 7.84451 24.6331 7.60007 24.389C7.35562 24.1449 7.2334 23.8342 7.2334 23.4569C7.2334 23.0796 7.35562 22.7689 7.60007 22.5248L14.1334 16L7.60007 9.47527C7.35562 9.23115 7.2334 8.92045 7.2334 8.54316C7.2334 8.16588 7.35562 7.85518 7.60007 7.61106C7.84451 7.36693 8.15562 7.24487 8.5334 7.24487C8.91118 7.24487 9.22229 7.36693 9.46673 7.61106L16.0001 14.1358L22.5334 7.61106C22.7778 7.36693 23.089 7.24487 23.4667 7.24487C23.8445 7.24487 24.1556 7.36693 24.4001 7.61106C24.6445 7.85518 24.7667 8.16588 24.7667 8.54316C24.7667 8.92045 24.6445 9.23115 24.4001 9.47527L17.8667 16L24.4001 22.5248C24.6445 22.7689 24.7667 23.0796 24.7667 23.4569C24.7667 23.8342 24.6445 24.1449 24.4001 24.389C24.1556 24.6331 23.8445 24.7552 23.4667 24.7552C23.089 24.7552 22.7778 24.6331 22.5334 24.389L16.0001 17.8642Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+      <form id="edit-contact-form" class="contact-form d-flex"></form>
+    </div>
+    <script src="/js/script.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/overlayToggler.js"></script>
+  </body>
+</html>
