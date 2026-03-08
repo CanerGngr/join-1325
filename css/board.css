@@ -71,6 +71,10 @@
     padding: 4px 16px;
 }
 
+.details-header .ticket-label {
+    font-size: 23px;
+}
+
 #user-story {
     background-color: #FF7A00;
 }
@@ -261,6 +265,7 @@
 .add-task-header {
     height: 156px;
     padding: 24px;
+    font-size: 3rem;
 }
 
 .add-task-main {
@@ -341,13 +346,6 @@
 
 .add-subtask-btn:hover {
     background-color: #f0f0f0;
-}
-
-/* Error Message Styling */
-.error-message {
-    color: #ff3d00;
-    font-size: 0.875rem;
-    margin-top: 4px;
 }
 
 .form-group.error input,

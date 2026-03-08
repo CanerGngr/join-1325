@@ -1,6 +1,6 @@
 .title-input {
   font-size: 32px !important;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .task-form-container {
@@ -40,7 +40,7 @@
 }
 
 .required {
-  color: #ff3d00;
+  color: #E60026;
 }
 
 .optional {
@@ -111,14 +111,14 @@
 
 /* Error Message Styling */
 .error-message {
-  color: #ff3d00;
+  color: #E60026;
   font-size: 0.875rem;
   margin-top: 4px;
 }
 
 .form-group.error input,
 .form-group.error textarea {
-  border-color: #ff3d00;
+  border-color: #E60026;
 }
 
 /* Custom Dropdown with Checkboxes */
@@ -231,7 +231,7 @@
   padding: 6px 12px;
   background-color: #f0f0f0;
   border-radius: 20px;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .selected-user-badge .remove-user {
@@ -265,7 +265,7 @@
   padding: 8px 81px 8px 12px;
   background-color: #f0f0f0;
   border-radius: 8px;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .subtask-item span {
@@ -274,6 +274,7 @@
 }
 
 .subtask {
+  font-size: 1rem;
   margin-left: 18px;
   display: flex;
   align-items: center;

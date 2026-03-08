@@ -29,6 +29,10 @@ body {
 	display: flex !important;
 }
 
+.flex-end {
+	justify-content: flex-end !important;
+}
+
 .text-center {
 	text-align: center;
 }
