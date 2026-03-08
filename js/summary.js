@@ -168,9 +168,6 @@ function scheduleSummaryGreetingHide(greetingElement) {
  */
 function startGreetingIntroAnimation() {
     let greetingElement = getSummaryGreetingElement();
-
-    if (!greetingElement) return;
-
     if (!isSummaryMobileViewport()) {
         resetSummaryGreetingClasses(greetingElement);
         return;
