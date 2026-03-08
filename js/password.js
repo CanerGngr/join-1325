@@ -297,7 +297,7 @@ function isPasswordValid(rules) {
  * @function buildPasswordMessage
  */
 function buildPasswordMessage(rules) {
-  return `<span class="${rules.minLength ? "valid" : "invalid"}">At least 8 characters</span>, <span class="${rules.hasLower ? "valid" : "invalid"}">one lowercase letter</span>, <span class="${rules.hasNumber ? "valid" : "invalid"}">one number</span>`;
+  return `<span class="${rules.minLength ? "valid" : "invalid"}">Password must have at least 8 characters</span>, <span class="${rules.hasLower ? "valid" : "invalid"}">one lowercase letter</span>, <span class="${rules.hasNumber ? "valid" : "invalid"}">one number</span>`;
 }
 
 

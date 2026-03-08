@@ -41,7 +41,7 @@ async function loginUser() {
     const users = snapshot.val();
 
     if (!users) {
-      showError("Email or password is incorrect.");
+      showError("Check your email and password. Please try again.");
       return false;
     }
 
@@ -71,7 +71,7 @@ async function loginUser() {
       window.location.href = "/index.html";
       return true;
     } else {
-      showError("Email or password is incorrect.");
+      showError("Check your email and password. Please try again.");
       return false;
     }
   } catch (error) {

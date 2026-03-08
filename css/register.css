@@ -123,7 +123,7 @@ a {
 	border: none;
 	outline: none;
 	background: transparent;
-	font-size: 1rem;
+	font-size: 19px;
 }
 
 .input-icon-container img {
@@ -169,9 +169,9 @@ a {
 	object-fit: contain;
 }
 .msg-error {
-	color: red;
+	color: #E60026;
 	text-align: left;
-	font-size: 12px;
+	font-size: 16px;
 	display: block;
 	min-height: 18px;
 	line-height: 18px;

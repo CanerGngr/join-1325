@@ -115,7 +115,7 @@ function Loadingscreen() {
 
         const applyFinalLogoState = () => {
           const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-          const isShortViewport = window.matchMedia("(max-height: 765px)").matches;
+          const isShortViewport = window.matchMedia("(max-height: 836px)").matches;
           const isTabletViewport = window.matchMedia("(max-width: 1028px)").matches;
           const isSmallViewport = window.matchMedia("(max-width: 396px)").matches;
           const isVerySmallViewport = window.matchMedia("(max-width: 340px)").matches;

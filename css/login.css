@@ -83,7 +83,6 @@ body {
 	align-items: center;
 	background-color: var(--color-font-white);
 	max-width: 598px;
-	max-height: 448px;
 	border-radius: 30px;
 	box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 	padding: 48px 88px;
@@ -97,7 +96,7 @@ body {
 
 .separator {
 	width: 150px;
-	margin: 16px auto;
+	margin: 16px auto 39px auto;
 	border: 2px solid var(--color-light-blue);
 }
 
@@ -108,7 +107,6 @@ body {
 	justify-content: space-between;
 	gap: 16px;
 	width: 422px; 
-	min-height: 152px;
 	margin: 0 auto;
 }
 
@@ -138,7 +136,7 @@ body {
 	border: none;
 	outline: none;
 	background: transparent;
-	font-size: 1rem;
+	font-size: 19px;
 }
 
 .input-icon-container img {
@@ -291,7 +289,7 @@ footer {
 #error-message {
 	color: #ff3d00;
 	display: block;
-	font-size: 14px;
+	font-size: 16px;
 	min-height: 20px;
 	line-height: 20px;
 	visibility: hidden;
@@ -328,7 +326,7 @@ a {
 @media (max-width: 768px) {
 	:root {
 		--login-content-inline-padding: 38px;
-		--login-header-safe-space: 115px;
+		--login-header-safe-space: 0px;
 	}
 
 	@keyframes logoTransition {
@@ -348,8 +346,8 @@ a {
 			transform: none;
 		}
 	}
-
-@media (max-height: 765px) {
+}
+@media (max-height: 836px) {
 	:root {
 		--login-content-inline-padding: 38px;
 		--login-header-safe-space: 115px;
@@ -371,6 +369,31 @@ a {
 			height: 39px;
 			transform: none;
 		}
+	}
+	.login-header {
+		display: none;
+	}
+	
+	.login-signup-section {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		padding: 24px 0;
+	}
+	
+	.form-field :last-child {
+		margin-bottom: 0;
+	}
+	
+	.login-signup-section .btn-no-icon {
+		width: 98px !important;
+		padding: 10px 16px !important;
+		font-size: 19px !important;
+	}
+	
+	.login-signup-section .login-header-text {
+		font-size: 19px;
 	}
 
 	.login-page-header {
@@ -398,54 +421,27 @@ a {
 	.foot-container a {
 		padding: 0 0 10px;
 	}
-}
+
 
 	.login-logo {
 		width: 64px;
 		height: 78px;
 	}
 
-	.login-header {
-		display: none;
-	}
-
-	.login-signup-section {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 20px;
-		padding: 24px 0;
-	}
-
-	.register-form {
-		max-height: 469px;
-	}
-
-	.form-field :last-child {
-		margin-bottom: 0;
-	}
-
-	.login-signup-section .btn-no-icon {
-		width: 98px !important;
-		padding: 10px 16px !important;
-		font-size: 19px !important;
-	}
-
-	.login-signup-section .login-header-text {
-		font-size: 19px;
-	}
 }
 
 @media (max-width: 630px) {
 	.register-form {
 		padding: 32px 32px;
 		border-radius: 16px;
-		height: 459px;
 	}
 	
 	.main-reg {
-		padding: 16px 0;
 		width: 100%;
+	}
+
+	.separator {
+		margin: 16px auto 24px auto;
 	}
 }
 
@@ -462,7 +458,6 @@ a {
 		width: 100%;
 		max-width: 396px;
 		padding: 32px 16px;
-		height: 469px;
 	}
 
 	.main-reg {
@@ -521,5 +516,11 @@ a {
 	:root {
 		--login-logo-top: 20px;
 		--login-logo-left: 20px;
+	}
+}
+
+@media (max-width: 361px) {
+	#error-message {
+		min-height: 40px;
 	}
 }
