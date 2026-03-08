@@ -57,14 +57,15 @@ a:hover {
         flex-direction: row;
         justify-content: space-around;
         width: 100%;
-        gap: 0;
+        gap: 32px;
     }
 
     .sidenav .btn-menu {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 11px;
+        text-align: center;
+        flex: 1;
         gap: 4px;
         padding: 8px 12px;
     }
@@ -76,5 +77,30 @@ a:hover {
 
     .sidebar-footer {
         display: none !important;
+    }
+}
+
+@media (max-width: 393px) {
+    .sidenav .btn-menu {
+        padding: 8px 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 328px) {
+    .sidenav .btn-menu {
+        padding: 8px 2px;
+    }
+}
+
+@media (max-width: 489px) {
+    .sidenav {
+        gap: 4px;
+    }
+}
+
+@media (max-width: 489px) {
+    .sidenav {
+        gap: 0px;
     }
 }
