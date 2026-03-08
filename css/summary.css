@@ -477,7 +477,7 @@
 
 }
 
-@media (max-height: 725px) and (max-width: 850px) {
+@media (max-height: 725px) or (max-width: 850px) {
     .summary-square {
         height: 90px !important;
     }
