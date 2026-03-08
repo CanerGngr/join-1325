@@ -35,8 +35,9 @@ function onPasswordIconClick() {
   const input = document.getElementById("input-password");
   if (realPassword.length === 0) return;
 
+  const caretPosition = input ? input.selectionStart : null;
   passwordVisible = !passwordVisible;
-  hideWord(input, passwordVisible, realPassword);
+  hideWord(input, passwordVisible, realPassword, caretPosition);
   toggleVisibilityIcon();
 }
 
@@ -62,10 +63,18 @@ function updateConfirmIconByState() {
  * Handles the onInputConfirmPassword workflow.
  * @function onInputConfirmPassword
  */
-function onInputConfirmPassword(input) {
-  const inputConfirmWord = input.value;
-  realConfirmPassword = updateVariable(inputConfirmWord, realConfirmPassword);
-  hideWord(input, confirmVisible, realConfirmPassword);
+function onInputConfirmPassword(input, inputEvent) {
+  const currentDisplay = input.value;
+  const previousDisplay = confirmVisible ? realConfirmPassword : "*".repeat(realConfirmPassword.length);
+  const caretPosition = input.selectionStart;
+  realConfirmPassword = updateRealValueFromInput(
+    realConfirmPassword,
+    previousDisplay,
+    currentDisplay,
+    inputEvent,
+    caretPosition
+  );
+  hideWord(input, confirmVisible, realConfirmPassword, caretPosition);
   updateConfirmIconByState();
 }
 
@@ -76,9 +85,11 @@ function onInputConfirmPassword(input) {
  */
 function onClickConfirmPasswordIcon() {
   const input = document.getElementById("input-password-confirm");
+  if (realConfirmPassword.length === 0) return;
+  const caretPosition = input ? input.selectionStart : null;
   confirmVisible = !confirmVisible;
+  hideWord(input, confirmVisible, realConfirmPassword, caretPosition);
   updateConfirmIconByState();
-  hideWord(input, confirmVisible, realConfirmPassword);
 }
 
 
@@ -144,9 +155,14 @@ function updateVariable(inputWord, realVar) {
  * Handles the hideWord workflow.
  * @function hideWord
  */
-function hideWord(inputWord, isVisible, realWord) {
-  if (realWord.length === 0) return isVisible;
+function hideWord(inputWord, isVisible, realWord, caretPosition = null) {
+  if (!inputWord) return isVisible;
   inputWord.value = isVisible ? realWord : "*".repeat(realWord.length);
+
+  if (caretPosition !== null && document.activeElement === inputWord) {
+    const safeCaret = Math.max(0, Math.min(caretPosition, inputWord.value.length));
+    inputWord.setSelectionRange(safeCaret, safeCaret);
+  }
   return isVisible;
 }
 
@@ -155,13 +171,52 @@ function hideWord(inputWord, isVisible, realWord) {
  * Handles the onPasswordInput workflow.
  * @function onPasswordInput
  */
-function onPasswordInput(input) {
-  const inputPassword = input.value;
-  realPassword = updateVariable(inputPassword, realPassword);
-  hideWord(input, passwordVisible, realPassword);
+function onPasswordInput(input, inputEvent) {
+  const currentDisplay = input.value;
+  const previousDisplay = passwordVisible ? realPassword : "*".repeat(realPassword.length);
+  const caretPosition = input.selectionStart;
+  realPassword = updateRealValueFromInput(
+    realPassword,
+    previousDisplay,
+    currentDisplay,
+    inputEvent,
+    caretPosition
+  );
+  hideWord(input, passwordVisible, realPassword, caretPosition);
   toggleVisibilityIcon();
   setBorderColor("field-password", false);
   validatePasswordTooltip(realPassword);
+}
+
+
+/**
+ * Handles robust real-password updates for masked and visible input modes.
+ * @function updateRealValueFromInput
+ */
+function updateRealValueFromInput(realValue, previousDisplay, currentDisplay, inputEvent, caretPosition) {
+  const oldLen = realValue.length;
+  const newLen = currentDisplay.length;
+  const caret = typeof caretPosition === "number" ? caretPosition : newLen;
+  const inputType = inputEvent.inputType;
+
+  if (inputType.startsWith("delete")) {
+    const removedCount = Math.max(0, oldLen - newLen);
+    const start = Math.max(0, Math.min(caret, realValue.length));
+    const end = Math.max(start, Math.min(start + removedCount, realValue.length));
+    return realValue.slice(0, start) + realValue.slice(end);
+  }
+
+  if (inputType.startsWith("insert")) {
+    const typedData = typeof inputEvent.data === "string"
+      ? inputEvent.data
+      : currentDisplay.slice(Math.max(0, caret - Math.max(0, newLen - oldLen)), caret);
+    const start = Math.max(0, Math.min(caret - typedData.length, realValue.length));
+    const removedCount = Math.max(0, oldLen + typedData.length - newLen);
+    const end = Math.max(start, Math.min(start + removedCount, realValue.length));
+    return realValue.slice(0, start) + typedData + realValue.slice(end);
+  }
+
+  return updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue);
 }
 
 

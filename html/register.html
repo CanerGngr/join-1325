@@ -65,7 +65,7 @@
                       id="input-password"
                       type="text"
                       placeholder="Password"
-                      oninput="onPasswordInput(this)"
+                      oninput="onPasswordInput(this, event)"
                       onblur="onPasswordBlur(this.value)"
                     />
                     <img
@@ -83,7 +83,7 @@
                       id="input-password-confirm"
                       type="text"
                       placeholder="Confirm password"
-                      oninput="onInputConfirmPassword(this)"
+                      oninput="onInputConfirmPassword(this, event)"
                       onblur="isPasswordMatching()"
                     />
                     <img
