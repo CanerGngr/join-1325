@@ -75,6 +75,11 @@
     font-size: 23px;
 }
 
+.details-body h3 {
+    font-size: 21px;
+    color: #42526E;
+}
+
 #user-story {
     background-color: #FF7A00;
 }
