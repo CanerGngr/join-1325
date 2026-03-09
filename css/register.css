@@ -168,6 +168,7 @@ a {
 	height: 100%;
 	object-fit: contain;
 }
+
 .msg-error {
 	color: #E60026;
 	text-align: left;
@@ -249,6 +250,12 @@ input:-webkit-autofill {
    RESPONSIVE DESIGN - MOBILE
    Breakpoint: max-width 1028px 628px 528px 428px 396px 340px
    ============================================================================ */
+
+@media (max-width: 400px) {
+	#password-tooltip {
+		height: 54px;
+	}
+}
 
 @media (max-width: 1028px) {
 
