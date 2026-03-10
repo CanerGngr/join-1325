@@ -96,9 +96,9 @@ function logout() {
 function toggleUserDropdown(event) {
   event.stopPropagation();
   const dropdown = document.getElementById('user-dropdown-menu');
-  if (dropdown) {
-    dropdown.classList.toggle('d-none');
-  }
+  const userAvatar = document.getElementById('user-avatar-name');
+  dropdown.classList.toggle('d-none');
+  userAvatar.classList.toggle('active');
 }
 
 
@@ -108,11 +108,13 @@ function toggleUserDropdown(event) {
 function handleOutsideClick(event) {
   const dropdown = document.getElementById('user-dropdown-menu');
   const userAvatar = document.querySelector('.user-avatar');
+  const userAvatarName = document.getElementById('user-avatar-name');
 
   if (dropdown && !dropdown.classList.contains('d-none')) {
     // Check if click is outside both dropdown and avatar
     if (!dropdown.contains(event.target) && !userAvatar.contains(event.target)) {
       dropdown.classList.add('d-none');
+      userAvatarName.classList.remove('active');
     }
   }
 }

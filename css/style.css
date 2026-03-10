@@ -181,6 +181,14 @@ header {
 	display: none;
 }
 
+.user-avatar:hover .user-avatar-name {
+	background-color: #f0f8ff;
+}
+
+.user-avatar-name.active {
+	background-color: #f0f8ff;
+}
+
 /* Mobile */
 
 @media (max-width: 1493px) {
