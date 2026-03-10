@@ -2,6 +2,19 @@ button {
 	cursor: pointer;
 }
 
+.error-message {
+	color: #454545;
+	text-align: left;
+	font-size: 1rem;
+	display: block;
+	min-height: 18px;
+	line-height: 18px;
+}
+
+.form-group.error .error-message {
+	color: #E60026;
+}
+
 .btn-add {
 	color: white;
 	padding: 0 10px;

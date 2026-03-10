@@ -109,13 +109,6 @@
   right: 42px;
 }
 
-/* Error Message Styling */
-.error-message {
-  color: #E60026;
-  font-size: 0.875rem;
-  margin-top: 4px;
-}
-
 .form-group.error input,
 .form-group.error textarea {
   border-color: #E60026;

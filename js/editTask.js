@@ -105,7 +105,7 @@ function getEditTaskTemplate(task) {
         </svg>
       </div>
       <form id="edit-task-form" class="task-form" onsubmit="submitEditTask(event, '${task.id}')">
-            <div class="form-group">
+            <div class="form-group" id="edit-title-form-group">
               <input
                 type="text"
                 class="form-input title-input"
@@ -114,8 +114,9 @@ function getEditTaskTemplate(task) {
                 placeholder="Enter a title"
                 value="${task.title}"
                 required
+                onblur="handleTaskTitleBlur(true)"
               />
-              <div class="error-message d-none">This field is required</div>
+              <div class="error-message">This field is required</div>
             </div>
 
             <div class="form-group">
@@ -129,7 +130,7 @@ function getEditTaskTemplate(task) {
               >${task.description || ''}</textarea>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="edit-date-form-group">
               <label for="task-date">Due date</label>
               <input
                 type="date"
@@ -137,8 +138,9 @@ function getEditTaskTemplate(task) {
                 name="due_date"
                 id="edit-task-date"
                 value="${task.dueDate}"
+                onblur="handleTaskDateBlur(true)"
               />
-              <div class="error-message d-none">This field is required</div>
+              <div class="error-message">This field is required</div>
             </div>
 
             <div class="form-group">
@@ -335,6 +337,9 @@ function getEditTaskTemplate(task) {
  */
 async function submitEditTask(event, taskId) {
   event.preventDefault();
+  if (!validateTaskForm(true)) {
+    return;
+  }
   
   // Get form values
   const title = document.getElementById("edit-task-title").value.trim();

@@ -172,7 +172,7 @@ a {
 .msg-error {
 	color: #E60026;
 	text-align: left;
-	font-size: 16px;
+	font-size: 1rem;
 	display: block;
 	min-height: 18px;
 	line-height: 18px;

@@ -89,9 +89,9 @@
                   name="task_title"
                   placeholder="Enter a title"
                   required
-                  onblur="handleTitleBlur()"
+                  onblur="handleTaskTitleBlur(false)"
                 />
-                <div class="error-message d-none" id="title-error-message">
+                <div class="error-message" id="title-error-message">
                   This field is required
                 </div>
               </div>
@@ -116,9 +116,9 @@
                   name="due_date"
                   id="task-date"
                   placeholder="dd/mm/yyyy"
-                  onblur="handleDateBlur()"
+                  onblur="handleTaskDateBlur(false)"
                 />
-                <div class="error-message d-none" id="date-error-message">
+                <div class="error-message" id="date-error-message">
                   This field is required
                 </div>
               </div>
@@ -377,6 +377,7 @@
     <script src="/js/subtask.js"></script>
     <script src="/scrDB/taskDB.js"></script>
     <script src="/scrDB/dbConfig.js"></script>
+    <script src="/js/taskFormValidation.js"></script>
     <script src="/js/addTask.js"></script>
   </body>
 </html>

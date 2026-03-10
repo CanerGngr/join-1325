@@ -276,27 +276,10 @@ function clearForm() {
   let form = document.getElementById("task-form");
   form.reset();
 
-  clearFormErrors();
+  clearTaskFormErrors(false);
   clearSubtasks();
   clearSelectedUsers();
   clearCategory();
-}
-
-
-/**
- * Handles the clearFormErrors workflow.
- * @function clearFormErrors
- */
-function clearFormErrors() {
-  let titleError = document.getElementById("title-error-message");
-  let dateError = document.getElementById("date-error-message");
-  let titleGroup = document.getElementById("title-form-group");
-  let dateGroup = document.getElementById("date-form-group");
-
-  titleError.classList.add("d-none");
-  dateError.classList.add("d-none");
-  titleGroup.classList.remove("error");
-  dateGroup.classList.remove("error");
 }
 
 
@@ -324,57 +307,6 @@ function clearCategory() {
 }
 
 
-/**
- * Handles the validateForm workflow.
- * @function validateForm
- */
-function validateForm() {
-  let isValid = validateTitleField();
-  isValid = validateDateField() && isValid;
-  return isValid;
-}
-
-
-/**
- * Handles the validateTitleField workflow.
- * @function validateTitleField
- */
-function validateTitleField() {
-  let title = document.getElementById("task-title");
-  let titleGroup = document.getElementById("title-form-group");
-  let titleError = document.getElementById("title-error-message");
-
-  if (title.value.trim() === "") {
-    titleGroup.classList.add("error");
-    titleError.classList.remove("d-none");
-    return false;
-  } else {
-    titleGroup.classList.remove("error");
-    titleError.classList.add("d-none");
-    return true;
-  }
-}
-
-
-/**
- * Handles the validateDateField workflow.
- * @function validateDateField
- */
-function validateDateField() {
-  let date = document.getElementById("task-date");
-  let dateGroup = document.getElementById("date-form-group");
-  let dateError = document.getElementById("date-error-message");
-
-  if (date.value === "") {
-    dateGroup.classList.add("error");
-    dateError.classList.remove("d-none");
-    return false;
-  } else {
-    dateGroup.classList.remove("error");
-    dateError.classList.add("d-none");
-    return true;
-  }
-}
 
 
 /**
@@ -384,7 +316,7 @@ function validateDateField() {
 async function saveTask(event) {
   event.preventDefault();
 
-  if (validateForm()) {
+  if (validateTaskForm(false)) {
     let newTask = createTaskFromForm();
     await addNewTask(newTask);
     handleTaskSaveSuccess();
@@ -512,44 +444,6 @@ function handleTaskSaveSuccess() {
 function showSuccessOverlay() {
   let overlay = document.getElementById("success-overlay");
   overlay.classList.remove("d-none");
-}
-
-
-/**
- * Handles the handleTitleBlur workflow.
- * @function handleTitleBlur
- */
-function handleTitleBlur() {
-  let titleInput = document.getElementById("task-title");
-  let titleGroup = document.getElementById("title-form-group");
-  let titleError = document.getElementById("title-error-message");
-
-  if (titleInput.value.trim() === "") {
-    titleGroup.classList.add("error");
-    titleError.classList.remove("d-none");
-  } else {
-    titleGroup.classList.remove("error");
-    titleError.classList.add("d-none");
-  }
-}
-
-
-/**
- * Handles the handleDateBlur workflow.
- * @function handleDateBlur
- */
-function handleDateBlur() {
-  let dateInput = document.getElementById("task-date");
-  let dateGroup = document.getElementById("date-form-group");
-  let dateError = document.getElementById("date-error-message");
-
-  if (dateInput.value === "") {
-    dateGroup.classList.add("error");
-    dateError.classList.remove("d-none");
-  } else {
-    dateGroup.classList.remove("error");
-    dateError.classList.add("d-none");
-  }
 }
 
 
