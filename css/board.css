@@ -48,7 +48,7 @@
     gap: 24px;
     overflow-y: auto;
     min-height: 0;
-    max-height: calc(100vh - 267px);
+    max-height: calc(100vh - 266px);
 }
 
 .task-cards {
@@ -223,17 +223,6 @@
     margin-bottom: 16px;
 }
 
-.form-group .form-input,
-.form-group select {
-    padding: 12px 16px;
-    border: 2px solid #d1d1d1;
-    border-width: 0 0 2px 0;
-    font-size: 1rem;
-    color: #2a3647;
-    background-color: #ffffff;
-    transition: border-color 0.3s ease;
-}
-
 .form-group textarea {
     border-radius: 0 10px 10px 10px;
     padding: 12px 16px;
@@ -339,11 +328,6 @@
     position: relative;
 }
 
-.subtask-input-container input {
-    flex: 1;
-    padding-right: 48px;
-}
-
 .add-subtask-btn {
     position: absolute;
     right: 12px;
@@ -441,9 +425,6 @@
     z-index: 1003;
   }
 
-  .sidebar-content {
-    z-index: 1003;
-  }
 }
 
 
@@ -453,21 +434,28 @@
         margin-left: 0;
         max-height: calc(100vh - 176px);
     }
-
+    
     .kanban {
         max-height: calc(100vh - 330px);
     }
-
+    
     .main-content {
         padding: 0 16px;
     }
-
+    
+    .sidebar-content {
+      z-index: 1003;
+    }
 }
 
 @media (max-width: 850px) {
     .overlay-menu.open {
         top: 80px;
         height: calc(100svh - 160px);
+    }
+
+    .main-wrapper {
+        max-height: calc(100vh - 160px);
     }
 }
 

@@ -49,6 +49,7 @@ button {
 }
 
 .btn-secondary-with-icon {
+	margin: 1px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -61,6 +62,7 @@ button {
 }
 
 .btn-secondary-with-icon:hover {
+	margin: 0;
 	border: 2px solid #4589ff;
 	color: #4589ff;
 }

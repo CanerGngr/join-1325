@@ -50,6 +50,7 @@
 
 /* Input Field Styles */
 .form-group .form-input {
+  width: 100%;
   padding: 12px 16px;
   border: 2px solid #d1d1d1;
   border-width: 0 0 2px 0;
@@ -320,7 +321,6 @@
     }
 
     .form-actions {
-      position: absolute;
       background-color: #FFFFFF;
       bottom: 0;
       left: 0;
