@@ -210,6 +210,10 @@ button {
 	background-color: #e3eeff;
 }
 
+.btn-close-white:hover path {
+	fill: #005dff;
+}
+
 .text-btn-with-icon {
 	background: none;
 	border: none;
