@@ -508,8 +508,8 @@ function createDetailsTemplate(
         <div class="details-priority">
           <h3>Priority:</h3>
           <div class="task-priority">
-            <img src="${priorityIcon}" alt="${priorityLabel}" class="priority-icon">
-            <span>${priorityLabel}</span>
+          <span>${priorityLabel}</span>
+          <img src="${priorityIcon}" alt="${priorityLabel}" class="priority-icon">
           </div>
         </div>
         <div class="details-assigned">
