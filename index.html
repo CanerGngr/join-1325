@@ -19,7 +19,7 @@
       function handleSummaryResize() {}
     </script>
   </head>
-  <body onload="initSummary()" onresize="handleSummaryResize()">
+  <body onload="initSummary(); getUserAvatar();" onresize="handleSummaryResize()">
     <header class="header d-flex">
       <a href="/index.html"
         ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
@@ -30,7 +30,7 @@
           <span class="help-icon-svg"></span
         ></a>
         <div class="user-avatar" onclick="toggleUserDropdown(event)">
-          <div class="user-avatar-name">SM</div>
+          <div class="user-avatar-name" id="user-avatar-name">SM</div>
           <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
             <a href="/html/help.html" class="hide-mobile">Help</a>
             <a href="/html/legalnotice.html">Legal Notice</a>

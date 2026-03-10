@@ -21,6 +21,46 @@ function checkSession() {
   return true;
 }
 
+/**
+ * Retrieves the user's initials from their name for avatar display.
+ * @param {string} name - The full name of the user.
+ * @returns {string} The initials derived from the user's name.
+ */
+function getUserAvatar() {
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+  if (isLoggedIn || isLoggedIn == 'true') {
+    const userName = sessionStorage.getItem('userName');
+    const userAvatarNameElement = document.getElementById('user-avatar-name');
+    userAvatarNameElement.textContent = getInitials(userName);
+  }
+
+}
+
+
+/**
+ * Handles the getInitials workflow.
+ * @function getInitials
+ */
+function getInitials(name) {
+  const nameParts = name.trim().split(/(?=[A-Z])/);
+  if (nameParts.length == 1) {
+    return (
+      nameParts[0].charAt(0).toUpperCase()
+    );
+  }
+  if (nameParts.length >= 2) {
+    return (
+      nameParts[0].charAt(0).toUpperCase() +
+      nameParts[nameParts.length - 1].charAt(0).toUpperCase()
+    );
+  } else {
+    return nameParts[0].length >= 2
+      ? nameParts[0].charAt(0).toUpperCase() +
+          nameParts[0].charAt(1).toUpperCase()
+      : nameParts[0].charAt(0).toUpperCase();
+  }
+}
+
 
 /**
  * Initializes session-protected pages
@@ -81,10 +121,58 @@ function handleOutsideClick(event) {
 document.onclick = handleOutsideClick;
 
 // Initialize session check on page load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initProtectedPage);
-} else {
-  initProtectedPage();
+initProtectedPage();
+
+window.__joinApplyFinalLogoState = false;
+
+/**
+ * Applies final logo position and size for skipped login animation.
+ */
+function applyFinalLoginLogoState() {
+  const logoElement = document.getElementById("loader-image-white");
+  const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+  const isShortViewport = window.matchMedia("(max-height: 836px)").matches;
+  const isTabletViewport = window.matchMedia("(max-width: 1028px)").matches;
+  const isSmallViewport = window.matchMedia("(max-width: 396px)").matches;
+  const isVerySmallViewport = window.matchMedia("(max-width: 340px)").matches;
+  const isLowHeightViewport = window.matchMedia("(max-height: 965px)").matches;
+  let finalTop = "80px";
+  let finalLeftOffset = "77px";
+
+  if (isTabletViewport) {
+    finalTop = "37px";
+    finalLeftOffset = "38px";
+  }
+
+  if (isSmallViewport) {
+    finalLeftOffset = "32px";
+  }
+
+  if (isVerySmallViewport) {
+    finalLeftOffset = "22px";
+  }
+
+  if (isLowHeightViewport) {
+    finalTop = "20px";
+    finalLeftOffset = "20px";
+  }
+
+  const finalWidth = isMobileViewport ? (isShortViewport ? "32px" : "64px") : "101px";
+  const finalHeight = isMobileViewport ? (isShortViewport ? "39px" : "78px") : "122px";
+
+  logoElement.style.position = "absolute";
+  logoElement.style.top = finalTop;
+  logoElement.style.left = `calc((100vw - min(100vw, 1920px)) / 2 + ${finalLeftOffset})`;
+  logoElement.style.width = finalWidth;
+  logoElement.style.height = finalHeight;
+  logoElement.style.transform = "none";
+}
+
+/**
+ * Handles resize events on login page.
+ */
+function handleLoginLogoResize() {
+  window.requestAnimationFrame(applyFinalLoginLogoState);
 }
 
 /**
@@ -102,7 +190,6 @@ function Loadingscreen() {
 
     // Show logo in final position instead of hiding completely
     const loader = document.getElementById("loader");
-    if (loader) {
       // Set transparent background (skip background animation)
       loader.style.background = "transparent";
       loader.innerHTML = getLoadingscreen();
@@ -112,58 +199,8 @@ function Loadingscreen() {
       if (logoElement) {
         // Disable CSS animations first
         logoElement.style.animation = "none";
-
-        const applyFinalLogoState = () => {
-          const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-          const isShortViewport = window.matchMedia("(max-height: 836px)").matches;
-          const isTabletViewport = window.matchMedia("(max-width: 1028px)").matches;
-          const isSmallViewport = window.matchMedia("(max-width: 396px)").matches;
-          const isVerySmallViewport = window.matchMedia("(max-width: 340px)").matches;
-          const isLowHeightViewport = window.matchMedia("(max-height: 965px)").matches;
-          let finalTop = "80px";
-          let finalLeftOffset = "77px";
-
-          if (isTabletViewport) {
-            finalTop = "37px";
-            finalLeftOffset = "38px";
-          }
-
-          if (isSmallViewport) {
-            finalLeftOffset = "32px";
-          }
-
-          if (isVerySmallViewport) {
-            finalLeftOffset = "22px";
-          }
-
-          if (isLowHeightViewport) {
-            finalTop = "20px";
-            finalLeftOffset = "20px";
-          }
-
-          const finalWidth = isMobileViewport ? (isShortViewport ? "32px" : "64px") : "101px";
-          const finalHeight = isMobileViewport ? (isShortViewport ? "39px" : "78px") : "122px";
-
-          // Position and style in final state
-          logoElement.style.position = "absolute";
-          logoElement.style.top = finalTop;
-          logoElement.style.left = `calc((100vw - min(100vw, 1920px)) / 2 + ${finalLeftOffset})`;
-          logoElement.style.width = finalWidth;
-          logoElement.style.height = finalHeight;
-          logoElement.style.transform = "none";
-        };
-
-        applyFinalLogoState();
-
-        if (window.__joinLoginLogoResizeHandler) {
-          window.removeEventListener("resize", window.__joinLoginLogoResizeHandler);
-        }
-
-        window.__joinLoginLogoResizeHandler = () => {
-          window.requestAnimationFrame(applyFinalLogoState);
-        };
-
-        window.addEventListener("resize", window.__joinLoginLogoResizeHandler);
+        window.__joinApplyFinalLogoState = true;
+        applyFinalLoginLogoState();
 
         // Set final color (blue) for the paths and disable their animations
         let paths = logoElement.children;
@@ -175,7 +212,6 @@ function Loadingscreen() {
           }
         }
       }
-    }
     return;
   }
     loader.innerHTML = getLoadingscreen();

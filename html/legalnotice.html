@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../css/color.css" />
     <title>Legal Notice</title>
   </head>
-  <body onload="initStaticPages()">
+  <body onload="initStaticPages(); getUserAvatar();">
     <header class="header-fix">
       <a href="/login.html"
         ><img src="../assets/icon/logo-white.svg" alt="Logo" class="logo-img"
@@ -30,7 +30,7 @@
           <span class="help-icon-svg"></span
         ></a>
         <div class="user-avatar" onclick="toggleUserDropdown(event)">
-          <div class="user-avatar-name">SM</div>
+          <div class="user-avatar-name" id="user-avatar-name">SM</div>
           <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
             <a href="./help.html" class="hide-mobile">Help</a>
             <a href="./legalnotice.html">Legal Notice</a>

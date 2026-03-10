@@ -132,25 +132,6 @@ function getAvatarColor(name) {
 
 
 /**
- * Handles the getInitials workflow.
- * @function getInitials
- */
-function getInitials(name) {
-  const nameParts = name.trim().split(" ");
-  if (nameParts.length >= 2) {
-    return (
-      nameParts[0].charAt(0).toUpperCase() +
-      nameParts[nameParts.length - 1].charAt(0).toUpperCase()
-    );
-  } else {
-    return nameParts[0].length >= 2
-      ? nameParts[0].charAt(0).toUpperCase() +
-          nameParts[0].charAt(1).toUpperCase()
-      : nameParts[0].charAt(0).toUpperCase();
-  }
-}
-
-/**
  * Handles the groupContactsByAlphabet workflow.
  * @function groupContactsByAlphabet
  */
