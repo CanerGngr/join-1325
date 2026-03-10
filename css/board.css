@@ -80,6 +80,13 @@
     color: #42526E;
 }
 
+.details-due-date, .details-priority {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+}
+
 #user-story {
     background-color: #FF7A00;
 }
@@ -116,6 +123,8 @@
 .task-priority {
     display: flex;
     align-items: center;
+    gap: 10px;
+    padding: 4px 18px;
 }
 
 .priority-icon {
@@ -276,7 +285,7 @@
 .add-task-main {
     padding: 24px;
     overflow-y: auto;
-    height: calc(100% - 156px);
+    height: calc(100% - 176px);
 }
 
 .progress-bar {
@@ -356,7 +365,7 @@
 .form-group.error input,
 .form-group.error select,
 .form-group.error textarea {
-    border-color: #ff3d00;
+    border-color: #E60026;
 }
 
 .optional {
@@ -424,7 +433,7 @@
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     background: white;
     border-radius: 0 !important;
-    height: calc(100svh - 80px);
+    height: calc(100svh - 96px);
     width: 100vw;
   }
 
