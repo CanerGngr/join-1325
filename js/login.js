@@ -141,11 +141,6 @@ function updateRememberMeCheckboxState() {
   const emailInput = document.getElementById("email-input");
   const passwordInput = document.getElementById("password-input");
   const rememberMeCheckbox = document.getElementById("remember-me-checkbox");
-
-  if (!emailInput || !passwordInput || !rememberMeCheckbox) {
-    return;
-  }
-
   const isEmailValid = emailInput.checkValidity() && emailInput.value.trim() !== "";
   const isPasswordValid = passwordInput.value.trim() !== "";
   const shouldEnableCheckbox = isEmailValid && isPasswordValid;
@@ -158,42 +153,18 @@ function updateRememberMeCheckboxState() {
 }
 
 
-/**
- * Initializes the login form handlers
- * Binds submit and input handlers to login form elements
- * Prevents default form submit behavior
- *
- * @function initLoginForm
- * @returns {void}
- *
+/** * Handles the form submission for user login.
+ * Prevents default form submission behavior and calls loginUser function.
+ * @param {Event} event - The form submission event
+ * @returns {Promise<void>}
  * @example
- * // Called automatically when page loads
- * initLoginForm();
+ * // Triggered by form submit event in HTML
+ * <form onsubmit="handleSubmit(event)">
  */
-function initLoginForm() {
-  const loginForm = document.getElementById("log-in-form");
-  const emailInput = document.getElementById("email-input");
-  const passwordInput = document.getElementById("password-input");
-  const handleSubmit = async (event) => {
+async function handleSubmit(event) {
     event.preventDefault();
     await loginUser();
   };
 
-  if (loginForm) {
-    loginForm.addEventListener("submit", handleSubmit);
-  }
 
-  if (emailInput) {
-    emailInput.oninput = updateRememberMeCheckboxState;
-    emailInput.onblur = updateRememberMeCheckboxState;
-  }
-
-  if (passwordInput) {
-    passwordInput.oninput = updateRememberMeCheckboxState;
-    passwordInput.onblur = updateRememberMeCheckboxState;
-  }
-
-  updateRememberMeCheckboxState();
-}
-
-initLoginForm();
+updateRememberMeCheckboxState();

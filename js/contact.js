@@ -482,7 +482,11 @@ function openDropdownMenuMobile(event) {
   dropdownMenu.classList.toggle("open");
 }
 
-document.addEventListener("click", (event) => {
+/**
+ * Handles body click interactions for contact page.
+ * @param {Event} event - Click event from body.
+ */
+function handleContactBodyClick(event) {
   const dropdownMenu = document.getElementById("dropdown-menu-mobile");
   if (!dropdownMenu || !dropdownMenu.classList.contains("open")) {
     return;
@@ -491,4 +495,4 @@ document.addEventListener("click", (event) => {
   if (!event.target.closest(".mobile-contact-actions")) {
     dropdownMenu.classList.remove("open");
   }
-});
+}

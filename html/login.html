@@ -25,7 +25,7 @@
     <div id="loader" class="loader"></div>
     <main class="login-main">
       <section class="login-form-section">
-        <form id="log-in-form" class="register-form" action="" novalidate>
+        <form id="log-in-form" class="register-form" onsubmit="handleSubmit(event)"  novalidate>
           <div>
             <div class="head-reg">
               <span>Log in</span>
@@ -36,6 +36,7 @@
                 <div class="field-container">
                   <div class="input-icon-container">
                     <input
+                      oninput="updateRememberMeCheckboxState()"
                       id="email-input"
                       type="email"
                       placeholder="Email"
@@ -47,6 +48,7 @@
                 <div class="field-container">
                   <div class="input-icon-container">
                     <input
+                      oninput="updateRememberMeCheckboxState()"
                       id="password-input"
                       type="password"
                       placeholder="Password"
