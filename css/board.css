@@ -285,6 +285,7 @@
 }
 
 .add-task-header {
+    color: #000000;
     height: 156px;
     padding: 24px;
     font-size: 3rem;
@@ -441,7 +442,7 @@
   }
 
   header {
-    z-index: 101;
+    z-index: 1001;
   }
 
 }
