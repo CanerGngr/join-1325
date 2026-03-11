@@ -317,12 +317,16 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
                 </div>
                 </div>
         </div>
-        <div class="contact-details">
         <h2 id="contact-header-title-desktop">Contact Information</h2>
-            <h3>Email</h3>
-            <a href="mailto:${contact.email}">${contact.email}</a>
-            <h3>Phone</h3>
-            <a href="tel:${contact.phone}">${contact.phone}</a>
+        <div class="contact-details">
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:${contact.email}">${contact.email}</a>
+            </div>
+            <div>
+              <h3>Phone</h3>
+              <a href="tel:${contact.phone}">${contact.phone}</a>
+            </div>
         </div>
         <button class="back-btn-mobile" onclick="backToContactList()" aria-label="Back" type="button"></button>
             `;

@@ -115,14 +115,22 @@
 
 .contact-form-header {
   background: #005DFF;
-}
-
-.contact-form-header {
+  color: #FFFFFF;
   flex-direction: column;
   align-items: center;
   padding: 91px 0;
   margin-bottom: 21px;
-  gap: 8px;
+  gap: 12px;
+}
+
+.contact-form-header h2 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.contact-form-header h3 {
+  font-size: 27px;
+  font-weight: 400;
 }
 
 .contact-side-menu form {
@@ -170,20 +178,26 @@
   padding: 72px 62px;
 }
 
-.contact-details h1 {
+.contact-details-content h1 {
   font-size: 47px;
-  font-weight: 400;
+  font-weight: 600;
 }
 
-.contact-details h2{
+.contact-details-content h2{
   font-size: 23px;
   font-weight: 700;
   margin-bottom: 21px;
 }
 
-.contact-details h3 {
+.contact-details-content h3 {
   font-size: 16px;
   font-weight: 700;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 ::-webkit-scrollbar {
@@ -198,7 +212,7 @@
 
 }
 
-.contact-actions {
+.desktop-contact-actions {
   display: flex;
   gap: 16px;
   margin-top: 8px;
@@ -276,7 +290,11 @@
 
   .contact-form-header {
     margin-bottom: 0;
-}
+  }
+
+  .contact-form-header img {
+    display: none;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -310,6 +328,17 @@
     z-index: 1;
     display: none;
     padding: 64px 16px;
+  }
+
+  .contact-details-content h1 {
+    font-size: 33px;
+    font-weight: 600;
+  }
+
+  .contact-details-content h3{
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 12px;
   }
 
   .back-btn-mobile {
