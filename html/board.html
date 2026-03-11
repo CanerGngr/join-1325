@@ -127,6 +127,7 @@
         <div class="kanban d-flex">
           <div
             id="todo"
+            data-status="To Do"
             class="kanban-column"
             ondragover="handleDragOver(event)"
             ondragenter="handleDragEnter(this)"
@@ -159,6 +160,7 @@
           </div>
           <div
             id="in-progress"
+            data-status="In Progress"
             class="kanban-column"
             ondragover="handleDragOver(event)"
             ondragenter="handleDragEnter(this)"
@@ -191,6 +193,7 @@
           </div>
           <div
             id="await-feedback"
+            data-status="Awaiting Feedback"
             class="kanban-column"
             ondragover="handleDragOver(event)"
             ondragenter="handleDragEnter(this)"
@@ -223,6 +226,7 @@
           </div>
           <div
             id="done"
+            data-status="Done"
             class="kanban-column"
             ondragover="handleDragOver(event)"
             ondragenter="handleDragEnter(this)"

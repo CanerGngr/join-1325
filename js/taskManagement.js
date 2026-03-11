@@ -303,7 +303,7 @@ function renderTasksInColumns() {
     let task = tasks[i];
     const containerId = task.status + "-cards";
     const container = document.getElementById(containerId);
-    container.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
+    container.innerHTML = container.innerHTML += generateTaskCardHTML(task);
   }
 }
 
@@ -314,7 +314,12 @@ function renderTasksInColumns() {
  */
 function clearColumnTaskCards(column) {
   const container = document.getElementById(column.id + "-cards");
-  container.innerHTML = "";
+  console.log("Clearing column:", column.id);
+  container.innerHTML = `
+  <div class="empty-task-container">
+    <p>No tasks ${column.dataset.status}</p>
+  </div>
+  `;
 }
 
 

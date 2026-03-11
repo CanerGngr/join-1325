@@ -44,11 +44,12 @@
   color: #a8a8a8;
   margin: 8px 0;
 }
+
 .kanban {
     gap: 24px;
     overflow-y: auto;
     min-height: 0;
-    max-height: calc(100vh - 266px);
+    max-height: calc(100vh - 267px);
 }
 
 .task-cards {
@@ -56,7 +57,25 @@
     flex-direction: column;
 }
 
+.empty-task-container:not(:only-child) {
+    display: none;
+}
+
+.empty-task-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a8a8a8;
+    background: #e7e7e7;
+    padding: 0 16px;
+    height: 3rem;
+    border: 1px dashed #a8a8a8;
+    border-radius: 10px;
+}
+
 .kanban-header {
+    font-size: 23px;
+    color: #42526E;
     justify-content: space-between;
     align-items: center;
     margin: 0 8px 20px;
