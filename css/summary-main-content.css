@@ -1,7 +1,6 @@
 .main-wrapper {
     flex-grow: 1;
-    max-width: 1920px;
-    width: 100vw;
+    max-width: 1688px;
     display: flex;
     justify-content: center;
     align-items: center;

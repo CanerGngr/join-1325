@@ -1,7 +1,7 @@
 .main-wrapper {
     position: relative;
     flex-grow: 1;
-    max-width: 1920px;
+    max-width: 1688px;
     margin-left: 232px;
     height: calc(100vh - 176px);
 }

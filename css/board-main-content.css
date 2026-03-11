@@ -1,13 +1,12 @@
 .main-wrapper {
     flex-grow: 1;
-    max-width: 1920px;
+    max-width: 1688px;
     margin-left: 232px;
     display: flex;
     flex-direction: column;
 }
 
 .main-content {
-    margin: 72px 64px 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;

@@ -314,7 +314,6 @@ function renderTasksInColumns() {
  */
 function clearColumnTaskCards(column) {
   const container = document.getElementById(column.id + "-cards");
-  console.log("Clearing column:", column.id);
   container.innerHTML = `
   <div class="empty-task-container">
     <p>No tasks ${column.dataset.status}</p>

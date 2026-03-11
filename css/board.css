@@ -46,6 +46,7 @@
 }
 
 .kanban {
+    padding: 0 4rem;
     gap: 24px;
     overflow-y: auto;
     min-height: 0;
@@ -79,7 +80,6 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 8px 20px;
-    max-width: fit-content;
     gap: 12px;
 }
 
@@ -308,7 +308,7 @@
 .main-content-header {
     gap: 20px;
     align-items: center;
-    margin-bottom: 48px;
+    margin: 72px 64px 48px;
 }
 
 .subtask-container {
@@ -397,7 +397,7 @@
     width: 518px;
 }
 
-@media (max-width: 1493px) {
+@media (max-width: 1519px) {
     .kanban {
         flex-direction: column;
     }
