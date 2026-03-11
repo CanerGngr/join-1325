@@ -21,23 +21,110 @@
     gap: 10px;
 }
 
-.sidebar-footer,
-a {
-    font-size: 16px;
+.btn-menu {
+    padding: 8px 30px;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
     color: rgba(66, 82, 110, 1);
-    text-align: left;
-    flex-direction: column;
-    gap: 15px;
-    padding: 8px 0;
-    text-decoration: none;
 }
 
-.sidebar-footer
-a:hover {
+.btn-menu:hover {
+    background-color: #e3eeff;
+}
+
+.btn-menu:active {
+    background-color: #d2e3ff;
+}
+
+.btn-menu img {
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar-footer {
+    font-size: 16px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-footer a {
+    font-size: 16px;
+    color: rgba(66, 82, 110, 1);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding: 8px;
+}
+
+/**
+ * Selected/active link styling
+ * Highlights the current page in navigation
+ * Used for Privacy Policy and Legal Notice links
+ */
+.sidebar-footer a.selected-link {
+	background-color: var(--color-light-blue);
+	padding: 8px;
+	border-radius: 10px;
+	width: 126px;
+	color: var(--color-font-white);
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.sidebar-footer a:hover {
     color: #005DFF;
 }
 
-/* Responsive: Tablet/Mobile - Bottom Navigation ab 1024px */
+/* Desktop: Hide mobile sidebar links */
+@media (min-width: 1026px) {
+    .sidebar-links {
+        display: none;
+    }
+}
+
+/* Tablet/Mobile: Static page bottom navigation */
+@media (max-width: 1025px) {
+    .empty-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    .btn-menu {
+        flex-direction: column;
+    }
+
+    .sidebar-links {
+        display: flex;
+        gap: 16px;
+    }
+
+    .sidebar-links a {
+        font-size: 16px;
+        color: #42526e;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+        padding: 8px;
+    }
+
+    .sidebar-links a:hover {
+        color: #4589FF;
+    }
+}
+
+/* Tablet/Mobile: Bottom Navigation */
 @media (max-width: 1024px) {
     .sidebar-content {
         display: flex;
@@ -50,7 +137,7 @@ a:hover {
         flex-direction: row;
         padding: 8px 16px;
         justify-content: center;
-        z-index: 100;
+        z-index: 1003;
     }
 
     .sidenav {
@@ -80,6 +167,24 @@ a:hover {
     }
 }
 
+@media (max-width: 850px) {
+    .sidebar-links {
+        padding-right: 8px;
+    }
+}
+
+@media (max-width: 489px) {
+    .sidenav {
+        gap: 0px;
+    }
+}
+
+@media (max-width: 428px) {
+    .btn-menu {
+        padding: 8px 8px;
+    }
+}
+
 @media (max-width: 393px) {
     .sidenav .btn-menu {
         padding: 8px 8px;
@@ -90,17 +195,5 @@ a:hover {
 @media (max-width: 328px) {
     .sidenav .btn-menu {
         padding: 8px 2px;
-    }
-}
-
-@media (max-width: 489px) {
-    .sidenav {
-        gap: 4px;
-    }
-}
-
-@media (max-width: 489px) {
-    .sidenav {
-        gap: 0px;
     }
 }

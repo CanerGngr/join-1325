@@ -55,36 +55,6 @@ body {
    ============================================================================ */
 
 /**
- * Sidebar footer and general link styling
- * Used in both desktop sidebar and mobile bottom navigation
- */
-.sidebar-footer,
-a {
-	font-size: 16px;
-	color: rgba(66, 82, 110, 1);
-	text-align: left;
-	flex-direction: column;
-	gap: 15px;
-}
-
-/**
- * Selected/active link styling
- * Highlights the current page in navigation
- * Used for Privacy Policy and Legal Notice links
- */
-.selected-link {
-	background-color: var(--color-light-blue);
-	padding: 8px;
-	border-radius: 10px;
-	width: 126px;
-	color: var(--color-font-white);
-	font-weight: bold;
-	font-size: 16px;
-}
-
-
-
-/**
  * Back button and help icon container
  * Displays page title with back button on right (desktop only)
  */
@@ -221,21 +191,6 @@ ul {
 }
 
 /* ============================================================================
-   RESPONSIVE DESIGN - DESKTOP
-   Breakpoint: 1026px and above
-   ============================================================================ */
-
-@media (min-width: 1026px) {
-	/**
-	 * Hide mobile sidebar links on desktop
-	 * Desktop uses full sidebar with footer links
-	 */
-	.sidebar-links {
-		display: none;
-	}
-}
-
-/* ============================================================================
    RESPONSIVE DESIGN - TABLET/MOBILE
    Breakpoint: max-width 1025px
    ============================================================================ */
@@ -259,39 +214,6 @@ ul {
 	.back-help {
 		margin-top: 144px; /* Account for fixed header height */
 	}
-
-	/**
-	 * Empty navigation bar for non-authenticated users
-	 * Fixed at bottom with Login on left, Privacy/Legal links on right
-	 * Created dynamically by renderLoginSidbar() in staticpages.js
-	 */
-	.empty-nav {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		position: fixed;
-		left: 0;
-		bottom: 0px;
-		width: 100%;
-	}
-
-	/**
-	 * Mobile menu button styling
-	 * Stacks icon and text vertically
-	 */
-	.btn-menu {
-		flex-direction: column;
-	}
-
-	/**
-	 * Groups Privacy Policy and Legal Notice links
-	 * Creates visual separation from Login button
-	 * Displays in horizontal row with 16px gap
-	 */
-	.sidebar-links {
-		display: flex;
-		gap: 16px;
-	}
 }
 
 /* ============================================================================
@@ -314,10 +236,6 @@ ul {
 
 	h2 {
 		font-size: 19px;
-	}
-
-	.sidebar-links {
-		padding-right: 8px;
 	}
 }
 
@@ -410,9 +328,5 @@ ul {
 
 	.clarification {
 		gap: 16px;
-	}
-
-	.btn-menu {
-		padding: 8px 8px;
 	}
 }
