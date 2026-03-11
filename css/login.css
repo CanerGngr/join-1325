@@ -484,6 +484,13 @@ a {
 		width: 180px !important;
 		padding: 10px 0px !important;
 	}
+
+	.btn-secondary,
+	.btn-secondary:hover,
+	.btn-secondary:active {
+		margin: 0 !important;
+		border-width: 1px !important;
+	}
 }
 
 @media (max-width: 400px) {
