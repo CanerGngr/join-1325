@@ -56,7 +56,7 @@ button {
 	font-size: 23px;
 	background-color: white;
 	border-radius: 10px;
-	padding: 16px 10px;
+	padding: 15px 9px;
 	border: 1px solid #647188;
 	color: #647188;
 }
@@ -91,20 +91,23 @@ button {
 }
 
 .btn-secondary {
+	margin: 1px;
 	font-size: 23px;
 	background-color: white;
 	border-radius: 8px;
-	padding: 10px 35px;
+	padding: 9px 34px;
 	border: 1px solid #647188;
 	color: #647188;
 }
 
 .btn-secondary:hover {
+	margin: 0;
 	border: 2px solid #4589ff;
 	color: #4589ff;
 }
 
 .btn-secondary:active {
+	margin: 1px;
 	border: 1px solid #005dff;
 	color: #005dff;
 }
@@ -415,12 +418,21 @@ label.urgent-priority:hover {
 	background-image: url(..//assets/icon/sign/checked.svg);
 }
 
+.checkbox-masked:hover::before {
+	background-color: #EDF2FA;
+	border-radius: 50%;
+}
+
 .dropdown-item input[type="checkbox"] {
 	width: 18px;
 	height: 18px;
 	cursor: pointer;
 	accent-color: #4589ff;
 	margin-left: auto;
+}
+
+.checkbox-label {
+	color: #42526E;
 }
 
 @media (max-width: 480px) {

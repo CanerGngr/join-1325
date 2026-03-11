@@ -160,9 +160,6 @@ body {
 /* Footer */
 footer {
 	width: 100%;
-}
-
-.foot-container {
 	flex-direction: row;
 	gap: 16px;
 	width: 100%;
@@ -171,9 +168,13 @@ footer {
 	padding: 0 0 42px;
 }
 
-.foot-container a {
+footer a {
 	color: #42526e;
 	font-size: 16px;
+}
+
+footer a:hover {
+	color: #005DFF;
 }
 
 /* Loader */

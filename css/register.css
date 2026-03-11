@@ -234,6 +234,17 @@ input:-webkit-autofill {
 	animation: fadeIn 0.4s ease-in-out;
 }
 
+.checkbox-link {
+	border-bottom: 1px solid transparent;
+}
+
+.checkbox-link:hover {
+	border-bottom: 1px solid #005DFF;
+	text-shadow: 1px 1px 1px #005DFF, 0px 1px 1px #005DFF;
+}
+
+
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
