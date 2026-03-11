@@ -441,7 +441,7 @@
   }
 
   header {
-    z-index: 1003;
+    z-index: 101;
   }
 
 }
@@ -460,6 +460,10 @@
     
     .main-content {
         padding: 0 16px;
+    }
+
+    .sidebar-content {
+        z-index: 1003;
     }
 }
 
