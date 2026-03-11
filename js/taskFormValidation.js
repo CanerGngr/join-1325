@@ -22,13 +22,8 @@ function getTaskValidationElements(isEditMode) {
  */
 function clearTaskFormErrors(isEditMode) {
   const { titleGroup, dateGroup } = getTaskValidationElements(isEditMode);
-
-  if (titleGroup) {
     titleGroup.classList.remove("error");
-  }
-  if (dateGroup) {
     dateGroup.classList.remove("error");
-  }
 }
 
 /**
@@ -49,10 +44,6 @@ function validateTaskForm(isEditMode) {
  */
 function validateTaskTitleField(isEditMode) {
   const { titleInput, titleGroup } = getTaskValidationElements(isEditMode);
-  if (!titleInput || !titleGroup) {
-    return true;
-  }
-
   const hasValue = titleInput.value.trim() !== "";
   titleGroup.classList.toggle("error", !hasValue);
   return hasValue;
@@ -65,10 +56,6 @@ function validateTaskTitleField(isEditMode) {
  */
 function validateTaskDateField(isEditMode) {
   const { dateInput, dateGroup } = getTaskValidationElements(isEditMode);
-  if (!dateInput || !dateGroup) {
-    return true;
-  }
-
   const hasValue = dateInput.value !== "";
   dateGroup.classList.toggle("error", !hasValue);
   return hasValue;
