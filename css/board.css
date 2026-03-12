@@ -450,7 +450,7 @@
     .main-wrapper {
         margin-top: 64px;
         margin-left: 0;
-        max-height: calc(100vh - 176px);
+        max-height: calc(100vh - 238px);
     }
     
     .kanban {
@@ -473,7 +473,7 @@
     }
 
     .main-wrapper {
-        max-height: calc(100vh - 160px);
+        max-height: calc(100vh - 224px);
     }
 }
 
