@@ -16,7 +16,7 @@
       type="image/x-icon"
     />
   </head>
-  <body onload="populateAssignedToDropdown(); getUserAvatar();" onclick="handleDocumentClick(event)">
+  <body onload="initAddTaskPage()" onclick="handleDocumentClick(event)">
     <header class="header d-flex">
       <a href="/index.html"
         ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
@@ -80,7 +80,7 @@
       <section id="main-content" class="main-content">
         <div class="add-task-main-container">
           <div class="task-form-container">
-            <form id="task-form" class="task-form" onsubmit="saveTask(event)">
+            <form id="task-form" class="task-form" onsubmit="saveTask(event)" novalidate>
               <div class="form-group" id="title-form-group">
                 <input
                   class="title-input form-input"
@@ -375,8 +375,8 @@
     <script src="/js/contact.js"></script>
     <script src="/js/taskManagement.js"></script>
     <script src="/js/subtask.js"></script>
-    <script src="/scrDB/taskDB.js"></script>
     <script src="/scrDB/dbConfig.js"></script>
+    <script src="/scrDB/taskDB.js"></script>
     <script src="/js/taskFormValidation.js"></script>
     <script src="/js/addTask.js"></script>
   </body>

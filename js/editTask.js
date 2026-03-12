@@ -329,7 +329,9 @@ function getEditTaskTemplate(task) {
         `;
 }
 
-
+/** * Retrieves the selected priority value from the edit form
+ * @returns {string} - The selected priority value ("urgent", "medium", "low")
+ **/
 function getEditPriorityValue() {
   const priorityRadios = document.getElementsByName("edit-priority");
   for (let i = 0; i < priorityRadios.length; i++) {
@@ -340,6 +342,11 @@ function getEditPriorityValue() {
   }
 }
 
+/**
+ * Maps the priority value from the form to the expected format
+ * @param {string} value - The value from the radio button (e.g., "high", "Medium", "Low")
+ * @returns {string} - Mapped priority value ("urgent", "medium", "low")
+ **/
 function getAssignedUsersFormData() {
   let assignedTo = [];
   for (let i = 0; i < selectedUsers.length; i++) {
@@ -348,6 +355,10 @@ function getAssignedUsersFormData() {
   return assignedTo;
 }
 
+/**
+ * Collects and returns the form data for the edited task
+ * @returns {Object} - Updated task object with title, description, due date, priority, assigned users, and subtasks
+ **/
 function getEditTaskFormData() {
   const title = document.getElementById("edit-task-title").value.trim();
   const description = document.getElementById("task-description").value.trim();
@@ -363,6 +374,7 @@ function getEditTaskFormData() {
     subtasks: getFilteredSubtasks()
   };
 }
+
 
 /**
  * Submits the edited task

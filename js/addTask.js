@@ -13,6 +13,16 @@ let targetColumnStatus = "todo";
 let selectedUsers = [];
 
 /**
+ * Initializes the Add Task page by loading existing tasks first.
+ * @async
+ */
+async function initAddTaskPage() {
+  tasks = await initializeTasks();
+  populateAssignedToDropdown();
+  getUserAvatar();
+}
+
+/**
  * Returns today's date in YYYY-MM-DD format for date input min attributes.
  * @returns {string}
  */
