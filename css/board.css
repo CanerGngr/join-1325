@@ -449,11 +449,10 @@
 @media (max-width: 1024px) {
     .main-wrapper {
         margin-left: 0;
-        max-height: calc(100vh - 238px);
+        max-height: calc(100vh - 176px);
     }
     
     .kanban {
-        max-height: calc(100vh - 330px);
         padding: 0 16px;
     }
     
@@ -473,7 +472,11 @@
     }
 
     .main-wrapper {
-        max-height: calc(100vh - 224px);
+        max-height: calc(100vh - 160px);
+    }
+
+    .kanban {
+        padding: 0 12px;
     }
 }
 
