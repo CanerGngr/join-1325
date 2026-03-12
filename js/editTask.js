@@ -330,6 +330,40 @@ function getEditTaskTemplate(task) {
 }
 
 
+function getEditPriorityValue() {
+  const priorityRadios = document.getElementsByName("edit-priority");
+  for (let i = 0; i < priorityRadios.length; i++) {
+    if (priorityRadios[i].checked) {
+      priority = mapPriorityValue(priorityRadios[i].value);
+      return priority;
+    }
+  }
+}
+
+function getAssignedUsersFormData() {
+  let assignedTo = [];
+  for (let i = 0; i < selectedUsers.length; i++) {
+    assignedTo.push(selectedUsers[i]);
+  }
+  return assignedTo;
+}
+
+function getEditTaskFormData() {
+  const title = document.getElementById("edit-task-title").value.trim();
+  const description = document.getElementById("task-description").value.trim();
+  const dueDate = document.getElementById("edit-task-date").value;
+  
+ // Create updated task object
+  return updatedTask = {
+    title: title,
+    description: description,
+    dueDate: dueDate,
+    priority: getEditPriorityValue(),
+    assignedTo: getAssignedUsersFormData(),
+    subtasks: getFilteredSubtasks()
+  };
+}
+
 /**
  * Submits the edited task
  * @param {Event} event - Form submit event
@@ -341,41 +375,8 @@ async function submitEditTask(event, taskId) {
     return;
   }
   
-  // Get form values
-  const title = document.getElementById("edit-task-title").value.trim();
-  const description = document.getElementById("task-description").value.trim();
-  const dueDate = document.getElementById("edit-task-date").value;
-  
-  // Get selected priority
-  const priorityRadios = document.getElementsByName("edit-priority");
-  for (let i = 0; i < priorityRadios.length; i++) {
-    if (priorityRadios[i].checked) {
-      priority = mapPriorityValue(priorityRadios[i].value);
-      break;
-    }
-  }
-  
-  // Get assigned users as full names
-  let assignedTo = [];
-  for (let i = 0; i < selectedUsers.length; i++) {
-    assignedTo.push(selectedUsers[i]);
-  }
-  
-  // Get filtered subtasks
-  const subtasks = getFilteredSubtasks();
-  
-  // Create updated task object
-  const updatedTask = {
-    title: title,
-    description: description,
-    dueDate: dueDate,
-    priority: priority,
-    assignedTo: assignedTo,
-    subtasks: subtasks
-  };
-  
   // Update the task
-  await updateTask(taskId, updatedTask);
+  await updateTask(taskId, getEditTaskFormData());
   
   // Refresh the board
   renderAllTasks();
