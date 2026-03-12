@@ -448,17 +448,17 @@
 
 @media (max-width: 1024px) {
     .main-wrapper {
-        margin-top: 64px;
         margin-left: 0;
         max-height: calc(100vh - 238px);
     }
     
     .kanban {
         max-height: calc(100vh - 330px);
+        padding: 0 16px;
     }
     
-    .main-content {
-        padding: 0 16px;
+    .main-content-header {
+        margin: 48px 16px 24px;
     }
 
     .sidebar-content {
