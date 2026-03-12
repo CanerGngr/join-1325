@@ -16,6 +16,22 @@
     margin: 0;
 }
 
+#summary-greeting.greeting-guest {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+#summary-greeting.greeting-user {
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.summary-greeting-name {
+    color: #4589FF;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
 .summary-greeting-intro {
     position: fixed;
     inset: 0;

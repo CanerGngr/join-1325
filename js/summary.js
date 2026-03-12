@@ -51,19 +51,16 @@ function getTimeOfDayGreeting() {
  */
 function updateGreeting() {
     let greetingElement = document.getElementById('summary-greeting');
-
-    if (!greetingElement) return;
-
     let isGuest = sessionStorage.getItem('isGuest');
     let userName = sessionStorage.getItem('userName');
     let timeGreeting = getTimeOfDayGreeting();
 
     if (isGuest === 'true') {
-        greetingElement.textContent = timeGreeting;
-    } else if (userName) {
-        greetingElement.textContent = timeGreeting + ', ' + userName;
+        greetingElement.innerHTML = timeGreeting + '<span id="summary-greeting-name" class="summary-greeting-name"></span>';
     } else {
-        greetingElement.textContent = timeGreeting;
+        greetingElement.classList.remove('greeting-guest');
+        greetingElement.classList.add('greeting-user');
+        greetingElement.innerHTML = timeGreeting + ', <span id="summary-greeting-name" class="summary-greeting-name">' + userName + '</span>';
     }
 }
 
@@ -231,7 +228,7 @@ function getGuestTasks() {
     let tasksJson = sessionStorage.getItem('tasks');
     let tasks = tasksJson ? JSON.parse(tasksJson) : [];
 
-    if (tasks.length === 0 && typeof getDefaultTasks === 'function') {
+    if (tasks.length === 0) {
         tasks = getDefaultTasks();
     }
 
@@ -343,9 +340,7 @@ async function updateTaskCounts() {
  */
 function updateUrgentCount(count) {
     let element = document.getElementById('urgent-tasks-count');
-    if (element) {
-        element.textContent = count;
-    }
+    element.textContent = count;
 }
 
 
@@ -358,9 +353,7 @@ function updateUrgentCount(count) {
  */
 function updateBoardCount(count) {
     let element = document.getElementById('board-tasks-count');
-    if (element) {
-        element.textContent = count;
-    }
+    element.textContent = count;
 }
 
 
@@ -373,9 +366,7 @@ function updateBoardCount(count) {
  */
 function updateTodoCount(count) {
     let element = document.getElementById('todo-tasks-count');
-    if (element) {
-        element.textContent = count;
-    }
+    element.textContent = count;
 }
 
 
@@ -388,9 +379,7 @@ function updateTodoCount(count) {
  */
 function updateProgressCount(count) {
     let element = document.getElementById('progress-tasks-count');
-    if (element) {
-        element.textContent = count;
-    }
+    element.textContent = count;
 }
 
 
@@ -403,9 +392,7 @@ function updateProgressCount(count) {
  */
 function updateFeedbackCount(count) {
     let element = document.getElementById('feedback-tasks-count');
-    if (element) {
-        element.textContent = count;
-    }
+    element.textContent = count;
 }
 
 
@@ -418,9 +405,7 @@ function updateFeedbackCount(count) {
  */
 function updateDoneCount(count) {
     let element = document.getElementById('done-tasks-count');
-    if (element) {
-        element.textContent = count;
-    }
+    element.textContent = count;
 }
 
 
@@ -449,10 +434,8 @@ function formatDeadlineDate(dateString) {
  */
 function updateUrgentDeadline(deadline) {
     let element = document.getElementById('urgent-deadline');
-    if (element) {
-        let formattedDate = formatDeadlineDate(deadline);
-        element.textContent = formattedDate || 'No deadline';
-    }
+    let formattedDate = formatDeadlineDate(deadline);
+    element.textContent = formattedDate || 'No deadline';
 }
 
 

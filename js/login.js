@@ -95,10 +95,6 @@ async function loginUser() {
  */
 function showError(message) {
   const errorMessage = document.getElementById("error-message");
-  if (!errorMessage) {
-    console.warn("Error message element not found in the DOM");
-    return;
-  }
   errorMessage.textContent = message;
 }
 
