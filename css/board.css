@@ -88,6 +88,7 @@
     color: white;
     border-radius: 8px;
     padding: 4px 16px;
+    font-size: 19px;
 }
 
 .details-header .ticket-label {
@@ -172,14 +173,11 @@
     z-index: 1000;
 }
 
-.kanban-column.drag-over {
-    background-color: #e3f2fd;
-    border: 2px dashed #2196f3;
-}
-
-.kanban-column.drag-active {
-    background-color: #f3e5f5;
-    border: 2px dashed #9c27b0;
+.drop-placeholder {
+    border: 1px dashed #A8A8A8;
+    border-radius: 10px;
+    background: transparent;
+    box-sizing: border-box;
 }
 
 .drop-indicator {
@@ -390,8 +388,8 @@
 }
 
 .kanban-column.drag-over {
-    background-color: #e3f2fd !important;
-    border: 2px dashed #2196f3 !important;
+    background-color: transparent !important;
+    border: none !important;
 }
 
 .overlay-menu {

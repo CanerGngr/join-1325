@@ -5,6 +5,7 @@
  * @author Join-1325 Development Team
  */
 let draggedElement = null;
+let dropPlaceholder = null;
 
 /**
  * Handles the handleDragStart workflow.
@@ -25,6 +26,7 @@ function handleDragStart(event, element) {
 function handleDragEnd(element) {
     element.classList.remove('dragging');
     draggedElement = null;
+    removePlaceholder();
 
     let todoColumn = document.getElementById('todo');
     let inProgressColumn = document.getElementById('in-progress');
@@ -45,7 +47,76 @@ function handleDragEnd(element) {
 function handleDragOver(event) {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
+    updateColumnDragHighlight(event);
     return false;
+}
+
+
+/**
+ * Updates which column shows drag-over highlight based on pointer position.
+ * @function updateColumnDragHighlight
+ * @param {DragEvent} event - The drag event
+ */
+function updateColumnDragHighlight(event) {
+    const columns = [
+        document.getElementById('todo'),
+        document.getElementById('in-progress'),
+        document.getElementById('await-feedback'),
+        document.getElementById('done')
+    ];
+    let targetColumn = null;
+    
+    // Find which column the pointer is over
+    for (let i = 0; i < columns.length; i++) {
+        const rect = columns[i].getBoundingClientRect();
+        if (event.clientX >= rect.left && event.clientX <= rect.right && 
+            event.clientY >= rect.top && event.clientY <= rect.bottom) {
+            columns[i].classList.add('drag-over');
+            targetColumn = columns[i];
+        } else {
+            columns[i].classList.remove('drag-over');
+        }
+    }
+    
+    // Update placeholder position
+    if (targetColumn && draggedElement) {
+        const targetContainer = document.getElementById(targetColumn.id + '-cards');
+        const afterElement = getDragAfterElement(targetContainer, event.clientY);
+        updatePlaceholder(targetContainer, afterElement);
+    }
+}
+
+
+/**
+ * Creates or updates the drop placeholder.
+ * @function updatePlaceholder
+ * @param {HTMLElement} container - Target container
+ * @param {HTMLElement} afterElement - Element to insert placeholder before
+ */
+function updatePlaceholder(container, afterElement) {
+    if (!dropPlaceholder) {
+        const placeholderHTML = `<div class="drop-placeholder" style="height: ${draggedElement.offsetHeight}px; width: ${draggedElement.offsetWidth}px;"></div>`;
+        container.insertAdjacentHTML('beforeend', placeholderHTML);
+        dropPlaceholder = container.lastElementChild;
+    }
+
+    if (afterElement) {
+        afterElement.before(dropPlaceholder);
+    } else {
+        container.append(dropPlaceholder);
+    }
+}
+
+
+/**
+ * Removes the drop placeholder.
+ * @function removePlaceholder
+ */
+function removePlaceholder() {
+    if (dropPlaceholder) {
+        dropPlaceholder.remove();
+        dropPlaceholder = null;
+    }
 }
 
 
@@ -54,7 +125,7 @@ function handleDragOver(event) {
  * @function handleDragEnter
  */
 function handleDragEnter(element) {
-    element.classList.add('drag-over');
+    // Highlighting is managed by dragover - no action needed here
 }
 
 
@@ -63,9 +134,7 @@ function handleDragEnter(element) {
  * @function handleDragLeave
  */
 function handleDragLeave(event, element) {
-    if (!element.contains(event.relatedTarget)) {
-        element.classList.remove('drag-over');
-    }
+    // Leave highlighting is managed by dragover - no action needed here
 }
 
 
@@ -75,12 +144,14 @@ function handleDragLeave(event, element) {
  */
 async function handleDrop(event, element) {
     event.stopPropagation();
+    removePlaceholder();
+    
     const targetContainer = document.getElementById(element.id + '-cards');
     const afterElement = getDragAfterElement(targetContainer, event.clientY);
     if (afterElement == null) {
-        targetContainer.appendChild(draggedElement);
+        targetContainer.append(draggedElement);
     } else {
-        targetContainer.insertBefore(draggedElement, afterElement);
+        afterElement.before(draggedElement);
     }
     await updateTaskStatusInDrag(draggedElement, element.id);
     element.classList.remove('drag-over', 'drag-active');
