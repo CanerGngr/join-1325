@@ -45,7 +45,7 @@ function setPriorityForEdit(priority) {
     'low': 'edit-low-priority'
   };
   
-  const radioId = priorityMap[priority?.toLowerCase()] || 'edit-medium-priority';
+  const radioId = priorityMap[priority?.toLowerCase()];
   const radioButton = document.getElementById(radioId);
     radioButton.checked = true;
 }
@@ -149,7 +149,7 @@ function getEditTaskTemplate(task) {
                 <input
                   id="edit-urgent-priority"
                   type="radio"
-                  name="priority"
+                  name="edit-priority"
                   value="high"
                 />
                 <label for="edit-urgent-priority" class="urgent-priority">
@@ -174,7 +174,7 @@ function getEditTaskTemplate(task) {
                 <input
                   id="edit-medium-priority"
                   type="radio"
-                  name="priority"
+                  name="edit-priority"
                   value="Medium"
                 />
                 <label for="edit-medium-priority" class="medium-priority">
@@ -199,7 +199,7 @@ function getEditTaskTemplate(task) {
                 <input
                   id="edit-low-priority"
                   type="radio"
-                  name="priority"
+                  name="edit-priority"
                   value="Low"
                 />
                 <label for="edit-low-priority" class="low-priority">
@@ -347,7 +347,7 @@ async function submitEditTask(event, taskId) {
   const dueDate = document.getElementById("edit-task-date").value;
   
   // Get selected priority
-  const priorityRadios = document.getElementsByName("priority");
+  const priorityRadios = document.getElementsByName("edit-priority");
   for (let i = 0; i < priorityRadios.length; i++) {
     if (priorityRadios[i].checked) {
       priority = mapPriorityValue(priorityRadios[i].value);

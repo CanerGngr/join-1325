@@ -216,14 +216,7 @@ async function loadAllTasks() {
     let isGuest = sessionStorage.getItem('isGuest') === 'true';
 
     if (isGuest) {
-        let tasksJson = sessionStorage.getItem('tasks');
-        let tasks = tasksJson ? JSON.parse(tasksJson) : [];
-
-        if (tasks.length === 0 && typeof getDefaultTasks === 'function') {
-            tasks = getDefaultTasks();
-        }
-
-        return tasks;
+        return getGuestTasks();
     } else {
         if (typeof loadTasksFromFirebase === 'function') {
             let tasks = await loadTasksFromFirebase();
@@ -233,6 +226,18 @@ async function loadAllTasks() {
         }
     }
 }
+
+function getGuestTasks() {
+    let tasksJson = sessionStorage.getItem('tasks');
+    let tasks = tasksJson ? JSON.parse(tasksJson) : [];
+
+    if (tasks.length === 0 && typeof getDefaultTasks === 'function') {
+        tasks = getDefaultTasks();
+    }
+
+    return tasks;
+}
+
 
 
 /**
