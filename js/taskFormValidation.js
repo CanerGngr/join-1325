@@ -11,8 +11,10 @@ function getTaskValidationElements(isEditMode) {
   return {
     titleInput: document.getElementById(isEditMode ? "edit-task-title" : "task-title"),
     dateInput: document.getElementById(isEditMode ? "edit-task-date" : "task-date"),
+    categoryInput: document.getElementById(isEditMode ? "edit-category-hidden" : "category-hidden"),
     titleGroup: document.getElementById(isEditMode ? "edit-title-form-group" : "title-form-group"),
     dateGroup: document.getElementById(isEditMode ? "edit-date-form-group" : "date-form-group"),
+    categoryGroup: document.getElementById(isEditMode ? "edit-category-form-group" : "category-form-group"),
   };
 }
 
@@ -21,9 +23,10 @@ function getTaskValidationElements(isEditMode) {
  * @param {boolean} isEditMode - True for edit task form, false for add task form.
  */
 function clearTaskFormErrors(isEditMode) {
-  const { titleGroup, dateGroup } = getTaskValidationElements(isEditMode);
+  const { titleGroup, dateGroup, categoryGroup } = getTaskValidationElements(isEditMode);
     titleGroup.classList.remove("error");
     dateGroup.classList.remove("error");
+    if (categoryGroup) categoryGroup.classList.remove("error");
 }
 
 /**
@@ -34,7 +37,8 @@ function clearTaskFormErrors(isEditMode) {
 function validateTaskForm(isEditMode) {
   const isTitleValid = validateTaskTitleField(isEditMode);
   const isDateValid = validateTaskDateField(isEditMode);
-  return isTitleValid && isDateValid;
+  const isCategoryValid = validateTaskCategoryField(isEditMode);
+  return isTitleValid && isDateValid && isCategoryValid;
 }
 
 /**
@@ -75,4 +79,17 @@ function handleTaskTitleBlur(isEditMode) {
  */
 function handleTaskDateBlur(isEditMode) {
   validateTaskDateField(isEditMode);
+}
+
+/**
+ * Validates task category field for add or edit mode.
+ * @param {boolean} isEditMode - True for edit task form, false for add task form.
+ * @returns {boolean} True when a category is selected.
+ */
+function validateTaskCategoryField(isEditMode) {
+  const { categoryInput, categoryGroup } = getTaskValidationElements(isEditMode);
+  if (!categoryInput || !categoryGroup) return true;
+  const hasValue = categoryInput.value.trim() !== "";
+  categoryGroup.classList.toggle("error", !hasValue);
+  return hasValue;
 }

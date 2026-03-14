@@ -239,6 +239,8 @@ function selectCategory(categoryName) {
   hiddenInput.value = categoryName;
   dropdownList.classList.add("d-none");
   categoryDropdown.classList.remove("open");
+  let categoryFormGroup = document.getElementById("category-form-group");
+  if (categoryFormGroup) categoryFormGroup.classList.remove("error");
 }
 
 /**
@@ -402,9 +404,7 @@ function mapPriorityValue(value) {
  */
 function getSelectedCategory() {
   let categoryHidden = document.getElementById("category-hidden");
-  return categoryHidden && categoryHidden.value
-    ? categoryHidden.value
-    : "User Story";
+  return categoryHidden ? categoryHidden.value : "";
 }
 
 
