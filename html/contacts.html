@@ -127,48 +127,60 @@
           />
         </svg>
       </div>
-      <form id="add-contact-form" class="d-flex" onsubmit="addContact(event)">
+      <form id="add-contact-form" class="d-flex" onsubmit="addContact(event)" novalidate>
         <div class="contact-form-avatar user-avatar-lg">
           <img src="/assets/icon/contacts/avatar-placeholder.svg" alt="Avatar" />
         </div>
-        <div class="input-icon-container">
-          <input
-            type="text"
-            id="add-contact-name"
-            placeholder="Name"
-            required
-          />
-          <img
-            src="/assets/icon/sign/person.svg"
-            alt="name"
-            class="overlay-image"
-          />
+        <div class="form-group" id="add-contact-name-group">
+          <div class="input-icon-container">
+            <input
+              onblur="validateContactNameField(false)"
+              type="text"
+              id="add-contact-name"
+              placeholder="Name"
+              required
+            />
+            <img
+              src="/assets/icon/sign/person.svg"
+              alt="name"
+              class="overlay-image"
+            />
+          </div>
+          <div class="error-message">This field is required</div>
         </div>
-        <div class="input-icon-container">
-          <input
-            type="email"
-            id="add-contact-email"
-            placeholder="E-Mail"
-            required
-          />
-          <img
-            src="/assets/icon/sign/mail.svg"
-            alt="email"
-            class="overlay-image"
-          />
+        <div class="form-group" id="add-contact-email-group">
+          <div class="input-icon-container">
+            <input
+              onblur="validateContactEmailField(false)"
+              type="email"
+              id="add-contact-email"
+              placeholder="E-Mail"
+              required
+            />
+            <img
+              src="/assets/icon/sign/mail.svg"
+              alt="email"
+              class="overlay-image"
+            />
+          </div>
+          <div class="error-message">Please enter a valid email</div>
         </div>
-        <div class="input-icon-container">
-          <input
-            type="text"
-            id="add-contact-phone"
-            placeholder="Phone"
-            required
-          />
-          <img
-            src="/assets/icon/sign/phone.svg"
-            alt="phone"
-            class="overlay-image"
-          />
+        <div class="form-group" id="add-contact-phone-group">
+          <div class="input-icon-container">
+            <input
+              onblur="validateContactPhoneField(false)"
+              type="text"
+              id="add-contact-phone"
+              placeholder="Phone"
+              required
+            />
+            <img
+              src="/assets/icon/sign/phone.svg"
+              alt="phone"
+              class="overlay-image"
+            />
+          </div>
+          <div class="error-message">This field is required</div>
         </div>
         <div class="form-buttons">
           <button
@@ -234,6 +246,7 @@
     </div>
     <script src="/js/script.js"></script>
     <script src="/js/contact.js"></script>
+    <script src="/js/contactFormValidation.js"></script>
     <script src="/js/overlayToggler.js"></script>
   </body>
 </html>

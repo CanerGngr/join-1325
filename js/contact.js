@@ -366,23 +366,32 @@ function getEditContactFormTemplate(contact, avatarColor, initials) {
         <div class="contact-form-avatar user-avatar-lg " style="background-color: ${avatarColor};">
             <div class="avatar-content">${initials}</div>
         </div>
-        <div class="input-icon-container">
-            <input type="text" id="edit-contact-name" value="${
-              contact.name
-            }" required />
-            <img src="/assets/icon/sign/person.svg" alt="name" class="overlay-image" />
+        <div class="form-group" id="edit-contact-name-group">
+            <div class="input-icon-container">
+                <input type="text" id="edit-contact-name" onblur="validateContactNameField(true)" value="${
+                  contact.name
+                }" required />
+                <img src="/assets/icon/sign/person.svg" alt="name" class="overlay-image" />
+            </div>
+            <div class="error-message">This field is required</div>
         </div>
-        <div class="input-icon-container">
-            <input type="email" id="edit-contact-email" value="${
-              contact.email
-            }" required />
-            <img src="/assets/icon/sign/mail.svg" alt="email" class="overlay-image" />
+        <div class="form-group" id="edit-contact-email-group">
+            <div class="input-icon-container">
+                <input type="email" id="edit-contact-email" onblur="validateContactEmailField(true)" value="${
+                  contact.email
+                }" required />
+                <img src="/assets/icon/sign/mail.svg" alt="email" class="overlay-image" />
+            </div>
+            <div class="error-message">Please enter a valid email</div>
         </div>
-        <div class="input-icon-container">
-            <input type="text" id="edit-contact-phone" value="${
-              contact.phone
-            }" required />
-            <img src="/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
+        <div class="form-group" id="edit-contact-phone-group">
+            <div class="input-icon-container">
+                <input type="text" id="edit-contact-phone" onblur="validateContactPhoneField(true)" value="${
+                  contact.phone
+                }" required />
+                <img src="/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
+            </div>
+            <div class="error-message">This field is required</div>
         </div>
         <div class="form-buttons">
             <button type="button" onclick="deleteContact(${contacts.indexOf(
@@ -403,6 +412,7 @@ function getEditContactFormTemplate(contact, avatarColor, initials) {
  */
 function updateContact(event, editContactIndex) {
   event.preventDefault();
+  if (!validateContactForm(true)) return;
   const nameInput = document.getElementById("edit-contact-name");
   const emailInput = document.getElementById("edit-contact-email");
   const phoneInput = document.getElementById("edit-contact-phone");
@@ -438,6 +448,7 @@ function deleteContact(index) {
  */
 function addContact(event) {
   event.preventDefault();
+  if (!validateContactForm(false)) return;
   const nameInput = document.getElementById("add-contact-name");
   const emailInput = document.getElementById("add-contact-email");
   const phoneInput = document.getElementById("add-contact-phone");

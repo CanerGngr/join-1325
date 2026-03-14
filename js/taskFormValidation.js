@@ -26,7 +26,7 @@ function clearTaskFormErrors(isEditMode) {
   const { titleGroup, dateGroup, categoryGroup } = getTaskValidationElements(isEditMode);
     titleGroup.classList.remove("error");
     dateGroup.classList.remove("error");
-    if (categoryGroup) categoryGroup.classList.remove("error");
+    categoryGroup.classList.remove("error");
 }
 
 /**
@@ -88,7 +88,6 @@ function handleTaskDateBlur(isEditMode) {
  */
 function validateTaskCategoryField(isEditMode) {
   const { categoryInput, categoryGroup } = getTaskValidationElements(isEditMode);
-  if (!categoryInput || !categoryGroup) return true;
   const hasValue = categoryInput.value.trim() !== "";
   categoryGroup.classList.toggle("error", !hasValue);
   return hasValue;
