@@ -18,6 +18,7 @@ function getTaskValidationElements(isEditMode) {
   };
 }
 
+
 /**
  * Clears task form error state for add or edit mode.
  * @param {boolean} isEditMode - True for edit task form, false for add task form.
@@ -28,6 +29,7 @@ function clearTaskFormErrors(isEditMode) {
     dateGroup.classList.remove("error");
     categoryGroup.classList.remove("error");
 }
+
 
 /**
  * Validates the complete task form for add or edit mode.
@@ -41,6 +43,7 @@ function validateTaskForm(isEditMode) {
   return isTitleValid && isDateValid && isCategoryValid;
 }
 
+
 /**
  * Validates task title field for add or edit mode.
  * @param {boolean} isEditMode - True for edit task form, false for add task form.
@@ -52,6 +55,7 @@ function validateTaskTitleField(isEditMode) {
   titleGroup.classList.toggle("error", !hasValue);
   return hasValue;
 }
+
 
 /**
  * Validates task due date field for add or edit mode.
@@ -65,21 +69,6 @@ function validateTaskDateField(isEditMode) {
   return hasValue;
 }
 
-/**
- * Blur handler for task title field.
- * @param {boolean} isEditMode - True for edit task form, false for add task form.
- */
-function handleTaskTitleBlur(isEditMode) {
-  validateTaskTitleField(isEditMode);
-}
-
-/**
- * Blur handler for task due date field.
- * @param {boolean} isEditMode - True for edit task form, false for add task form.
- */
-function handleTaskDateBlur(isEditMode) {
-  validateTaskDateField(isEditMode);
-}
 
 /**
  * Validates task category field for add or edit mode.

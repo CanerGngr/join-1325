@@ -18,6 +18,7 @@ function getContactValidationElements(isEditMode) {
   };
 }
 
+
 /**
  * Clears all contact form error states.
  * @param {boolean} isEditMode - True for edit contact form, false for add contact form.
@@ -28,6 +29,7 @@ function clearContactFormErrors(isEditMode) {
   emailGroup.classList.remove("error");
   phoneGroup.classList.remove("error");
 }
+
 
 /**
  * Validates the complete contact form.
@@ -41,6 +43,7 @@ function validateContactForm(isEditMode) {
   return isNameValid && isEmailValid && isPhoneValid;
 }
 
+
 /**
  * Validates the contact name field.
  * @param {boolean} isEditMode - True for edit contact form, false for add contact form.
@@ -52,6 +55,7 @@ function validateContactNameField(isEditMode) {
   nameGroup.classList.toggle("error", !hasValue);
   return hasValue;
 }
+
 
 /**
  * Validates the contact email field.
@@ -65,6 +69,7 @@ function validateContactEmailField(isEditMode) {
   emailGroup.classList.toggle("error", !isValid);
   return isValid;
 }
+
 
 /**
  * Validates the contact phone field.

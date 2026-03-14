@@ -89,7 +89,7 @@
                   name="task_title"
                   placeholder="Enter a title"
                   required
-                  onblur="handleTaskTitleBlur(false)"
+                  onblur="validateTaskTitleField(false)"
                 />
                 <div class="error-message" id="title-error-message">
                   This field is required
@@ -116,7 +116,7 @@
                   name="due_date"
                   id="task-date"
                   placeholder="dd/mm/yyyy"
-                  onblur="handleTaskDateBlur(false)"
+                  onblur="validateTaskDateField(false)"
                 />
                 <div class="error-message" id="date-error-message">
                   This field is required
