@@ -345,8 +345,6 @@ function findTaskById(taskId) {
 async function updateTaskStatus(taskId, newStatus) {
   const isGuest = sessionStorage.getItem("isGuest") === "true";
   const task = findTaskById(taskId);
-  
-  if (task) {
     task.status = newStatus;
     
     if (isGuest) {
@@ -366,7 +364,6 @@ async function updateTaskStatus(taskId, newStatus) {
         console.error("Error updating task status:", error);
       }
     }
-  }
 }
 
 /**

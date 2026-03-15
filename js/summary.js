@@ -215,12 +215,8 @@ async function loadAllTasks() {
     if (isGuest) {
         return getGuestTasks();
     } else {
-        if (typeof loadTasksFromFirebase === 'function') {
-            let tasks = await loadTasksFromFirebase();
-            return tasks;
-        } else {
-            return [];
-        }
+        let tasks = await loadTasksFromFirebase();
+        return tasks;
     }
 }
 
@@ -417,8 +413,6 @@ function updateDoneCount(count) {
  * @returns {string} Formatted date string
  */
 function formatDeadlineDate(dateString) {
-    if (!dateString) return '';
-
     let date = new Date(dateString);
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
