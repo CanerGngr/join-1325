@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
   </head>
   <body onload="initStaticPages()">
     <header class="header-fix">
-      <a href="/login.html"
+      <a href="/html/login.html"
         ><img src="../assets/icon/logo-white.svg" alt="Logo" class="logo-img"
       /></a>
       <div id="menu-user" class="inner-header d-flex">
@@ -35,7 +35,14 @@
             <a href="./help.html" class="hide-mobile">Help</a>
             <a href="./legalnotice.html">Legal Notice</a>
             <a href="./datenschutz.html">Privacy Policy</a>
-            <a href="#" onclick="logout(); return false;">Log out</a>
+            <a
+              href="#"
+              onclick="
+                logout();
+                return false;
+              "
+              >Log out</a
+            >
           </div>
         </div>
       </div>
@@ -85,7 +92,7 @@
                 title="back"
               >
                 <!-- <img alt="backImg" src="../assets/icon/sign/back.svg" /> -->
-                 <span class="back-icon"></span>
+                <span class="back-icon"></span>
               </a>
             </div>
           </div>
