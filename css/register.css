@@ -169,7 +169,7 @@ a {
 	object-fit: contain;
 }
 .msg-error {
-	color: #E60026;
+	color: #e60026;
 	text-align: left;
 	font-size: 16px;
 	display: block;
@@ -251,7 +251,6 @@ input:-webkit-autofill {
    ============================================================================ */
 
 @media (max-width: 1028px) {
-
 	.logo-header {
 		top: 37px;
 		left: 38px;
@@ -276,7 +275,7 @@ input:-webkit-autofill {
 	}
 }
 
-@media (max-width: 428px) or (max-height: 1120px) {
+@media (max-width: 428px) {
 	/**
 	 * Mobile layout adjustments for register page
 	 * Makes form full-width and adjusts spacing for small screens
@@ -404,14 +403,18 @@ input:-webkit-autofill {
 		top: 20px;
 		left: 20px;
 	}
-
+	.register-main-container {
+		gap: 0;
+	}
 	.register-form {
-		padding: 32px 24px;
+		padding: 20px 24px;
 	}
 	.field-container {
-		margin-bottom: 32px;
+		margin-bottom: 12px;
 	}
-	
+	.btn-container {
+		padding-top: 0px;
+	}
 }
 
 @media (max-height: 900px) {
@@ -421,19 +424,16 @@ input:-webkit-autofill {
 	}
 
 	.field-container {
-		margin-bottom: 16px;
-	}
-
-	.field-container {
-		margin-bottom: 4px;
+		margin-bottom: 0px;
 	}
 
 	.checkbox-container {
-		padding-bottom: 4px !important;
+		padding-bottom: 0px !important;
 	}
 
 	.main-reg {
 		min-height: auto;
 		gap: 0;
+		margin-top: 0px;
 	}
 }

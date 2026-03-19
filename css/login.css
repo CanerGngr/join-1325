@@ -373,7 +373,7 @@ a {
 	.login-header {
 		display: none;
 	}
-	
+
 	.login-signup-section {
 		display: flex;
 		align-items: center;
@@ -399,6 +399,12 @@ a {
 	.login-page-header {
 		padding-bottom: 80px;
 	}
+		.main-reg {
+        padding: 0px;
+    }
+	    .checkbox-container {
+        padding-top: 0px;
+    }
 }
 
 @media (max-height: 735px) {
