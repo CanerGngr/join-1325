@@ -7,7 +7,6 @@ button {
 	padding: 0 10px;
 	border-radius: 8px;
 	gap: 10px;
-	border: none;
 	background-color: #4589ff;
 	border: 1px solid #4589ff;
 	display: flex;
@@ -64,6 +63,12 @@ button {
 	border-radius: 8px;
 	border: none;
 	background-color: #4589ff;
+}
+
+.btn-no-icon:disabled {
+	background-color: #a8c7fa;
+	cursor: default;
+	pointer-events: none;
 }
 
 .btn-no-icon:hover {
