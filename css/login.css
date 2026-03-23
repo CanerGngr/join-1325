@@ -1,4 +1,4 @@
- * {
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -14,11 +14,12 @@
 }
 
 body {
+    height: 100vh;
+    width: 100vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	min-height: 100dvh;
 	background-color: #ffffff;
 }
 
@@ -70,7 +71,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 	max-width: 1920px;
 	width: 100%;
 	margin: 0 auto;
@@ -81,11 +82,22 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--color-font-white);
 	max-width: 598px;
-	border-radius: 30px;
-	box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-	padding: 48px 88px;
+	/*padding: 48px 88px;*/
+}
+
+.login-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   	background-color: var(--color-font-white);
+    width: stretch;
+    max-width: 652px;
+    height: stretch;
+    max-height: 484px;
+   	box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    margin: 0 8px;
 }
 
 .head-reg {
@@ -162,10 +174,10 @@ footer {
 	width: 100%;
 	flex-direction: row;
 	gap: 16px;
-	width: 100%;
 	display: flex;
 	justify-content: center;
-	padding: 0 0 42px;
+	/*padding: 0 0 8px;*/
+	margin-bottom: 8px;
 }
 
 footer a {
@@ -310,10 +322,6 @@ a {
 		--login-logo-left: 38px;
 	}
 
-	.main-reg {
-		padding: 16px;
-	}
-
 	.checkbox-container {
 		padding: 16px;
 	}
@@ -324,30 +332,6 @@ a {
 }
 
 @media (max-width: 768px) {
-	:root {
-		--login-content-inline-padding: 38px;
-		--login-header-safe-space: 0px;
-	}
-
-	@keyframes logoTransition {
-		0% {
-			top: 50%;
-			left: 50%;
-			width: 274px;
-			height: 334px;
-			transform: translate(-50%, -50%);
-		}
-
-		100% {
-			top: var(--login-logo-top);
-			left: calc((100vw - min(100vw, var(--login-content-max-width))) / 2 + var(--login-logo-left));
-			width: 64px;
-			height: 78px;
-			transform: none;
-		}
-	}
-}
-@media (max-height: 836px) or (max-width: 768px) {
 	:root {
 		--login-content-inline-padding: 38px;
 		--login-header-safe-space: 115px;
@@ -370,6 +354,7 @@ a {
 			transform: none;
 		}
 	}
+
 	.login-header {
 		display: none;
 	}
@@ -379,7 +364,7 @@ a {
 		align-items: center;
 		justify-content: center;
 		gap: 20px;
-		padding: 8px 0;
+		padding: 24px 0;
 	}
 
 	.form-field :last-child {
@@ -401,47 +386,21 @@ a {
 	}
 }
 
-@media (max-height: 735px) {
-
-	.foot-container {
-		padding: 0 0 21px;
-	}
-
-	.foot-container a {
-		padding: 0 0 21px;
-	}
-}
-
-@media (max-height: 700px) {
-
-	.foot-container {
-		padding: 0 0 0px;
-	}
-
-	.foot-container a {
-		padding: 0 0 10px;
-	}
-
-
-	.login-logo {
-		width: 64px;
-		height: 78px;
-	}
-
-}
-
 @media (max-width: 630px) {
-	.register-form {
-		padding: 32px 32px;
-		border-radius: 16px;
-	}
-
-	.main-reg {
-		width: 100%;
-	}
-
-	.separator {
+	/*.separator {
 		margin: 16px auto 24px auto;
+	}*/
+
+	.login-form-section {
+	max-height: 438px;
+	}
+
+	.foot-container {
+		padding: 0 0 21px;
+	}
+
+	.foot-container a {
+		padding: 0 0 21px;
 	}
 }
 
@@ -457,16 +416,11 @@ a {
 	.register-form {
 		width: 100%;
 		max-width: 396px;
-		padding: 32px 16px;
 	}
 
 	.main-reg {
 		width: 100%;
 		max-width: 364px;
-	}
-
-	footer {
-		padding: 12px;
 	}
 
 	button {
@@ -495,6 +449,19 @@ a {
 		margin: 0 !important;
 		border-width: 1px !important;
 	}
+
+	.foot-container {
+		padding: 0;
+	}
+
+	.foot-container a {
+		padding: 0 0 10px;
+	}
+
+	.login-logo {
+		width: 64px;
+		height: 78px;
+	}
 }
 
 @media (max-width: 400px) {
@@ -517,21 +484,14 @@ a {
 	}
 }
 
-@media (max-width: 340px) {
-	:root {
-		--login-logo-left: 22px;
-	}
-}
-
-@media (max-height: 965px) {
-	:root {
-		--login-logo-top: 20px;
-		--login-logo-left: 20px;
-	}
-}
-
 @media (max-width: 361px) {
 	#error-message {
 		min-height: 40px;
+	}
+}
+
+@media (max-width: 340px) {
+	:root {
+		--login-logo-left: 22px;
 	}
 }

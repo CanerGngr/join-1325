@@ -206,7 +206,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   flex-shrink: 0;
 }
@@ -307,7 +307,7 @@
 .assignees .user-avatar-sm.more-assignees {
   background-color: var(--color-grey);
   color: var(--color-black-light);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -344,7 +344,7 @@
 
 @media (max-width: 480px) {
   .radio-to-btn-text {
-      font-size: 12px;
+      font-size: 16px;
   }
 
   .sidenav-text {

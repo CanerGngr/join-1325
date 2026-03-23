@@ -18,19 +18,17 @@
 .sidenav {
     flex-direction: column;
     width: 100%;
-    gap: 10px;
 }
 
 .btn-menu {
-    padding: 8px 30px;
     border-radius: 8px;
     border: none;
     background-color: white;
-    display: flex;
     align-items: center;
     flex-direction: row;
-    gap: 16px;
+    gap: 8px;
     color: rgba(66, 82, 110, 1);
+    width: 100%;
 }
 
 .btn-menu:hover {
@@ -144,10 +142,9 @@
         flex-direction: row;
         justify-content: space-around;
         width: 100%;
-        gap: 32px;
     }
 
-    .sidenav .btn-menu {
+    .btn-menu {
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -174,21 +171,13 @@
 }
 
 @media (max-width: 489px) {
-    .sidenav {
-        gap: 0px;
-    }
-}
 
-@media (max-width: 428px) {
-    .btn-menu {
-        padding: 8px 8px;
-    }
 }
 
 @media (max-width: 393px) {
     .sidenav .btn-menu {
         padding: 8px 8px;
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 

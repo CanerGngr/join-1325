@@ -8,7 +8,7 @@
 .task-users .user-avatar-sm.more-assignees {
     background-color: var(--color-grey);
     color: var(--color-black-light);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .task-description {
-  font-weight: 400;  
+  font-weight: 400;
   font-size: 16px;
   color: #a8a8a8;
   margin: 8px 0;
@@ -314,7 +314,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .progress-container {
@@ -451,11 +451,11 @@
         margin-left: 0;
         max-height: calc(100vh - 176px);
     }
-    
+
     .kanban {
         padding: 0 16px;
     }
-    
+
     .main-content-header {
         margin: 48px 16px 24px;
     }
