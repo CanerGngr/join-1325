@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,11 +17,15 @@
         </div>
       </header>
       <main>
-        <form class="register-form" onsubmit="handleRegisterUser(event)" novalidate>
+        <form
+          class="register-form"
+          onsubmit="handleRegisterUser(event)"
+          novalidate
+        >
           <a class="back-button-link" href="./login.html" title="back">
             <span
               class="back-icon"
-              onclick="sessionStorage.setItem('skipAnimation', 'true');"
+              onclick="sessionStorage.setItem('skipAnimation', 'true')"
             ></span>
           </a>
 
@@ -38,7 +42,7 @@
                       id="input-name"
                       type="text"
                       placeholder="Name"
-                      oninput="setBorderColor('field-name',true)"
+                      oninput="setBorderColor('field-name', true)"
                       onblur="isUserExistByName(this.value)"
                       required
                     />
@@ -106,27 +110,32 @@
                   />
                   <span class="checkbox-label">
                     I accept the
-                    <a href="./datenschutz.html" data-text="Privacy policy" class="color-blue checkbox-link">Privacy policy</a>
+                    <a
+                      href="./datenschutz.html"
+                      data-text="Privacy policy"
+                      class="color-blue checkbox-link"
+                      >Privacy policy</a
+                    >
                   </span>
                 </label>
                 <small id="checkbox-error" class="d-none msg-error"></small>
               </div>
             </div>
             <div class="btn-container">
-              <button
+              <!--<button
                 id="btn-signup"
                 class="btn-no-icon"
                 type="submit"
               >
                 Sign up
-              </button>
+              </button>-->
             </div>
           </div>
         </form>
       </main>
       <footer>
-            <a href="./datenschutz.html">Privacy Policy</a>
-            <a href="./legalnotice.html">Legal Notice</a>
+        <a href="./datenschutz.html">Privacy Policy</a>
+        <a href="./legalnotice.html">Legal Notice</a>
       </footer>
     </div>
     <div id="success-overlay" class="ol-end d-none">
