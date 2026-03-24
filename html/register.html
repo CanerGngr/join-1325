@@ -10,13 +10,13 @@
   </head>
 
   <body onload="initRegisterValidation()">
-    <div class="register-main-container">
-      <header>
-        <div class="logo-header">
-          <img src="../assets/icon/logowhiteheader.svg" alt="" />
-        </div>
-      </header>
-      <main>
+    <header>
+      <div class="logo-header">
+        <img src="../assets/icon/logowhiteheader.svg" alt="" />
+      </div>
+    </header>
+    <main class="register-main-container">
+      <div class="sign-up-container">
         <form
           class="register-form"
           onsubmit="handleRegisterUser(event)"
@@ -122,27 +122,23 @@
               </div>
             </div>
             <div class="btn-container">
-              <button
-                id="btn-signup"
-                class="btn-no-icon"
-                type="submit"
-              >
+              <button id="btn-signup" class="btn-no-icon" type="submit">
                 Sign up
               </button>
             </div>
           </div>
         </form>
-      </main>
-      <footer>
-        <a href="./datenschutz.html">Privacy Policy</a>
-        <a href="./legalnotice.html">Legal Notice</a>
-      </footer>
-    </div>
+      </div>
+    </main>
     <div id="success-overlay" class="ol-end d-none">
       <div class="ol-end-content">
         <p>You Signed Up successfully</p>
       </div>
     </div>
+    <footer>
+      <a href="./datenschutz.html">Privacy Policy</a>
+      <a href="./legalnotice.html">Legal Notice</a>
+    </footer>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../scrDB/dbConfig.js"></script>

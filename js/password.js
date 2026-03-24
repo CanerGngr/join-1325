@@ -259,20 +259,20 @@ function validatePasswordTooltip(inputPassword) {
   const rules = checkPasswordRules(inputPassword);
   const msg = buildPasswordMessage(rules);
   const isValid = isPasswordValid(rules);
-  
+
   handleErrorSet(
     "field-password",
     "password-tooltip",
     isValid,
     isValid ? "" : msg
   );
-  
+
   // Update validation state
   if (typeof validationState !== 'undefined') {
     validationState.password = isValid;
     checkAllFieldsValid();
   }
-  
+
   // Set HTML content directly for password tooltip
   if (!isValid) {
     const tooltipElement = document.getElementById("password-tooltip");
@@ -297,9 +297,8 @@ function isPasswordValid(rules) {
  * @function buildPasswordMessage
  */
 function buildPasswordMessage(rules) {
-  return `<span class="${rules.minLength ? "valid" : "invalid"}">Password must have at least 8 characters</span>, <span class="${rules.hasLower ? "valid" : "invalid"}">one lowercase letter</span>, <span class="${rules.hasNumber ? "valid" : "invalid"}">one number</span>`;
+  return `<span class="${rules.minLength ? "valid" : "invalid"}">Min. 8 Zeichen</span>, <span class="${rules.hasLower ? "valid" : "invalid"}">Groß-/Kleinbuchstaben</span>, <span class="${rules.hasNumber ? "valid" : "invalid"}">& Zahl</span>`;
 }
-
 
 /**
  * Handles the checkPasswordRules workflow.
