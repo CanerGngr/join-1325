@@ -22,23 +22,22 @@
 }
 
 .btn-menu {
-    border-radius: 8px;
-    border: none;
-    background-color: white;
-    align-items: center;
-    flex-direction: row;
-    gap: 8px;
-    color: rgba(66, 82, 110, 1);
-    width: 100%;
-    display: inline-flex;
+	padding: 8px 30px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 8px;
+	color: rgba(66, 82, 110, 1);
+    font-size: 16px;
 }
 
 .btn-menu:hover {
-    background-color: #e3eeff;
+    background-color: rgba(210, 227, 255, 1);
 }
 
 .btn-menu:active {
-    background-color: #d2e3ff;
+    background-color: rgba(210, 227, 255, 1);
 }
 
 .btn-menu img {
