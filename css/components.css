@@ -101,7 +101,6 @@ button {
 }
 
 .btn-secondary:hover {
-	margin: 0;
 	border: 2px solid #4589ff;
 	color: #4589ff;
 }

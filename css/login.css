@@ -14,8 +14,8 @@
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+	height: 100vh;
+	width: 100vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -25,21 +25,21 @@ body {
 
 /* Header */
 .login-page-header {
-  align-items: flex-end;
-  box-sizing: border-box;
-  display: flex;
-  font-family: Inter, Arial, sans-serif;
-  justify-content: flex-end;
-  width: 100%;
+	align-items: flex-end;
+	box-sizing: border-box;
+	display: flex;
+	font-family: Inter, Arial, sans-serif;
+	justify-content: flex-end;
+	width: 100%;
 	padding-bottom: var(--login-header-safe-space);
-  margin: 0 0px 0 0;
+	margin: 0 0px 0 0;
 }
 
 .header-right-side {
 	align-items: flex-end;
 	box-sizing: border-box;
 	display: flex;
-  	height: 100%;
+	height: 100%;
 	justify-content: flex-end;
 	margin: 0 auto;
 	max-width: var(--login-content-max-width);
@@ -87,17 +87,17 @@ body {
 }
 
 .login-form-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   	background-color: var(--color-font-white);
-    width: stretch;
-    max-width: 652px;
-    height: stretch;
-    max-height: 484px;
-   	box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-    border-radius: 30px;
-    margin: 0 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--color-font-white);
+	width: stretch;
+	max-width: 652px;
+	height: stretch;
+	max-height: 484px;
+	box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+	border-radius: 30px;
+	margin: 0 8px;
 }
 
 .head-reg {
@@ -186,7 +186,7 @@ footer a {
 }
 
 footer a:hover {
-	color: #005DFF;
+	color: #005dff;
 }
 
 /* Loader */
@@ -261,7 +261,11 @@ footer a:hover {
 
 	100% {
 		top: var(--login-logo-top);
-		left: calc((100vw - min(100vw, var(--login-content-max-width))) / 2 + var(--login-logo-left));
+		left: calc(
+			(100vw - min(100vw, var(--login-content-max-width))) /
+			2 +
+			var(--login-logo-left)
+		);
 		width: 101px;
 		height: 122px;
 		transform: none;
@@ -299,7 +303,7 @@ footer a:hover {
 
 /* Error message styling */
 #error-message {
-	color: #E60026;
+	color: #e60026;
 	display: block;
 	font-size: 16px;
 	min-height: 20px;
@@ -322,13 +326,13 @@ a {
 		--login-logo-left: 38px;
 	}
 
-	.checkbox-container {
+	/* .checkbox-container {
 		padding: 16px;
-	}
+	} */
 
-	.btn-container {
+	/* .btn-container {
 		padding-top: 16px;
-	}
+	} */
 }
 
 @media (max-width: 768px) {
@@ -348,7 +352,11 @@ a {
 
 		100% {
 			top: var(--login-logo-top);
-			left: calc((100vw - min(100vw, var(--login-content-max-width))) / 2 + var(--login-logo-left));
+			left: calc(
+				(100vw - min(100vw, var(--login-content-max-width))) /
+				2 +
+				var(--login-logo-left)
+			);
 			width: 32px;
 			height: 39px;
 			transform: none;
@@ -387,12 +395,8 @@ a {
 }
 
 @media (max-width: 630px) {
-	/*.separator {
-		margin: 16px auto 24px auto;
-	}*/
-
 	.login-form-section {
-	max-height: 438px;
+		max-height: 438px;
 	}
 
 	.foot-container {
@@ -411,6 +415,7 @@ a {
 
 	.separator {
 		width: 88px;
+		margin-bottom: 5px;
 	}
 
 	.register-form {
@@ -443,13 +448,6 @@ a {
 		padding: 10px 0px !important;
 	}
 
-	.btn-secondary,
-	.btn-secondary:hover,
-	.btn-secondary:active {
-		margin: 0 !important;
-		border-width: 1px !important;
-	}
-
 	.foot-container {
 		padding: 0;
 	}
@@ -469,12 +467,16 @@ a {
 		font-size: 37px;
 	}
 	.main-reg input {
-		width: 100%;
+		width: 90%;
 		min-width: 0;
 	}
 
 	.register-form {
 		max-width: 302px;
+	}
+
+	.main-reg {
+		width: 90%;
 	}
 }
 
