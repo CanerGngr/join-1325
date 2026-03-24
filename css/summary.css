@@ -401,7 +401,7 @@
     .summary-main-content {
         width: 90%;
         height: auto;
-        padding: 0 16px;
+        padding: 0 0px;
     }
 
     .summary-greeting {
@@ -490,5 +490,19 @@
 @media (max-height: 725px) or (max-width: 850px) {
     .summary-square {
         height: 90px !important;
+        display: flex;
+        gap: 10px;
     }
+        .square-urgency{
+                    padding: 16px 4px;
+        }
+        .summary-square-zoom-wrapper:first-of-type {
+            display: flex;
+            flex-direction: row;
+            gap: 18px;
+        }
+        /* .card-content-img-box {
+            gap: 18px;
+
+        } */
 }
