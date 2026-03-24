@@ -15,6 +15,10 @@ body {
 		align-items: center;
 }
 
+header {
+    height: 20px;
+}
+
 a {
 	text-decoration: none;
 }
@@ -155,7 +159,7 @@ a {
 .btn-container {
 	display: flex;
 	gap: 35px;
-	padding-top: 32px;
+	/*padding-top: 32px;*/
 	align-items: center;
 	justify-content: center;
 	width: 100%;
@@ -323,7 +327,7 @@ input:-webkit-autofill {
 	}
 
 	.main-reg {
-		margin-top: 24px;
+		/*margin-top: 24px;*/
 		width: 364px;
 	}
 
@@ -367,7 +371,7 @@ input:-webkit-autofill {
 	 * Adjust button container for mobile
 	 */
 	.btn-container {
-		padding-top: 16px;
+		/*padding-top: 16px;*/
 	}
 
 	.btn-no-icon {
