@@ -169,21 +169,23 @@
     .sidebar-links {
         padding-right: 8px;
     }
-}
-
-@media (max-width: 489px) {
-
+    .sidebar-content{
+        padding: 8px 8px;
+    }
 }
 
 @media (max-width: 393px) {
     .sidenav .btn-menu {
-        padding: 8px 8px;
+        padding: 8px 2px;
         font-size: 16px;
     }
 }
 
 @media (max-width: 328px) {
-    .sidenav .btn-menu {
+
+    .sidenav {
+        gap: 2px;
         padding: 8px 2px;
+
     }
 }
