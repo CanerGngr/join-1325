@@ -438,9 +438,13 @@
 		gap: 12px;
 	}
 
-	.summary-square:not(.square-urgency) {
+	/* .summary-square:not(.square-urgency) {
 		width: 100%;
 		height: 106px;
+	} */
+
+	.bottom-row .summary-square {
+		height: 110px !important;
 	}
 
 	.urgent-tasks {
@@ -508,6 +512,7 @@
 	}
 	.second-top-row {
 		padding: 0px;
+
 	}
 	.urgent-icon img {
 		height: 50px;
@@ -518,4 +523,7 @@
 		height: 40px;
 		margin-bottom: 4px;
 	}
+    .square-board {
+        height: 70px !important;
+    }
 }
