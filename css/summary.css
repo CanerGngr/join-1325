@@ -209,7 +209,7 @@
 
 .urgent-icon img {
 	height: 66px;
-	width: 65px;
+	width: 66px;
 	border-width: 3px;
 	border-style: solid;
 	border-radius: 66px;
@@ -260,8 +260,8 @@
 }
 
 .card-icon {
-	width: 69px;
-	height: 69px;
+	width: 76px;
+	height: 76px;
 	margin-bottom: 13px;
 }
 
@@ -409,8 +409,8 @@
 	}
 
 	.summary-square-box {
-		margin-top: 16px;
-		gap: 24px;
+		margin-top: 12px;
+		gap: 12px;
 	}
 
 	.top-row {
@@ -424,12 +424,6 @@
 		min-height: 150px;
 		padding: 16px 20px;
 	}
-	.summary-square {
-		/* height: 90px !important; */
-		/* display: block; */
-		/* display: block !important; */
-		/* gap: 10px; */
-	}
 
 	.second-top-row {
 		margin: 0;
@@ -441,7 +435,7 @@
 	.bottom-row {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 16px;
+		gap: 12px;
 	}
 
 	.summary-square:not(.square-urgency) {
@@ -476,24 +470,24 @@
 	}
 
 	.card-icon {
-		width: 40px;
-		height: 40px;
+		width: 50px;
+		height: 50px;
 		margin-bottom: 8px;
 	}
 
 	.card-content {
 		padding: 12px;
-		align-items: center;
-		justify-content: center;
+		flex: 1;
 	}
 
 	.vertical-divider {
-		height: 60px;
+		height: 118px;
+		width: 3px;
 	}
 
 	.urgent-icon img {
-		height: 50px;
-		width: 50px;
+		height: 76px;
+		width: 76px;
 	}
 }
 
@@ -506,13 +500,22 @@
 	.square-urgency {
 		padding: 16px 4px;
 	}
-	/* .summary-square-zoom-wrapper:first-of-type {
-            display: flex;
-            flex-direction: row;
-            gap: 18px;
-        } */
-	/* .card-content-img-box {
-            gap: 18px;
-
-        } */
+}
+@media (max-width: 427px) {
+	.square-urgency,
+	.square-board {
+		margin-bottom: 0;
+	}
+	.second-top-row {
+		padding: 0px;
+	}
+	.urgent-icon img {
+		height: 50px;
+		width: 50px;
+	}
+	.card-icon {
+		width: 40px;
+		height: 40px;
+		margin-bottom: 4px;
+	}
 }
