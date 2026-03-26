@@ -418,6 +418,13 @@ label.urgent-priority:hover {
 	.radio-to-btn-text {
 		font-size: 16px;
 	}
+	.btn-secondary-with-icon , .btn-with-icon {
+		font-size: 19px;
+	}
+	.form-actions{
+		padding: 0px;
+		gap: 24px;
+	}
 }
 
 .help-icon-svg {
