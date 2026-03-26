@@ -378,6 +378,11 @@
 }
 
 /* Responsive Styles */
+@media (max-width:1138px){
+	.summary-main-content{
+		width: 92%;
+	}
+}
 
 /* Tablet: Sidebar wird Bottom-Nav */
 @media (max-width: 1024px) {
