@@ -80,7 +80,6 @@
     overflow-wrap: break-word;
     hyphens: auto;
     margin: 0;
-    font-size: 61px;
 }
 
 .details-description {
@@ -99,4 +98,3 @@
 .user-item .user-avatar-sm {
     flex-shrink: 0;
 }
-
