@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
@@ -19,7 +19,13 @@
     />
   </head>
 
-  <body onload="renderAllTasks(); getUserAvatar();" onclick="handleDocumentClick(event)">
+  <body
+    onload="
+      renderAllTasks();
+      getUserAvatar();
+    "
+    onclick="handleDocumentClick(event)"
+  >
     <header class="header d-flex">
       <a href="/index.html"
         ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
@@ -76,7 +82,7 @@
       </nav>
       <div class="sidebar-footer d-flex">
         <a href="/html/datenschutz.html">Privacy Policy</a>
-        <a href="/html/impressum.html">Legal Notice</a>
+        <a href="/html/legalnotice.html">Legal Notice</a>
       </div>
     </section>
     <main class="main-wrapper">
