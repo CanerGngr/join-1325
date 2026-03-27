@@ -247,6 +247,15 @@ input:-webkit-autofill {
 	animation: fadeIn 0.4s ease-in-out;
 }
 
+.btn-no-icon:disabled {
+  background-color: #a8c8ff;
+  cursor: not-allowed;
+}
+
+.btn-no-icon:disabled:hover {
+  background-color: #a8c8ff;
+}
+
 .checkbox-link {
 	border-bottom: 1px solid transparent;
 }
