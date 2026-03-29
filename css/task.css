@@ -370,11 +370,7 @@
 		height: 88px;
 	}
 }
-@media (max-width: 420px) {
-	.form-actions {
-		/* bottom: -24px; */
-	}
-}
+
 @media (max-width: 390px) {
 	.title-input {
 		font-size: 24px !important;
@@ -383,11 +379,15 @@
 		height: 70px;
 	}
 }
+
 @media (max-height: 700px) {
 	.main-wrapper {
 		height: calc(100vh - 148px);
 	}
+	.add-task-main-container {
+		height: calc(100vh - 222px);
+	}
 	.task-form {
-		padding-bottom: 10px;
+		padding-bottom: 0px;
 	}
 }
