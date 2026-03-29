@@ -100,6 +100,7 @@
             <button
               type="button"
               id="search-button"
+              aria-label="Search"
               onclick="handleSearchClick()"
             >
               <svg
@@ -144,6 +145,7 @@
               <h2>To do</h2>
               <button
                 class="btn-add-icon"
+                aria-label="Add task to To do"
                 onclick="
                   setTargetColumn('todo');
                   toggleOverlay('.add-task-menu');
@@ -177,6 +179,7 @@
               <h2>In progress</h2>
               <button
                 class="btn-add-icon"
+                aria-label="Add task to In progress"
                 onclick="
                   setTargetColumn('in-progress');
                   toggleOverlay('.add-task-menu');
@@ -210,6 +213,7 @@
               <h2>Await feedback</h2>
               <button
                 class="btn-add-icon"
+                aria-label="Add task to Await feedback"
                 onclick="
                   setTargetColumn('await-feedback');
                   toggleOverlay('.add-task-menu');
@@ -400,6 +404,7 @@
                 <button
                   type="button"
                   class="dropdown-toggle-btn"
+                  aria-label="Toggle assigned to dropdown"
                   onclick="toggleAssignedDropdown()"
                 >
                   <img
@@ -431,6 +436,7 @@
                 <button
                   type="button"
                   class="dropdown-toggle-btn"
+                  aria-label="Toggle category dropdown"
                   onclick="toggleCategoryDropdown()"
                 >
                   <img
@@ -478,7 +484,7 @@
                 placeholder="Add new subtask"
               />
               <div class="form-btn-group">
-                <button type="button" class="form-btn-round">
+                <button type="button" class="form-btn-round" aria-label="Clear subtask input">
                   <svg
                     width="24"
                     height="24"
@@ -496,6 +502,7 @@
                 <button
                   type="button"
                   class="form-btn-round"
+                  aria-label="Add subtask"
                   onclick="addSubtask()"
                 >
                   <svg
