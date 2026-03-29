@@ -342,21 +342,22 @@
 }
 
 @media (max-width: 480px) {
-  .task-form {
-    margin: 12px 0 0 ;
-    gap: 16px;
-  }
-  .form-group label:not(.priority){
-    font-size: 16px;
-    font-weight: 400;
-  }
+	.task-form {
+		margin: 12px 0 0;
+		gap: 16px;
+	}
+	.form-group label:not(.priority) {
+		font-size: 16px;
+		font-weight: 400;
+	}
 	.radio-to-btn-text {
 		font-size: 16px;
 	}
-    .btn-secondary-with-icon ,.btn-with-icon {
-      /* flex-direction: row; */
-      padding: 10px;
-    }
+	.btn-secondary-with-icon,
+	.btn-with-icon {
+		/* flex-direction: row; */
+		padding: 10px;
+	}
 
 	.sidenav-text {
 		text-align: center;
@@ -366,11 +367,27 @@
 		font-weight: 400 !important;
 	}
 	.form-group textarea {
-		height: 88px ;
+		height: 88px;
+	}
+}
+@media (max-width: 420px) {
+	.form-actions {
+		/* bottom: -24px; */
 	}
 }
 @media (max-width: 390px) {
 	.title-input {
 		font-size: 24px !important;
+	}
+	.sidebar-content {
+		height: 70px;
+	}
+}
+@media (max-height: 700px) {
+	.main-wrapper {
+		height: calc(100vh - 148px);
+	}
+	.task-form {
+		padding-bottom: 10px;
 	}
 }
