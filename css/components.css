@@ -358,7 +358,7 @@ label.urgent-priority:hover {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-	user-select: none;
+	/* user-select: none; */
 }
 
 .checkbox-masked {
@@ -366,8 +366,8 @@ label.urgent-priority:hover {
 	position: relative;
 	width: 24px;
 	height: 24px;
-	appearance: none;
 	-webkit-appearance: none;
+	appearance: none;
 }
 
 .checkbox-masked::before {
@@ -410,7 +410,6 @@ label.urgent-priority:hover {
 
 @media (max-width: 480px) {
 	.radio-to-btn label {
-		/* flex-direction: column; */
 		padding: 8px 7px ;
 	}
 
