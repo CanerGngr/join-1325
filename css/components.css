@@ -5,14 +5,14 @@ button {
 .error-message {
 	color: #454545;
 	text-align: left;
-	font-size: 1rem;
+	font-size: 16px;
 	display: block;
 	min-height: 18px;
 	line-height: 18px;
 }
 
 .form-group.error .error-message {
-	color: #E60026;
+	color: var(--color-red-error-msg);
 }
 
 .btn-add {
@@ -20,7 +20,6 @@ button {
 	padding: 0 10px;
 	border-radius: 8px;
 	gap: 10px;
-	border: none;
 	background-color: #4589ff;
 	border: 1px solid #4589ff;
 	display: flex;
@@ -411,8 +410,8 @@ label.urgent-priority:hover {
 
 @media (max-width: 480px) {
 	.radio-to-btn label {
-		flex-direction: column;
-		padding: 2px;
+		/* flex-direction: column; */
+		padding: 8px 7px ;
 	}
 
 	.radio-to-btn-text {
