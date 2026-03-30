@@ -39,7 +39,7 @@ function clearTaskFormErrors(isEditMode) {
 function validateTaskForm(isEditMode) {
   const isTitleValid = validateTaskTitleField(isEditMode);
   const isDateValid = validateTaskDateField(isEditMode);
-  const isCategoryValid = validateTaskCategoryField(isEditMode);
+  const isCategoryValid = isEditMode ? true : validateTaskCategoryField(isEditMode);
   return isTitleValid && isDateValid && isCategoryValid;
 }
 
@@ -67,6 +67,14 @@ function validateTaskDateField(isEditMode) {
   const hasValue = dateInput.value !== "";
   dateGroup.classList.toggle("error", !hasValue);
   return hasValue;
+}
+
+function handleTaskTitleBlur(isEditMode) {
+  validateTaskTitleField(isEditMode);
+}
+
+function handleTaskDateBlur(isEditMode) {
+  validateTaskDateField(isEditMode);
 }
 
 
