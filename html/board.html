@@ -253,25 +253,8 @@
     </main>
     <div class="blur-overlay" id="blur-overlay" onclick="closeAllMenus()"></div>
     <div class="add-task-menu overlay-menu right" id="add-task-menu">
-      <div class="add-task-header d-flex kanban-header">
-        <h2>Add Task</h2>
-        <svg
-          class="btn-close-white"
-          onclick="toggleOverlay('#add-task-menu')"
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M16.0001 17.8642L9.46673 24.389C9.22229 24.6331 8.91118 24.7552 8.5334 24.7552C8.15562 24.7552 7.84451 24.6331 7.60007 24.389C7.35562 24.1449 7.2334 23.8342 7.2334 23.4569C7.2334 23.0796 7.35562 22.7689 7.60007 22.5248L14.1334 16L7.60007 9.47527C7.35562 9.23115 7.2334 8.92045 7.2334 8.54316C7.2334 8.16588 7.35562 7.85518 7.60007 7.61106C7.84451 7.36693 8.15562 7.24487 8.5334 7.24487C8.91118 7.24487 9.22229 7.36693 9.46673 7.61106L16.0001 14.1358L22.5334 7.61106C22.7778 7.36693 23.089 7.24487 23.4667 7.24487C23.8445 7.24487 24.1556 7.36693 24.4001 7.61106C24.6445 7.85518 24.7667 8.16588 24.7667 8.54316C24.7667 8.92045 24.6445 9.23115 24.4001 9.47527L17.8667 16L24.4001 22.5248C24.6445 22.7689 24.7667 23.0796 24.7667 23.4569C24.7667 23.8342 24.6445 24.1449 24.4001 24.389C24.1556 24.6331 23.8445 24.7552 23.4667 24.7552C23.089 24.7552 22.7778 24.6331 22.5334 24.389L16.0001 17.8642Z"
-            fill="#4589FF"
-          />
-        </svg>
-      </div>
       <div class="add-task-main">
-        <form id="task-form" onsubmit="saveTask(event)" novalidate>
+        <form id="task-form" class="task-form" onsubmit="saveTask(event)" novalidate>
           <div class="form-group" id="title-form-group">
             <input
               class="title-input form-input"
@@ -290,7 +273,7 @@
             <label for="description"
               >Description <span class="optional">(optional)</span></label
             >
-            <textarea id="description" name="description" rows="4"></textarea>
+            <textarea id="description" name="description" rows="4" placeholder="Enter a Description"></textarea>
           </div>
           <div class="form-group" id="date-form-group">
             <label for="task-date">Due Date</label>
@@ -307,6 +290,7 @@
             </div>
           </div>
           <div class="form-group" id="priority-form-group">
+            <label>Priority</label>
             <div class="radio-to-btn d-flex">
               <input
                 id="add-urgent-priority"
@@ -315,7 +299,7 @@
                 value="High"
               />
               <label for="add-urgent-priority" class="urgent-priority priority">
-                Urgent
+                <span class="radio-to-btn-text">Urgent</span>
                 <svg
                   width="20"
                   height="15"
@@ -341,7 +325,7 @@
                 value="Medium"
               />
               <label for="add-medium-priority" class="medium-priority priority">
-                Medium
+                <span class="radio-to-btn-text">Medium</span>
                 <svg
                   width="20"
                   height="9"
@@ -367,7 +351,7 @@
                 required
               />
               <label for="add-low-priority" class="low-priority priority">
-                Low
+                <span class="radio-to-btn-text">Low</span>
                 <svg
                   width="21"
                   height="15"
@@ -524,21 +508,30 @@
             </div>
             <ul class="subtask-list" id="subtask-list"></ul>
           </div>
-          <button type="submit" class="btn-with-icon">
-            Create Task
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn-secondary-with-icon"
+              onclick="clearForm()"
             >
-              <path
-                d="M9.55021 15.15L18.0252 6.675C18.2252 6.475 18.4627 6.375 18.7377 6.375C19.0127 6.375 19.2502 6.475 19.4502 6.675C19.6502 6.875 19.7502 7.1125 19.7502 7.3875C19.7502 7.6625 19.6502 7.9 19.4502 8.1L10.2502 17.3C10.0502 17.5 9.81687 17.6 9.55021 17.6C9.28354 17.6 9.05021 17.5 8.85021 17.3L4.55021 13C4.35021 12.8 4.25437 12.5625 4.26271 12.2875C4.27104 12.0125 4.37521 11.775 4.57521 11.575C4.77521 11.375 5.01271 11.275 5.28771 11.275C5.56271 11.275 5.80021 11.375 6.00021 11.575L9.55021 15.15Z"
-                fill="white"
-              />
-            </svg>
-          </button>
+              Clear ✕
+            </button>
+            <button type="submit" class="btn-with-icon">
+              Create Task
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.55021 15.15L18.0252 6.675C18.2252 6.475 18.4627 6.375 18.7377 6.375C19.0127 6.375 19.2502 6.475 19.4502 6.675C19.6502 6.875 19.7502 7.1125 19.7502 7.3875C19.7502 7.6625 19.6502 7.9 19.4502 8.1L10.2502 17.3C10.0502 17.5 9.81687 17.6 9.55021 17.6C9.28354 17.6 9.05021 17.5 8.85021 17.3L4.55021 13C4.35021 12.8 4.25437 12.5625 4.26271 12.2875C4.27104 12.0125 4.37521 11.775 4.57521 11.575C4.77521 11.375 5.01271 11.275 5.28771 11.275C5.56271 11.275 5.80021 11.375 6.00021 11.575L9.55021 15.15Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+          </div>
         </form>
       </div>
     </div>
