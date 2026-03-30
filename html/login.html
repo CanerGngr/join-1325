@@ -13,7 +13,7 @@
       type="image/x-icon"
     />
   </head>
-  <body onload="Loadingscreen()" onresize="handleLoginLogoResize()">
+  <body onload="Loadingscreen()" onresize="typeof handleLoginLogoResize === 'function' && handleLoginLogoResize()">
     <header class="login-page-header">
       <div class="header-right-side">
         <div class="login-header">
