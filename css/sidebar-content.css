@@ -36,7 +36,8 @@
     background-color: rgba(210, 227, 255, 1);
 }
 
-.btn-menu:active {
+
+.btn-menu.active {
     background-color: rgba(210, 227, 255, 1);
 }
 
@@ -162,6 +163,15 @@
 
     .sidebar-footer {
         display: none !important;
+    }
+
+    .btn-menu.active {
+        background-color: transparent;
+        color: var(--color-light-blue);
+    }
+
+    .btn-menu.active img {
+        filter: invert(42%) sepia(93%) saturate(500%) hue-rotate(196deg) brightness(101%) contrast(101%);
     }
 }
 

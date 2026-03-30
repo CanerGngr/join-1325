@@ -33,7 +33,7 @@ function getUserAvatar() {
     const userAvatarNameElement = document.getElementById('user-avatar-name');
     userAvatarNameElement.textContent = getInitials(userName);
   }
-
+  setActiveSidebarLink();
 }
 
 
@@ -168,6 +168,22 @@ function applyFinalLoginLogoState() {
   logoElement.style.width = finalWidth;
   logoElement.style.height = finalHeight;
   logoElement.style.transform = "none";
+}
+
+/**
+ * Highlights the sidebar nav link that matches the current page.
+ */
+function setActiveSidebarLink() {
+  const path = window.location.pathname;
+  document.querySelectorAll('.btn-menu').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    const page = href.split('/').pop();
+    const isIndex = page === 'index.html' && (path === '/' || path.endsWith('/index.html'));
+    if (isIndex || (page && path.endsWith(page))) {
+      link.classList.add('active');
+    }
+  });
 }
 
 /**
