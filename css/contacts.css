@@ -82,11 +82,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 47px;
 }
 
 .details-avatar {
-	margin-right: 54px;
+	margin-right: 22px;
 }
 .avatar-content {
 	width: 24px;
@@ -94,6 +93,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.avatar-initials {
+    font-size: 46px;
 }
 
 .contact-info {
@@ -468,4 +471,20 @@
 		height: 44px;
 		width: 44px;
 	}
+}
+
+@media (max-width: 370px) {
+    .contact-details-content h1 {
+        font-size: 26px;
+    }
+
+    .user-avatar-lg {
+        width: 70px;
+        height: 70px;
+
+    }
+
+    .avatar-initials {
+        font-size: 32px;
+    }
 }
