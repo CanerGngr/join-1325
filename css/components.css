@@ -3,16 +3,16 @@ button {
 }
 
 .error-message {
-	color: #454545;
+	color: var(--color-red-error-msg);
 	text-align: left;
 	font-size: 16px;
-	display: block;
+	display: none;
 	min-height: 18px;
 	line-height: 18px;
 }
 
 .form-group.error .error-message {
-	color: var(--color-red-error-msg);
+	display: block;
 }
 
 .btn-add {
