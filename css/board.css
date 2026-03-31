@@ -293,7 +293,7 @@
 .add-task-main {
 	padding: 24px;
 	overflow-y: auto;
-	height: calc(100% - 176px);
+	height: calc(100% - 100px);
 }
 
 .progress-bar {
