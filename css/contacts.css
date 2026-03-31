@@ -261,31 +261,6 @@
 		display: none;
 	}
 
-	.btn-add-contact {
-		position: fixed;
-		right: 23px;
-		bottom: 103px;
-		width: auto !important;
-		padding: 16px;
-	}
-
-	.overlay-menu.open {
-		position: fixed;
-		right: 0;
-		margin: auto;
-		top: 50%;
-		left: 0;
-		transform: translateY(-50%) !important;
-		box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-		background: white;
-		border-radius: 30px !important;
-		width: 396px;
-	}
-
-	.overlay-menu.open {
-		max-height: 570px;
-	}
-
 	.contact-form-avatar {
 		margin-bottom: 16px;
 	}
@@ -299,23 +274,37 @@
 	.contact-form-header {
 		margin-bottom: 0;
 	}
-
-	.contact-form-header img {
-		display: none;
-	}
 }
 
-@media (min-width: 1025px) {
+@media (max-width: 1025px) {
 	#contact-header-title-mobile {
 		display: none;
 	}
 	.mobile-contact-actions {
 		display: none !important;
 	}
+
+	.overlay-menu.open {
+		position: fixed;
+		right: 0;
+		margin: auto;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%) !important;
+		box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+		background: white;
+		border-radius: 30px !important;
+		width: 396px;
+		max-height: 80%;
+	}
 }
 
 @media (max-width: 1024px) {
 	#contact-header-title-desktop {
+		display: none;
+	}
+
+	.contact-form-header img {
 		display: none;
 	}
 
@@ -381,6 +370,17 @@
 	span {
 		font-size: 16px;
 	}
+
+	.btn-add-contact {
+		position: fixed;
+		right: 26px;		bottom: 103px;
+		width: auto !important;
+		padding: 16px;
+	}
+
+ .full-text {
+        display: none;
+    }
 }
 
 @media (min-width: 1207px) {

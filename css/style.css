@@ -189,13 +189,6 @@ header {
 }
 
 /* Mobile */
-
-@media (max-width: 1493px) {
-    .full-text {
-        display: none;
-    }
-}
-
 @media (max-width: 1025px) {
 	.main-wrapper-ds {
 		margin: 0;
