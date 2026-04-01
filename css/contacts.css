@@ -96,7 +96,8 @@
 }
 
 .avatar-initials {
-    font-size: 46px;
+	font-size: 46px;
+	color: white;
 }
 
 .contact-info {
@@ -201,6 +202,7 @@
 .contact-details-content h3 {
 	font-size: 16px;
 	font-weight: 700;
+	margin-bottom: 22px;
 }
 
 .contact-details {
@@ -276,7 +278,7 @@
 	}
 }
 
-@media (max-width: 1025px) {
+@media (min-width: 1025px) {
 	#contact-header-title-mobile {
 		display: none;
 	}
@@ -373,14 +375,15 @@
 
 	.btn-add-contact {
 		position: fixed;
-		right: 26px;		bottom: 103px;
+		right: 26px;
+		bottom: 103px;
 		width: auto !important;
 		padding: 16px;
 	}
 
- .full-text {
-        display: none;
-    }
+	.full-text {
+		display: none;
+	}
 }
 
 @media (min-width: 1207px) {
@@ -475,17 +478,16 @@
 }
 
 @media (max-width: 370px) {
-    .contact-details-content h1 {
-        font-size: 26px;
-    }
+	.contact-details-content h1 {
+		font-size: 26px;
+	}
 
-    .user-avatar-lg {
-        width: 70px;
-        height: 70px;
+	.user-avatar-lg {
+		width: 70px;
+		height: 70px;
+	}
 
-    }
-
-    .avatar-initials {
-        font-size: 32px;
-    }
+	.avatar-initials {
+		font-size: 32px;
+	}
 }
