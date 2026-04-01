@@ -290,6 +290,17 @@
 	font-size: 3rem;
 }
 
+.add-task-overlay-header {
+	justify-content: space-between;
+	align-items: center;
+	padding: 24px 24px 0 24px;
+}
+
+.add-task-overlay-header .btn-close-white {
+	cursor: pointer;
+	position: static;
+}
+
 .add-task-main {
 	padding: 24px;
 	overflow-y: auto;
