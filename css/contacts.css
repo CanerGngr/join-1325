@@ -121,9 +121,9 @@
 	color: #ffffff;
 	flex-direction: column;
 	align-items: center;
-	padding: 91px 0;
-	margin-bottom: 21px;
 	gap: 12px;
+	height: 35%;
+    justify-content: center;
 }
 
 .contact-form-header h2 {
@@ -140,9 +140,11 @@
 .contact-side-menu form {
 	flex-direction: column;
 	align-items: center;
-	padding: 32px 81px;
-	margin-bottom: 21px;
-	gap: 8px;
+	padding: 0px 12px;
+	justify-content: space-between;
+    height: 60%;
+    margin: 24px 0px;
+        flex: 1;
 }
 
 .form-buttons {
@@ -172,7 +174,7 @@
 	border: none;
 	outline: none;
 	background: transparent;
-	font-size: 1rem;
+	font-size: 16px;
 }
 
 .user-avatar-sm {
@@ -235,7 +237,6 @@
 }
 
 .contact-form-avatar {
-	margin-bottom: 32px;
 	background-color: #d1d1d1;
 }
 
@@ -261,20 +262,6 @@
 @media (max-width: 1493px) {
 	#add-contact-form .btn-secondary-with-icon {
 		display: none;
-	}
-
-	.contact-form-avatar {
-		margin-bottom: 16px;
-	}
-
-	.contact-side-menu form {
-		padding: 0px 16px;
-		position: relative;
-		top: -60px;
-	}
-
-	.contact-form-header {
-		margin-bottom: 0;
 	}
 }
 
