@@ -46,7 +46,7 @@
 }
 
 .kanban {
-	padding: 0 4rem;
+	padding: 0 64px;
 	gap: 24px;
 	overflow-y: auto;
 	min-height: 0;
@@ -165,7 +165,6 @@
 
 .task-card {
 	cursor: move;
-	user-select: none;
 }
 
 .task-card.dragging {
@@ -385,7 +384,7 @@
 .form-group.error input,
 .form-group.error select,
 .form-group.error textarea {
-	border-color: #e60026;
+	border-color: var(--color-red-error-msg);
 }
 
 .optional {
