@@ -528,7 +528,7 @@
 		width: 100vw;
 	}
 	.details-overlay {
-		width: calc(100% - 120px);
+		width: calc(100% - 48px);
 	}
 	.task-cards {
 		flex-direction: row ;
@@ -548,6 +548,9 @@
 	}
 	.add-task-main {
 		padding: 20px 12px;
+	}
+		.details-overlay {
+		width: calc(100% - 28px);
 	}
 }
 

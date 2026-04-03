@@ -146,9 +146,9 @@ const priorityIcons = {
 
 // Priority labels mapping
 const priorityLabels = {
-	urgent: "High Priority",
-	medium: "Medium Priority",
-	low: "Low Priority",
+	urgent: "High ",
+	medium: "Medium ",
+	low: "Low",
 };
 
 // Kategorie-zu-CSS-ID Mapping
