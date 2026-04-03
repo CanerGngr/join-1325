@@ -411,6 +411,9 @@
 	border: none !important;
 }
 
+.text-btn-with-icon{
+	font-weight: 400;
+}
 .overlay-menu {
 	width: 518px;
 }
@@ -429,7 +432,7 @@
 	}
 
 	.task-card {
-		flex: 0 0 252px;
+		flex: 0 0 213px;
 	}
 
 	.search-container {
