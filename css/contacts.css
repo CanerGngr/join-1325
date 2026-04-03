@@ -236,6 +236,10 @@
 	flex-wrap: wrap;
 }
 
+#contact-header-title-mobile {
+		display: none;
+	}
+
 .contact-form-avatar {
 	background-color: #d1d1d1;
 }
@@ -266,9 +270,7 @@
 }
 
 @media (max-width: 1025px) {
-	#contact-header-title-mobile {
-		display: none;
-	}
+
 	.mobile-contact-actions {
 		display: none !important;
 	}
@@ -289,6 +291,9 @@
 }
 
 @media (max-width: 1024px) {
+    #contact-header-title-mobile {
+		display: block;
+	}
 	#contact-header-title-desktop {
 		display: none;
 	}
