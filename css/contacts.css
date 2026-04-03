@@ -278,7 +278,7 @@
 	}
 }
 
-@media (min-width: 1025px) {
+@media (max-width: 1025px) {
 	#contact-header-title-mobile {
 		display: none;
 	}
