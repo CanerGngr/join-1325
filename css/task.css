@@ -104,7 +104,7 @@
 	gap: 16px;
 	position: absolute;
 	top: auto;
-	bottom: 55px;
+	bottom: 25px;
 	right: 42px;
 }
 
@@ -335,7 +335,7 @@
 
 	.task-form {
 		margin: 16px 0 0;
-		padding-bottom: 80px;
+		/* padding-bottom: 80px; */
 	}
 }
 

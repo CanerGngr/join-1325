@@ -312,7 +312,7 @@
 .add-task-main {
 	padding: 0 20px;
 	overflow-y: auto;
-	height: calc(100% - 177px);
+	height: calc(100% - 220px);
 }
 
 .progress-bar {
@@ -466,20 +466,22 @@
 	.sidebar-content {
 		z-index: 1003;
 	}
+	.overlay-menu.open {
+		top: 95px;
+		height: calc(100svh - 180px);
+	}
 }
 
 @media (max-width: 850px) {
-	.overlay-menu.open {
-		top: 80px;
-		height: calc(100svh - 160px);
-	}
-
 	.main-wrapper {
 		max-height: calc(100vh - 160px);
 	}
 
 	.kanban {
 		padding: 0 12px;
+	}
+		.overlay-menu.open {
+		top: 80px;
 	}
 }
 
@@ -505,7 +507,7 @@
 	}
 }
 @media (max-width: 560px) {
-	.overlay-menu{
+	.overlay-menu {
 		width: 100vw;
 	}
 	.details-overlay {
