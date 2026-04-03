@@ -411,7 +411,7 @@
 	border: none !important;
 }
 
-.text-btn-with-icon{
+.text-btn-with-icon {
 	font-weight: 400;
 }
 .overlay-menu {
@@ -483,8 +483,11 @@
 	.kanban {
 		padding: 0 12px;
 	}
-		.overlay-menu.open {
+	.overlay-menu.open {
 		top: 80px;
+	}
+		.add-task-main {
+		height: calc(100% - 69px);
 	}
 }
 
@@ -509,15 +512,6 @@
 		width: 100vw;
 	}
 }
-@media (max-width: 560px) {
-	.overlay-menu {
-		width: 100vw;
-	}
-	.details-overlay {
-		width: calc(100% - 32px);
-	}
-}
-
 @media (max-height: 700px) {
 	.add-task-main {
 		padding: 12px;
@@ -525,6 +519,40 @@
 	}
 	.overlay-menu.open {
 		top: 80px;
-		height: calc(100svh - 142px);
+		height: calc(100svh - 152px);
+	}
+}
+
+@media (max-width: 560px) {
+	.overlay-menu {
+		width: 100vw;
+	}
+	.details-overlay {
+		width: calc(100% - 120px);
+	}
+	.task-cards {
+		flex-direction: row ;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		gap: 12px;
+	}
+	.add-task-overlay-header {
+		display: none;
+	}
+}
+
+@media (max-width: 420px) {
+	.radio-to-btn {
+		gap: 12px;
+	}
+	.add-task-main {
+		padding: 20px 12px;
+	}
+}
+
+@media (max-width: 340px){
+		.add-task-main {
+		padding: 20px 6px;
 	}
 }
