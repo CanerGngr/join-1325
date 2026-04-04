@@ -122,7 +122,7 @@ function toggleAssignedDropdown(mode, dropdownElement) {
  * @function getAssignedDropdownList
  */
 function getAssignedDropdownList(mode) {
-  if (mode == "task-edit") {
+  if (mode === "task-edit") {
     return document.getElementById("edit-assigned-to-list");
   } else {
     return document.getElementById("assigned-to-list");
