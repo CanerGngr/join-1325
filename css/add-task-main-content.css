@@ -1,9 +1,18 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 .main-wrapper {
     position: relative;
     flex-grow: 1;
     max-width: 1688px;
     margin-left: 232px;
-    height: calc(100vh - 176px);
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    overflow-y: auto;
 }
 
 /* Tablet: Sidebar wird Bottom-Nav */
