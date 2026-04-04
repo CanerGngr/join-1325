@@ -446,10 +446,6 @@
 	.btn-add {
 		display: none;
 	}
-
-	header {
-		z-index: 1001;
-	}
 }
 
 @media (max-width: 1024px) {
@@ -471,7 +467,11 @@
 	}
 	.overlay-menu.open {
 		top: 95px;
-		height: calc(100svh - 180px);
+		height: calc(100vh - 176px);
+	}
+
+	header {
+		z-index: 1001;
 	}
 }
 
@@ -485,6 +485,8 @@
 	}
 	.overlay-menu.open {
 		top: 80px;
+		height: calc(100vh - 160px);
+
 	}
 		.add-task-main {
 		height: calc(100% - 69px);
