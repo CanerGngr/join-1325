@@ -12,7 +12,11 @@ header {
     margin-left: 232px;
     margin-top: 96px;
     height: calc(100vh - 96px);
-    overflow-y: auto;
+    overflow: hidden;
+}
+
+.main-content {
+    height: 100%;
 }
 
 /* Tablet: Sidebar wird Bottom-Nav */
