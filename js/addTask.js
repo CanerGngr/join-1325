@@ -452,6 +452,9 @@ function handleTaskSaveSuccess() {
 function showSuccessOverlay() {
   let overlay = document.getElementById("success-overlay");
   overlay.classList.remove("d-none");
+  setTimeout(function () {
+    overlay.classList.add("d-none");
+  }, 1500);
 }
 
 
