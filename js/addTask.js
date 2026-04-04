@@ -392,7 +392,7 @@ function getSelectedPriority() {
  */
 function mapPriorityValue(value) {
   let lowerValue = value.toLowerCase();
-  if (lowerValue === "high") return "urgent";
+  if (lowerValue === "urgent") return "urgent";
   if (lowerValue === "medium") return "medium";
   if (lowerValue === "low") return "low";
 }
