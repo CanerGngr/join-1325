@@ -18,9 +18,8 @@ async function initializeTasks() {
 		const storedTasks = loadTasksFromSession();
 		return storedTasks || getDefaultTasks();
 	} else {
-		// Logged-in user: Load from Firebase
-		const firebaseTasks = await loadTasksFromFirebase();
-		return firebaseTasks.length > 0 ? firebaseTasks : getDefaultTasks();
+		// Logged-in user: Load from Firebase — return empty array if no tasks yet
+		return await loadTasksFromFirebase();
 	}
 }
 
