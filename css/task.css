@@ -140,7 +140,7 @@
 	padding: 12px 40px 12px 16px;
 	border: 2px solid #d1d1d1;
 	border-width: 0 0 2px 0;
-	font-size: 1rem;
+	font-size: 19px;
 	color: #2a3647;
 	background-color: #ffffff;
 	cursor: pointer;
@@ -390,9 +390,9 @@
 	.form-group textarea {
 		height: 88px;
 	}
-	/* .form-input {
-		font-size: 16px !important;
-	} */
+	.dropdown-input{
+		font-size: 16px ;
+	}
 }
 
 @media (max-width: 390px) {
@@ -401,6 +401,13 @@
 	}
 	.sidebar-content {
 		height: 70px;
+	}
+	.radio-to-btn label svg {
+		width: 15px;
+		height: 15px;
+	}
+	.radio-to-btn{
+		gap: 8px;
 	}
 }
 
