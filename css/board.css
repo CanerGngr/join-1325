@@ -526,6 +526,9 @@
 		top: 80px;
 		height: calc(100svh - 152px);
 	}
+	.kanban {
+    max-height: calc(100vh - 244px);
+}
 }
 
 @media (max-width: 560px) {
