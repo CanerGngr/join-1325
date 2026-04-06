@@ -514,7 +514,7 @@
 		width: 100vw;
 	}
 	.main-content-header{
-	    margin: 24px 16px 24px;
+	    margin: 0 16px 16px 16px;
 	}
 }
 @media (max-height: 700px) {

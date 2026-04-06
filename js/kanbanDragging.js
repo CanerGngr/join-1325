@@ -120,23 +120,6 @@ function removePlaceholder() {
 }
 
 
-/**
- * Handles the handleDragEnter workflow.
- * @function handleDragEnter
- */
-function handleDragEnter(element) {
-    // Highlighting is managed by dragover - no action needed here
-}
-
-
-/**
- * Handles the handleDragLeave workflow.
- * @function handleDragLeave
- */
-function handleDragLeave(event, element) {
-    // Leave highlighting is managed by dragover - no action needed here
-}
-
 
 /**
  * Handles the handleDrop workflow.
@@ -211,5 +194,21 @@ async function updateTaskStatusInDrag(taskElement, columnId) {
         // Verwende die globale updateTaskStatus Funktion aus task-management.js
         await window.updateTaskStatus(taskId, newStatus);
     }
+}
+
+/**
+ * Handles the handleDragEnter workflow.
+ * @function handleDragEnter
+ */
+function handleDragEnter(element) {
+    // Highlighting is managed by dragover - no action needed here
+}
+
+/**
+ * Handles the handleDragLeave workflow.
+ * @function handleDragLeave
+ */
+function handleDragLeave(event, element) {
+    // Leave highlighting is managed by dragover - no action needed here
 }
 
