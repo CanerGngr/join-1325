@@ -215,10 +215,14 @@ function getTaskCardTemplate(
 	let { subtaskProgress, totalSubtasks, progressInPercent } = subtaskData;
 
 	return `
-    <div class="task-card" draggable="true" data-task-id="${task.id || ""}" 
-         ondragstart="handleDragStart(event, this)" 
+    <div class="task-card" draggable="true" data-task-id="${task.id || ""}"
+         ondragstart="handleDragStart(event, this)"
          ondragend="handleDragEnd(this)"
-         onclick="showTaskDetails('${task.id || ""}')">
+         oncontextmenu="return false"
+         ontouchstart="handleTouchStart(event, this)"
+         ontouchmove="handleTouchMove(event)"
+         ontouchend="handleTouchEnd(event)"
+         onclick="showTaskDetails('${task.id || ""}')"><!-- wasim8 -->
       <div id="${categoryId}" class="ticket-label">${task.category || "User Story"}</div>
       <div class="task-title">${task.title || "Untitled Task"}</div>
       <div class="task-description">${task.description || ""}</div>
