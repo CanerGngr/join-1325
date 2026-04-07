@@ -222,7 +222,7 @@ function getTaskCardTemplate(
          ontouchstart="handleTouchStart(event, this)"
          ontouchmove="handleTouchMove(event)"
          ontouchend="handleTouchEnd(event)"
-         onclick="showTaskDetails('${task.id || ""}')"><!-- wasim8 -->
+         onclick="showTaskDetails('${task.id || ""}')">
       <div id="${categoryId}" class="ticket-label">${task.category || "User Story"}</div>
       <div class="task-title">${task.title || "Untitled Task"}</div>
       <div class="task-description">${task.description || ""}</div>
