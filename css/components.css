@@ -100,7 +100,8 @@ button {
 }
 
 .btn-secondary:hover {
-	border: 2px solid #4589ff;
+	border: 1px solid transparent;
+	box-shadow: inset 0 0 0 2px #4589ff;
 	color: #4589ff;
 }
 
