@@ -111,29 +111,30 @@ async function handleTouchEnd(event) {
 
     const touch = event.changedTouches[0];
 
-    if (touchClone) {
-        touchClone.remove();
-        touchClone = null;
-    }
-
-    touchDraggedElement.classList.remove('dragging');
-
-    touchDraggedElement.style.display = 'none';
-    const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
-    touchDraggedElement.style.display = '';
-
     const columns = [
         document.getElementById('todo'),
         document.getElementById('in-progress'),
         document.getElementById('await-feedback'),
         document.getElementById('done')
     ];
-    columns.forEach(col => col.classList.remove('drag-over', 'drag-active'));
 
     let targetColumn = null;
-    if (elementBelow) {
-        targetColumn = elementBelow.closest('.kanban-column');
+    for (let i = 0; i < columns.length; i++) {
+        const rect = columns[i].getBoundingClientRect();
+        if (touch.clientX >= rect.left && touch.clientX <= rect.right &&
+            touch.clientY >= rect.top  && touch.clientY <= rect.bottom) {
+            targetColumn = columns[i];
+            break;
+        }
     }
+
+    if (touchClone) {
+        touchClone.remove();
+        touchClone = null;
+    }
+
+    touchDraggedElement.classList.remove('dragging');
+    columns.forEach(col => col.classList.remove('drag-over', 'drag-active'));
 
     if (targetColumn) {
         const targetContainer = document.getElementById(targetColumn.id + '-cards');
