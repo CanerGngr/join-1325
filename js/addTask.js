@@ -22,6 +22,7 @@ async function initAddTaskPage() {
   getUserAvatar();
 }
 
+
 /**
  * Returns today's date in YYYY-MM-DD format for date input min attributes.
  * @returns {string}
@@ -29,6 +30,7 @@ async function initAddTaskPage() {
 function getTodayISODate() {
   return new Date().toISOString().split("T")[0];
 }
+
 
 /**
  * Sets min date constraints for due date inputs so past dates cannot be selected.
@@ -46,6 +48,7 @@ function setDueDateMinConstraints() {
     editDueDateInput.min = today;
   }
 }
+
 
 /**
  * Populates the assignedTo dropdown with checkboxes from contacts array
@@ -103,6 +106,7 @@ function createDropdownItemHTML(contact, index, isSelected, mode) {
   `;
 }
 
+
 /**
  * Toggles the assigned to dropdown
  */
@@ -129,6 +133,7 @@ function getAssignedDropdownList(mode) {
   }
 }
 
+
 /**
  * Toggles user selection in the dropdown
  * Called when checkbox state changes
@@ -143,6 +148,7 @@ function toggleUserSelection(userName, event, mode) {
   updateDropdownPlaceholder(mode);
 }
 
+
 /**
  * Updates selected users array based on checkbox state
  */
@@ -154,6 +160,7 @@ function updateSelectedUsersArray(userName, isChecked) {
     selectedUsers.splice(index, 1);
   }
 }
+
 
 /**
  * Updates the assignees container to display selected users as avatars
@@ -179,6 +186,7 @@ function updateDropdownPlaceholder(mode) {
     container.innerHTML += `<div class="user-avatar-sm more-assignees">+${hiddenAssigneesCount}</div>`;
   }
 }
+
 
 /**
  * Close dropdown when clicking outside
@@ -215,6 +223,7 @@ function handleDocumentClick(event) {
   }
 }
 
+
 /**
  * Toggles the category dropdown
  */
@@ -225,6 +234,7 @@ function toggleCategoryDropdown() {
   dropdownList.classList.toggle("d-none");
   categoryDropdown.classList.toggle("open");
 }
+
 
 /**
  * Selects a category and updates the input
@@ -242,6 +252,7 @@ function selectCategory(categoryName) {
   let categoryFormGroup = document.getElementById("category-form-group");
   if (categoryFormGroup) categoryFormGroup.classList.remove("error");
 }
+
 
 /**
  * Generates a unique task ID for guest users
@@ -268,6 +279,7 @@ function generateTaskId() {
     return "temp-" + Date.now();
   }
 }
+
 
 /**
  * Sets the target column status for new tasks
@@ -315,8 +327,6 @@ function clearCategory() {
   categoryInput.value = "";
   categoryHidden.value = "";
 }
-
-
 
 
 /**
@@ -467,5 +477,6 @@ function openAddTaskOverlay(columnStatus) {
   setDueDateMinConstraints();
   toggleOverlay(".add-task-menu");
 }
+
 
 setDueDateMinConstraints();
