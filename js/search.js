@@ -48,7 +48,11 @@ function taskMatchesSearchTerm(task, searchTerm) {
 function renderFilteredTasks(filteredTasks) {
   let currentTasks = tasks;
   tasks = filteredTasks;
-  renderAllTasks();
+
+  let columns = getKanbanColumns();
+  clearAllColumns(columns);
+  renderTasksInColumns();
+
   tasks = currentTasks;
 }
 
