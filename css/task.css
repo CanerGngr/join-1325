@@ -390,7 +390,7 @@
 	.form-group textarea {
 		height: 88px;
 	}
-	.dropdown-input{
+	.dropdown-input ,.form-group .form-input {
 		font-size: 16px ;
 	}
 }
