@@ -449,17 +449,15 @@
 		flex: 0 0 213px;
 	}
 
-	.search-container {
-		width: 100%;
-	}
+
 
 	.search-container input {
 		width: 100%;
 	}
-
-	.btn-add {
-		display: none;
+		.search-container {
+		width: 70%;
 	}
+
 }
 
 @media (max-width: 1024px) {
@@ -504,6 +502,9 @@
 	}
 		.add-task-main {
 		height: calc(100% - 69px);
+	}
+			.search-container {
+		width: 65%;
 	}
 }
 
@@ -551,6 +552,12 @@
 	}
 	.details-overlay {
 		width: calc(100% - 48px);
+	}
+		.btn-add {
+		display: none;
+	}
+		.search-container {
+		width: 100%;
 	}
 	.task-cards {
 		flex-direction: row ;
