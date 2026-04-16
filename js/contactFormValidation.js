@@ -79,6 +79,28 @@ function validateContactEmailField(isEditMode) {
 function validateContactPhoneField(isEditMode) {
   const { phoneInput, phoneGroup } = getContactValidationElements(isEditMode);
   const hasValue = phoneInput.value.trim() !== "";
+  if (!hasValue) {
+    phoneGroup.querySelector(".error-message").textContent = "This field is required";
+  }
   phoneGroup.classList.toggle("error", !hasValue);
   return hasValue;
+}
+
+
+/**
+ * Strips non-numeric characters (except a leading +) from the phone field in real time.
+ * Shows an inline error if invalid characters were typed.
+ * @param {boolean} isEditMode - True for edit contact form, false for add contact form.
+ */
+function validatePhoneInput(isEditMode) {
+  const { phoneInput, phoneGroup } = getContactValidationElements(isEditMode);
+  const before = phoneInput.value;
+  const stripped = before.replace(/[^0-9+]/g, "").replace(/(?!^)\+/g, "");
+  if (before !== stripped) {
+    phoneInput.value = stripped;
+    phoneGroup.querySelector(".error-message").textContent = "Only numbers are allowed";
+    phoneGroup.classList.add("error");
+  } else {
+    phoneGroup.classList.remove("error");
+  }
 }
