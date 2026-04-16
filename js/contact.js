@@ -386,7 +386,7 @@ function getEditContactFormTemplate(contact, avatarColor, initials) {
         </div>
         <div class="form-group" id="edit-contact-phone-group">
             <div class="input-icon-container">
-                <input type="text" id="edit-contact-phone" onblur="validateContactPhoneField(true)" value="${
+                <input type="text" id="edit-contact-phone" onblur="validateContactPhoneField(true)" oninput="validatePhoneInput(true)" value="${
                   contact.phone
                 }" required />
                 <img src="/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
@@ -464,6 +464,8 @@ function addContact(event) {
   const newContactIndex = contacts.length - 1;
   showContactDetails(newContactIndex);
   closeAllMenus();
+  document.getElementById("add-contact-form").reset();
+  clearContactFormErrors(false);
 }
 
 /**
