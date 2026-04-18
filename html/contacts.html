@@ -18,7 +18,14 @@
     />
   </head>
 
-  <body class="body-no-scroll" onload="renderContactList(); getUserAvatar();" onclick="handleContactBodyClick(event)">
+  <body
+    class="body-no-scroll"
+    onload="
+      renderContactList();
+      getUserAvatar();
+    "
+    onclick="handleContactBodyClick(event)"
+  >
     <header class="header d-flex">
       <a href="/index.html"
         ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
@@ -113,7 +120,7 @@
         <h2>Add Contact</h2>
         <h3>Tasks are better with a team!</h3>
         <svg
-          class="btn-close "
+          class="btn-close"
           onclick="toggleOverlay('#add-contact-menu')"
           width="32"
           height="32"
@@ -127,9 +134,17 @@
           />
         </svg>
       </div>
-      <form id="add-contact-form" class="d-flex" onsubmit="addContact(event)" novalidate>
+      <form
+        id="add-contact-form"
+        class="d-flex"
+        onsubmit="addContact(event)"
+        novalidate
+      >
         <div class="contact-form-avatar user-avatar-lg">
-          <img src="/assets/icon/contacts/avatar-placeholder.svg" alt="Avatar" />
+          <img
+            src="/assets/icon/contacts/avatar-placeholder.svg"
+            alt="Avatar"
+          />
         </div>
         <div class="form-group" id="add-contact-name-group">
           <div class="input-icon-container">
