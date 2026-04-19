@@ -180,10 +180,36 @@ function onPasswordInput(input, inputEvent) {
  */
 function updateRealValueFromInput(realValue, previousDisplay, currentDisplay, inputEvent, caretPosition) {
   const caret = typeof caretPosition === "number" ? caretPosition : currentDisplay.length;
-  const inputType = inputEvent.inputType;
+  const inputType = inputEvent && inputEvent.inputType;
+  if (!inputType) return updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue);
   if (inputType.startsWith("delete")) return applyDeleteToReal(realValue, currentDisplay.length, caret);
   if (inputType.startsWith("insert")) return applyInsertToReal(realValue, currentDisplay, caret, inputEvent);
   return updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue);
+}
+
+
+/**
+ * Rebuilds the real value by diffing previous and current display strings.
+ * Used as a fallback when inputType is unavailable (autofill, paste, synthetic events).
+ * @function updateRealValueByDisplayDiff
+ */
+function updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue) {
+  const minLen = Math.min(previousDisplay.length, currentDisplay.length);
+  let prefix = 0;
+  while (prefix < minLen && previousDisplay[prefix] === currentDisplay[prefix]) {
+    prefix++;
+  }
+  let suffix = 0;
+  while (
+    suffix < minLen - prefix &&
+    previousDisplay[previousDisplay.length - 1 - suffix] ===
+      currentDisplay[currentDisplay.length - 1 - suffix]
+  ) {
+    suffix++;
+  }
+  const added = currentDisplay.slice(prefix, currentDisplay.length - suffix);
+  const removedCount = previousDisplay.length - prefix - suffix;
+  return realValue.slice(0, prefix) + added + realValue.slice(prefix + removedCount);
 }
 
 
