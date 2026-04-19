@@ -112,23 +112,11 @@ function getEditTaskFormData() {
  */
 async function submitEditTask(event, taskId) {
   event.preventDefault();
-  if (!validateTaskForm(true)) {
-    return;
-  }
-  
-  // Update the task
+  if (!validateTaskForm(true)) return;
   await updateTask(taskId, getEditTaskFormData());
-  
-  // Refresh the board
   renderAllTasks();
-
-  // Close the overlay
   toggleOverlay('#details-overlay');
-
-  // Show success notification
   showEditSuccessOverlay();
-
-  // Reset arrays
   selectedUsers = [];
   currentSubtasks = [];
 }
