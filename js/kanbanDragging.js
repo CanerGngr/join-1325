@@ -173,31 +173,44 @@ function insertDraggedElement(container, clientY) {
  * @function getDragAfterElement
  */
 function getDragAfterElement(container, y) {
-    let draggableElements = [];
-    let children = container.children;
+    const draggables = collectDraggableTaskCards(container);
+    return findClosestBelowPointer(draggables, y);
+}
 
+
+/**
+ * Returns task-card children of the container that are not currently being dragged.
+ * @function collectDraggableTaskCards
+ */
+function collectDraggableTaskCards(container) {
+    const result = [];
+    const children = container.children;
     for (let i = 0; i < children.length; i++) {
-        let child = children[i];
+        const child = children[i];
         if (child.classList.contains('task-card') && !child.classList.contains('dragging')) {
-            draggableElements.push(child);
+            result.push(child);
         }
     }
+    return result;
+}
 
-    let closestElement = null;
+
+/**
+ * Returns the element whose vertical center is just below the pointer Y.
+ * @function findClosestBelowPointer
+ */
+function findClosestBelowPointer(elements, y) {
+    let closest = null;
     let closestOffset = Number.NEGATIVE_INFINITY;
-
-    for (let i = 0; i < draggableElements.length; i++) {
-        let child = draggableElements[i];
-        let box = child.getBoundingClientRect();
-        let offset = y - box.top - box.height / 2;
-
+    for (let i = 0; i < elements.length; i++) {
+        const box = elements[i].getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
         if (offset < 0 && offset > closestOffset) {
             closestOffset = offset;
-            closestElement = child;
+            closest = elements[i];
         }
     }
-
-    return closestElement;
+    return closest;
 }
 
 
