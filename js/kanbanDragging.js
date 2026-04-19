@@ -6,6 +6,7 @@
  */
 let draggedElement = null;
 let dropPlaceholder = null;
+const KANBAN_STATUSES = ['todo', 'in-progress', 'await-feedback', 'done'];
 
 /**
  * Handles the handleDragStart workflow.
@@ -220,19 +221,8 @@ function findClosestBelowPointer(elements, y) {
  */
 async function updateTaskStatusInDrag(taskElement, columnId) {
     const taskId = taskElement.getAttribute('data-task-id');
-    const statusMapping = {
-        'todo': 'todo',
-        'in-progress': 'in-progress', 
-        'await-feedback': 'await-feedback',
-        'done': 'done'
-    };
-    
-    const newStatus = statusMapping[columnId];
-    
-    if (newStatus) {
-        // Verwende die globale updateTaskStatus Funktion aus task-management.js
-        await window.updateTaskStatus(taskId, newStatus);
-    }
+    if (KANBAN_STATUSES.indexOf(columnId) === -1) return;
+    await window.updateTaskStatus(taskId, columnId);
 }
 
 /**
