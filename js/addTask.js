@@ -411,22 +411,33 @@ function getAssignedUserNames() {
  * @function handleTaskSaveSuccess
  */
 function handleTaskSaveSuccess() {
-  let isOnAddTaskPage = window.location.pathname.includes("add-task.html");
+  if (window.location.pathname.includes("add-task.html")) handleAddTaskPageSuccess();
+  else handleBoardPageSuccess();
+}
 
-  if (isOnAddTaskPage) {
-    showSuccessOverlay();
-    setTimeout(function () {
-      window.location.href = "board.html";
-    }, 1500);
-  } else {
-    renderAllTasks();
-    showSuccessOverlay();
-    setTimeout(function () {
-      clearForm();
-      targetColumnStatus = "todo";
-      closeAllMenus();
-    }, 1500);
-  }
+
+/**
+ * Success flow when the dedicated add-task page is used.
+ * @function handleAddTaskPageSuccess
+ */
+function handleAddTaskPageSuccess() {
+  showSuccessOverlay();
+  setTimeout(() => { window.location.href = "board.html"; }, 1500);
+}
+
+
+/**
+ * Success flow when the add-task form is used inside the board overlay.
+ * @function handleBoardPageSuccess
+ */
+function handleBoardPageSuccess() {
+  renderAllTasks();
+  showSuccessOverlay();
+  setTimeout(() => {
+    clearForm();
+    targetColumnStatus = "todo";
+    closeAllMenus();
+  }, 1500);
 }
 
 
