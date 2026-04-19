@@ -25,27 +25,34 @@ const LONG_PRESS_MS     = 300;
  * @param {HTMLElement} element - The task card element
  */
 function handleTouchStart(event, element) {
-    const touch  = event.touches[0];
-    const rect   = element.getBoundingClientRect();
+    const touch = event.touches[0];
+    const rect = element.getBoundingClientRect();
 
-    touchStartX     = touch.clientX;
-    touchStartY     = touch.clientY;
-    touchOffsetX    = touch.clientX - rect.left;
-    touchOffsetY    = touch.clientY - rect.top;
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    touchOffsetX = touch.clientX - rect.left;
+    touchOffsetY = touch.clientY - rect.top;
     touchDragActive = false;
 
-    touchLongPressTimer = setTimeout(() => {
-        touchDraggedElement = element;
-        touchDragActive     = true;
-        element.classList.add('dragging');
+    touchLongPressTimer = setTimeout(() => activateTouchDrag(element, rect, touch), LONG_PRESS_MS);
+}
 
-        touchClone = element.cloneNode(true);
-        touchClone.classList.add('touch-drag-clone');
-        touchClone.style.width = rect.width + 'px';
-        touchClone.style.left  = (touch.clientX - touchOffsetX) + 'px';
-        touchClone.style.top   = (touch.clientY - touchOffsetY) + 'px';
-        document.body.appendChild(touchClone);
-    }, LONG_PRESS_MS);
+
+/**
+ * Activates touch-drag mode: marks the card, creates a floating clone at the
+ * current finger position and appends it to the body.
+ * @function activateTouchDrag
+ */
+function activateTouchDrag(element, rect, touch) {
+    touchDraggedElement = element;
+    touchDragActive = true;
+    element.classList.add('dragging');
+    touchClone = element.cloneNode(true);
+    touchClone.classList.add('touch-drag-clone');
+    touchClone.style.width = rect.width + 'px';
+    touchClone.style.left = (touch.clientX - touchOffsetX) + 'px';
+    touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
+    document.body.appendChild(touchClone);
 }
 
 
