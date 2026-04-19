@@ -36,10 +36,22 @@ function handleDragEnd(element) {
  * @function clearAllColumnDragStyles
  */
 function clearAllColumnDragStyles() {
-    const ids = ['todo', 'in-progress', 'await-feedback', 'done'];
-    for (let i = 0; i < ids.length; i++) {
-        document.getElementById(ids[i]).classList.remove('drag-over', 'drag-active');
+    const columns = getKanbanColumnElements();
+    for (let i = 0; i < columns.length; i++) {
+        columns[i].classList.remove('drag-over', 'drag-active');
     }
+}
+
+
+/**
+ * Returns the four Kanban column elements in board order.
+ * @function getKanbanColumnElements
+ */
+function getKanbanColumnElements() {
+    const ids = ['todo', 'in-progress', 'await-feedback', 'done'];
+    const cols = [];
+    for (let i = 0; i < ids.length; i++) cols.push(document.getElementById(ids[i]));
+    return cols;
 }
 
 
@@ -61,32 +73,37 @@ function handleDragOver(event) {
  * @param {DragEvent} event - The drag event
  */
 function updateColumnDragHighlight(event) {
-    const columns = [
-        document.getElementById('todo'),
-        document.getElementById('in-progress'),
-        document.getElementById('await-feedback'),
-        document.getElementById('done')
-    ];
-    let targetColumn = null;
-    
-    // Find which column the pointer is over
+    const columns = getKanbanColumnElements();
+    const targetColumn = findTargetColumn(columns, event);
+    if (targetColumn && draggedElement) updatePlaceholderForTarget(targetColumn, event);
+}
+
+
+/**
+ * Finds the column under the pointer and toggles drag-over on all columns.
+ * @function findTargetColumn
+ */
+function findTargetColumn(columns, event) {
+    let target = null;
     for (let i = 0; i < columns.length; i++) {
         const rect = columns[i].getBoundingClientRect();
-        if (event.clientX >= rect.left && event.clientX <= rect.right && 
-            event.clientY >= rect.top && event.clientY <= rect.bottom) {
-            columns[i].classList.add('drag-over');
-            targetColumn = columns[i];
-        } else {
-            columns[i].classList.remove('drag-over');
-        }
+        const inside = event.clientX >= rect.left && event.clientX <= rect.right &&
+                       event.clientY >= rect.top && event.clientY <= rect.bottom;
+        columns[i].classList.toggle('drag-over', inside);
+        if (inside) target = columns[i];
     }
-    
-    // Update placeholder position
-    if (targetColumn && draggedElement) {
-        const targetContainer = document.getElementById(targetColumn.id + '-cards');
-        const afterElement = getDragAfterElement(targetContainer, event.clientY);
-        updatePlaceholder(targetContainer, afterElement);
-    }
+    return target;
+}
+
+
+/**
+ * Moves the drop placeholder into the current target column.
+ * @function updatePlaceholderForTarget
+ */
+function updatePlaceholderForTarget(targetColumn, event) {
+    const container = document.getElementById(targetColumn.id + '-cards');
+    const afterElement = getDragAfterElement(container, event.clientY);
+    updatePlaceholder(container, afterElement);
 }
 
 
