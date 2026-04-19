@@ -244,23 +244,24 @@ function selectCategory(categoryName) {
  */
 function generateTaskId() {
   const isGuest = sessionStorage.getItem("isGuest") === "true";
+  if (isGuest) return "task-" + (getMaxGuestTaskId() + 1);
+  return "temp-" + Date.now();
+}
 
-  if (isGuest) {
-    // Guest user: Generate sequential ID
-    let maxId = 0;
-    for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].id.startsWith("task-")) {
-        let taskIdNum = parseInt(tasks[i].id.split("-")[1]);
-        if (taskIdNum > maxId) {
-          maxId = taskIdNum;
-        }
-      }
+
+/**
+ * Finds the highest existing "task-N" id among guest tasks.
+ * @function getMaxGuestTaskId
+ */
+function getMaxGuestTaskId() {
+  let maxId = 0;
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id.startsWith("task-")) {
+      const taskIdNum = parseInt(tasks[i].id.split("-")[1]);
+      if (taskIdNum > maxId) maxId = taskIdNum;
     }
-    return "task-" + (maxId + 1);
-  } else {
-    // Logged-in user: Return temporary ID (Firebase will replace it)
-    return "temp-" + Date.now();
   }
+  return maxId;
 }
 
 
