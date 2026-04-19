@@ -148,17 +148,23 @@ function removePlaceholder() {
 async function handleDrop(event, element) {
     event.stopPropagation();
     removePlaceholder();
-    
     const targetContainer = document.getElementById(element.id + '-cards');
-    const afterElement = getDragAfterElement(targetContainer, event.clientY);
-    if (afterElement == null) {
-        targetContainer.append(draggedElement);
-    } else {
-        afterElement.before(draggedElement);
-    }
+    insertDraggedElement(targetContainer, event.clientY);
     await updateTaskStatusInDrag(draggedElement, element.id);
     element.classList.remove('drag-over', 'drag-active');
     return false;
+}
+
+
+/**
+ * Inserts the currently dragged element into the target container at the
+ * position indicated by the pointer's Y coordinate.
+ * @function insertDraggedElement
+ */
+function insertDraggedElement(container, clientY) {
+    const afterElement = getDragAfterElement(container, clientY);
+    if (afterElement == null) container.append(draggedElement);
+    else afterElement.before(draggedElement);
 }
 
 
