@@ -99,39 +99,24 @@ function onClickConfirmPasswordIcon() {
  */
 function isPasswordMatching() {
   if (!realConfirmPassword || !realConfirmPassword.trim()) {
-    handleErrorSet(
-      "field-password-confirm",
-      "confirm-password",
-      false,
-      "Please confirm your password"
-    );
-    if (typeof validationState !== 'undefined') {
-      validationState.confirmPassword = false;
-      checkAllFieldsValid();
-    }
-    return;
+    return setConfirmPasswordValidation(false, "Please confirm your password");
   }
   if (realPassword === realConfirmPassword) {
-    handleErrorSet(
-      "field-password-confirm",
-      "confirm-password",
-      true
-    );
-    if (typeof validationState !== 'undefined') {
-      validationState.confirmPassword = true;
-      checkAllFieldsValid();
-    }
-  } else {
-    handleErrorSet(
-      "field-password-confirm",
-      "confirm-password",
-      false,
-      "Passwords do not match!"
-    );
-    if (typeof validationState !== 'undefined') {
-      validationState.confirmPassword = false;
-      checkAllFieldsValid();
-    }
+    return setConfirmPasswordValidation(true);
+  }
+  setConfirmPasswordValidation(false, "Passwords do not match!");
+}
+
+
+/**
+ * Applies the confirm-password validation result to the UI and shared state.
+ * @function setConfirmPasswordValidation
+ */
+function setConfirmPasswordValidation(isValid, errorMsg) {
+  handleErrorSet("field-password-confirm", "confirm-password", isValid, errorMsg);
+  if (typeof validationState !== 'undefined') {
+    validationState.confirmPassword = isValid;
+    checkAllFieldsValid();
   }
 }
 
