@@ -94,18 +94,13 @@ function getAssignedUsersFormData() {
  * @returns {Object} - Updated task object with title, description, due date, priority, assigned users, and subtasks
  **/
 function getEditTaskFormData() {
-  const title = document.getElementById("edit-task-title").value.trim();
-  const description = document.getElementById("task-description").value.trim();
-  const dueDate = document.getElementById("edit-task-date").value;
-  
- // Create updated task object
-  return updatedTask = {
-    title: title,
-    description: description,
-    dueDate: dueDate,
+  return {
+    title: document.getElementById("edit-task-title").value.trim(),
+    description: document.getElementById("task-description").value.trim(),
+    dueDate: document.getElementById("edit-task-date").value,
     priority: getEditPriorityValue(),
     assignedTo: getAssignedUsersFormData(),
-    subtasks: getFilteredSubtasks()
+    subtasks: getFilteredSubtasks(),
   };
 }
 
