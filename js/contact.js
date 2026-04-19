@@ -136,44 +136,24 @@ function getAvatarColor(name) {
  * @function groupContactsByAlphabet
  */
 function groupContactsByAlphabet() {
-  let sortedContacts = [];
-  for (let i = 0; i < contacts.length; i++) {
-    sortedContacts.push(contacts[i]);
-  }
+  const sorted = [...contacts].sort((a, b) => a.name.localeCompare(b.name));
+  return groupSortedContactsByLetter(sorted);
+}
 
-  for (let i = 0; i < sortedContacts.length - 1; i++) {
-    for (let j = 0; j < sortedContacts.length - i - 1; j++) {
-      if (
-        sortedContacts[j].name.localeCompare(sortedContacts[j + 1].name) > 0
-      ) {
-        let temp = sortedContacts[j];
-        sortedContacts[j] = sortedContacts[j + 1];
-        sortedContacts[j + 1] = temp;
-      }
-    }
-  }
 
-  let groupedContacts = {};
-  for (let i = 0; i < sortedContacts.length; i++) {
-    let contact = sortedContacts[i];
-    let firstLetter = contact.name.charAt(0).toUpperCase();
-    if (!groupedContacts[firstLetter]) {
-      groupedContacts[firstLetter] = [];
-    }
-    let originalIndex = -1;
-    for (let j = 0; j < contacts.length; j++) {
-      if (contacts[j] === contact) {
-        originalIndex = j;
-        break;
-      }
-    }
-    groupedContacts[firstLetter].push({
-      contact: contact,
-      originalIndex: originalIndex,
-    });
+/**
+ * Groups an alphabetically sorted contacts array by first letter.
+ * @function groupSortedContactsByLetter
+ */
+function groupSortedContactsByLetter(sorted) {
+  const grouped = {};
+  for (let i = 0; i < sorted.length; i++) {
+    const contact = sorted[i];
+    const letter = contact.name.charAt(0).toUpperCase();
+    if (!grouped[letter]) grouped[letter] = [];
+    grouped[letter].push({ contact, originalIndex: contacts.indexOf(contact) });
   }
-
-  return groupedContacts;
+  return grouped;
 }
 
 
