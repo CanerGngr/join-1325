@@ -235,22 +235,25 @@ const avatarColor = getAvatarColor(contacts[index].name);
 function updateContact(event, editContactIndex) {
   event.preventDefault();
   if (!validateContactForm(true)) return;
-  const nameInput = document.getElementById("edit-contact-name");
-  const emailInput = document.getElementById("edit-contact-email");
-  const phoneInput = document.getElementById("edit-contact-phone");
-
-  const updatedContact = {
-    name: nameInput.value,
-    email: emailInput.value,
-    phone: phoneInput.value,
-  };
-
-  contacts[editContactIndex] = updatedContact;
+  contacts[editContactIndex] = readEditContactForm();
   activeContactIndex = editContactIndex;
   renderContactList();
   showContactDetails(editContactIndex);
   closeAllMenus();
   showContactSuccessOverlay("contact-edit-success-overlay");
+}
+
+
+/**
+ * Reads the edit-contact form fields into a contact object.
+ * @function readEditContactForm
+ */
+function readEditContactForm() {
+  return {
+    name: document.getElementById("edit-contact-name").value,
+    email: document.getElementById("edit-contact-email").value,
+    phone: document.getElementById("edit-contact-phone").value,
+  };
 }
 
 /**
