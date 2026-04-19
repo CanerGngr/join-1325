@@ -162,32 +162,24 @@ function groupSortedContactsByLetter(sorted) {
  * @function renderContactList
  */
 function renderContactList() {
-  let contactList = document.getElementById("contact-list");
+  const contactList = document.getElementById("contact-list");
+  const grouped = groupContactsByAlphabet();
+  const letters = Object.keys(grouped).sort();
   contactList.innerHTML = "";
-
-  let groupedContacts = groupContactsByAlphabet();
-  let alphabeticalKeys = Object.keys(groupedContacts);
-
-  for (let i = 0; i < alphabeticalKeys.length - 1; i++) {
-    for (let j = 0; j < alphabeticalKeys.length - i - 1; j++) {
-      if (alphabeticalKeys[j] > alphabeticalKeys[j + 1]) {
-        let temp = alphabeticalKeys[j];
-        alphabeticalKeys[j] = alphabeticalKeys[j + 1];
-        alphabeticalKeys[j + 1] = temp;
-      }
-    }
+  for (let i = 0; i < letters.length; i++) {
+    renderContactGroup(contactList, letters[i], grouped[letters[i]]);
   }
+}
 
-  for (let i = 0; i < alphabeticalKeys.length; i++) {
-    let letter = alphabeticalKeys[i];
-    contactList.innerHTML += getAlphabetHeaderTemplate(letter);
-    let contactsInGroup = groupedContacts[letter];
-    for (let j = 0; j < contactsInGroup.length; j++) {
-      let contactItem = contactsInGroup[j];
-      let contact = contactItem.contact;
-      let originalIndex = contactItem.originalIndex;
-      contactList.innerHTML += getContactCardTemplate(contact, originalIndex);
-    }
+
+/**
+ * Renders a single alphabet group (header + its contact cards).
+ * @function renderContactGroup
+ */
+function renderContactGroup(container, letter, group) {
+  container.innerHTML += getAlphabetHeaderTemplate(letter);
+  for (let j = 0; j < group.length; j++) {
+    container.innerHTML += getContactCardTemplate(group[j].contact, group[j].originalIndex);
   }
 }
 
