@@ -123,50 +123,70 @@ function highlightColumnUnderTouch(touch) {
 async function handleTouchEnd(event) {
     clearTimeout(touchLongPressTimer);
     touchLongPressTimer = null;
-
-    if (!touchDragActive || !touchDraggedElement) {
-        touchDragActive = false;
-        return;
-    }
-
+    if (!touchDragActive || !touchDraggedElement) { touchDragActive = false; return; }
     const touch = event.changedTouches[0];
+    const columns = getKanbanColumnElements();
+    const targetColumn = findColumnAtPoint(columns, touch.clientX, touch.clientY);
+    removeTouchClone();
+    clearTouchDragStyles(columns);
+    if (targetColumn) await dropTouchTaskInColumn(targetColumn, touch.clientY);
+    resetTouchDragState();
+}
 
-    const columns = [
-        document.getElementById('todo'),
-        document.getElementById('in-progress'),
-        document.getElementById('await-feedback'),
-        document.getElementById('done')
-    ];
 
-    let targetColumn = null;
+/**
+ * Returns the first column element whose bounding box contains the given point.
+ * @function findColumnAtPoint
+ */
+function findColumnAtPoint(columns, x, y) {
     for (let i = 0; i < columns.length; i++) {
         const rect = columns[i].getBoundingClientRect();
-        if (touch.clientX >= rect.left && touch.clientX <= rect.right &&
-            touch.clientY >= rect.top  && touch.clientY <= rect.bottom) {
-            targetColumn = columns[i];
-            break;
-        }
+        if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) return columns[i];
     }
+    return null;
+}
 
+
+/**
+ * Removes the floating touch-drag clone from the DOM.
+ * @function removeTouchClone
+ */
+function removeTouchClone() {
     if (touchClone) {
         touchClone.remove();
         touchClone = null;
     }
+}
 
+
+/**
+ * Strips dragging/drag-over/drag-active classes from the dragged card and columns.
+ * @function clearTouchDragStyles
+ */
+function clearTouchDragStyles(columns) {
     touchDraggedElement.classList.remove('dragging');
-    columns.forEach(col => col.classList.remove('drag-over', 'drag-active'));
+    for (let i = 0; i < columns.length; i++) columns[i].classList.remove('drag-over', 'drag-active');
+}
 
-    if (targetColumn) {
-        const targetContainer = document.getElementById(targetColumn.id + '-cards');
-        const afterElement    = getDragAfterElement(targetContainer, touch.clientY);
-        if (afterElement == null) {
-            targetContainer.append(touchDraggedElement);
-        } else {
-            afterElement.before(touchDraggedElement);
-        }
-        await updateTaskStatusInDrag(touchDraggedElement, targetColumn.id);
-    }
 
+/**
+ * Inserts the dragged card into the target column and persists the new status.
+ * @function dropTouchTaskInColumn
+ */
+async function dropTouchTaskInColumn(targetColumn, clientY) {
+    const container = document.getElementById(targetColumn.id + '-cards');
+    const afterElement = getDragAfterElement(container, clientY);
+    if (afterElement == null) container.append(touchDraggedElement);
+    else afterElement.before(touchDraggedElement);
+    await updateTaskStatusInDrag(touchDraggedElement, targetColumn.id);
+}
+
+
+/**
+ * Clears the touch-drag module state after a drop or cancel.
+ * @function resetTouchDragState
+ */
+function resetTouchDragState() {
     touchDraggedElement = null;
-    touchDragActive     = false;
+    touchDragActive = false;
 }
