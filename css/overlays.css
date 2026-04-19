@@ -101,3 +101,47 @@
 .user-item .user-avatar-sm {
     flex-shrink: 0;
 }
+
+.ol-end {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.ol-end-content {
+    background: var(--color-light-blue);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 20px;
+    height: 74px;
+    width: 326px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.ol-end-content img {
+    filter: brightness(0) invert(1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

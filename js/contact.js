@@ -428,6 +428,7 @@ function updateContact(event, editContactIndex) {
   renderContactList();
   showContactDetails(editContactIndex);
   closeAllMenus();
+  showContactSuccessOverlay("contact-edit-success-overlay");
 }
 
 /**
@@ -440,6 +441,7 @@ function deleteContact(index) {
   closeAllMenus();
   const contactDetails = document.getElementById("contact-details-content");
   contactDetails.innerHTML = "<p>Select a contact to view details</p>";
+  showContactSuccessOverlay("contact-delete-success-overlay");
 }
 
 /**
@@ -466,6 +468,19 @@ function addContact(event) {
   closeAllMenus();
   document.getElementById("add-contact-form").reset();
   clearContactFormErrors(false);
+  showContactSuccessOverlay("contact-add-success-overlay");
+}
+
+/**
+ * Shows a success overlay for contact actions.
+ * @function showContactSuccessOverlay
+ * @param {string} overlayId - ID of the overlay element to show.
+ */
+function showContactSuccessOverlay(overlayId) {
+  const overlay = document.getElementById(overlayId);
+  if (!overlay) return;
+  overlay.classList.remove("d-none");
+  setTimeout(() => overlay.classList.add("d-none"), 1500);
 }
 
 /**
