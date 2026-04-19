@@ -333,25 +333,16 @@ async function saveTask(event) {
  * @function createTaskFromForm
  */
 function createTaskFromForm() {
-  let taskId = generateTaskId();
-  let title = document.getElementById("task-title").value.trim();
-  let description = getDescriptionValue();
-  let dueDate = document.getElementById("task-date").value;
-  let priority = getSelectedPriority();
-  let category = getSelectedCategory();
-  let assignedTo = getAssignedUserNames();
-  let subtasks = getFilteredSubtasks();
-
   return {
-    id: taskId,
-    title: title,
-    description: description,
-    category: category,
-    assignedTo: assignedTo,
-    priority: priority,
+    id: generateTaskId(),
+    title: document.getElementById("task-title").value.trim(),
+    description: getDescriptionValue(),
+    category: getSelectedCategory(),
+    assignedTo: getAssignedUserNames(),
+    priority: getSelectedPriority(),
     status: targetColumnStatus,
-    subtasks: subtasks,
-    dueDate: dueDate,
+    subtasks: getFilteredSubtasks(),
+    dueDate: document.getElementById("task-date").value,
   };
 }
 
