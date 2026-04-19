@@ -22,25 +22,17 @@ function toggleOverlay(menuId) {
  * @function closeAllMenus
  */
 function closeAllMenus() {
-    let addTaskMenu = document.getElementById('add-task-menu');
-    let editContactMenu = document.getElementById('edit-contact-menu');
-    let addContactMenu = document.getElementById('add-contact-menu');
-    let detailsOverlay = document.getElementById('details-overlay');
-    let overlay = document.getElementById('blur-overlay');
+    const menuIds = ['add-task-menu', 'edit-contact-menu', 'add-contact-menu', 'details-overlay'];
+    for (let i = 0; i < menuIds.length; i++) removeClassById(menuIds[i], 'open');
+    removeClassById('blur-overlay', 'active');
+}
 
-    if (addTaskMenu) {
-        addTaskMenu.classList.remove('open');
-    }
-    if (editContactMenu) {
-        editContactMenu.classList.remove('open');
-    }
-    if (addContactMenu) {
-        addContactMenu.classList.remove('open');
-    }
-    if (detailsOverlay) {
-        detailsOverlay.classList.remove('open');
-    }
-    if (overlay) {
-        overlay.classList.remove('active');
-    }
+
+/**
+ * Removes a CSS class from an element looked up by ID, if it exists.
+ * @function removeClassById
+ */
+function removeClassById(id, className) {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove(className);
 }
