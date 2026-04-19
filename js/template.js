@@ -7,6 +7,26 @@
 
 
 /**
+ * Returns HTML for an assignee avatar chip.
+ * @function getAssigneeAvatarTemplate
+ */
+function getAssigneeAvatarTemplate(userName) {
+  let initials = getInitials(userName);
+  let avatarColor = getAvatarColor(userName);
+  return `<div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>`;
+}
+
+
+/**
+ * Returns HTML for the "+N" overflow chip when more assignees are hidden.
+ * @function getAssigneeOverflowTemplate
+ */
+function getAssigneeOverflowTemplate(hiddenCount) {
+  return `<div class="user-avatar-sm more-assignees">+${hiddenCount}</div>`;
+}
+
+
+/**
  * Returns HTML for a single assigned-to dropdown item.
  * @function getDropdownItemTemplate
  */

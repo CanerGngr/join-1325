@@ -160,24 +160,25 @@ function updateSelectedUsersArray(userName, isChecked) {
  * Updates the assignees container to display selected users as avatars
  */
 function updateDropdownPlaceholder(mode) {
-  let containerId = (mode === "task-edit") ? "edit-assignees-container" : "assignees-container";
-  let container = document.getElementById(containerId);
+  const containerId = (mode === "task-edit") ? "edit-assignees-container" : "assignees-container";
+  const container = document.getElementById(containerId);
   const maxVisibleAssignees = 4;
-  
-  container.innerHTML = "";
   const visibleAssignees = selectedUsers.slice(0, maxVisibleAssignees);
+  const hiddenCount = selectedUsers.length - visibleAssignees.length;
 
-  for (let i = 0; i < visibleAssignees.length; i++) {
-    let initials = getInitials(visibleAssignees[i]);
-    let avatarColor = getAvatarColor(visibleAssignees[i]);
-    
-    let avatarHTML = `<div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>`;
-    container.innerHTML += avatarHTML;
-  }
+  container.innerHTML = "";
+  renderAssigneeAvatars(container, visibleAssignees);
+  if (hiddenCount > 0) container.innerHTML += getAssigneeOverflowTemplate(hiddenCount);
+}
 
-  const hiddenAssigneesCount = selectedUsers.length - visibleAssignees.length;
-  if (hiddenAssigneesCount > 0) {
-    container.innerHTML += `<div class="user-avatar-sm more-assignees">+${hiddenAssigneesCount}</div>`;
+
+/**
+ * Appends avatar chips for the given users to the container.
+ * @function renderAssigneeAvatars
+ */
+function renderAssigneeAvatars(container, users) {
+  for (let i = 0; i < users.length; i++) {
+    container.innerHTML += getAssigneeAvatarTemplate(users[i]);
   }
 }
 
