@@ -276,24 +276,27 @@ function deleteContact(index) {
 function addContact(event) {
   event.preventDefault();
   if (!validateContactForm(false)) return;
-  const nameInput = document.getElementById("add-contact-name");
-  const emailInput = document.getElementById("add-contact-email");
-  const phoneInput = document.getElementById("add-contact-phone");
-
-  const newContact = {
-    name: nameInput.value,
-    email: emailInput.value,
-    phone: phoneInput.value,
-  };
-
-  contacts.push(newContact);
-  renderContactList();
+  contacts.push(readAddContactForm());
   const newContactIndex = contacts.length - 1;
+  renderContactList();
   showContactDetails(newContactIndex);
   closeAllMenus();
   document.getElementById("add-contact-form").reset();
   clearContactFormErrors(false);
   showContactSuccessOverlay("contact-add-success-overlay");
+}
+
+
+/**
+ * Reads the add-contact form fields into a contact object.
+ * @function readAddContactForm
+ */
+function readAddContactForm() {
+  return {
+    name: document.getElementById("add-contact-name").value,
+    email: document.getElementById("add-contact-email").value,
+    phone: document.getElementById("add-contact-phone").value,
+  };
 }
 
 /**
