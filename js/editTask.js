@@ -51,18 +51,14 @@ function setPriorityForEdit(priority) {
  * @function generateAssignedUsersEditHTML
  */
 function generateAssignedUsersEditHTML(assignedToArray) {
+  const max = 4;
+  const visible = assignedToArray.slice(0, max);
+  const hidden = assignedToArray.length - visible.length;
   let html = "";
-  const maxVisibleAssignees = 4;
-  const visibleAssignees = assignedToArray.slice(0, maxVisibleAssignees);
-
-  for (let i = 0; i < visibleAssignees.length; i++) {
-    html += createEditUserAvatarHTML(visibleAssignees[i]);
+  for (let i = 0; i < visible.length; i++) {
+    html += createEditUserAvatarHTML(visible[i]);
   }
-
-  const hiddenAssigneesCount = assignedToArray.length - visibleAssignees.length;
-  if (hiddenAssigneesCount > 0) {
-    html += `<div class="user-avatar-sm more-assignees">+${hiddenAssigneesCount}</div>`;
-  }
+  if (hidden > 0) html += getAssigneeOverflowTemplate(hidden);
   return html;
 }
 
