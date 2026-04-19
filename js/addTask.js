@@ -89,21 +89,15 @@ function addContactsToDropdown(dropdownList, mode) {
  * @function createDropdownItemHTML
  */
 function createDropdownItemHTML(contact, index, isSelected, mode) {
-  let initials = getInitials(contact.name);
-  let avatarColor = getAvatarColor(contact.name);
-  let checkedAttribute = isSelected ? 'checked' : '';
-  let modeParam = mode ? `'${mode}'` : '';
-  let userId = mode === 'task-edit' ? `edit-user-${index}` : `user-${index}`;
-
-  return `
-    <div class="dropdown-item">
-      <label class="d-flex dropdown-item-label custom-checkbox" for="${userId}">
-        <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
-        ${contact.name}
-        <input type="checkbox" class="checkbox-masked" id="${userId}" value="${contact.name}" ${checkedAttribute} onchange="toggleUserSelection('${contact.name}', event, ${modeParam})">
-      </label>
-    </div>
-  `;
+  let data = {
+    name: contact.name,
+    initials: getInitials(contact.name),
+    avatarColor: getAvatarColor(contact.name),
+    checkedAttribute: isSelected ? 'checked' : '',
+    modeParam: mode ? `'${mode}'` : '',
+    userId: mode === 'task-edit' ? `edit-user-${index}` : `user-${index}`,
+  };
+  return getDropdownItemTemplate(data);
 }
 
 
