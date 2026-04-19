@@ -392,11 +392,27 @@ async function submitEditTask(event, taskId) {
   
   // Refresh the board
   renderAllTasks();
-  
+
   // Close the overlay
   toggleOverlay('#details-overlay');
-  
+
+  // Show success notification
+  showEditSuccessOverlay();
+
   // Reset arrays
   selectedUsers = [];
   currentSubtasks = [];
+}
+
+/**
+ * Shows a success overlay when a task is edited.
+ * @function showEditSuccessOverlay
+ */
+function showEditSuccessOverlay() {
+  let overlay = document.getElementById("edit-success-overlay");
+  if (!overlay) return;
+  overlay.classList.remove("d-none");
+  setTimeout(function () {
+    overlay.classList.add("d-none");
+  }, 1500);
 }

@@ -406,7 +406,21 @@ async function deleteTask(taskId) {
 			}
 		}
 		renderAllTasks();
+		showDeleteSuccessOverlay();
 	}
+}
+
+/**
+ * Shows a success overlay when a task is deleted.
+ * @function showDeleteSuccessOverlay
+ */
+function showDeleteSuccessOverlay() {
+	let overlay = document.getElementById("delete-success-overlay");
+	if (!overlay) return;
+	overlay.classList.remove("d-none");
+	setTimeout(function () {
+		overlay.classList.add("d-none");
+	}, 1500);
 }
 
 /**
