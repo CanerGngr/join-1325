@@ -12,24 +12,19 @@
  */
 function editTask(taskId) {
   const task = findTaskById(taskId);
-  const editOverlay = document.getElementById("details-overlay");
-  editOverlay.innerHTML = getEditTaskTemplate(task);
+  document.getElementById("details-overlay").innerHTML = getEditTaskTemplate(task);
   setDueDateMinConstraints();
-  
-  // Populate selected users for edit mode
-  if (task.assignedTo && Array.isArray(task.assignedTo)) {
-    selectedUsers = [];
-    for (let i = 0; i < task.assignedTo.length; i++) {
-      selectedUsers.push(task.assignedTo[i]);
-    }
-  }
-  
-  // Set current subtasks for edit mode
-  if (task.subtasks && Array.isArray(task.subtasks)) {
-    currentSubtasks = [...task.subtasks];
-  }
-  
-  // Set the priority radio button
+  initEditTaskState(task);
+}
+
+
+/**
+ * Initializes the shared edit-task state (assignees, subtasks, priority).
+ * @function initEditTaskState
+ */
+function initEditTaskState(task) {
+  selectedUsers = Array.isArray(task.assignedTo) ? [...task.assignedTo] : [];
+  currentSubtasks = Array.isArray(task.subtasks) ? [...task.subtasks] : [];
   setPriorityForEdit(task.priority);
 }
 
