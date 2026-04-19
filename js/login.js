@@ -21,64 +21,70 @@
  */
 async function loginUser() {
   sessionStorage.clear();
-  const email = document.getElementById("email-input").value.trim();
-  const password = document.getElementById("password-input").value;
-  const errorMessage = document.getElementById("error-message");
-
-  // Reset error message
-  errorMessage.textContent = "";
-
-  // Validation
-  if (!email || !password) {
-    showError("Please fill in all fields.");
-    return false;
-  }
-
+  document.getElementById("error-message").textContent = "";
+  const { email, password } = readLoginInputs();
+  if (!email || !password) { showError("Please fill in all fields."); return false; }
   try {
-    // Retrieve users from database
-    const usersRef = firebase.database().ref("users");
-    const snapshot = await usersRef.once("value");
-    const users = snapshot.val();
-
-    if (!users) {
-      showError("Check your email and password. Please try again.");
-      return false;
-    }
-
-    // Find user and verify password
-    let userFound = false;
-    let userId = null;
-    let userName = null;
-
-    for (let key in users) {
-      if (users[key].email === email && users[key].password === password) {
-        userFound = true;
-        userId = key;
-        userName = users[key].name;
-        break;
-      }
-    }
-
-    if (userFound) {
-      // Successful login - Save session
-      sessionStorage.setItem("userEmail", email);
-      sessionStorage.setItem("userId", userId);
-      sessionStorage.setItem("userName", userName);
-      sessionStorage.setItem("isLoggedIn", "true");
-      sessionStorage.setItem("isGuest", "false");
-
-      // Redirect to index page
-      window.location.href = "/index.html";
-      return true;
-    } else {
-      showError("Check your email and password. Please try again.");
-      return false;
-    }
+    return await attemptLogin(email, password);
   } catch (error) {
     console.error("Login error:", error);
     showError("An error occurred. Please try again.");
     return false;
   }
+}
+
+
+/**
+ * Reads email and password fields from the login form.
+ * @function readLoginInputs
+ */
+function readLoginInputs() {
+  return {
+    email: document.getElementById("email-input").value.trim(),
+    password: document.getElementById("password-input").value,
+  };
+}
+
+
+/**
+ * Loads users from Firebase, verifies credentials and starts the session on success.
+ * @function attemptLogin
+ */
+async function attemptLogin(email, password) {
+  const snapshot = await firebase.database().ref("users").once("value");
+  const users = snapshot.val();
+  const match = users ? findMatchingUser(users, email, password) : null;
+  if (!match) { showError("Check your email and password. Please try again."); return false; }
+  storeUserSession(email, match.userId, match.userName);
+  window.location.href = "/index.html";
+  return true;
+}
+
+
+/**
+ * Returns {userId, userName} for a user whose email and password match, or null.
+ * @function findMatchingUser
+ */
+function findMatchingUser(users, email, password) {
+  for (let key in users) {
+    if (users[key].email === email && users[key].password === password) {
+      return { userId: key, userName: users[key].name };
+    }
+  }
+  return null;
+}
+
+
+/**
+ * Persists the authenticated user's info to sessionStorage.
+ * @function storeUserSession
+ */
+function storeUserSession(email, userId, userName) {
+  sessionStorage.setItem("userEmail", email);
+  sessionStorage.setItem("userId", userId);
+  sessionStorage.setItem("userName", userName);
+  sessionStorage.setItem("isLoggedIn", "true");
+  sessionStorage.setItem("isGuest", "false");
 }
 
 
