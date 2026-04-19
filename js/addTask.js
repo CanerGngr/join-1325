@@ -188,33 +188,21 @@ function renderAssigneeAvatars(container, users) {
  * Should be called from a global click handler in the HTML
  */
 function handleDocumentClick(event) {
-  // Handle regular assigned-to dropdown
-  let dropdown = document.getElementById("assigned-to");
-  let dropdownList = document.getElementById("assigned-to-list");
+  const editList = document.getElementById("edit-assigned-to-list");
+  closeDropdownIfOutside(event, document.getElementById("assigned-to"), document.getElementById("assigned-to-list"));
+  closeDropdownIfOutside(event, editList?.closest(".custom-dropdown"), editList);
+  closeDropdownIfOutside(event, document.getElementById("category"), document.getElementById("category-list"));
+}
 
-  if (dropdown && !dropdown.contains(event.target) && dropdownList) {
-    dropdownList.classList.add("d-none");
+
+/**
+ * Closes a dropdown when the click target is outside of it.
+ * @function closeDropdownIfOutside
+ */
+function closeDropdownIfOutside(event, dropdown, list) {
+  if (dropdown && !dropdown.contains(event.target) && list) {
+    list.classList.add("d-none");
     dropdown.classList.remove("open");
-  }
-
-  // Handle edit assigned-to dropdown
-  let editDropdown = document.getElementById("edit-assigned-to-list")?.closest(".custom-dropdown");
-  let editDropdownList = document.getElementById("edit-assigned-to-list");
-  if (editDropdown && !editDropdown.contains(event.target) && editDropdownList) {
-    editDropdownList.classList.add("d-none");
-    editDropdown.classList.remove("open");
-  }
-
-  let categoryDropdown = document.getElementById("category");
-  let categoryList = document.getElementById("category-list");
-
-  if (
-    categoryDropdown &&
-    !categoryDropdown.contains(event.target) &&
-    categoryList
-  ) {
-    categoryList.classList.add("d-none");
-    categoryDropdown.classList.remove("open");
   }
 }
 
