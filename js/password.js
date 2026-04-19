@@ -179,29 +179,41 @@ function onPasswordInput(input, inputEvent) {
  * @function updateRealValueFromInput
  */
 function updateRealValueFromInput(realValue, previousDisplay, currentDisplay, inputEvent, caretPosition) {
+  const caret = typeof caretPosition === "number" ? caretPosition : currentDisplay.length;
+  const inputType = inputEvent.inputType;
+  if (inputType.startsWith("delete")) return applyDeleteToReal(realValue, currentDisplay.length, caret);
+  if (inputType.startsWith("insert")) return applyInsertToReal(realValue, currentDisplay, caret, inputEvent);
+  return updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue);
+}
+
+
+/**
+ * Removes characters from the real value when the user deletes in the masked field.
+ * @function applyDeleteToReal
+ */
+function applyDeleteToReal(realValue, newLen, caret) {
+  const oldLen = realValue.length;
+  const removedCount = Math.max(0, oldLen - newLen);
+  const start = Math.max(0, Math.min(caret, realValue.length));
+  const end = Math.max(start, Math.min(start + removedCount, realValue.length));
+  return realValue.slice(0, start) + realValue.slice(end);
+}
+
+
+/**
+ * Inserts typed characters into the real value when the user types in the masked field.
+ * @function applyInsertToReal
+ */
+function applyInsertToReal(realValue, currentDisplay, caret, inputEvent) {
   const oldLen = realValue.length;
   const newLen = currentDisplay.length;
-  const caret = typeof caretPosition === "number" ? caretPosition : newLen;
-  const inputType = inputEvent.inputType;
-
-  if (inputType.startsWith("delete")) {
-    const removedCount = Math.max(0, oldLen - newLen);
-    const start = Math.max(0, Math.min(caret, realValue.length));
-    const end = Math.max(start, Math.min(start + removedCount, realValue.length));
-    return realValue.slice(0, start) + realValue.slice(end);
-  }
-
-  if (inputType.startsWith("insert")) {
-    const typedData = typeof inputEvent.data === "string"
-      ? inputEvent.data
-      : currentDisplay.slice(Math.max(0, caret - Math.max(0, newLen - oldLen)), caret);
-    const start = Math.max(0, Math.min(caret - typedData.length, realValue.length));
-    const removedCount = Math.max(0, oldLen + typedData.length - newLen);
-    const end = Math.max(start, Math.min(start + removedCount, realValue.length));
-    return realValue.slice(0, start) + typedData + realValue.slice(end);
-  }
-
-  return updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue);
+  const typedData = typeof inputEvent.data === "string"
+    ? inputEvent.data
+    : currentDisplay.slice(Math.max(0, caret - Math.max(0, newLen - oldLen)), caret);
+  const start = Math.max(0, Math.min(caret - typedData.length, realValue.length));
+  const removedCount = Math.max(0, oldLen + typedData.length - newLen);
+  const end = Math.max(start, Math.min(start + removedCount, realValue.length));
+  return realValue.slice(0, start) + typedData + realValue.slice(end);
 }
 
 
