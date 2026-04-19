@@ -64,40 +64,53 @@ function activateTouchDrag(element, rect, touch) {
  */
 function handleTouchMove(event) {
     const touch = event.touches[0];
-
     if (!touchDragActive) {
-        const dx = Math.abs(touch.clientX - touchStartX);
-        const dy = Math.abs(touch.clientY - touchStartY);
-        if (dx > 8 || dy > 8) {
-            clearTimeout(touchLongPressTimer);
-            touchLongPressTimer = null;
-        }
+        cancelLongPressIfScrolling(touch);
         return;
     }
-
     event.preventDefault();
+    moveTouchClone(touch);
+    highlightColumnUnderTouch(touch);
+}
 
+
+/**
+ * Cancels the pending long-press timer if the finger has moved enough to be a scroll.
+ * @function cancelLongPressIfScrolling
+ */
+function cancelLongPressIfScrolling(touch) {
+    const dx = Math.abs(touch.clientX - touchStartX);
+    const dy = Math.abs(touch.clientY - touchStartY);
+    if (dx > 8 || dy > 8) {
+        clearTimeout(touchLongPressTimer);
+        touchLongPressTimer = null;
+    }
+}
+
+
+/**
+ * Moves the floating clone to follow the finger.
+ * @function moveTouchClone
+ */
+function moveTouchClone(touch) {
     touchClone.style.left = (touch.clientX - touchOffsetX) + 'px';
-    touchClone.style.top  = (touch.clientY - touchOffsetY) + 'px';
+    touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
+}
 
-    const columns = [
-        document.getElementById('todo'),
-        document.getElementById('in-progress'),
-        document.getElementById('await-feedback'),
-        document.getElementById('done')
-    ];
 
-    columns.forEach(col => col.classList.remove('drag-over'));
-
+/**
+ * Highlights the kanban column currently under the finger.
+ * @function highlightColumnUnderTouch
+ */
+function highlightColumnUnderTouch(touch) {
+    const columns = getKanbanColumnElements();
+    for (let i = 0; i < columns.length; i++) columns[i].classList.remove('drag-over');
     touchClone.style.display = 'none';
     const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
     touchClone.style.display = '';
-
     if (!elementBelow) return;
     const targetColumn = elementBelow.closest('.kanban-column');
-    if (targetColumn) {
-        targetColumn.classList.add('drag-over');
-    }
+    if (targetColumn) targetColumn.classList.add('drag-over');
 }
 
 
