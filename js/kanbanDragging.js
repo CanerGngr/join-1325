@@ -27,16 +27,19 @@ function handleDragEnd(element) {
     element.classList.remove('dragging');
     draggedElement = null;
     removePlaceholder();
+    clearAllColumnDragStyles();
+}
 
-    let todoColumn = document.getElementById('todo');
-    let inProgressColumn = document.getElementById('in-progress');
-    let awaitFeedbackColumn = document.getElementById('await-feedback');
-    let doneColumn = document.getElementById('done');
 
-    todoColumn.classList.remove('drag-over', 'drag-active');
-    inProgressColumn.classList.remove('drag-over', 'drag-active');
-    awaitFeedbackColumn.classList.remove('drag-over', 'drag-active');
-    doneColumn.classList.remove('drag-over', 'drag-active');
+/**
+ * Removes drag-over/drag-active styles from every Kanban column.
+ * @function clearAllColumnDragStyles
+ */
+function clearAllColumnDragStyles() {
+    const ids = ['todo', 'in-progress', 'await-feedback', 'done'];
+    for (let i = 0; i < ids.length; i++) {
+        document.getElementById(ids[i]).classList.remove('drag-over', 'drag-active');
+    }
 }
 
 
