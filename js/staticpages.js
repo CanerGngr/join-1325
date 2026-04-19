@@ -14,8 +14,20 @@ function initStaticPages() {
 	if (isLoggedIn === "true") {
 		return;
 	} else {
+		redirectLogoToLogin();
 		renderLoginSidbar();
 		renderEmptyHeader();
+	}
+}
+
+/**
+ * Redirects the header logo link to the login page for unauthenticated users
+ * Prevents the summary page from briefly loading before the session check redirects
+ */
+function redirectLogoToLogin() {
+	const logoLink = document.querySelector("header a[href='/index.html']");
+	if (logoLink) {
+		logoLink.href = "/html/login.html";
 	}
 }
 
