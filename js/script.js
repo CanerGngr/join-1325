@@ -199,41 +199,46 @@ function handleLoginLogoResize() {
  * @function Loadingscreen
  */
 function Loadingscreen() {
-  // Check if user is returning from registration page
-
+  const loader = document.getElementById("loader");
   const skipAnimation = sessionStorage.getItem("skipAnimation");
-
   if (skipAnimation === "true") {
-    // Clear the flag and skip animation
     sessionStorage.removeItem("skipAnimation");
-
-    // Show logo in final position instead of hiding completely
-    const loader = document.getElementById("loader");
-      // Set transparent background (skip background animation)
-      loader.style.background = "transparent";
-      loader.innerHTML = getLoadingscreen();
-
-      // Position logo in final state immediately
-      const logoElement = document.getElementById("loader-image-white");
-      if (logoElement) {
-        // Disable CSS animations first
-        logoElement.style.animation = "none";
-        window.__joinApplyFinalLogoState = true;
-        applyFinalLoginLogoState();
-
-        // Set final color (blue) for the paths and disable their animations
-        let paths = logoElement.children;
-        for (let i = 0; i < paths.length; i++) {
-          let path = paths[i];
-          if (path.tagName.toLowerCase() === 'path') {
-            path.style.fill = "#4589FF";
-            path.style.animation = "none";
-          }
-        }
-      }
+    renderSkippedLoadingscreen(loader);
     return;
   }
-    loader.innerHTML = getLoadingscreen();
+  loader.innerHTML = getLoadingscreen();
+}
+
+
+/**
+ * Renders the loader in its final (post-animation) state when the animation is skipped.
+ * @function renderSkippedLoadingscreen
+ */
+function renderSkippedLoadingscreen(loader) {
+  loader.style.background = "transparent";
+  loader.innerHTML = getLoadingscreen();
+  const logoElement = document.getElementById("loader-image-white");
+  if (!logoElement) return;
+  logoElement.style.animation = "none";
+  window.__joinApplyFinalLogoState = true;
+  applyFinalLoginLogoState();
+  forceLogoPathsBlue(logoElement);
+}
+
+
+/**
+ * Forces the logo's path elements to blue and disables their CSS animations.
+ * @function forceLogoPathsBlue
+ */
+function forceLogoPathsBlue(logoElement) {
+  const paths = logoElement.children;
+  for (let i = 0; i < paths.length; i++) {
+    const path = paths[i];
+    if (path.tagName.toLowerCase() === 'path') {
+      path.style.fill = "#4589FF";
+      path.style.animation = "none";
+    }
+  }
 }
 
 
