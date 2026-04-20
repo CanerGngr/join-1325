@@ -193,20 +193,30 @@ function updateRealValueFromInput(realValue, previousDisplay, currentDisplay, in
  * Used as a fallback when inputType is unavailable (autofill, paste, synthetic events).
  * @function updateRealValueByDisplayDiff
  */
-function updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue) {
-  const minLen = Math.min(previousDisplay.length, currentDisplay.length);
+function getCommonPrefixLength(a, b) {
+  const minLen = Math.min(a.length, b.length);
   let prefix = 0;
-  while (prefix < minLen && previousDisplay[prefix] === currentDisplay[prefix]) {
+  while (prefix < minLen && a[prefix] === b[prefix]) {
     prefix++;
   }
+  return prefix;
+}
+
+function getCommonSuffixLength(a, b, prefix) {
+  const minLen = Math.min(a.length, b.length);
   let suffix = 0;
   while (
     suffix < minLen - prefix &&
-    previousDisplay[previousDisplay.length - 1 - suffix] ===
-      currentDisplay[currentDisplay.length - 1 - suffix]
+    a[a.length - 1 - suffix] === b[b.length - 1 - suffix]
   ) {
     suffix++;
   }
+  return suffix;
+}
+
+function updateRealValueByDisplayDiff(previousDisplay, currentDisplay, realValue) {
+  const prefix = getCommonPrefixLength(previousDisplay, currentDisplay);
+  const suffix = getCommonSuffixLength(previousDisplay, currentDisplay, prefix);
   const added = currentDisplay.slice(prefix, currentDisplay.length - suffix);
   const removedCount = previousDisplay.length - prefix - suffix;
   return realValue.slice(0, prefix) + added + realValue.slice(prefix + removedCount);
@@ -247,29 +257,34 @@ function applyInsertToReal(realValue, currentDisplay, caret, inputEvent) {
  * Handles the onPasswordBlur workflow.
  * @function onPasswordBlur
  */
+function handleValidPassword() {
+  newUser.password = realPassword;
+  handleErrorSet("field-password", "password-tooltip", true);
+  if (typeof validationState !== 'undefined') {
+    validationState.password = true;
+    checkAllFieldsValid();
+  }
+}
+
+function handleInvalidPassword(rules) {
+  const msg = buildPasswordMessage(rules);
+  handleErrorSet("field-password", "password-tooltip", false, msg);
+  const tooltipElement = document.getElementById("password-tooltip");
+  if (tooltipElement) {
+    tooltipElement.innerHTML = msg;
+  }
+  if (typeof validationState !== 'undefined') {
+    validationState.password = false;
+    checkAllFieldsValid();
+  }
+}
+
 function onPasswordBlur(inPassword) {
   const rules = checkPasswordRules(realPassword);
-  const isValid = isPasswordValid(rules);
-
-  if (isValid) {
-    // Save the real password to newUser object
-    newUser.password = realPassword;
-    handleErrorSet("field-password", "password-tooltip", true);
-    if (typeof validationState !== 'undefined') {
-      validationState.password = true;
-      checkAllFieldsValid();
-    }
+  if (isPasswordValid(rules)) {
+    handleValidPassword();
   } else {
-    const msg = buildPasswordMessage(rules);
-    handleErrorSet("field-password", "password-tooltip", false, msg);
-    const tooltipElement = document.getElementById("password-tooltip");
-    if (tooltipElement) {
-      tooltipElement.innerHTML = msg;
-    }
-    if (typeof validationState !== 'undefined') {
-      validationState.password = false;
-      checkAllFieldsValid();
-    }
+    handleInvalidPassword(rules);
   }
 }
 
@@ -278,31 +293,29 @@ function onPasswordBlur(inPassword) {
  * Handles the validatePasswordTooltip workflow.
  * @function validatePasswordTooltip
  */
-function validatePasswordTooltip(inputPassword) {
-  const rules = checkPasswordRules(inputPassword);
-  const msg = buildPasswordMessage(rules);
-  const isValid = isPasswordValid(rules);
-
-  handleErrorSet(
-    "field-password",
-    "password-tooltip",
-    isValid,
-    isValid ? "" : msg
-  );
-
-  // Update validation state
-  if (typeof validationState !== 'undefined') {
-    validationState.password = isValid;
-    checkAllFieldsValid();
-  }
-
-  // Set HTML content directly for password tooltip
+function updatePasswordTooltipContent(isValid, msg) {
+  handleErrorSet("field-password", "password-tooltip", isValid, isValid ? "" : msg);
   if (!isValid) {
     const tooltipElement = document.getElementById("password-tooltip");
     if (tooltipElement) {
       tooltipElement.innerHTML = msg;
     }
   }
+}
+
+function updatePasswordValidationState(isValid) {
+  if (typeof validationState !== 'undefined') {
+    validationState.password = isValid;
+    checkAllFieldsValid();
+  }
+}
+
+function validatePasswordTooltip(inputPassword) {
+  const rules = checkPasswordRules(inputPassword);
+  const msg = buildPasswordMessage(rules);
+  const isValid = isPasswordValid(rules);
+  updatePasswordTooltipContent(isValid, msg);
+  updatePasswordValidationState(isValid);
 }
 
 
