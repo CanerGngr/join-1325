@@ -54,45 +54,51 @@ async function handleRegisterUser(event) {
  * @returns {Promise<boolean>} True when all required fields are valid
  */
 async function validateRegisterFormOnSubmit() {
-  const nameInput = document.getElementById("input-name");
-  const emailInput = document.getElementById("input-email");
-  const passwordInput = document.getElementById("input-password");
-  const confirmPasswordInput = document.getElementById("input-password-confirm");
-  const privacyCheckbox = document.getElementById("privacy-checkbox");
-
-  const nameValue = nameInput ? nameInput.value.trim() : "";
-  const emailValue = emailInput ? emailInput.value.trim() : "";
-  const passwordValue = passwordInput ? passwordInput.value : "";
-  const confirmPasswordValue = confirmPasswordInput ? confirmPasswordInput.value : "";
-
-  const isNameValid = await isUserExistByName(nameValue);
-  const isEmailValid = await isUserExistByEmail(emailValue);
-
-  if (!realPassword && passwordValue && !/^\*+$/.test(passwordValue)) {
-    realPassword = passwordValue;
-  }
+  const values = readRegisterFormValues();
+  const isNameValid = await isUserExistByName(values.name);
+  const isEmailValid = await isUserExistByEmail(values.email);
+  ensureRealPasswordsCaptured(values.password, values.confirmPassword);
   onPasswordBlur(realPassword);
-
-  if (!realConfirmPassword && confirmPasswordValue && !/^\*+$/.test(confirmPasswordValue)) {
-    realConfirmPassword = confirmPasswordValue;
-  }
   isPasswordMatching();
+  const isPrivacyAccepted = validatePrivacyCheckbox();
+  return isNameValid && isEmailValid && validationState.password && validationState.confirmPassword && isPrivacyAccepted;
+}
 
-  const isPasswordValidNow = validationState.password;
-  const isConfirmPasswordValidNow = validationState.confirmPassword;
-  const isPrivacyAccepted = !!privacyCheckbox?.checked;
 
-  if (!isPrivacyAccepted) {
-    toggleErrorMessage(
-      "checkbox-error",
-      false,
-      "Please accept the Privacy policy."
-    );
-  } else {
-    toggleErrorMessage("checkbox-error", true);
-  }
+/**
+ * Reads the register form fields into a plain object.
+ * @function readRegisterFormValues
+ */
+function readRegisterFormValues() {
+  return {
+    name: (document.getElementById("input-name")?.value || "").trim(),
+    email: (document.getElementById("input-email")?.value || "").trim(),
+    password: document.getElementById("input-password")?.value ?? "",
+    confirmPassword: document.getElementById("input-password-confirm")?.value ?? "",
+  };
+}
 
-  return isNameValid && isEmailValid && isPasswordValidNow && isConfirmPasswordValidNow && isPrivacyAccepted;
+
+/**
+ * Captures the real (unmasked) password values when submit fires before an input event.
+ * @function ensureRealPasswordsCaptured
+ */
+function ensureRealPasswordsCaptured(passwordValue, confirmPasswordValue) {
+  if (!realPassword && passwordValue && !/^\*+$/.test(passwordValue)) realPassword = passwordValue;
+  if (!realConfirmPassword && confirmPasswordValue && !/^\*+$/.test(confirmPasswordValue)) realConfirmPassword = confirmPasswordValue;
+}
+
+
+/**
+ * Validates the privacy checkbox, toggles the error message and returns the state.
+ * @function validatePrivacyCheckbox
+ */
+function validatePrivacyCheckbox() {
+  const checkbox = document.getElementById("privacy-checkbox");
+  const accepted = !!checkbox?.checked;
+  if (accepted) toggleErrorMessage("checkbox-error", true);
+  else toggleErrorMessage("checkbox-error", false, "Please accept the Privacy policy.");
+  return accepted;
 }
 
 
