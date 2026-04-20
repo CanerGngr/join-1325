@@ -119,43 +119,56 @@ window.__joinApplyFinalLogoState = false;
  * Applies final logo position and size for skipped login animation.
  */
 function applyFinalLoginLogoState() {
-  const logoElement = document.getElementById("loader-image-white");
-  const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-  const isShortViewport = window.matchMedia("(max-height: 836px)").matches;
-  const isTabletViewport = window.matchMedia("(max-width: 1028px)").matches;
-  const isSmallViewport = window.matchMedia("(max-width: 396px)").matches;
-  const isVerySmallViewport = window.matchMedia("(max-width: 340px)").matches;
-  const isLowHeightViewport = window.matchMedia("(max-height: 965px)").matches;
-  let finalTop = "80px";
-  let finalLeftOffset = "77px";
+  const vp = getLoginLogoViewports();
+  const pos = getLoginLogoFinalPosition(vp);
+  applyLoginLogoStyles(document.getElementById("loader-image-white"), pos);
+}
 
-  if (isTabletViewport) {
-    finalTop = "37px";
-    finalLeftOffset = "38px";
-  }
 
-  if (isSmallViewport) {
-    finalLeftOffset = "32px";
-  }
+/**
+ * Returns the viewport flags relevant to the login logo placement.
+ * @function getLoginLogoViewports
+ */
+function getLoginLogoViewports() {
+  return {
+    mobile: window.matchMedia("(max-width: 768px)").matches,
+    short: window.matchMedia("(max-height: 836px)").matches,
+    tablet: window.matchMedia("(max-width: 1028px)").matches,
+    small: window.matchMedia("(max-width: 396px)").matches,
+    verySmall: window.matchMedia("(max-width: 340px)").matches,
+    lowHeight: window.matchMedia("(max-height: 965px)").matches,
+  };
+}
 
-  if (isVerySmallViewport) {
-    finalLeftOffset = "22px";
-  }
 
-  if (isLowHeightViewport) {
-    finalTop = "20px";
-    finalLeftOffset = "20px";
-  }
+/**
+ * Computes the final top/leftOffset/width/height for the login logo.
+ * @function getLoginLogoFinalPosition
+ */
+function getLoginLogoFinalPosition(vp) {
+  let top = "80px";
+  let leftOffset = "77px";
+  if (vp.tablet) { top = "37px"; leftOffset = "38px"; }
+  if (vp.small) leftOffset = "32px";
+  if (vp.verySmall) leftOffset = "22px";
+  if (vp.lowHeight) { top = "20px"; leftOffset = "20px"; }
+  const width = vp.mobile ? (vp.short ? "32px" : "64px") : "101px";
+  const height = vp.mobile ? (vp.short ? "39px" : "78px") : "122px";
+  return { top, leftOffset, width, height };
+}
 
-  const finalWidth = isMobileViewport ? (isShortViewport ? "32px" : "64px") : "101px";
-  const finalHeight = isMobileViewport ? (isShortViewport ? "39px" : "78px") : "122px";
 
-  logoElement.style.position = "absolute";
-  logoElement.style.top = finalTop;
-  logoElement.style.left = `calc((100vw - min(100vw, 1920px)) / 2 + ${finalLeftOffset})`;
-  logoElement.style.width = finalWidth;
-  logoElement.style.height = finalHeight;
-  logoElement.style.transform = "none";
+/**
+ * Writes the computed logo position/size directly to the element's style.
+ * @function applyLoginLogoStyles
+ */
+function applyLoginLogoStyles(el, pos) {
+  el.style.position = "absolute";
+  el.style.top = pos.top;
+  el.style.left = `calc((100vw - min(100vw, 1920px)) / 2 + ${pos.leftOffset})`;
+  el.style.width = pos.width;
+  el.style.height = pos.height;
+  el.style.transform = "none";
 }
 
 /**
