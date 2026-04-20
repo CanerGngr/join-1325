@@ -24,13 +24,7 @@ const validationState = {
  * Handles the handleRegisterUser workflow.
  * @function handleRegisterUser
  */
-async function handleRegisterUser(event) {
-  event.preventDefault();
-  const isFormValid = await validateRegisterFormOnSubmit();
-  if (!isFormValid) {
-    return;
-  }
-
+async function submitRegistration() {
   try {
     await addNewUser(newUser);
     showSuccessAndRedirect();
@@ -42,6 +36,15 @@ async function handleRegisterUser(event) {
       errorOverlay.classList.remove("d-none");
     }
   }
+}
+
+async function handleRegisterUser(event) {
+  event.preventDefault();
+  const isFormValid = await validateRegisterFormOnSubmit();
+  if (!isFormValid) {
+    return;
+  }
+  await submitRegistration();
 }
 
 
