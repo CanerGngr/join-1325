@@ -316,41 +316,47 @@ async function persistTaskStatusToFirebase(taskId, newStatus) {
  * @param {string} taskId - The ID of the task to delete
  */
 async function deleteTask(taskId) {
+	const taskIndex = findTaskIndexById(taskId);
+	if (taskIndex === -1) return;
 	const isGuest = sessionStorage.getItem("isGuest") === "true";
-
-	let taskIndex = -1;
-	for (let i = 0; i < tasks.length; i++) {
-		if (tasks[i].id === taskId) {
-			taskIndex = i;
-			break;
-		}
+	if (isGuest) {
+		tasks.splice(taskIndex, 1);
+		saveTasksToSession();
+	} else {
+		await removeTaskFromFirebase(taskId, taskIndex);
 	}
+	renderAllTasks();
+	showDeleteSuccessOverlay();
+}
 
-	if (taskIndex > -1) {
-		if (isGuest) {
-			// Guest user: Delete from SessionStorage only
-			tasks.splice(taskIndex, 1);
-			saveTasksToSession();
-		} else {
-			// Logged-in user: Delete from Firebase
-			const userId = sessionStorage.getItem("userId");
-			if (!userId) {
-				console.error("No userId found in session");
-				return;
-			}
 
-			try {
-				await firebase
-					.database()
-					.ref(`boards/${userId}/tasks/${taskId}`)
-					.remove();
-				tasks.splice(taskIndex, 1);
-			} catch (error) {
-				console.error("Error deleting task:", error);
-			}
-		}
-		renderAllTasks();
-		showDeleteSuccessOverlay();
+/**
+ * Returns the index of the task with the given id, or -1.
+ * @function findTaskIndexById
+ */
+function findTaskIndexById(taskId) {
+	for (let i = 0; i < tasks.length; i++) {
+		if (tasks[i].id === taskId) return i;
+	}
+	return -1;
+}
+
+
+/**
+ * Removes the task from Firebase and from the local array on success.
+ * @function removeTaskFromFirebase
+ */
+async function removeTaskFromFirebase(taskId, taskIndex) {
+	const userId = sessionStorage.getItem("userId");
+	if (!userId) {
+		console.error("No userId found in session");
+		return;
+	}
+	try {
+		await firebase.database().ref(`boards/${userId}/tasks/${taskId}`).remove();
+		tasks.splice(taskIndex, 1);
+	} catch (error) {
+		console.error("Error deleting task:", error);
 	}
 }
 
