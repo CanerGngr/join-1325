@@ -242,43 +242,38 @@ function getGuestTasks() {
  * @returns {Object} Statistics object with task counts
  */
 function calculateTaskStatistics(tasks) {
-    let statistics = {
-        total: 0,
-        todo: 0,
-        inProgress: 0,
-        awaitingFeedback: 0,
-        done: 0,
-        urgent: 0,
-        urgentDeadline: null
-    };
-
-    if (!tasks || tasks.length === 0) {
-        return statistics;
-    }
-
+    const statistics = { total: 0, todo: 0, inProgress: 0, awaitingFeedback: 0, done: 0, urgent: 0, urgentDeadline: null };
+    if (!tasks || tasks.length === 0) return statistics;
     statistics.total = tasks.length;
-
     for (let i = 0; i < tasks.length; i++) {
-        let task = tasks[i];
-
-        if (task.status === 'todo') {
-            statistics.todo++;
-        } else if (task.status === 'in-progress') {
-            statistics.inProgress++;
-        } else if (task.status === 'await-feedback') {
-            statistics.awaitingFeedback++;
-        } else if (task.status === 'done') {
-            statistics.done++;
-        }
-
-        if (task.priority === 'urgent') {
-            statistics.urgent++;
-            if (task.dueDate) {
-                updateUrgentDeadlineIfEarlier(statistics, task.dueDate);
-            }
-        }
+        applyTaskToStatistics(statistics, tasks[i]);
     }
     return statistics;
+}
+
+
+/**
+ * Updates a single statistics object with the status and priority of one task.
+ * @function applyTaskToStatistics
+ */
+function applyTaskToStatistics(statistics, task) {
+    updateStatusCount(statistics, task.status);
+    if (task.priority === 'urgent') {
+        statistics.urgent++;
+        if (task.dueDate) updateUrgentDeadlineIfEarlier(statistics, task.dueDate);
+    }
+}
+
+
+/**
+ * Increments the per-status counter matching the given status string.
+ * @function updateStatusCount
+ */
+function updateStatusCount(statistics, status) {
+    if (status === 'todo') statistics.todo++;
+    else if (status === 'in-progress') statistics.inProgress++;
+    else if (status === 'await-feedback') statistics.awaitingFeedback++;
+    else if (status === 'done') statistics.done++;
 }
 
 
