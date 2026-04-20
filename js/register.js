@@ -131,52 +131,39 @@ function setNameValidation(isValid, errorMsg) {
  * @function isUserExistByEmail
  */
 async function isUserExistByEmail(inputEmail) {
-  if (!inputEmail || !inputEmail.trim()) {
-    handleErrorSet(
-      "field-email",
-      "email-error",
-      false,
-      "E-Mail cannot be empty"
-    );
-    validationState.email = false;
-    checkAllFieldsValid();
-    return false;
-  }
+  if (!inputEmail || !inputEmail.trim()) return setEmailValidation(false, "E-Mail cannot be empty");
   try {
-    if (!validateEmailFormat(inputEmail)) {
-      validationState.email = false;
-      checkAllFieldsValid();
-      return false;
-    }
-    const exists = await isUserEmailTaken(inputEmail);
-    if (exists) {
-      handleErrorSet(
-        "field-email",
-        "email-error",
-        false,
-        "E-Mail already exists!"
-      );
-      validationState.email = false;
-      checkAllFieldsValid();
-      return false;
-    }
+    if (!validateEmailFormat(inputEmail)) return markEmailInvalid();
+    if (await isUserEmailTaken(inputEmail)) return setEmailValidation(false, "E-Mail already exists!");
     newUser.email = inputEmail;
-    handleErrorSet("field-email", "email-error", true);
-    validationState.email = true;
-    checkAllFieldsValid();
-    return true;
+    return setEmailValidation(true);
   } catch (error) {
     console.error("Error validating email:", error);
-    handleErrorSet(
-      "field-email",
-      "email-error",
-      false,
-      "Error validating email. Please try again."
-    );
-    validationState.email = false;
-    checkAllFieldsValid();
-    return false;
+    return setEmailValidation(false, "Error validating email. Please try again.");
   }
+}
+
+
+/**
+ * Applies the email validation result to the UI and shared state.
+ * @function setEmailValidation
+ */
+function setEmailValidation(isValid, errorMsg) {
+  handleErrorSet("field-email", "email-error", isValid, errorMsg);
+  validationState.email = isValid;
+  checkAllFieldsValid();
+  return isValid;
+}
+
+
+/**
+ * Marks the email invalid without overwriting the format error message.
+ * @function markEmailInvalid
+ */
+function markEmailInvalid() {
+  validationState.email = false;
+  checkAllFieldsValid();
+  return false;
 }
 
 
