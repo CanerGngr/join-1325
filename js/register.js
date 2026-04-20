@@ -311,16 +311,10 @@ function setBorderColor(inputField, status) {
  * Checks if all input fields are valid and enables the checkbox if so
  */
 function checkAllFieldsValid() {
-  const allValid = validationState.name &&
-                   validationState.email &&
-                   validationState.password &&
-                   validationState.confirmPassword;
-
+  const allValid = validationState.name && validationState.email && validationState.password && validationState.confirmPassword;
   const checkbox = document.getElementById("privacy-checkbox");
   const button = document.getElementById("btn-signup");
-
   if (checkbox) checkbox.disabled = !allValid;
-
   if (!allValid) {
     if (checkbox) checkbox.checked = false;
     if (button) button.disabled = true;
