@@ -232,19 +232,30 @@ function handleErrorSet(
 function toggleErrorMessage(elementId, isValid, message = "") {
   const el = document.getElementById(elementId);
   if (!el) return;
+  if (isValid) hideErrorMessage(el);
+  else showErrorMessage(el, elementId, message);
+}
 
-  if (isValid) {
-    el.classList.add("d-none");
-    el.textContent = "";
-    el.innerHTML = "";
-  } else {
-    el.classList.remove("d-none");
-    if (elementId === "password-tooltip") {
-      el.innerHTML = message;
-    } else {
-      el.textContent = message;
-    }
-  }
+
+/**
+ * Hides and clears the error message element.
+ * @function hideErrorMessage
+ */
+function hideErrorMessage(el) {
+  el.classList.add("d-none");
+  el.textContent = "";
+  el.innerHTML = "";
+}
+
+
+/**
+ * Shows an error message; uses innerHTML for the password tooltip, textContent otherwise.
+ * @function showErrorMessage
+ */
+function showErrorMessage(el, elementId, message) {
+  el.classList.remove("d-none");
+  if (elementId === "password-tooltip") el.innerHTML = message;
+  else el.textContent = message;
 }
 
 
