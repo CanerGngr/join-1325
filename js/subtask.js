@@ -126,26 +126,25 @@ function getFilteredSubtasks() {
  * @returns {Object} Object containing subtaskProgress, totalSubtasks, and progressInPercent
  */
 function calculateSubtaskProgress(subtasks) {
-  if (!subtasks || !Array.isArray(subtasks)) {
-    return { subtaskProgress: "", totalSubtasks: 0, progressInPercent: 0 };
-  }
-
-  let completedSubtasks = 0;
-  for (let i = 0; i < subtasks.length; i++) {
-    if (subtasks[i] && subtasks[i].completed) {
-      completedSubtasks++;
-    }
-  }
-
-  let totalSubtasks = subtasks.length;
-  let subtaskProgress =
-    totalSubtasks > 0
-      ? completedSubtasks + "/" + totalSubtasks + "Subtasks"
-      : "";
-  let progressInPercent =
-    totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-
+  if (!subtasks || !Array.isArray(subtasks)) return { subtaskProgress: "", totalSubtasks: 0, progressInPercent: 0 };
+  const totalSubtasks = subtasks.length;
+  const completedSubtasks = countCompletedSubtasks(subtasks);
+  const subtaskProgress = totalSubtasks > 0 ? completedSubtasks + "/" + totalSubtasks + "Subtasks" : "";
+  const progressInPercent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
   return { subtaskProgress, totalSubtasks, progressInPercent };
+}
+
+
+/**
+ * Counts how many subtasks in the array are marked completed.
+ * @function countCompletedSubtasks
+ */
+function countCompletedSubtasks(subtasks) {
+  let count = 0;
+  for (let i = 0; i < subtasks.length; i++) {
+    if (subtasks[i] && subtasks[i].completed) count++;
+  }
+  return count;
 }
 
 
