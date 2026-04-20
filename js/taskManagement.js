@@ -182,21 +182,14 @@ function generateTaskCardHTML(task) {
  * @function generateAssignedUsersHTML
  */
 function generateAssignedUsersHTML(assignedToArray) {
+	const max = 4;
+	const visible = assignedToArray.slice(0, max);
+	const hidden = assignedToArray.length - visible.length;
 	let html = "";
-	const maxVisibleAssignees = 4;
-	const visibleAssignees = assignedToArray.slice(0, maxVisibleAssignees);
-
-	for (let i = 0; i < visibleAssignees.length; i++) {
-		let initials = getInitials(visibleAssignees[i]);
-		let userColor = getAvatarColor(visibleAssignees[i]);
-		html += `<div class="user-avatar-sm" style="background-color: ${userColor};">${initials}</div>`;
+	for (let i = 0; i < visible.length; i++) {
+		html += getAssigneeAvatarTemplate(visible[i]);
 	}
-
-	const hiddenAssigneesCount = assignedToArray.length - visibleAssignees.length;
-	if (hiddenAssigneesCount > 0) {
-		html += `<div class="user-avatar-sm more-assignees">+${hiddenAssigneesCount}</div>`;
-	}
-
+	if (hidden > 0) html += getAssigneeOverflowTemplate(hidden);
 	return html;
 }
 
