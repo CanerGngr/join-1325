@@ -302,14 +302,8 @@ function setBorderColor(inputField, status) {
     console.warn(`setBorderColor: element with id "${inputField}" not found.`);
     return;
   }
-
   fieldInput.classList.remove("valid-input", "invalid-input");
-
-  if (status) {
-    fieldInput.classList.add("valid-input");
-  } else {
-    fieldInput.classList.add("invalid-input");
-  }
+  fieldInput.classList.add(status ? "valid-input" : "invalid-input");
 }
 
 
