@@ -284,26 +284,28 @@ async function updateTaskStatus(taskId, newStatus) {
 	const isGuest = sessionStorage.getItem("isGuest") === "true";
 	const task = findTaskById(taskId);
 	task.status = newStatus;
-
 	if (isGuest) {
-		// Guest user: Update SessionStorage only
 		saveTasksToSession();
-	} else {
-		// Logged-in user: Update Firebase
-		const userId = sessionStorage.getItem("userId");
-		if (!userId) {
-			console.error("No userId found in session");
-			return;
-		}
+		return;
+	}
+	await persistTaskStatusToFirebase(taskId, newStatus);
+}
 
-		try {
-			await firebase
-				.database()
-				.ref(`boards/${userId}/tasks/${taskId}`)
-				.update({ status: newStatus });
-		} catch (error) {
-			console.error("Error updating task status:", error);
-		}
+
+/**
+ * Persists the new task status to Firebase for the current logged-in user.
+ * @function persistTaskStatusToFirebase
+ */
+async function persistTaskStatusToFirebase(taskId, newStatus) {
+	const userId = sessionStorage.getItem("userId");
+	if (!userId) {
+		console.error("No userId found in session");
+		return;
+	}
+	try {
+		await firebase.database().ref(`boards/${userId}/tasks/${taskId}`).update({ status: newStatus });
+	} catch (error) {
+		console.error("Error updating task status:", error);
 	}
 }
 
