@@ -184,23 +184,25 @@ function validateEmailFormat(inputEmail) {
  * @function toggleCheckBox
  */
 function toggleCheckBox(event) {
-  if (event.target.tagName === "A") {
-    return;
+  if (event.target.tagName === "A") return;
+  const checkbox = document.getElementById("privacy-checkbox");
+  if (checkbox.disabled) { event.preventDefault(); return; }
+  setTimeout(() => applyPrivacyCheckboxState(checkbox), 0);
+}
+
+
+/**
+ * Applies the checked state of the privacy checkbox to the signup button and errors.
+ * @function applyPrivacyCheckboxState
+ */
+function applyPrivacyCheckboxState(checkbox) {
+  const signUpButton = document.getElementById("btn-signup");
+  if (checkbox.checked) {
+    signUpButton.disabled = false;
+    toggleErrorMessage("checkbox-error", true);
+  } else {
+    signUpButton.disabled = true;
   }
-  let checkbox = document.getElementById("privacy-checkbox");
-  if (checkbox.disabled) {
-    event.preventDefault();
-    return;
-  }
-  setTimeout(function () {
-    let signUpButton = document.getElementById("btn-signup");
-    if (checkbox.checked) {
-      signUpButton.disabled = false;
-      toggleErrorMessage("checkbox-error", true);
-    } else {
-      signUpButton.disabled = true;
-    }
-  }, 0);
 }
 
 
