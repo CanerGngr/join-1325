@@ -13,7 +13,7 @@
  */
 function checkSession() {
   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-  
+
   if (!isLoggedIn || isLoggedIn !== 'true') {
     window.location.href = '/html/login.html';
     return false;
@@ -57,9 +57,9 @@ function getInitials(name) {
 function initProtectedPage() {
   const currentPage = window.location.pathname;
   const protectedPages = ['/index.html', '/html/add-task.html', '/html/board.html', '/html/contacts.html'];
-  
+
   const isProtectedPage = protectedPages.some(page => currentPage.includes(page)) || currentPage=='/';
-  
+
   if (isProtectedPage) {
     checkSession();
   }
@@ -258,4 +258,3 @@ function getLoadingscreen() {
     </svg>
   `;
 }
-

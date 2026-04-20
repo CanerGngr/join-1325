@@ -107,33 +107,24 @@ function handleSearchInput(event) {
  * @function searchContact
  */
 function searchContact(mode) {
-  const searchInput = mode === 'task-edit'
-    ? document.getElementById('edit-assigned-to-input-field')
-    : document.getElementById('assigned-to-input-field');
-  const searchTerm = searchInput.value.toLowerCase().trim();
-  
-  // Filter contacts array based on search term
-  const filteredContacts = contacts.filter(contact => 
-    contact.name.toLowerCase().includes(searchTerm)
-  );
-  
-  // Get dropdown container and iterate through children
-  const dropdownList = mode === 'task-edit'
-    ? document.getElementById('edit-assigned-to-list')
-    : document.getElementById('assigned-to-list');
-  const dropdownItems = dropdownList.children;
-  
-  for (let i = 0; i < dropdownItems.length; i++) {
-    const dropdownItem = dropdownItems[i];
-    // Find checkbox by class name
-    const checkboxes = dropdownItem.getElementsByClassName('checkbox-masked');
-    const checkbox = checkboxes.length > 0 ? checkboxes[0] : null;
-    
-    if (checkbox) {
-      const contactName = checkbox.value;
-      // Show or hide based on whether the contact is in filtered results
-      const isVisible = filteredContacts.some(contact => contact.name === contactName);
-      dropdownItem.style.display = isVisible ? "" : "none";
-    }
+  const isEditMode = mode === 'task-edit';
+  const inputId = isEditMode ? 'edit-assigned-to-input-field' : 'assigned-to-input-field';
+  const listId = isEditMode ? 'edit-assigned-to-list' : 'assigned-to-list';
+  const term = document.getElementById(inputId).value.toLowerCase().trim();
+  filterDropdownItemsByTerm(document.getElementById(listId), term);
+}
+
+
+/**
+ * Shows/hides assigned-to dropdown items based on whether their contact name contains the term.
+ * @function filterDropdownItemsByTerm
+ */
+function filterDropdownItemsByTerm(list, term) {
+  const items = list.children;
+  for (let i = 0; i < items.length; i++) {
+    const checkbox = items[i].getElementsByClassName('checkbox-masked')[0];
+    if (!checkbox) continue;
+    const matches = checkbox.value.toLowerCase().includes(term);
+    items[i].style.display = matches ? "" : "none";
   }
 }
