@@ -75,23 +75,14 @@ function editSubtask(index) {
  * @param {number} index - Index of the subtask being edited
  */
 function saveSubtaskEdit(index) {
-  let input = document.getElementById(`subtask-edit-input-${index}`);
-  let subtaskItem = document.getElementById(`subtask-item-${index}`);
-  let textSpan = subtaskItem.getElementsByClassName('subtask-text')[0];
-
+  const input = document.getElementById(`subtask-edit-input-${index}`);
   if (!input) return;
-
-  let newText = input.value.trim();
-
+  const newText = input.value.trim();
   if (newText.length > 0) {
-    // Update the subtask text
     currentSubtasks[index].text = newText;
-
-    // Update the display
-    textSpan.textContent = newText;
+    const subtaskItem = document.getElementById(`subtask-item-${index}`);
+    subtaskItem.getElementsByClassName('subtask-text')[0].textContent = newText;
   }
-
-  // Remove edit container and show original item
   cancelSubtaskEdit(index);
 }
 
