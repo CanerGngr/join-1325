@@ -42,23 +42,11 @@ function getUserAvatar() {
  * @function getInitials
  */
 function getInitials(name) {
-  const nameParts = name.trim().split(/(?=[A-Z])/);
-  if (nameParts.length == 1) {
-    return (
-      nameParts[0].charAt(0).toUpperCase()
-    );
+  const parts = name.trim().split(/(?=[A-Z])/);
+  if (parts.length >= 2) {
+    return parts[0].charAt(0).toUpperCase() + parts[parts.length - 1].charAt(0).toUpperCase();
   }
-  if (nameParts.length >= 2) {
-    return (
-      nameParts[0].charAt(0).toUpperCase() +
-      nameParts[nameParts.length - 1].charAt(0).toUpperCase()
-    );
-  } else {
-    return nameParts[0].length >= 2
-      ? nameParts[0].charAt(0).toUpperCase() +
-          nameParts[0].charAt(1).toUpperCase()
-      : nameParts[0].charAt(0).toUpperCase();
-  }
+  return parts[0].charAt(0).toUpperCase();
 }
 
 
