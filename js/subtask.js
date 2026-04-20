@@ -60,18 +60,11 @@ function removeSubtask(index, element) {
  * @param {number} index - Index of the subtask to edit
  */
 function editSubtask(index) {
-  let subtaskItem = document.getElementById(`subtask-item-${index}`);
-  // Get current subtask text
-  let currentText = currentSubtasks[index].text;
-
-  // Create edit input container
+  const subtaskItem = document.getElementById(`subtask-item-${index}`);
+  const currentText = currentSubtasks[index].text;
   subtaskItem.insertAdjacentHTML('afterend', getSubtaskEditTemplate(index, currentText));
-
-  // Hide the original subtask item
   subtaskItem.style.display = 'none';
-
-  // Focus the input field
-  let input = document.getElementById(`subtask-edit-input-${index}`);
+  const input = document.getElementById(`subtask-edit-input-${index}`);
   input.focus();
   input.select();
 }
