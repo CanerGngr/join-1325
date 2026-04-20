@@ -12,31 +12,33 @@ let currentSubtasks = [];
 /**
  * Adds a new subtask to the list
  */
-function addSubtask() {
-  let subtaskList = document.getElementById("subtask-list");
-  let subtaskInput = document.getElementById("add-subtask");
-  let mode = arguments[0];
+function addSubtask(mode) {
+  const elements = getSubtaskElements(mode);
+  if (!elements.list || !elements.input) return;
+  const text = elements.input.value.trim();
+  if (!text) return;
+  const index = currentSubtasks.length;
+  currentSubtasks.push({ text, completed: false });
+  elements.list.innerHTML += getSubtaskItemTemplate(index, text);
+  elements.input.value = "";
+}
 
+
+/**
+ * Returns the subtask list + input elements for the given mode.
+ * @function getSubtaskElements
+ */
+function getSubtaskElements(mode) {
   if (mode === "task-edit") {
-    subtaskList = document.getElementById("edit-subtask-list");
-    subtaskInput = document.getElementById("edit-add-subtask");
+    return {
+      list: document.getElementById("edit-subtask-list"),
+      input: document.getElementById("edit-add-subtask"),
+    };
   }
-
-  if (!subtaskList || !subtaskInput) {
-    return;
-  }
-
-  let subtaskText = subtaskInput.value.trim();
-  if (!subtaskText) {
-    return;
-  }
-  let subtaskIndex = currentSubtasks.length;
-  currentSubtasks.push({
-    text: subtaskText,
-    completed: false,
-  });
-  subtaskList.innerHTML += getSubtaskItemTemplate(subtaskIndex, subtaskText);
-  subtaskInput.value = "";
+  return {
+    list: document.getElementById("subtask-list"),
+    input: document.getElementById("add-subtask"),
+  };
 }
 
 
