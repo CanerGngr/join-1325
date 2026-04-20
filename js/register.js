@@ -107,35 +107,22 @@ function validatePrivacyCheckbox() {
  * @function isUserExistByName
  */
 async function isUserExistByName(inputName) {
-  if (!inputName || !inputName.trim()) {
-    handleErrorSet(
-      "field-name",
-      "username-error",
-      false,
-      "Username cannot be empty"
-    );
-    validationState.name = false;
-    checkAllFieldsValid();
-    return false;
-  }
-  const exists = await isUserNameTaken(inputName);
-  if (exists) {
-    handleErrorSet(
-      "field-name",
-      "username-error",
-      false,
-      "Username already exists!"
-    );
-    validationState.name = false;
-    checkAllFieldsValid();
-    return false;
-  } else {
-    newUser.name = inputName;
-    handleErrorSet("field-name", "username-error", true);
-    validationState.name = true;
-    checkAllFieldsValid();
-    return true;
-  }
+  if (!inputName || !inputName.trim()) return setNameValidation(false, "Username cannot be empty");
+  if (await isUserNameTaken(inputName)) return setNameValidation(false, "Username already exists!");
+  newUser.name = inputName;
+  return setNameValidation(true);
+}
+
+
+/**
+ * Applies the username validation result to the UI and shared state.
+ * @function setNameValidation
+ */
+function setNameValidation(isValid, errorMsg) {
+  handleErrorSet("field-name", "username-error", isValid, errorMsg);
+  validationState.name = isValid;
+  checkAllFieldsValid();
+  return isValid;
 }
 
 
