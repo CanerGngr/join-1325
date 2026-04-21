@@ -273,7 +273,7 @@ function getEditTaskTemplate(task) {
                   id="edit-urgent-priority"
                   type="radio"
                   name="edit-priority"
-                  value="high"
+                  value="Urgent"
                 />
                 <label for="edit-urgent-priority" class="urgent-priority">
                   Urgent
