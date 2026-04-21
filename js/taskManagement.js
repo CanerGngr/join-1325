@@ -41,7 +41,7 @@ function getDefaultTasks() {
 				{ text: "Implement Recipe Recommender", completed: false },
 				{ text: "Start Page Layout", completed: true },
 			],
-			dueDate: "2024-05-10",
+			dueDate: "2026-08-10",
 		},
 		{
 			id: "task-2",
@@ -56,7 +56,7 @@ function getDefaultTasks() {
 				{ text: "Footer Template", completed: false },
 				{ text: "Navigation Template", completed: true },
 			],
-			dueDate: "2024-05-12",
+			dueDate: "2026-08-12",
 		},
 		{
 			id: "task-3",
@@ -70,7 +70,7 @@ function getDefaultTasks() {
 				{ text: "Define CSS Variables", completed: true },
 				{ text: "Create Component Structure", completed: false },
 			],
-			dueDate: "2024-05-15",
+			dueDate: "2026-08-15",
 		},
 		{
 			id: "task-4",
@@ -84,7 +84,7 @@ function getDefaultTasks() {
 				{ text: "Event Handlers", completed: false },
 				{ text: "Data Management", completed: false },
 			],
-			dueDate: "2024-05-08",
+			dueDate: "2026-08-08",
 		},
 		{
 			id: "task-5",
@@ -99,7 +99,7 @@ function getDefaultTasks() {
 				{ text: "Task Card Design", completed: true },
 				{ text: "Status Management", completed: false },
 			],
-			dueDate: "2024-05-20",
+			dueDate: "2026-08-20",
 		},
 		{
 			id: "task-6",
@@ -113,7 +113,7 @@ function getDefaultTasks() {
 				{ text: "Contact List View", completed: true },
 				{ text: "Contact Form", completed: true },
 			],
-			dueDate: "2024-05-05",
+			dueDate: "2026-08-05",
 		},
 		{
 			id: "task-7",
@@ -128,7 +128,7 @@ function getDefaultTasks() {
 				{ text: "API Endpoints", completed: true },
 				{ text: "Data Validation", completed: true },
 			],
-			dueDate: "2024-05-03",
+			dueDate: "2026-08-03",
 		},
 	];
 }
