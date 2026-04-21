@@ -389,26 +389,13 @@ function showTaskDetails(taskId) {
  * @function getTaskDetailsTemplate
  */
 function getTaskDetailsTemplate(task) {
-	if (!task) {
-		return "<p>Task not found</p>";
-	}
-
+	if (!task) return "<p>Task not found</p>";
 	let categoryId = categoryToId[task.category] || "user-story";
 	let priorityIcon = priorityIcons[task.priority] || priorityIcons["medium"];
 	let priorityLabel = priorityLabels[task.priority] || priorityLabels["medium"];
 	let subtasksHTML = generateSubtasksHTML(task.id, task.subtasks || []);
-	let assignedUsersHTML = generateAssignedUsersDetailsHTML(
-		task.assignedTo || [],
-	);
-
-	return createDetailsTemplate(
-		task,
-		categoryId,
-		subtasksHTML,
-		assignedUsersHTML,
-		priorityIcon,
-		priorityLabel,
-	);
+	let assignedUsersHTML = generateAssignedUsersDetailsHTML(task.assignedTo || []);
+	return createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML, priorityIcon, priorityLabel);
 }
 
 /**
