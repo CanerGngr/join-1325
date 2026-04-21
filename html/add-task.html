@@ -219,8 +219,9 @@
                     <input
                       type="text"
                       class="dropdown-input"
+                      id="assigned-to-input-field"
                       placeholder="Select contacts to assign"
-                      readonly
+                      oninput="searchContact()"
                       onclick="toggleAssignedDropdown()"
                     />
                     <button
@@ -390,5 +391,6 @@
     <script src="/scrDB/taskDB.js"></script>
     <script src="/js/taskFormValidation.js"></script>
     <script src="/js/addTask.js"></script>
+    <script src="/js/search.js"></script>
   </body>
 </html>
