@@ -25,6 +25,12 @@
 	user-select: none;
 }
 
+.save-task-button {
+    position: absolute;
+    bottom: 4px;
+    right: 28px;
+}
+
 .touch-drag-clone {
 	position: fixed;
 	pointer-events: none;

@@ -272,7 +272,12 @@
         </svg>
       </div>
       <div class="add-task-main">
-        <form id="task-form" class="task-form" onsubmit="saveTask(event)" novalidate>
+        <form
+          id="task-form"
+          class="task-form"
+          onsubmit="saveTask(event)"
+          novalidate
+        >
           <div class="form-group" id="title-form-group">
             <input
               class="title-input form-input"
@@ -291,7 +296,12 @@
             <label for="description"
               >Description <span class="optional">(optional)</span></label
             >
-            <textarea id="description" name="description" rows="4" placeholder="Enter a Description"></textarea>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              placeholder="Enter a Description"
+            ></textarea>
           </div>
           <div class="form-group" id="date-form-group">
             <label for="task-date">Due Date</label>
@@ -527,7 +537,7 @@
             <ul class="subtask-list" id="subtask-list"></ul>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn-with-icon">
+            <button type="submit" class="btn-with-icon save-task-button">
               Create Task
               <svg
                 width="24"
@@ -556,16 +566,34 @@
     <div id="delete-success-overlay" class="ol-end d-none">
       <div class="ol-end-content">
         <p>Task deleted successfully</p>
-        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM13 3H3V16H13V3ZM5 14H7V5H5V14ZM9 14H11V5H9V14Z" fill="white"/>
+        <svg
+          width="16"
+          height="18"
+          viewBox="0 0 16 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM13 3H3V16H13V3ZM5 14H7V5H5V14ZM9 14H11V5H9V14Z"
+            fill="white"
+          />
         </svg>
       </div>
     </div>
     <div id="edit-success-overlay" class="ol-end d-none">
       <div class="ol-end-content">
         <p>Task edited successfully</p>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 17.25V21H6.75L17.81 9.94L14.06 6.19L3 17.25ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04Z" fill="white"/>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 17.25V21H6.75L17.81 9.94L14.06 6.19L3 17.25ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04Z"
+            fill="white"
+          />
         </svg>
       </div>
     </div>
