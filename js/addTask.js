@@ -134,10 +134,9 @@ function getAssignedDropdownList(mode) {
  */
 function toggleUserSelection(userName, event, mode) {
   event.stopPropagation();
-  
-  // Get checkbox directly from event target
+
   let checkbox = event.target;
-  
+  checkbox.closest('.dropdown-item').classList.toggle('selected', checkbox.checked);
   updateSelectedUsersArray(userName, checkbox.checked);
   updateDropdownPlaceholder(mode);
 }

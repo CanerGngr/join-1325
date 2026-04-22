@@ -188,17 +188,20 @@
 	margin-bottom: 2px;
 }
 
-.dropdown-item:not(:has(input:checked)):hover {
-	background-color:var(--color-hover-blue);
+.dropdown-item:not(.selected):hover {
+	background-color: var(--color-hover-blue);
 }
 
-.dropdown-item:has(input:checked) {
+.dropdown-item.selected {
 	background-color: var(--color-light-blue);
+	/* background-color: red; */
 	border-radius: 10px;
 }
-.dropdown-item:has(input:checked):hover{
+
+.dropdown-item.selected:hover {
 	background-color: var(--color-blue);
 }
+
 .dropdown-item label {
 	align-items: center;
 	cursor: pointer;
@@ -208,8 +211,19 @@
 	color: #2a3647;
 }
 
-.dropdown-item:has(input:checked) label {
+.dropdown-item.selected label {
 	color: white;
+}
+
+.dropdown-item .checkbox-masked:checked::before {
+	background-color: transparent;
+	background-image: url(../assets/icon/sign/checked.svg);
+	background-size: 24px 24px;
+	background-repeat: no-repeat;
+}
+
+.dropdown-item.selected .checkbox-masked:checked::before {
+	filter: brightness(0) invert(1);
 }
 
 .dropdown-item-label {
