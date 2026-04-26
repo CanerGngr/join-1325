@@ -28,7 +28,7 @@
 
 .summary-greeting-name {
 	color: #4589ff;
-	font-size: 4rem;
+	font-size: 76px;
 	font-weight: 700;
 }
 
@@ -530,5 +530,8 @@
 	}
     .square-board {
         height: 70px !important;
+    }
+    .summary-greeting-name {
+        font-size: 46px;
     }
 }
