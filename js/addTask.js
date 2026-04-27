@@ -458,9 +458,10 @@ function showSuccessOverlay() {
  * @param {string} columnStatus - The status/column where task should be added
  */
 function openAddTaskOverlay(columnStatus) {
+  clearForm();
   setTargetColumn(columnStatus);
   setDueDateMinConstraints();
-  toggleOverlay(".add-task-menu");
+  toggleOverlay("#add-task-menu");
 }
 
 

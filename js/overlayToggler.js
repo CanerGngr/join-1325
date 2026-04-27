@@ -5,6 +5,7 @@
  * @author Join-1325 Development Team
  */
 function toggleOverlay(menuId) {
+    // clearForm();
     let overlay = document.getElementById('blur-overlay');
     if (overlay) {
         overlay.classList.toggle('active');

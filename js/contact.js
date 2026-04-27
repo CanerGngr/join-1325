@@ -315,6 +315,13 @@ function showContactSuccessOverlay(overlayId) {
  * Handles the openDropdownMenuMobile workflow.
  * @function openDropdownMenuMobile
  */
+function openAddContactOverlay() {
+  document.getElementById("add-contact-form").reset();
+  clearContactFormErrors(false);
+  toggleOverlay("#add-contact-menu");
+}
+
+
 function openDropdownMenuMobile(event) {
   if (event) {
     event.stopPropagation();
