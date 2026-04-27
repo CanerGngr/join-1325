@@ -120,8 +120,7 @@
           <button
             class="btn-add"
             onclick="
-              setTargetColumn('todo');
-              toggleOverlay('.add-task-menu');
+              openAddTaskOverlay('todo');
             "
           >
             <span class="full-text">New Task </span>
@@ -148,8 +147,7 @@
                 class="btn-add-icon"
                 aria-label="Add task to To do"
                 onclick="
-                  setTargetColumn('todo');
-                  toggleOverlay('.add-task-menu');
+                  openAddTaskOverlay('todo');
                 "
               >
                 <svg
@@ -182,8 +180,7 @@
                 class="btn-add-icon"
                 aria-label="Add task to In progress"
                 onclick="
-                  setTargetColumn('in-progress');
-                  toggleOverlay('.add-task-menu');
+                  openAddTaskOverlay('in-progress');
                 "
               >
                 <svg
@@ -216,8 +213,7 @@
                 class="btn-add-icon"
                 aria-label="Add task to Await feedback"
                 onclick="
-                  setTargetColumn('await-feedback');
-                  toggleOverlay('.add-task-menu');
+                  openAddTaskOverlay('await-feedback');
                 "
               >
                 <svg
