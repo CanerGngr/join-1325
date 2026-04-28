@@ -87,6 +87,7 @@
 .details-avatar {
 	margin-right: 22px;
 }
+
 .avatar-content {
 	width: 24px;
 	height: 24px;
@@ -270,8 +271,9 @@
 		display: none;
 	}
 }
+
 .mobile-contact-actions {
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	height: 65px;
@@ -287,11 +289,7 @@
 	height: 36px;
 }
 
-.mobile-contact-actions {
-		display: none ;
-	}
 @media (max-width: 1025px) {
-
 	.overlay-menu.open {
 		position: fixed;
 		right: 0;
@@ -372,8 +370,6 @@
 		margin-bottom: 80px;
 	}
 
-
-
 	.dropdown-menu-mobile.open,
 	button,
 	span {
@@ -428,7 +424,6 @@
 	transform: translateY(-20px);
 }
 
-
 .popup-btn {
 	padding: 8px;
 	border-radius: 8px;
@@ -457,7 +452,7 @@
 	}
 	.mobile-contact-actions {
 		position: absolute;
-		display: flex ;
+		display: flex;
 		height: 44px;
 		width: 44px;
 	background-color: #4589ff;
