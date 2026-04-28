@@ -438,21 +438,7 @@
 	background-color: #e3eeff;
 	cursor: pointer;
 }
-@media (max-height :700px){
-		.desktop-contact-actions {
-		display: none;
-	}
-	.mobile-contact-actions {
-		position: absolute;
-		display: block ;
-				height: 44px;
-		width: 44px;
-	}
-	.mobile-contact-actions {
-	/* position: relative; */
-	background-color: #4589ff;
-}
-}
+
 @media (max-width: 427px) {
 	.btn-add-contact {
 		height: 44px !important;
@@ -466,7 +452,17 @@
 	.contact-side-menu.open {
 		width: calc(100% - 32px);
 	}
+		.desktop-contact-actions {
+		display: none;
+	}
+	.mobile-contact-actions {
+		position: absolute;
+		display: block ;
+				height: 44px;
+		width: 44px;
+	background-color: #4589ff;
 
+	}
 }
 
 @media (max-width: 370px) {
