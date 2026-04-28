@@ -425,7 +425,7 @@
 	opacity: 1;
 	visibility: visible;
 	pointer-events: auto;
-	transform: translateX(0);
+	transform: translateY(-20px);
 }
 
 
