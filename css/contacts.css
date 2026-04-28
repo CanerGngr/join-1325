@@ -457,8 +457,8 @@
 	}
 	.mobile-contact-actions {
 		position: absolute;
-		display: block ;
-				height: 44px;
+		display: flex ;
+		height: 44px;
 		width: 44px;
 	background-color: #4589ff;
 
