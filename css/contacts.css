@@ -270,12 +270,27 @@
 		display: none;
 	}
 }
+.mobile-contact-actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 65px;
+	width: 65px;
+	position: absolute;
+	bottom: 23px;
+	right: 23px;
+	border-radius: 10px;
+}
 
-@media (max-width: 1025px) {
+.mobile-contact-actions img {
+	width: 36px;
+	height: 36px;
+}
 
-	.mobile-contact-actions {
-		display: none !important;
+.mobile-contact-actions {
+		display: none ;
 	}
+@media (max-width: 1025px) {
 
 	.overlay-menu.open {
 		position: fixed;
@@ -357,9 +372,7 @@
 		margin-bottom: 80px;
 	}
 
-	.desktop-contact-actions {
-		display: none;
-	}
+
 
 	.dropdown-menu-mobile.open,
 	button,
@@ -378,17 +391,6 @@
 	.full-text {
 		display: none;
 	}
-}
-
-@media (min-width: 1207px) {
-	.mobile-contact-actions {
-		display: none !important;
-	}
-}
-
-.mobile-contact-actions {
-	position: relative;
-	background-color: #4589ff;
 }
 
 .mobile-contact-actions:hover {
@@ -426,22 +428,6 @@
 	transform: translateX(0);
 }
 
-.mobile-contact-actions {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 65px;
-	width: 65px;
-	position: absolute;
-	bottom: 23px;
-	right: 23px;
-	border-radius: 10px;
-}
-
-.mobile-contact-actions img {
-	width: 36px;
-	height: 36px;
-}
 
 .popup-btn {
 	padding: 8px;
@@ -451,6 +437,21 @@
 .popup-btn:hover {
 	background-color: #e3eeff;
 	cursor: pointer;
+}
+@media (max-height :700px){
+		.desktop-contact-actions {
+		display: none;
+	}
+	.mobile-contact-actions {
+		position: absolute;
+		display: block ;
+				height: 44px;
+		width: 44px;
+	}
+	.mobile-contact-actions {
+	/* position: relative; */
+	background-color: #4589ff;
+}
 }
 @media (max-width: 427px) {
 	.btn-add-contact {
@@ -465,10 +466,7 @@
 	.contact-side-menu.open {
 		width: calc(100% - 32px);
 	}
-	.mobile-contact-actions {
-		height: 44px;
-		width: 44px;
-	}
+
 }
 
 @media (max-width: 370px) {
