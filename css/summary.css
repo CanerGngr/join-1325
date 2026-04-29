@@ -7,7 +7,7 @@
 .summary-main-content {
 	width: 100%;
 	max-width: 912px;
-	min-height: 591px;
+	max-height: 591px;
 	text-align: center;
 	position: relative;
 }
@@ -378,21 +378,11 @@
 }
 
 /* Responsive Styles */
-@media (max-width:1138px){
-	.summary-main-content{
-		width: 92%;
-	}
-}
 
 /* Tablet: Sidebar wird Bottom-Nav */
 @media (max-width: 1024px) {
 	main {
 		max-height: calc(100vh - 160px);
-	}
-
-	.summary-main-content {
-		padding: 0 32px;
-		min-height: auto;
 	}
 }
 
@@ -404,9 +394,7 @@
 	}
 
 	.summary-main-content {
-		width: 90%;
-		height: auto;
-		padding: 0 0px;
+	width: 96%;
 	}
 
 	.summary-greeting {
@@ -476,7 +464,7 @@
 	}
 
 	.card-content {
-		padding: 12px;
+		padding: 8px;
 		flex: 1;
 	}
 
@@ -489,16 +477,21 @@
 		height: 76px;
 		width: 76px;
 	}
+	.square-board {
+        height: 70px;
+    }
+    .summary-square:not(.square-urgency) {
+        height: auto;
+    }
+    .square-urgency, .square-board {
+        margin: 0;
+    }
 }
 
 @media (max-width: 427px) {
 	.square-urgency,
 	.square-board {
 		margin-bottom: 0;
-	}
-	.second-top-row {
-		padding: 0px;
-
 	}
 	.urgent-icon img {
 		height: 50px;
@@ -509,10 +502,10 @@
 		height: 40px;
 		margin-bottom: 4px;
 	}
-    .square-board {
-        height: 70px !important;
-    }
     .summary-greeting-name {
         font-size: 46px;
+    }
+    .card-label {
+        font-size: 16px;
     }
 }
