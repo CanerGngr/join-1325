@@ -83,7 +83,6 @@ body {
 	flex-direction: column;
 	align-items: center;
 	max-width: 598px;
-	/*padding: 48px 88px;*/
 }
 
 .login-form-section {
@@ -302,7 +301,7 @@ footer a:hover {
 
 /* Error message styling */
 #error-message {
-	color: #e60026;
+	color: var(--color-red-error-msg);
 	display: block;
 	font-size: 16px;
 	min-height: 20px;
@@ -324,14 +323,6 @@ a {
 		--login-logo-top: 37px;
 		--login-logo-left: 38px;
 	}
-
-	/* .checkbox-container {
-		padding: 16px;
-	} */
-
-	/* .btn-container {
-		padding-top: 16px;
-	} */
 }
 
 @media (max-width: 768px) {
