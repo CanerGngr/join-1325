@@ -34,6 +34,18 @@
 	gap: 8px;
 }
 
+#title-form-group {
+	min-height: 95px;
+}
+
+#date-form-group {
+    min-height: 112px;
+}
+
+#category-form-group {
+    min-height: 108px;
+}
+
 .form-group label:not(.priority) {
 	color: #42526e;
 	font-size: 19px;
