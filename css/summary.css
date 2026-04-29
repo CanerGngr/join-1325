@@ -10,6 +10,7 @@
 	max-height: 591px;
 	text-align: center;
 	position: relative;
+	margin: 8px;
 }
 
 #summary-greeting {

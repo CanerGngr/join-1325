@@ -160,13 +160,14 @@
 .form-group {
 	width: 100%;
 	min-height: 65px;
+	padding: 0 16px;
 }
 
 .input-icon-container {
 	border-bottom: 1px solid #d1d1d1;
 	display: flex;
 	align-items: center;
-	padding: 12px 16px;
+	padding: 12px 0px;
 }
 
 .form-group.error .input-icon-container {
@@ -267,12 +268,6 @@
 	width: 584px;
 }
 
-@media (max-width: 1493px) {
-	#add-contact-form .btn-secondary-with-icon {
-		display: none;
-	}
-}
-
 .mobile-contact-actions {
 	display: none;
 	justify-content: center;
@@ -302,7 +297,11 @@
 		background: white;
 		border-radius: 30px !important;
 		width: 396px;
-		max-height: 80%;
+		height: auto;
+	}
+
+	.contact-form-header {
+	height: 180px;
 	}
 }
 
@@ -457,6 +456,10 @@
 		height: 44px;
 		width: 44px;
 	background-color: #4589ff;
+	}
+	.user-avatar-lg {
+		width: 90px;
+		height: 90px;
 	}
 }
 
