@@ -9,13 +9,6 @@
     height: calc(100vh - 96px);
 }
 
-/* Prevent content from sliding behind header/sidebar on short screens */
-@media (max-height: 820px) {
-    .main-wrapper {
-        align-items: flex-start;
-    }
-}
-
 /* Tablet: Sidebar ausgeblendet - kein Margin nötig */
 @media (max-width: 1024px) {
     .main-wrapper {
