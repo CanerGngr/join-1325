@@ -261,6 +261,7 @@ function getEditTaskTemplate(task) {
                 name="due_date"
                 id="edit-task-date"
                 value="${task.dueDate}"
+                onkeydown="return false"
                 onblur="handleTaskDateBlur(true)"
               />
               <div class="error-message">This field is required</div>
