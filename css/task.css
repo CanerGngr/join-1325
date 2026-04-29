@@ -315,7 +315,7 @@
 }
 
 .subtask {
-	font-size: 1rem;
+	font-size: 18px;
 	margin-left: 18px;
 	display: flex;
 	align-items: center;
@@ -450,6 +450,9 @@
 	}
 	.radio-to-btn{
 		gap: 8px;
+	}
+	.subtask {
+		font-size: 16px;
 	}
 }
 
