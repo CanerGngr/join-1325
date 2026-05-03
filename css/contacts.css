@@ -433,6 +433,14 @@
 	background-color: #e3eeff;
 	cursor: pointer;
 }
+@media(max-height:678px){
+	.contact-form-header {
+		height: 150px;
+	}
+	.form-buttons{
+		margin-top: 22px;
+	}
+}
 
 @media (max-width: 427px) {
 	.btn-add-contact {
