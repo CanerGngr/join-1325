@@ -25,7 +25,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
-	margin: 64px 24px 0;
+	margin: 14px 12px;
 }
 
 .form-group {
@@ -359,13 +359,6 @@
 }
 
 /*Tablet*/
-
-@media (max-width: 1070px) {
-.task-form-container{
-	max-width: 460px;
-	padding-bottom: 14px;
-}
-}
 @media (max-width: 1024px) {
 	.form-actions {
 		background-color: #ffffff;
@@ -378,12 +371,7 @@
 		.add-task-main-container {
 		height: calc(100vh - 245px);
 		overflow-y: auto;
-		padding: 0 12px 0 12px;
 	}
-.task-form{
-	margin-top: 24px;
-}
-
 	.main-wrapper{
 		margin-top: 15px;
 	}
@@ -394,16 +382,10 @@
 	.task-form-container {
 		max-width: 100%;
 	}
-
-	.task-form {
-		margin: 16px 0 0;
-		/* padding-bottom: 80px; */
-	}
 }
 
 @media (max-width: 480px) {
 	.task-form {
-		margin: 12px 0 0;
 		gap: 16px;
 	}
 	.form-group label:not(.priority) {
@@ -457,12 +439,6 @@
 }
 
 @media (max-height: 700px) {
-	.main-wrapper {
-		height: calc(100vh - 84px);
-	}
-	.add-task-main-container {
-		height: calc(100vh - 222px);
-	}
 	.task-form {
 		padding-bottom: 0px;
 	}
