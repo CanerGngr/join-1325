@@ -581,6 +581,9 @@
 	.add-task-overlay-header {
 		display: none;
 	}
+	.empty-task-container{
+		width: 100%;
+	}
 }
 
 @media (max-width: 420px) {
