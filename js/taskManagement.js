@@ -18,10 +18,74 @@ async function initializeTasks() {
 		const storedTasks = loadTasksFromSession();
 		return storedTasks || getDefaultTasks();
 	} else {
-		// Logged-in user: Load from Firebase — return empty array if no tasks yet
-		return await loadTasksFromFirebase();
+		// Logged-in user: Load from Firebase
+		const firebaseTasks = await loadTasksFromFirebase();
+		if (firebaseTasks.length > 0) {
+			return firebaseTasks;
+		}
+		// New user: seed default tasks and save them to Firebase
+		return await seedDefaultTasksToFirebase();
 	}
 }
+
+/**
+ * Saves the default tasks to Firebase for a new logged-in user
+ * and returns the tasks array with Firebase-generated IDs.
+ * @async
+ * @returns {Promise<Array>} Array of default tasks with Firebase IDs
+ */
+async function seedDefaultTasksToFirebase() {
+	const userId = sessionStorage.getItem("userId");
+	if (!userId) return getDefaultTasks();
+	try {
+		const tasksRef = firebase.database().ref("boards/" + userId + "/tasks");
+		return await pushDefaultTasksToRef(tasksRef);
+	} catch (error) {
+		console.error("Error seeding default tasks:", error);
+		return getDefaultTasks();
+	}
+}
+
+
+/**
+ * Pushes each default task to the given Firebase reference
+ * and returns the tasks with their Firebase-generated IDs.
+ * @async
+ * @param {Object} tasksRef - Firebase database reference
+ * @returns {Promise<Array>} Array of seeded tasks
+ */
+async function pushDefaultTasksToRef(tasksRef) {
+	const defaults = getDefaultTasks();
+	const seededTasks = [];
+	for (let i = 0; i < defaults.length; i++) {
+		const task = defaults[i];
+		const newRef = tasksRef.push();
+		await newRef.set(buildTaskForFirebase(task));
+		task.id = newRef.key;
+		seededTasks.push(task);
+	}
+	return seededTasks;
+}
+
+
+/**
+ * Builds a clean task object (without the local id) for Firebase storage.
+ * @param {Object} task - The task object
+ * @returns {Object} Task object ready for Firebase
+ */
+function buildTaskForFirebase(task) {
+	return {
+		title: task.title,
+		description: task.description,
+		category: task.category,
+		assignedTo: task.assignedTo,
+		priority: task.priority,
+		status: task.status,
+		subtasks: task.subtasks,
+		dueDate: task.dueDate
+	};
+}
+
 
 /**
  * Returns default tasks for initial setup
